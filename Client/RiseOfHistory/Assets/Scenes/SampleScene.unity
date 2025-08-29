@@ -165,6 +165,8 @@ MonoBehaviour:
   - {r: 0.41189748, g: 0.12001601, b: 0.8207547, a: 0}
   - {r: 0.121519536, g: 0.11400856, b: 0.13207549, a: 0}
   tileScale: 0.5
+  tileBorderPrefab: {fileID: 3167207080680807978, guid: c951b45d6fb644c4fb56b6905fe87680,
+    type: 3}
 --- !u!4 &125513616
 Transform:
   m_ObjectHideFlags: 0
