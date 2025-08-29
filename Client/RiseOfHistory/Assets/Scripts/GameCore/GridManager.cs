@@ -15,8 +15,6 @@ public class GridManager : MonoBehaviour
     [Range(0.1f, 1.5f)] // 在 Inspector 中添加滑块，方便调整
     public float tileScale = 1.0f;
 
-    // 新增：边框预制件
-    public GameObject tileBorderPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -57,26 +55,8 @@ public class GridManager : MonoBehaviour
 
                 // 获取 MeshRenderer 组件，并随机分配颜色
                 MeshRenderer renderer = tile.GetComponent<MeshRenderer>();
-                renderer.material.color = colors[randomColorIndex];
-
- 
-                if (tileBorderPrefab != null)
-                {
-                    // 实例化边框作为当前方块的子对象
-                    GameObject border = Instantiate(tileBorderPrefab, tile.transform);
-                    border.name = "Border";
-
-                    // 调整边框的位置和大小，使其环绕主方块
-                    // 边框的缩放比主方块略大，位置居中
-                    float borderThickness = 0.05f; // 边框厚度
-                    border.transform.localScale = new Vector3(
-                        1 + borderThickness, // 略大于主方块，以便显示为边框
-                        1 + borderThickness,
-                        1 + borderThickness // Z轴也稍微大一点，防止Z-fighting
-                    );
-                    border.transform.localPosition = Vector3.zero; // 居中于父对象
-                }
-       
+                renderer.material.color = colors[randomColorIndex]; 
+                
             }
         }
     }
