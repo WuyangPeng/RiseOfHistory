@@ -811,8 +811,13 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
   additionalCompilerArguments: {}
+  scriptingDefineSymbols:
+    Android: ENABLE_LOG
+    Server: ENABLE_LOG
+    Standalone: ENABLE_LOG
+    WebGL: ENABLE_LOG
+    Windows Store Apps: ENABLE_LOG
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
