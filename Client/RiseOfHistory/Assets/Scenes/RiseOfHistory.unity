@@ -1148,7 +1148,7 @@ MonoBehaviour:
   - StarForce.ProcedureUpdateResources
   - StarForce.ProcedureUpdateVersion
   - StarForce.ProcedureVerifyResources
-  m_EntranceProcedureTypeName: StarForce.ProcedureLaunch
+  m_EntranceProcedureTypeName: StarForce.ProcedureMain
 --- !u!4 &1843771717
 Transform:
   m_ObjectHideFlags: 0
