@@ -1,16 +1,10 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.Collections.Generic;
-using GameMain.Scripts.Procedure;
+﻿using System.Collections.Generic;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace GameMain.Scripts.Procedure.Scene
 {
     public class ProcedureGame : ProcedureBase
     {
@@ -21,13 +15,7 @@ namespace RiseOfHistory
         private bool m_GotoMenu = false;
         private float m_GotoMenuDelaySeconds = 0f;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool UseNativeDialog => false;
 
         public void GotoMenu()
         {
@@ -53,7 +41,7 @@ namespace RiseOfHistory
             base.OnEnter(procedureOwner);
 
             m_GotoMenu = false;
-            GameMode gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
+            var gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
             m_CurrentGame = m_Games[gameMode];
             m_CurrentGame.Initialize();
         }
@@ -73,7 +61,7 @@ namespace RiseOfHistory
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (m_CurrentGame != null && !m_CurrentGame.GameOver)
+            if (m_CurrentGame is { GameOver: false })
             {
                 m_CurrentGame.Update(elapseSeconds, realElapseSeconds);
                 return;
@@ -86,11 +74,9 @@ namespace RiseOfHistory
             }
 
             m_GotoMenuDelaySeconds += elapseSeconds;
-            if (m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)
-            {
-                procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
-                ChangeState<ProcedureChangeScene>(procedureOwner);
-            }
+            if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)) return;
+            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
+            ChangeState<ProcedureChangeScene>(procedureOwner);
         }
     }
 }
