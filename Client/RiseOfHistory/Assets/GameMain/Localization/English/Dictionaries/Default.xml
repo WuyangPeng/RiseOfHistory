@@ -26,5 +26,10 @@
     <String Key="Setting.UISound" Value="UI Sound FX" />
     <String Key="Setting.Language" Value="Language" />
     <String Key="Setting.LanguageTips" Value="Language change demands restarting." />
+    <String Key="Button.Role" Value="角色" />
+    <String Key="Button.Skill" Value="技能" />
+    <String Key="Button.MainCity" Value="主城" />
+    <String Key="Button.Copy" Value="副本" />
+    <String Key="Button.Backpack" Value="背包" />
   </Dictionary>
 </Dictionaries>

@@ -17,5 +17,30 @@ namespace GameMain.Scripts.UI
             base.OnClose(isShutdown, userData);
         }
 
+        public void OnRoleButtonClick()
+        {
+             
+        }
+
+        public void OnSkillButtonClick()
+        {
+
+        }
+
+        public void OnMainCityButtonClick()
+        {
+
+        }
+
+
+        public void OnCopyButtonClick()
+        {
+
+        }
+
+        public void OnBackpackButtonClick()
+        {
+
+        }
     }
 }
