@@ -5,15 +5,18 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Linq;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
-using System.Collections.Generic;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace GameMain.Scripts.Procedure
 {
     public class ProcedurePreload : ProcedureBase
     {
@@ -32,15 +35,9 @@ namespace RiseOfHistory
             "Weapon",
         };
 
-        private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
+        private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool UseNativeDialog => true;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
@@ -74,12 +71,9 @@ namespace RiseOfHistory
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            foreach (KeyValuePair<string, bool> loadedFlag in m_LoadedFlag)
+            if (m_LoadedFlag.Any(loadedFlag => !loadedFlag.Value))
             {
-                if (!loadedFlag.Value)
-                {
-                    return;
-                }
+                return;
             }
 
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
@@ -92,7 +86,7 @@ namespace RiseOfHistory
             LoadConfig("DefaultConfig");
 
             // Preload data tables
-            foreach (string dataTableName in DataTableNames)
+            foreach (var dataTableName in DataTableNames)
             {
                 LoadDataTable(dataTableName);
             }
@@ -106,21 +100,21 @@ namespace RiseOfHistory
 
         private void LoadConfig(string configName)
         {
-            string configAssetName = AssetUtility.GetConfigAsset(configName, false);
+            var configAssetName = AssetUtility.GetConfigAsset(configName, false);
             m_LoadedFlag.Add(configAssetName, false);
             GameEntry.Config.ReadData(configAssetName, this);
         }
 
         private void LoadDataTable(string dataTableName)
         {
-            string dataTableAssetName = AssetUtility.GetDataTableAsset(dataTableName, false);
+            var dataTableAssetName = AssetUtility.GetDataTableAsset(dataTableName, false);
             m_LoadedFlag.Add(dataTableAssetName, false);
             GameEntry.DataTable.LoadDataTable(dataTableName, dataTableAssetName, this);
         }
 
         private void LoadDictionary(string dictionaryName)
         {
-            string dictionaryAssetName = AssetUtility.GetDictionaryAsset(dictionaryName, false);
+            var dictionaryAssetName = AssetUtility.GetDictionaryAsset(dictionaryName, false);
             m_LoadedFlag.Add(dictionaryAssetName, false);
             GameEntry.Localization.ReadData(dictionaryAssetName, this);
         }
@@ -144,7 +138,7 @@ namespace RiseOfHistory
 
         private void OnLoadConfigSuccess(object sender, GameEventArgs e)
         {
-            LoadConfigSuccessEventArgs ne = (LoadConfigSuccessEventArgs)e;
+            var ne = (LoadConfigSuccessEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -156,7 +150,7 @@ namespace RiseOfHistory
 
         private void OnLoadConfigFailure(object sender, GameEventArgs e)
         {
-            LoadConfigFailureEventArgs ne = (LoadConfigFailureEventArgs)e;
+            var ne = (LoadConfigFailureEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -167,7 +161,7 @@ namespace RiseOfHistory
 
         private void OnLoadDataTableSuccess(object sender, GameEventArgs e)
         {
-            LoadDataTableSuccessEventArgs ne = (LoadDataTableSuccessEventArgs)e;
+            var ne = (LoadDataTableSuccessEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -179,7 +173,7 @@ namespace RiseOfHistory
 
         private void OnLoadDataTableFailure(object sender, GameEventArgs e)
         {
-            LoadDataTableFailureEventArgs ne = (LoadDataTableFailureEventArgs)e;
+            var ne = (LoadDataTableFailureEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -190,7 +184,7 @@ namespace RiseOfHistory
 
         private void OnLoadDictionarySuccess(object sender, GameEventArgs e)
         {
-            LoadDictionarySuccessEventArgs ne = (LoadDictionarySuccessEventArgs)e;
+            var ne = (LoadDictionarySuccessEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -202,7 +196,7 @@ namespace RiseOfHistory
 
         private void OnLoadDictionaryFailure(object sender, GameEventArgs e)
         {
-            LoadDictionaryFailureEventArgs ne = (LoadDictionaryFailureEventArgs)e;
+            var ne = (LoadDictionaryFailureEventArgs)e;
             if (ne.UserData != this)
             {
                 return;

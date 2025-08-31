@@ -7,10 +7,12 @@
 
 using GameFramework.DataTable;
 using GameFramework.Event;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace GameMain.Scripts.Procedure
 {
     public class ProcedureChangeScene : ProcedureBase
     {
@@ -20,13 +22,7 @@ namespace RiseOfHistory
         private bool m_IsChangeSceneComplete = false;
         private int m_BackgroundMusicId = 0;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool UseNativeDialog => false;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
@@ -48,10 +44,10 @@ namespace RiseOfHistory
             GameEntry.Entity.HideAllLoadedEntities();
 
             // 卸载所有场景
-            string[] loadedSceneAssetNames = GameEntry.Scene.GetLoadedSceneAssetNames();
-            for (int i = 0; i < loadedSceneAssetNames.Length; i++)
+            var loadedSceneAssetNames = GameEntry.Scene.GetLoadedSceneAssetNames();
+            foreach (var sceneName in loadedSceneAssetNames)
             {
-                GameEntry.Scene.UnloadScene(loadedSceneAssetNames[i]);
+                GameEntry.Scene.UnloadScene(sceneName);
             }
 
             // 还原游戏速度
@@ -59,8 +55,8 @@ namespace RiseOfHistory
 
             int sceneId = procedureOwner.GetData<VarInt32>("NextSceneId");
             m_ChangeToMenu = sceneId == MenuSceneId;
-            IDataTable<DRScene> dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
-            DRScene drScene = dtScene.GetDataRow(sceneId);
+            var dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
+            var drScene = dtScene.GetDataRow(sceneId);
             if (drScene == null)
             {
                 Log.Warning("Can not load scene '{0}' from data table.", sceneId.ToString());
@@ -102,7 +98,7 @@ namespace RiseOfHistory
 
         private void OnLoadSceneSuccess(object sender, GameEventArgs e)
         {
-            LoadSceneSuccessEventArgs ne = (LoadSceneSuccessEventArgs)e;
+            var ne = (LoadSceneSuccessEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -120,7 +116,7 @@ namespace RiseOfHistory
 
         private void OnLoadSceneFailure(object sender, GameEventArgs e)
         {
-            LoadSceneFailureEventArgs ne = (LoadSceneFailureEventArgs)e;
+            var ne = (LoadSceneFailureEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -131,7 +127,7 @@ namespace RiseOfHistory
 
         private void OnLoadSceneUpdate(object sender, GameEventArgs e)
         {
-            LoadSceneUpdateEventArgs ne = (LoadSceneUpdateEventArgs)e;
+            var ne = (LoadSceneUpdateEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -142,7 +138,7 @@ namespace RiseOfHistory
 
         private void OnLoadSceneDependencyAsset(object sender, GameEventArgs e)
         {
-            LoadSceneDependencyAssetEventArgs ne = (LoadSceneDependencyAssetEventArgs)e;
+            var ne = (LoadSceneDependencyAssetEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
