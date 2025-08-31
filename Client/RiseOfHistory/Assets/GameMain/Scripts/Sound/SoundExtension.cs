@@ -22,6 +22,10 @@ namespace RiseOfHistory
             soundComponent.StopMusic();
 
             IDataTable<DRMusic> dtMusic = GameEntry.DataTable.GetDataTable<DRMusic>();
+            if (dtMusic == null)
+            {
+                return null;
+            }
             DRMusic drMusic = dtMusic.GetDataRow(musicId);
             if (drMusic == null)
             {

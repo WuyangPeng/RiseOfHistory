@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using GameFramework.Event;
+using GameMain.Scripts.UI;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;
@@ -8,6 +10,8 @@ namespace GameMain.Scripts.Procedure.Scene
 {
     public class ProcedureGame : ProcedureBase
     {
+        private GameForm gameForm = null;
+
         private const float GameOverDelayedSeconds = 2f;
 
         private readonly Dictionary<GameMode, GameBase> m_Games = new Dictionary<GameMode, GameBase>();
@@ -44,6 +48,11 @@ namespace GameMain.Scripts.Procedure.Scene
             var gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
             m_CurrentGame = m_Games[gameMode];
             m_CurrentGame.Initialize();
+
+            GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
+
+      
+            GameEntry.UI.OpenUIForm(UIFormId.GameForm, this);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -55,7 +64,25 @@ namespace GameMain.Scripts.Procedure.Scene
             }
 
             base.OnLeave(procedureOwner, isShutdown);
+
+            GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
+
+            if (gameForm == null) return;
+            gameForm.Close(isShutdown);
+            gameForm = null;
         }
+
+        private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
+        {
+            var ne = (OpenUIFormSuccessEventArgs)e;
+            if (ne.UserData != this)
+            {
+                return;
+            }
+
+            gameForm = (GameForm)ne.UIForm.Logic;
+        }
+     
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {

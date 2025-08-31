@@ -33,5 +33,11 @@ namespace RiseOfHistory
         /// 关于。
         /// </summary>
         AboutForm = 102,
+
+
+        /// <summary>
+        /// 游戏。
+        /// </summary>
+        GameForm = 103,
     }
 }

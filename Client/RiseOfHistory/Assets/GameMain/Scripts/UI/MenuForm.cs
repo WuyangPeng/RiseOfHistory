@@ -44,7 +44,6 @@ namespace GameMain.Scripts.UI
             });
         }
 
-
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
