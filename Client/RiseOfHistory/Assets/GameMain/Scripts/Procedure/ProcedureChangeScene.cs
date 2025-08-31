@@ -5,8 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using GameFramework.DataTable;
 using GameFramework.Event;
+using GameMain.Scripts.Procedure.Scene;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;
@@ -18,7 +20,7 @@ namespace GameMain.Scripts.Procedure
     {
         private const int MenuSceneId = 1;
 
-        private bool m_ChangeToMenu = false;
+        private SceneType sceneType = SceneType.Game;
         private bool m_IsChangeSceneComplete = false;
         private int m_BackgroundMusicId = 0;
 
@@ -54,7 +56,7 @@ namespace GameMain.Scripts.Procedure
             GameEntry.Base.ResetNormalGameSpeed();
 
             int sceneId = procedureOwner.GetData<VarInt32>("NextSceneId");
-            m_ChangeToMenu = sceneId == MenuSceneId;
+            sceneType = (SceneType)sceneId;
             var dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
             var drScene = dtScene.GetDataRow(sceneId);
             if (drScene == null)
@@ -86,13 +88,22 @@ namespace GameMain.Scripts.Procedure
                 return;
             }
 
-            if (m_ChangeToMenu)
+            switch (sceneType)
             {
-                ChangeState<ProcedureMenu>(procedureOwner);
-            }
-            else
-            {
-                ChangeState<ProcedureMain>(procedureOwner);
+                case SceneType.Menu:
+                    {
+                        ChangeState<ProcedureMenu>(procedureOwner);
+                        break;
+                    }
+                case SceneType.Main:
+                    {
+                        ChangeState<ProcedureMain>(procedureOwner);
+                        break;
+                    }
+                case SceneType.Game:
+                case SceneType.Battle:
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
