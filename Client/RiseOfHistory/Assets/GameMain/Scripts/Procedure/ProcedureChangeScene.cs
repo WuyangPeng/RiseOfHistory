@@ -1,11 +1,4 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System;
+﻿using System;
 using GameFramework.DataTable;
 using GameFramework.Event;
 using GameMain.Scripts.Procedure.Scene;
@@ -18,8 +11,6 @@ namespace GameMain.Scripts.Procedure
 {
     public class ProcedureChangeScene : ProcedureBase
     {
-        private const int MenuSceneId = 1;
-
         private SceneType sceneType = SceneType.Game;
         private bool m_IsChangeSceneComplete = false;
         private int m_BackgroundMusicId = 0;
@@ -101,7 +92,15 @@ namespace GameMain.Scripts.Procedure
                         break;
                     }
                 case SceneType.Game:
+                    {
+                        ChangeState<ProcedureGame>(procedureOwner);
+                        break;
+                    }
                 case SceneType.Battle:
+                    {
+                        ChangeState<ProcedureBattle>(procedureOwner);
+                        break;
+                    }
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -1,14 +1,10 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
+﻿using GameMain.Scripts.Procedure.Scene;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 
-namespace RiseOfHistory
+namespace GameMain.Scripts.UI
 {
     public class MenuForm : UGuiForm
     {
@@ -43,11 +39,8 @@ namespace RiseOfHistory
             });
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnOpen(object userData)
-#else
-        protected internal override void OnOpen(object userData)
-#endif
         {
             base.OnOpen(userData);
 
@@ -61,11 +54,7 @@ namespace RiseOfHistory
             m_QuitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
         }
 
-#if UNITY_2017_3_OR_NEWER
         protected override void OnClose(bool isShutdown, object userData)
-#else
-        protected internal override void OnClose(bool isShutdown, object userData)
-#endif
         {
             m_ProcedureMenu = null;
 

@@ -8,6 +8,7 @@
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
+using GameMain.Scripts.Procedure;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
