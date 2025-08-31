@@ -62,7 +62,10 @@ namespace RiseOfHistory
             base.OnClose(isShutdown, userData);
 
             // 还原音乐
-            GameEntry.Sound.PlayMusic(1);
+            if (!isShutdown)
+            {
+                GameEntry.Sound.PlayMusic(1);
+            }
         }
 
 #if UNITY_2017_3_OR_NEWER
