@@ -36,7 +36,7 @@ namespace GameMain.Scripts.Procedure.Scene
             GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
             if (m_MenuForm == null) return;
-            m_MenuForm.Close(isShutdown);
+            m_MenuForm.Close(true);
             m_MenuForm = null;
         }
 

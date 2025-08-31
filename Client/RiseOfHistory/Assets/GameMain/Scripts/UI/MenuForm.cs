@@ -1,5 +1,6 @@
 ﻿using GameMain.Scripts.Procedure.Scene;
 using RiseOfHistory;
+using System;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;
@@ -63,6 +64,6 @@ namespace GameMain.Scripts.UI
             m_ProcedureMenu = null;
 
             base.OnClose(isShutdown, userData);
-        }
+        } 
     }
 }
