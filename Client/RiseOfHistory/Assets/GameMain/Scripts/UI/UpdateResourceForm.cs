@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public class UpdateResourceForm : MonoBehaviour
     {

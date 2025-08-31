@@ -9,7 +9,7 @@ using GameFramework.DataTable;
 using System;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public static class EntityExtension
     {

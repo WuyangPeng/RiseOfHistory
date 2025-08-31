@@ -16,7 +16,7 @@ using System.Text;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     /// <summary>
     /// 武器表。

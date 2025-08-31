@@ -8,7 +8,7 @@
 using GameFramework.Network;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public class SCHeartBeatHandler : PacketHandlerBase
     {

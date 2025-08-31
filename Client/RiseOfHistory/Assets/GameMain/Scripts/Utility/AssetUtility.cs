@@ -7,7 +7,7 @@
 
 using GameFramework;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public static class AssetUtility
     {

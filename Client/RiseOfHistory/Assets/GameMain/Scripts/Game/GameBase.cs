@@ -9,7 +9,7 @@ using GameFramework.Event;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public abstract class GameBase
     {

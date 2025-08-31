@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace StarForce
+namespace RiseOfHistory
 {
     /// <summary>
     /// 游戏模式。

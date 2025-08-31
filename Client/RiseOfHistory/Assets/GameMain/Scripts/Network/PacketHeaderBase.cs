@@ -8,7 +8,7 @@
 using GameFramework;
 using GameFramework.Network;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public abstract class PacketHeaderBase : IPacketHeader, IReference
     {

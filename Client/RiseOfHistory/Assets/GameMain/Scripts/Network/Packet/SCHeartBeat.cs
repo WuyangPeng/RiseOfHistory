@@ -8,7 +8,7 @@
 using ProtoBuf;
 using System;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     [Serializable, ProtoContract(Name = @"SCHeartBeat")]
     public class SCHeartBeat : SCPacketBase

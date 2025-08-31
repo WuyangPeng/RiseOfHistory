@@ -8,7 +8,7 @@
 using System;
 using UnityEngine;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     [Serializable]
     public abstract class AccessoryObjectData : EntityData

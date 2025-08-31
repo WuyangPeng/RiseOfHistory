@@ -8,7 +8,7 @@
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     /// <summary>
     /// 子弹类。

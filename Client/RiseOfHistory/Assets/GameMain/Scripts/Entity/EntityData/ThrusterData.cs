@@ -9,7 +9,7 @@ using GameFramework.DataTable;
 using System;
 using UnityEngine;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     [Serializable]
     public class ThrusterData : AccessoryObjectData

@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using UnityEngine;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public static class BinaryReaderExtension
     {

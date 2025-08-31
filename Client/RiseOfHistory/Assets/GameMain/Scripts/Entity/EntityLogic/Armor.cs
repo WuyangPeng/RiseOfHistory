@@ -9,7 +9,7 @@ using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     /// <summary>
     /// 装甲类。

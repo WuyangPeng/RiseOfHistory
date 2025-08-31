@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public static partial class Constant
     {

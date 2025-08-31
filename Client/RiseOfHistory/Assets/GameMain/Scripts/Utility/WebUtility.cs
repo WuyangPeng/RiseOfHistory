@@ -7,7 +7,7 @@
 
 using System;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public static class WebUtility
     {

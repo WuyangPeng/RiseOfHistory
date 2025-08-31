@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     /// <summary>
     /// 游戏入口。

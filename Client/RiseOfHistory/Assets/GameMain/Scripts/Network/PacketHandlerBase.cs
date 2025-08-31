@@ -7,7 +7,7 @@
 
 using GameFramework.Network;
 
-namespace StarForce
+namespace RiseOfHistory
 {
     public abstract class PacketHandlerBase : IPacketHandler
     {
