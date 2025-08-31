@@ -18,6 +18,11 @@ namespace GameMain.Scripts.UI
             m_ProcedureMenu.StartGame();
         }
 
+        public void OnLoadButtonClick()
+        {
+            m_ProcedureMenu.StartGame();
+        }
+
         public void OnSettingButtonClick()
         {
             GameEntry.UI.OpenUIForm(UIFormId.SettingForm);
