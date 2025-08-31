@@ -5,22 +5,18 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Localization;
 using System;
+using GameFramework.Localization;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace GameMain.Scripts.Procedure
 {
     public class ProcedureLaunch : ProcedureBase
     {
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool UseNativeDialog => true;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
@@ -51,7 +47,7 @@ namespace RiseOfHistory
             ChangeState<ProcedureSplash>(procedureOwner);
         }
 
-        private void InitLanguageSettings()
+        private static void InitLanguageSettings()
         {
             if (GameEntry.Base.EditorResourceMode && GameEntry.Base.EditorLanguage != Language.Unspecified)
             {
@@ -59,23 +55,24 @@ namespace RiseOfHistory
                 return;
             }
 
-            Language language = GameEntry.Localization.Language;
+            var language = GameEntry.Localization.Language;
             if (GameEntry.Setting.HasSetting(Constant.Setting.Language))
             {
                 try
                 {
-                    string languageString = GameEntry.Setting.GetString(Constant.Setting.Language);
+                    var languageString = GameEntry.Setting.GetString(Constant.Setting.Language);
                     language = (Language)Enum.Parse(typeof(Language), languageString);
                 }
                 catch
                 {
+                    // ignored
                 }
             }
 
-            if (language != Language.English
-                && language != Language.ChineseSimplified
-                && language != Language.ChineseTraditional
-                && language != Language.Korean)
+            if (language != Language.English &&
+                language != Language.ChineseSimplified &&
+                language != Language.ChineseTraditional &&
+                language != Language.Korean)
             {
                 // 若是暂不支持的语言，则使用英语
                 language = Language.English;
@@ -88,7 +85,7 @@ namespace RiseOfHistory
             Log.Info("Init language settings complete, current language is '{0}'.", language.ToString());
         }
 
-        private void InitCurrentVariant()
+        private static void InitCurrentVariant()
         {
             if (GameEntry.Base.EditorResourceMode)
             {
@@ -96,35 +93,20 @@ namespace RiseOfHistory
                 return;
             }
 
-            string currentVariant = null;
-            switch (GameEntry.Localization.Language)
+            var currentVariant = GameEntry.Localization.Language switch
             {
-                case Language.English:
-                    currentVariant = "en-us";
-                    break;
-
-                case Language.ChineseSimplified:
-                    currentVariant = "zh-cn";
-                    break;
-
-                case Language.ChineseTraditional:
-                    currentVariant = "zh-tw";
-                    break;
-
-                case Language.Korean:
-                    currentVariant = "ko-kr";
-                    break;
-
-                default:
-                    currentVariant = "zh-cn";
-                    break;
-            }
+                Language.English => "en-us",
+                Language.ChineseSimplified => "zh-cn",
+                Language.ChineseTraditional => "zh-tw",
+                Language.Korean => "ko-kr",
+                _ => "zh-cn"
+            };
 
             GameEntry.Resource.SetCurrentVariant(currentVariant);
             Log.Info("Init current variant complete.");
         }
 
-        private void InitSoundSettings()
+        private static void InitSoundSettings()
         {
             GameEntry.Sound.Mute("Music", GameEntry.Setting.GetBool(Constant.Setting.MusicMuted, false));
             GameEntry.Sound.SetVolume("Music", GameEntry.Setting.GetFloat(Constant.Setting.MusicVolume, 0.3f));
