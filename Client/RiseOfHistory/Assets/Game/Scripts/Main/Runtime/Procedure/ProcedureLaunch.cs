@@ -1,6 +1,5 @@
 ﻿using System;
 using GameFramework.Localization;
-using GameMain.Scripts.Procedure;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;

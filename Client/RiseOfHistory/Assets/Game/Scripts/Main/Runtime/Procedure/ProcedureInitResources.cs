@@ -1,5 +1,4 @@
-﻿using GameMain.Scripts.Procedure;
-using UnityGameFramework.Runtime;
+﻿using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
