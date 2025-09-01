@@ -13,7 +13,7 @@ using UnityGameFramework.Editor.ResourceTools;
 
 namespace RiseOfHistory.Editor
 {
-    public sealed class StarForceBuildEventHandler : IBuildEventHandler
+    public sealed class BuildEventHandler : IBuildEventHandler
     {
         public bool ContinueOnFailure
         {

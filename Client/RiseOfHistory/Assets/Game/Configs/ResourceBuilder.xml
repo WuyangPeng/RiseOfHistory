@@ -8,7 +8,7 @@
       <CompressionHelperTypeName>UnityGameFramework.Runtime.DefaultCompressionHelper</CompressionHelperTypeName>
       <AdditionalCompressionSelected>True</AdditionalCompressionSelected>
       <ForceRebuildAssetBundleSelected>False</ForceRebuildAssetBundleSelected>
-      <BuildEventHandlerTypeName>RiseOfHistory.Editor.StarForceBuildEventHandler</BuildEventHandlerTypeName>
+      <BuildEventHandlerTypeName>RiseOfHistory.Editor.BuildEventHandler</BuildEventHandlerTypeName>
       <OutputDirectory></OutputDirectory>
       <OutputPackageSelected>True</OutputPackageSelected>
       <OutputFullSelected>True</OutputFullSelected>
