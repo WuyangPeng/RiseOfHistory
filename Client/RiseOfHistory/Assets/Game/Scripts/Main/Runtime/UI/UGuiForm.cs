@@ -7,6 +7,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;

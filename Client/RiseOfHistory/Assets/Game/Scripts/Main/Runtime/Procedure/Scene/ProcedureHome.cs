@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Game.Scripts.Main.Runtime.Procedure;
+using Game.Scripts.Main.Runtime.UI;
 using GameFramework.Event;
 using GameMain.Scripts.UI;
 using RiseOfHistory;
@@ -7,7 +7,7 @@ using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace GameMain.Scripts.Procedure.Scene
+namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureHome : ProcedureBase
     {

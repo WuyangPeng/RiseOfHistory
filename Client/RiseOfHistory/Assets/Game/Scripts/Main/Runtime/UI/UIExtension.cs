@@ -5,16 +5,17 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.DataTable;
-using GameFramework.UI;
 using System.Collections;
 using Game.Scripts.Main.Runtime.Procedure;
-using GameMain.Scripts.Procedure;
+using GameFramework.DataTable;
+using GameFramework.UI;
+using RiseOfHistory;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.UI
 {
     public static class UIExtension
     {

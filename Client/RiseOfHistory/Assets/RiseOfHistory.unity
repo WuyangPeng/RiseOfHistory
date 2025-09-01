@@ -451,19 +451,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[10]
-      value: GameMain.Scripts.Procedure.Scene.ProcedureHome
+      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureBattle
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[11]
-      value: GameMain.Scripts.Procedure.Scene.ProcedureMenu
+      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureHome
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[12]
-      value: RiseOfHistory.ProcedureBattle
+      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureMain
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[13]
-      value: RiseOfHistory.ProcedureMain
+      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureMenu
       objectReference: {fileID: 0}
     - target: {fileID: 11413340, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AudioMixer

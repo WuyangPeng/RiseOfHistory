@@ -6,12 +6,12 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
-using Game.Scripts.Main.Runtime.Procedure;
-using GameMain.Scripts.Procedure;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureBattle: ProcedureBase
     {
@@ -22,13 +22,7 @@ namespace RiseOfHistory
         private bool m_GotoMenu = false;
         private float m_GotoMenuDelaySeconds = 0f;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool UseNativeDialog => false;
 
         public void GotoMenu()
         {
@@ -54,7 +48,7 @@ namespace RiseOfHistory
             base.OnEnter(procedureOwner);
 
             m_GotoMenu = false;
-            GameMode gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
+            var gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
             m_CurrentGame = m_Games[gameMode];
             m_CurrentGame.Initialize();
         }
@@ -87,11 +81,9 @@ namespace RiseOfHistory
             }
 
             m_GotoMenuDelaySeconds += elapseSeconds;
-            if (m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)
-            {
-                procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
-                ChangeState<ProcedureChangeScene>(procedureOwner);
-            }
+            if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)) return;
+            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
+            ChangeState<ProcedureChangeScene>(procedureOwner);
         }
     }
 }

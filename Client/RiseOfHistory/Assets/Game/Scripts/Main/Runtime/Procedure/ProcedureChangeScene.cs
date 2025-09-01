@@ -1,7 +1,6 @@
 ﻿using System;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using GameFramework.Event;
-using GameMain.Scripts.Procedure.Scene;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;

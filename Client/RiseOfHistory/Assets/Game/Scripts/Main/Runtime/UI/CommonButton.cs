@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Game.Scripts.Main.Runtime.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
