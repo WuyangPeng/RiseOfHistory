@@ -1,28 +1,15 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Procedure;
-using GameMain.Scripts.Procedure;
+﻿using GameMain.Scripts.Procedure;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureInitResources : ProcedureBase
     {
         private bool m_InitResourcesComplete = false;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool UseNativeDialog => true;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {

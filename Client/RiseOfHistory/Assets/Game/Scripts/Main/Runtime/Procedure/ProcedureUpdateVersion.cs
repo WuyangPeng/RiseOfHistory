@@ -1,30 +1,17 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Procedure;
-using GameFramework.Resource;
-using GameMain.Scripts.Procedure;
+﻿using GameFramework.Resource;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureUpdateVersion : ProcedureBase
     {
         private bool m_UpdateVersionComplete = false;
         private UpdateVersionListCallbacks m_UpdateVersionListCallbacks = null;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool UseNativeDialog => true;
 
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
@@ -64,7 +51,7 @@ namespace RiseOfHistory
             Log.Info("Update version list from '{0}' success.", downloadUri);
         }
 
-        private void OnUpdateVersionListFailure(string downloadUri, string errorMessage)
+        private static void OnUpdateVersionListFailure(string downloadUri, string errorMessage)
         {
             Log.Warning("Update version list from '{0}' failure, error message is '{1}'.", downloadUri, errorMessage);
         }

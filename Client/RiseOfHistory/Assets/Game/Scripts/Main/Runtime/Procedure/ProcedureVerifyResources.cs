@@ -1,22 +1,15 @@
-﻿using Game.Scripts.Main.Runtime.Procedure;
-using GameFramework.Event;
-using GameMain.Scripts.Procedure;
+﻿using GameFramework.Event;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureVerifyResources : ProcedureBase
     {
         private bool m_VerifyResourcesComplete = false;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool UseNativeDialog => true;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
@@ -57,21 +50,21 @@ namespace RiseOfHistory
             Log.Info("Verify resources complete, result is '{0}'.", result);
         }
 
-        private void OnResourceVerifyStart(object sender, GameEventArgs e)
+        private static void OnResourceVerifyStart(object sender, GameEventArgs e)
         {
-            ResourceVerifyStartEventArgs ne = (ResourceVerifyStartEventArgs)e;
+            var ne = (ResourceVerifyStartEventArgs)e;
             Log.Info("Start verify resources, verify resource count '{0}', verify resource total length '{1}'.", ne.Count, ne.TotalLength);
         }
 
-        private void OnResourceVerifySuccess(object sender, GameEventArgs e)
+        private static void OnResourceVerifySuccess(object sender, GameEventArgs e)
         {
-            ResourceVerifySuccessEventArgs ne = (ResourceVerifySuccessEventArgs)e;
+            var ne = (ResourceVerifySuccessEventArgs)e;
             Log.Info("Verify resource '{0}' success.", ne.Name);
         }
 
-        private void OnResourceVerifyFailure(object sender, GameEventArgs e)
+        private static void OnResourceVerifyFailure(object sender, GameEventArgs e)
         {
-            ResourceVerifyFailureEventArgs ne = (ResourceVerifyFailureEventArgs)e;
+            var ne = (ResourceVerifyFailureEventArgs)e;
             Log.Warning("Verify resource '{0}' failure.", ne.Name);
         }
     }

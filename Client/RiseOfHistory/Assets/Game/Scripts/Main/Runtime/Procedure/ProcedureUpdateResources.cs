@@ -1,13 +1,14 @@
-﻿using GameFramework;
+﻿using System.Collections.Generic;
+using System.Linq;
+using GameFramework;
 using GameFramework.Event;
-using System.Collections.Generic;
-using Game.Scripts.Main.Runtime.Procedure;
-using GameMain.Scripts.Procedure;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureUpdateResources : ProcedureBase
     {
@@ -15,16 +16,10 @@ namespace RiseOfHistory
         private int m_UpdateCount = 0;
         private long m_UpdateTotalCompressedLength = 0L;
         private int m_UpdateSuccessCount = 0;
-        private List<UpdateLengthData> m_UpdateLengthData = new List<UpdateLengthData>();
+        private readonly List<UpdateLengthData> m_UpdateLengthData = new List<UpdateLengthData>();
         private UpdateResourceForm m_UpdateResourceForm = null;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool UseNativeDialog => true;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
@@ -104,50 +99,31 @@ namespace RiseOfHistory
 
         private void RefreshProgress()
         {
-            long currentTotalUpdateLength = 0L;
-            for (int i = 0; i < m_UpdateLengthData.Count; i++)
-            {
-                currentTotalUpdateLength += m_UpdateLengthData[i].Length;
-            }
+            var currentTotalUpdateLength = m_UpdateLengthData.Aggregate(0L, (current, data) => current + data.Length);
 
-            float progressTotal = (float)currentTotalUpdateLength / m_UpdateTotalCompressedLength;
-            string descriptionText = GameEntry.Localization.GetString("UpdateResource.Tips", m_UpdateSuccessCount.ToString(), m_UpdateCount.ToString(), GetByteLengthString(currentTotalUpdateLength), GetByteLengthString(m_UpdateTotalCompressedLength), progressTotal, GetByteLengthString((int)GameEntry.Download.CurrentSpeed));
+            var progressTotal = (float)currentTotalUpdateLength / m_UpdateTotalCompressedLength;
+            var descriptionText = GameEntry.Localization.GetString("UpdateResource.Tips", m_UpdateSuccessCount.ToString(), m_UpdateCount.ToString(), GetByteLengthString(currentTotalUpdateLength), GetByteLengthString(m_UpdateTotalCompressedLength), progressTotal, GetByteLengthString((int)GameEntry.Download.CurrentSpeed));
             m_UpdateResourceForm.SetProgress(progressTotal, descriptionText);
         }
 
-        private string GetByteLengthString(long byteLength)
+        private static string GetByteLengthString(long byteLength)
         {
-            if (byteLength < 1024L) // 2 ^ 10
+            return byteLength switch
             {
-                return Utility.Text.Format("{0} Bytes", byteLength);
-            }
-
-            if (byteLength < 1048576L) // 2 ^ 20
-            {
-                return Utility.Text.Format("{0:F2} KB", byteLength / 1024f);
-            }
-
-            if (byteLength < 1073741824L) // 2 ^ 30
-            {
-                return Utility.Text.Format("{0:F2} MB", byteLength / 1048576f);
-            }
-
-            if (byteLength < 1099511627776L) // 2 ^ 40
-            {
-                return Utility.Text.Format("{0:F2} GB", byteLength / 1073741824f);
-            }
-
-            if (byteLength < 1125899906842624L) // 2 ^ 50
-            {
-                return Utility.Text.Format("{0:F2} TB", byteLength / 1099511627776f);
-            }
-
-            if (byteLength < 1152921504606846976L) // 2 ^ 60
-            {
-                return Utility.Text.Format("{0:F2} PB", byteLength / 1125899906842624f);
-            }
-
-            return Utility.Text.Format("{0:F2} EB", byteLength / 1152921504606846976f);
+                // 2 ^ 10
+                < 1024L => Utility.Text.Format("{0} Bytes", byteLength),
+                // 2 ^ 20
+                < 1048576L => Utility.Text.Format("{0:F2} KB", byteLength / 1024f),
+                // 2 ^ 30
+                < 1073741824L => Utility.Text.Format("{0:F2} MB", byteLength / 1048576f),
+                // 2 ^ 40
+                < 1099511627776L => Utility.Text.Format("{0:F2} GB", byteLength / 1073741824f),
+                // 2 ^ 50
+                < 1125899906842624L => Utility.Text.Format("{0:F2} TB", byteLength / 1099511627776f),
+                // 2 ^ 60
+                < 1152921504606846976L => Utility.Text.Format("{0:F2} PB", byteLength / 1125899906842624f),
+                _ => Utility.Text.Format("{0:F2} EB", byteLength / 1152921504606846976f)
+            };
         }
 
         private void OnUpdateResourcesComplete(GameFramework.Resource.IResourceGroup resourceGroup, bool result)
@@ -165,17 +141,14 @@ namespace RiseOfHistory
 
         private void OnResourceUpdateStart(object sender, GameEventArgs e)
         {
-            ResourceUpdateStartEventArgs ne = (ResourceUpdateStartEventArgs)e;
+            var ne = (ResourceUpdateStartEventArgs)e;
 
-            for (int i = 0; i < m_UpdateLengthData.Count; i++)
+            foreach (var data in m_UpdateLengthData.Where(data => data.Name == ne.Name))
             {
-                if (m_UpdateLengthData[i].Name == ne.Name)
-                {
-                    Log.Warning("Update resource '{0}' is invalid.", ne.Name);
-                    m_UpdateLengthData[i].Length = 0;
-                    RefreshProgress();
-                    return;
-                }
+                Log.Warning("Update resource '{0}' is invalid.", ne.Name);
+                data.Length = 0;
+                RefreshProgress();
+                return;
             }
 
             m_UpdateLengthData.Add(new UpdateLengthData(ne.Name));
@@ -183,16 +156,13 @@ namespace RiseOfHistory
 
         private void OnResourceUpdateChanged(object sender, GameEventArgs e)
         {
-            ResourceUpdateChangedEventArgs ne = (ResourceUpdateChangedEventArgs)e;
+            var ne = (ResourceUpdateChangedEventArgs)e;
 
-            for (int i = 0; i < m_UpdateLengthData.Count; i++)
+            foreach (var data in m_UpdateLengthData.Where(data => data.Name == ne.Name))
             {
-                if (m_UpdateLengthData[i].Name == ne.Name)
-                {
-                    m_UpdateLengthData[i].Length = ne.CurrentLength;
-                    RefreshProgress();
-                    return;
-                }
+                data.Length = ne.CurrentLength;
+                RefreshProgress();
+                return;
             }
 
             Log.Warning("Update resource '{0}' is invalid.", ne.Name);
@@ -200,18 +170,15 @@ namespace RiseOfHistory
 
         private void OnResourceUpdateSuccess(object sender, GameEventArgs e)
         {
-            ResourceUpdateSuccessEventArgs ne = (ResourceUpdateSuccessEventArgs)e;
+            var ne = (ResourceUpdateSuccessEventArgs)e;
             Log.Info("Update resource '{0}' success.", ne.Name);
 
-            for (int i = 0; i < m_UpdateLengthData.Count; i++)
+            foreach (var data in m_UpdateLengthData.Where(data => data.Name == ne.Name))
             {
-                if (m_UpdateLengthData[i].Name == ne.Name)
-                {
-                    m_UpdateLengthData[i].Length = ne.CompressedLength;
-                    m_UpdateSuccessCount++;
-                    RefreshProgress();
-                    return;
-                }
+                data.Length = ne.CompressedLength;
+                m_UpdateSuccessCount++;
+                RefreshProgress();
+                return;
             }
 
             Log.Warning("Update resource '{0}' is invalid.", ne.Name);
@@ -219,7 +186,7 @@ namespace RiseOfHistory
 
         private void OnResourceUpdateFailure(object sender, GameEventArgs e)
         {
-            ResourceUpdateFailureEventArgs ne = (ResourceUpdateFailureEventArgs)e;
+            var ne = (ResourceUpdateFailureEventArgs)e;
             if (ne.RetryCount >= ne.TotalRetryCount)
             {
                 Log.Error("Update resource '{0}' failure from '{1}' with error message '{2}', retry count '{3}'.", ne.Name, ne.DownloadUri, ne.ErrorMessage, ne.RetryCount.ToString());
@@ -230,14 +197,12 @@ namespace RiseOfHistory
                 Log.Info("Update resource '{0}' failure from '{1}' with error message '{2}', retry count '{3}'.", ne.Name, ne.DownloadUri, ne.ErrorMessage, ne.RetryCount.ToString());
             }
 
-            for (int i = 0; i < m_UpdateLengthData.Count; i++)
+            for (var i = 0; i < m_UpdateLengthData.Count; i++)
             {
-                if (m_UpdateLengthData[i].Name == ne.Name)
-                {
-                    m_UpdateLengthData.Remove(m_UpdateLengthData[i]);
-                    RefreshProgress();
-                    return;
-                }
+                if (m_UpdateLengthData[i].Name != ne.Name) continue;
+                m_UpdateLengthData.Remove(m_UpdateLengthData[i]);
+                RefreshProgress();
+                return;
             }
 
             Log.Warning("Update resource '{0}' is invalid.", ne.Name);
@@ -245,20 +210,12 @@ namespace RiseOfHistory
 
         private class UpdateLengthData
         {
-            private readonly string m_Name;
-
             public UpdateLengthData(string name)
             {
-                m_Name = name;
+                Name = name;
             }
 
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name { get; }
 
             public int Length
             {

@@ -1,20 +1,13 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Procedure;
-using GameFramework;
+﻿using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
-using GameMain.Scripts.Procedure;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureCheckVersion : ProcedureBase
     {
@@ -22,13 +15,7 @@ namespace RiseOfHistory
         private bool m_NeedUpdateVersion = false;
         private VersionInfo m_VersionInfo = null;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool UseNativeDialog => true;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
@@ -76,7 +63,7 @@ namespace RiseOfHistory
             }
         }
 
-        private void GotoUpdateApp(object userData)
+        private static void GotoUpdateApp(object userData)
         {
             string url = null;
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
@@ -96,15 +83,15 @@ namespace RiseOfHistory
 
         private void OnWebRequestSuccess(object sender, GameEventArgs e)
         {
-            WebRequestSuccessEventArgs ne = (WebRequestSuccessEventArgs)e;
+            var ne = (WebRequestSuccessEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
             }
 
             // 解析版本信息
-            byte[] versionInfoBytes = ne.GetWebResponseBytes();
-            string versionInfoString = Utility.Converter.GetString(versionInfoBytes);
+            var versionInfoBytes = ne.GetWebResponseBytes();
+            var versionInfoString = Utility.Converter.GetString(versionInfoBytes);
             m_VersionInfo = Utility.Json.ToObject<VersionInfo>(versionInfoString);
             if (m_VersionInfo == null)
             {
@@ -140,7 +127,7 @@ namespace RiseOfHistory
 
         private void OnWebRequestFailure(object sender, GameEventArgs e)
         {
-            WebRequestFailureEventArgs ne = (WebRequestFailureEventArgs)e;
+            var ne = (WebRequestFailureEventArgs)e;
             if (ne.UserData != this)
             {
                 return;
@@ -149,27 +136,16 @@ namespace RiseOfHistory
             Log.Warning("Check version failure, error message is '{0}'.", ne.ErrorMessage);
         }
 
-        private string GetPlatformPath()
+        private static string GetPlatformPath()
         {
-            switch (Application.platform)
+            return Application.platform switch
             {
-                case RuntimePlatform.WindowsEditor:
-                case RuntimePlatform.WindowsPlayer:
-                    return "Windows";
-
-                case RuntimePlatform.OSXEditor:
-                case RuntimePlatform.OSXPlayer:
-                    return "MacOS";
-
-                case RuntimePlatform.IPhonePlayer:
-                    return "IOS";
-
-                case RuntimePlatform.Android:
-                    return "Android";
-
-                default:
-                    throw new System.NotSupportedException(Utility.Text.Format("Platform '{0}' is not supported.", Application.platform));
-            }
+                RuntimePlatform.WindowsEditor or RuntimePlatform.WindowsPlayer => "Windows",
+                RuntimePlatform.OSXEditor or RuntimePlatform.OSXPlayer => "MacOS",
+                RuntimePlatform.IPhonePlayer => "IOS",
+                RuntimePlatform.Android => "Android",
+                _ => throw new System.NotSupportedException(Utility.Text.Format("Platform '{0}' is not supported.", Application.platform))
+            };
         }
     }
 }

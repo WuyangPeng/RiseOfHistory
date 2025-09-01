@@ -1,11 +1,9 @@
-﻿using Game.Scripts.Main.Runtime.Procedure;
-using GameFramework.Resource;
-using RiseOfHistory;
+﻿using GameFramework.Resource;
 using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace GameMain.Scripts.Procedure
+namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureSplash : ProcedureBase
     {

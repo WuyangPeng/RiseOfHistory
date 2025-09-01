@@ -1,9 +1,10 @@
-﻿using Game.Scripts.Main.Runtime.Procedure;
-using GameMain.Scripts.Procedure;
+﻿using GameMain.Scripts.Procedure;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
+using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureCheckResources : ProcedureBase
     {
@@ -12,13 +13,7 @@ namespace RiseOfHistory
         private int m_UpdateResourceCount = 0;
         private long m_UpdateResourceTotalCompressedLength = 0L;
 
-        public override bool UseNativeDialog
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool UseNativeDialog => true;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {

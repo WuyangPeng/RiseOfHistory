@@ -1,12 +1,12 @@
 ﻿using System;
-using Game.Scripts.Main.Runtime.Procedure;
 using GameFramework.Localization;
+using GameMain.Scripts.Procedure;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace GameMain.Scripts.Procedure
+namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureLaunch : ProcedureBase
     {
