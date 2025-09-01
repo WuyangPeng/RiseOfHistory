@@ -1,6 +1,7 @@
 ﻿using GameFramework;
 using GameFramework.Event;
 using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.Procedure;
 using GameMain.Scripts.Procedure;
 using UnityEngine;
 using UnityGameFramework.Runtime;

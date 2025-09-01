@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.Procedure;
 using GameFramework.Event;
 using GameMain.Scripts.UI;
 using RiseOfHistory;
@@ -8,7 +9,7 @@ using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedure
 
 namespace GameMain.Scripts.Procedure.Scene
 {
-    public class ProcedureGame : ProcedureBase
+    public class ProcedureHome : ProcedureBase
     {
         private GameForm gameForm = null;
 

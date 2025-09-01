@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Game.Scripts.Main.Runtime.Procedure;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;

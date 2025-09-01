@@ -1,4 +1,5 @@
-﻿using GameFramework.Resource;
+﻿using Game.Scripts.Main.Runtime.Procedure;
+using GameFramework.Resource;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using GameEntry = RiseOfHistory.GameEntry;

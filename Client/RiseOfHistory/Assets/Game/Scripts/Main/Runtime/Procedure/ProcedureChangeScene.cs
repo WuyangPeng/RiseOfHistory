@@ -1,4 +1,6 @@
 ﻿using System;
+using Game.Scripts.Main.Runtime.Procedure;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using GameFramework.DataTable;
 using GameFramework.Event;
 using GameMain.Scripts.Procedure.Scene;
@@ -11,7 +13,7 @@ namespace GameMain.Scripts.Procedure
 {
     public class ProcedureChangeScene : ProcedureBase
     {
-        private SceneType sceneType = SceneType.Game;
+        private SceneType sceneType = SceneType.Home;
         private bool m_IsChangeSceneComplete = false;
         private int m_BackgroundMusicId = 0;
 
@@ -91,9 +93,9 @@ namespace GameMain.Scripts.Procedure
                         ChangeState<ProcedureMain>(procedureOwner);
                         break;
                     }
-                case SceneType.Game:
+                case SceneType.Home:
                     {
-                        ChangeState<ProcedureGame>(procedureOwner);
+                        ChangeState<ProcedureHome>(procedureOwner);
                         break;
                     }
                 case SceneType.Battle:

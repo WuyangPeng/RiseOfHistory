@@ -1,4 +1,5 @@
-﻿using GameFramework.Event;
+﻿using Game.Scripts.Main.Runtime.Procedure;
+using GameFramework.Event;
 using GameMain.Scripts.UI;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;

@@ -1,4 +1,4 @@
-﻿namespace GameMain.Scripts.Procedure
+﻿namespace Game.Scripts.Main.Runtime.Procedure
 {
     public abstract class ProcedureBase : GameFramework.Procedure.ProcedureBase
     {
