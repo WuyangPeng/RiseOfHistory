@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Game.Scripts.Main.Runtime.DataTable;
 using GameFramework;
 using GameFramework.DataTable;
 using UnityEngine;

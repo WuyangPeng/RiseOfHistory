@@ -5,6 +5,7 @@ using RiseOfHistory;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Game.Scripts.Main.Runtime.DataTable;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using Entity = RiseOfHistory.Entity;

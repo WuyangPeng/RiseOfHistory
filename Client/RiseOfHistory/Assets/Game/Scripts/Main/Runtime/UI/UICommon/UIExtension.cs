@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using System.Collections;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Procedure;
 using GameFramework.DataTable;
 using GameFramework.UI;

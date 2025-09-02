@@ -8,6 +8,7 @@
 using GameFramework.DataTable;
 using System;
 using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.DataTable;
 using UnityEngine;
 
 namespace RiseOfHistory

@@ -1,11 +1,6 @@
 ﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-02 09:48:04.368
+// 生成时间：2025-09-02 22:00:50.426
 //------------------------------------------------------------
 
 using GameFramework;
@@ -16,7 +11,7 @@ using System.Text;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.DataTable
 {
     /// <summary>
     /// 声音配置表。

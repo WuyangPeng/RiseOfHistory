@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using GameFramework.Event;
 using RiseOfHistory;
