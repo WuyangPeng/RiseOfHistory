@@ -44,5 +44,15 @@ namespace RiseOfHistory
         /// 上部菜单。
         /// </summary>
         UpperForm = 104,
+
+        /// <summary>
+        /// 左部菜单。
+        /// </summary>
+        LeftForm = 105,
+
+        /// <summary>
+        /// 左部菜单。
+        /// </summary>
+        RightForm = 106
     }
 }

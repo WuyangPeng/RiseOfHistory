@@ -54,6 +54,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
             formComponent.AddForm(UIFormId.BottomForm);
             formComponent.AddForm(UIFormId.UpperForm);
+            formComponent.AddForm(UIFormId.LeftForm);
+            formComponent.AddForm(UIFormId.RightForm);
 
             formComponent.OnEnter(procedureOwner);
         }

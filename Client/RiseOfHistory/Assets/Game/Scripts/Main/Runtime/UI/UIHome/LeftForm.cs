@@ -1,0 +1,48 @@
+using RiseOfHistory;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+
+namespace Game.Scripts.Main.Runtime.UI.UICommon
+{
+    public class LeftForm : UGuiForm
+    {
+        protected override void OnOpen(object userData)
+        {
+            base.OnOpen(userData);
+        }
+
+        protected override void OnClose(bool isShutdown, object userData)
+        {
+            base.OnClose(isShutdown, userData);
+        }
+
+        public void OnRoleButtonClick()
+        {
+
+        }
+
+        public void OnSkillButtonClick()
+        {
+
+        }
+
+        public void OnMainCityButtonClick()
+        {
+
+        }
+
+
+        public void OnCopyButtonClick()
+        {
+
+        }
+
+        public void OnBackpackButtonClick()
+        {
+
+        }
+    }
+}
