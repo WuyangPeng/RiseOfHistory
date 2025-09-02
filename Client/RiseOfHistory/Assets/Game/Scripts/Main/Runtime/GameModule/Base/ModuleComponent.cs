@@ -1,4 +1,3 @@
-using RiseOfHistory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +8,17 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base
 {
     public class ModuleComponent : GameFrameworkComponent
     {
-        private readonly Dictionary<ModuleType, BaseModule> modules = new();
+        private readonly Dictionary<Type, BaseModule> modules = new();
         public void InitModule()
         {
             var attributes = ScanWithAttribute();
-            foreach (var instance in attributes.Select(attribute => (BaseModule)Activator.CreateInstance(attribute)))
+            foreach (var attribute in attributes)
             {
-                modules.Add(instance.GetModuleType(), instance);
+                var instance = (BaseModule)Activator.CreateInstance(attribute);
+                if (instance.IsLoad)
+                {
+                    modules.Add(attribute, instance);
+                }
             }
         }
 
@@ -43,9 +46,14 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base
             return list;
         }
 
-        public BaseModule GetBaseModule(ModuleType moduleType)
+        public BaseModule GetBaseModule(Type type)
         {
-            return modules[moduleType];
+            return modules[type];
+        }
+
+        public T GetModule<T>() where T : BaseModule
+        {
+            return (T)GetBaseModule(typeof(T));
         }
     }
 }
