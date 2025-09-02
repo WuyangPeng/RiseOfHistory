@@ -63,11 +63,11 @@ namespace RiseOfHistory
         {
             base.OnDead(attacker);
 
-            GameEntry.Entity.ShowEffect(new EffectData(GameEntry.Entity.GenerateSerialId(), m_AsteroidData.DeadEffectId)
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowEffect(new EffectData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), m_AsteroidData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            GameEntry.Sound.PlaySound(m_AsteroidData.DeadSoundId);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlaySound(m_AsteroidData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()

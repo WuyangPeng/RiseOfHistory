@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GameFramework;
+﻿using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
 using RiseOfHistory;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using GameEntry = RiseOfHistory.GameEntry;
+using Entity = RiseOfHistory.Entity;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
 namespace Game.Scripts.Main.Runtime.Procedure
@@ -58,6 +60,8 @@ namespace Game.Scripts.Main.Runtime.Procedure
             GameEntry.Event.Unsubscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
             base.OnLeave(procedureOwner, isShutdown);
+
+            GameEntry.ModuleComponent.InitModule();
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)

@@ -166,7 +166,7 @@ namespace RiseOfHistory
                 int entityDamageHP = CalcDamageHP(bulletImpactData.Attack, entityImpactData.Defense);
 
                 entity.ApplyDamage(bullet, entityDamageHP);
-                GameEntry.Entity.HideEntity(bullet);
+                Game.Scripts.Main.Runtime.Base.GameEntry.Entity.HideEntity(bullet);
                 return;
             }
         }

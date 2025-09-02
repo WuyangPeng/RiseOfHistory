@@ -13,7 +13,7 @@ using RiseOfHistory;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
-using GameEntry = RiseOfHistory.GameEntry;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI
 {

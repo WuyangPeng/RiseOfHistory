@@ -21,7 +21,7 @@ namespace RiseOfHistory
         {
             soundComponent.StopMusic();
 
-            IDataTable<DRMusic> dtMusic = GameEntry.DataTable.GetDataTable<DRMusic>();
+            IDataTable<DRMusic> dtMusic = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRMusic>();
             DRMusic drMusic = dtMusic.GetDataRow(musicId);
             if (drMusic == null)
             {
@@ -52,7 +52,7 @@ namespace RiseOfHistory
 
         public static int? PlaySound(this SoundComponent soundComponent, int soundId, Entity bindingEntity = null, object userData = null)
         {
-            IDataTable<DRSound> dtSound = GameEntry.DataTable.GetDataTable<DRSound>();
+            IDataTable<DRSound> dtSound = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRSound>();
             DRSound drSound = dtSound.GetDataRow(soundId);
             if (drSound == null)
             {
@@ -70,7 +70,7 @@ namespace RiseOfHistory
 
         public static int? PlayUISound(this SoundComponent soundComponent, int uiSoundId, object userData = null)
         {
-            IDataTable<DRUISound> dtUISound = GameEntry.DataTable.GetDataTable<DRUISound>();
+            IDataTable<DRUISound> dtUISound = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRUISound>();
             DRUISound drUISound = dtUISound.GetDataRow(uiSoundId);
             if (drUISound == null)
             {
@@ -121,8 +121,8 @@ namespace RiseOfHistory
 
             soundGroup.Mute = mute;
 
-            GameEntry.Setting.SetBool(Utility.Text.Format(Constant.Setting.SoundGroupMuted, soundGroupName), mute);
-            GameEntry.Setting.Save();
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetBool(Utility.Text.Format(Constant.Setting.SoundGroupMuted, soundGroupName), mute);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.Save();
         }
 
         public static float GetVolume(this SoundComponent soundComponent, string soundGroupName)
@@ -160,8 +160,8 @@ namespace RiseOfHistory
 
             soundGroup.Volume = volume;
 
-            GameEntry.Setting.SetFloat(Utility.Text.Format(Constant.Setting.SoundGroupVolume, soundGroupName), volume);
-            GameEntry.Setting.Save();
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetFloat(Utility.Text.Format(Constant.Setting.SoundGroupVolume, soundGroupName), volume);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.Save();
         }
     }
 }

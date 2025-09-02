@@ -23,7 +23,7 @@ namespace RiseOfHistory
                 return;
             }
 
-            GameEntry.Entity.HideEntity(entity);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.HideEntity(entity);
         }
     }
 }

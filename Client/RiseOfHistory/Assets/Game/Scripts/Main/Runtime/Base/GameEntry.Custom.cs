@@ -5,9 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using RiseOfHistory;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Base
 {
     /// <summary>
     /// 游戏入口。

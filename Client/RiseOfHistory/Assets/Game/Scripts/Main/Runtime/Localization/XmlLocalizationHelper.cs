@@ -27,7 +27,7 @@ namespace RiseOfHistory
         {
             try
             {
-                string currentLanguage = GameEntry.Localization.Language.ToString();
+                string currentLanguage = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language.ToString();
                 XmlDocument xmlDocument = new XmlDocument();
                 xmlDocument.LoadXml(dictionaryString);
                 XmlNode xmlRoot = xmlDocument.SelectSingleNode("Dictionaries");

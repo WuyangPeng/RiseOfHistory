@@ -4,7 +4,7 @@ using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using GameEntry = RiseOfHistory.GameEntry;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace GameMain.Scripts.UI
 {

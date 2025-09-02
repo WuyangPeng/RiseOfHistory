@@ -50,7 +50,7 @@ namespace RiseOfHistory
             m_Transform.SetLocalPositionY(m_InitPosition);
 
             // 换个音乐
-            GameEntry.Sound.PlayMusic(3);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlayMusic(3);
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -64,7 +64,7 @@ namespace RiseOfHistory
             // 还原音乐
             if (!isShutdown)
             {
-                GameEntry.Sound.PlayMusic(1);
+                Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlayMusic(1);
             }
         }
 

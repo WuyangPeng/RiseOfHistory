@@ -137,7 +137,7 @@ namespace RiseOfHistory
         {
             if (m_PauseGame)
             {
-                GameEntry.Base.ResumeGame();
+                Game.Scripts.Main.Runtime.Base.GameEntry.Base.ResumeGame();
             }
 
             m_DialogMode = 1;
@@ -170,7 +170,7 @@ namespace RiseOfHistory
         {
             if (m_PauseGame)
             {
-                GameEntry.Base.PauseGame();
+                Game.Scripts.Main.Runtime.Base.GameEntry.Base.PauseGame();
             }
         }
 
@@ -178,7 +178,7 @@ namespace RiseOfHistory
         {
             if (string.IsNullOrEmpty(confirmText))
             {
-                confirmText = GameEntry.Localization.GetString("Dialog.ConfirmButton");
+                confirmText = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.ConfirmButton");
             }
 
             for (int i = 0; i < m_ConfirmTexts.Length; i++)
@@ -191,7 +191,7 @@ namespace RiseOfHistory
         {
             if (string.IsNullOrEmpty(cancelText))
             {
-                cancelText = GameEntry.Localization.GetString("Dialog.CancelButton");
+                cancelText = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.CancelButton");
             }
 
             for (int i = 0; i < m_CancelTexts.Length; i++)
@@ -204,7 +204,7 @@ namespace RiseOfHistory
         {
             if (string.IsNullOrEmpty(otherText))
             {
-                otherText = GameEntry.Localization.GetString("Dialog.OtherButton");
+                otherText = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.OtherButton");
             }
 
             for (int i = 0; i < m_OtherTexts.Length; i++)

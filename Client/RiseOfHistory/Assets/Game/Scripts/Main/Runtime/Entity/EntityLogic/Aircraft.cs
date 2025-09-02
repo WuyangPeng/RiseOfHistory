@@ -46,18 +46,18 @@ namespace RiseOfHistory
 
             Name = Utility.Text.Format("Aircraft ({0})", Id);
 
-            GameEntry.Entity.ShowThruster(m_AircraftData.GetThrusterData());
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowThruster(m_AircraftData.GetThrusterData());
 
             List<WeaponData> weaponDatas = m_AircraftData.GetAllWeaponDatas();
             for (int i = 0; i < weaponDatas.Count; i++)
             {
-                GameEntry.Entity.ShowWeapon(weaponDatas[i]);
+                Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowWeapon(weaponDatas[i]);
             }
 
             List<ArmorData> armorDatas = m_AircraftData.GetAllArmorDatas();
             for (int i = 0; i < armorDatas.Count; i++)
             {
-                GameEntry.Entity.ShowArmor(armorDatas[i]);
+                Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowArmor(armorDatas[i]);
             }
         }
 
@@ -128,11 +128,11 @@ namespace RiseOfHistory
         {
             base.OnDead(attacker);
 
-            GameEntry.Entity.ShowEffect(new EffectData(GameEntry.Entity.GenerateSerialId(), m_AircraftData.DeadEffectId)
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowEffect(new EffectData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), m_AircraftData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            GameEntry.Sound.PlaySound(m_AircraftData.DeadSoundId);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlaySound(m_AircraftData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()

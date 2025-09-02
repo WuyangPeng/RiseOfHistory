@@ -47,7 +47,7 @@ namespace RiseOfHistory
                 return;
             }
 
-            GameEntry.Entity.AttachEntity(Entity, m_WeaponData.OwnerId, AttachPoint);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.AttachEntity(Entity, m_WeaponData.OwnerId, AttachPoint);
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -70,11 +70,11 @@ namespace RiseOfHistory
             }
 
             m_NextAttackTime = Time.time + m_WeaponData.AttackInterval;
-            GameEntry.Entity.ShowBullet(new BulletData(GameEntry.Entity.GenerateSerialId(), m_WeaponData.BulletId, m_WeaponData.OwnerId, m_WeaponData.OwnerCamp, m_WeaponData.Attack, m_WeaponData.BulletSpeed)
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowBullet(new BulletData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), m_WeaponData.BulletId, m_WeaponData.OwnerId, m_WeaponData.OwnerCamp, m_WeaponData.Attack, m_WeaponData.BulletSpeed)
             {
                 Position = CachedTransform.position,
             });
-            GameEntry.Sound.PlaySound(m_WeaponData.BulletSoundId);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlaySound(m_WeaponData.BulletSoundId);
         }
     }
 }

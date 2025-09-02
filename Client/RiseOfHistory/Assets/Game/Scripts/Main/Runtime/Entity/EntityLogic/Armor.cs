@@ -45,7 +45,7 @@ namespace RiseOfHistory
                 return;
             }
 
-            GameEntry.Entity.AttachEntity(Entity, m_ArmorData.OwnerId, AttachPoint);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.AttachEntity(Entity, m_ArmorData.OwnerId, AttachPoint);
         }
 
 #if UNITY_2017_3_OR_NEWER

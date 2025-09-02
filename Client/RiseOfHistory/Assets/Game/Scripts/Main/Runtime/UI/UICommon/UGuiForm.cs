@@ -49,7 +49,7 @@ namespace RiseOfHistory
 
             if (ignoreFade)
             {
-                GameEntry.UI.CloseUIForm(this);
+                Game.Scripts.Main.Runtime.Base.GameEntry.UI.CloseUIForm(this);
             }
             else
             {
@@ -59,7 +59,7 @@ namespace RiseOfHistory
 
         public void PlayUISound(int uiSoundId)
         {
-            GameEntry.Sound.PlayUISound(uiSoundId);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlayUISound(uiSoundId);
         }
 
         public static void SetMainFont(Font mainFont)
@@ -101,7 +101,7 @@ namespace RiseOfHistory
                 texts[i].font = s_MainFont;
                 if (!string.IsNullOrEmpty(texts[i].text))
                 {
-                    texts[i].text = GameEntry.Localization.GetString(texts[i].text);
+                    texts[i].text = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString(texts[i].text);
                 }
             }
         }
@@ -216,7 +216,7 @@ namespace RiseOfHistory
         private IEnumerator CloseCo(float duration)
         {
             yield return m_CanvasGroup.FadeToAlpha(0f, duration);
-            GameEntry.UI.CloseUIForm(this);
+            Game.Scripts.Main.Runtime.Base.GameEntry.UI.CloseUIForm(this);
         }
     }
 }

@@ -88,7 +88,7 @@ namespace RiseOfHistory
                 return;
             }
 
-            IDataTable<DREntity> dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
+            IDataTable<DREntity> dtEntity = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DREntity>();
             DREntity drEntity = dtEntity.GetDataRow(data.TypeId);
             if (drEntity == null)
             {

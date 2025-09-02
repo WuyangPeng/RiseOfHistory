@@ -5,9 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Game.Scripts.Main.Runtime.GameModule.Base;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Base
 {
     /// <summary>
     /// 游戏入口。
@@ -16,8 +17,9 @@ namespace RiseOfHistory
     {
         private void Start()
         {
-            InitBuiltinComponents();
-            InitCustomComponents();
+            GameEntry.InitBuiltinComponents();
+            GameEntry.InitCustomComponents();
+            GameEntry.InitModuleComponent();
         }
     }
 }

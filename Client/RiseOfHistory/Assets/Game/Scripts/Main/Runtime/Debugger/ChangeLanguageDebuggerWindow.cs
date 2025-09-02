@@ -58,17 +58,17 @@ namespace RiseOfHistory
             {
                 if (GUILayout.Button("Chinese Simplified", GUILayout.Height(30)))
                 {
-                    GameEntry.Localization.Language = Language.ChineseSimplified;
+                    Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language = Language.ChineseSimplified;
                     SaveLanguage();
                 }
                 if (GUILayout.Button("Chinese Traditional", GUILayout.Height(30)))
                 {
-                    GameEntry.Localization.Language = Language.ChineseTraditional;
+                    Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language = Language.ChineseTraditional;
                     SaveLanguage();
                 }
                 if (GUILayout.Button("English", GUILayout.Height(30)))
                 {
-                    GameEntry.Localization.Language = Language.English;
+                    Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language = Language.English;
                     SaveLanguage();
                 }
             }
@@ -77,8 +77,8 @@ namespace RiseOfHistory
 
         private void SaveLanguage()
         {
-            GameEntry.Setting.SetString(Constant.Setting.Language, GameEntry.Localization.Language.ToString());
-            GameEntry.Setting.Save();
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetString(Constant.Setting.Language, Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language.ToString());
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.Save();
             m_NeedRestart = true;
         }
     }

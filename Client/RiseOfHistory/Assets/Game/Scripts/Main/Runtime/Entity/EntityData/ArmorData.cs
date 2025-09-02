@@ -23,7 +23,7 @@ namespace RiseOfHistory
         public ArmorData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            IDataTable<DRArmor> dtArmor = GameEntry.DataTable.GetDataTable<DRArmor>();
+            IDataTable<DRArmor> dtArmor = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRArmor>();
             DRArmor drArmor = dtArmor.GetDataRow(TypeId);
             if (drArmor == null)
             {

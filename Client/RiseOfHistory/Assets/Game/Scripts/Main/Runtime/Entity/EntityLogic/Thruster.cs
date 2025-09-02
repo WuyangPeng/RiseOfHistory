@@ -45,7 +45,7 @@ namespace RiseOfHistory
                 return;
             }
 
-            GameEntry.Entity.AttachEntity(this, m_ThrusterData.OwnerId, AttachPoint);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.AttachEntity(this, m_ThrusterData.OwnerId, AttachPoint);
         }
 
 #if UNITY_2017_3_OR_NEWER

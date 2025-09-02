@@ -51,35 +51,35 @@ namespace RiseOfHistory
 
         public void OnMusicMuteChanged(bool isOn)
         {
-            GameEntry.Sound.Mute("Music", !isOn);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.Mute("Music", !isOn);
             m_MusicVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnMusicVolumeChanged(float volume)
         {
-            GameEntry.Sound.SetVolume("Music", volume);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.SetVolume("Music", volume);
         }
 
         public void OnSoundMuteChanged(bool isOn)
         {
-            GameEntry.Sound.Mute("Sound", !isOn);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.Mute("Sound", !isOn);
             m_SoundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnSoundVolumeChanged(float volume)
         {
-            GameEntry.Sound.SetVolume("Sound", volume);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.SetVolume("Sound", volume);
         }
 
         public void OnUISoundMuteChanged(bool isOn)
         {
-            GameEntry.Sound.Mute("UISound", !isOn);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.Mute("UISound", !isOn);
             m_UISoundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnUISoundVolumeChanged(float volume)
         {
-            GameEntry.Sound.SetVolume("UISound", volume);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.SetVolume("UISound", volume);
         }
 
         public void OnEnglishSelected(bool isOn)
@@ -128,16 +128,16 @@ namespace RiseOfHistory
 
         public void OnSubmitButtonClick()
         {
-            if (m_SelectedLanguage == GameEntry.Localization.Language)
+            if (m_SelectedLanguage == Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language)
             {
                 Close();
                 return;
             }
 
-            GameEntry.Setting.SetString(Constant.Setting.Language, m_SelectedLanguage.ToString());
-            GameEntry.Setting.Save();
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetString(Constant.Setting.Language, m_SelectedLanguage.ToString());
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.Save();
 
-            GameEntry.Sound.StopMusic();
+            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.StopMusic();
             UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Restart);
         }
 
@@ -149,16 +149,16 @@ namespace RiseOfHistory
         {
             base.OnOpen(userData);
 
-            m_MusicMuteToggle.isOn = !GameEntry.Sound.IsMuted("Music");
-            m_MusicVolumeSlider.value = GameEntry.Sound.GetVolume("Music");
+            m_MusicMuteToggle.isOn = !Game.Scripts.Main.Runtime.Base.GameEntry.Sound.IsMuted("Music");
+            m_MusicVolumeSlider.value = Game.Scripts.Main.Runtime.Base.GameEntry.Sound.GetVolume("Music");
 
-            m_SoundMuteToggle.isOn = !GameEntry.Sound.IsMuted("Sound");
-            m_SoundVolumeSlider.value = GameEntry.Sound.GetVolume("Sound");
+            m_SoundMuteToggle.isOn = !Game.Scripts.Main.Runtime.Base.GameEntry.Sound.IsMuted("Sound");
+            m_SoundVolumeSlider.value = Game.Scripts.Main.Runtime.Base.GameEntry.Sound.GetVolume("Sound");
 
-            m_UISoundMuteToggle.isOn = !GameEntry.Sound.IsMuted("UISound");
-            m_UISoundVolumeSlider.value = GameEntry.Sound.GetVolume("UISound");
+            m_UISoundMuteToggle.isOn = !Game.Scripts.Main.Runtime.Base.GameEntry.Sound.IsMuted("UISound");
+            m_UISoundVolumeSlider.value = Game.Scripts.Main.Runtime.Base.GameEntry.Sound.GetVolume("UISound");
 
-            m_SelectedLanguage = GameEntry.Localization.Language;
+            m_SelectedLanguage = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language;
             switch (m_SelectedLanguage)
             {
                 case Language.English:
@@ -198,7 +198,7 @@ namespace RiseOfHistory
 
         private void RefreshLanguageTips()
         {
-            m_LanguageTipsCanvasGroup.gameObject.SetActive(m_SelectedLanguage != GameEntry.Localization.Language);
+            m_LanguageTipsCanvasGroup.gameObject.SetActive(m_SelectedLanguage != Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language);
         }
     }
 }

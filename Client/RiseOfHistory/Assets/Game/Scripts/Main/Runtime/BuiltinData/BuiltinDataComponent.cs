@@ -64,7 +64,7 @@ namespace RiseOfHistory
                 return;
             }
 
-            if (!GameEntry.Localization.ParseData(m_DefaultDictionaryTextAsset.text))
+            if (!Game.Scripts.Main.Runtime.Base.GameEntry.Localization.ParseData(m_DefaultDictionaryTextAsset.text))
             {
                 Log.Warning("Parse default dictionary failure.");
                 return;

@@ -20,7 +20,7 @@ namespace RiseOfHistory
         public ThrusterData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            IDataTable<DRThruster> dtThruster = GameEntry.DataTable.GetDataTable<DRThruster>();
+            IDataTable<DRThruster> dtThruster = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRThruster>();
             DRThruster drThruster = dtThruster.GetDataRow(TypeId);
             if (drThruster == null)
             {

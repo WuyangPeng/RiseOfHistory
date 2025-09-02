@@ -5,7 +5,7 @@ using GameFramework.Resource;
 using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using GameEntry = RiseOfHistory.GameEntry;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
 namespace Game.Scripts.Main.Runtime.Procedure

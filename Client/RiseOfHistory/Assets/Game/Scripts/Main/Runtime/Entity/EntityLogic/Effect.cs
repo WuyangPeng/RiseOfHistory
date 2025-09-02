@@ -49,7 +49,7 @@ namespace RiseOfHistory
             m_ElapseSeconds += elapseSeconds;
             if (m_ElapseSeconds >= m_EffectData.KeepTime)
             {
-                GameEntry.Entity.HideEntity(this);
+                Game.Scripts.Main.Runtime.Base.GameEntry.Entity.HideEntity(this);
             }
         }
     }

@@ -34,8 +34,8 @@ namespace RiseOfHistory
 
         public virtual void Initialize()
         {
-            GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
-            GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
 
             SceneBackground = Object.FindObjectOfType<ScrollableBackground>();
             if (SceneBackground == null)
@@ -45,7 +45,7 @@ namespace RiseOfHistory
             }
 
             SceneBackground.VisibleBoundary.gameObject.GetOrAddComponent<HideByBoundary>();
-            GameEntry.Entity.ShowMyAircraft(new MyAircraftData(GameEntry.Entity.GenerateSerialId(), 10000)
+            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowMyAircraft(new MyAircraftData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), 10000)
             {
                 Name = "My Aircraft",
                 Position = Vector3.zero,
@@ -57,8 +57,8 @@ namespace RiseOfHistory
 
         public virtual void Shutdown()
         {
-            GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
-            GameEntry.Event.Unsubscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
         }
 
         public virtual void Update(float elapseSeconds, float realElapseSeconds)

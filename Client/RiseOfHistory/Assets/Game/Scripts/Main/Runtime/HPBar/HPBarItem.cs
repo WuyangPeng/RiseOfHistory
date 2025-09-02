@@ -72,7 +72,7 @@ namespace RiseOfHistory
             if (m_Owner != null && Owner.Available && Owner.Id == m_OwnerId)
             {
                 Vector3 worldPosition = m_Owner.CachedTransform.position + Vector3.forward;
-                Vector3 screenPosition = GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
+                Vector3 screenPosition = Game.Scripts.Main.Runtime.Base.GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
 
                 Vector2 position;
                 if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)m_ParentCanvas.transform, screenPosition,
