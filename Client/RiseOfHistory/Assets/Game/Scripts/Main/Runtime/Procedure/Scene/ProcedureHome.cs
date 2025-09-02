@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.Form;
 using Game.Scripts.Main.Runtime.UI;
 using GameFramework.Event;
 using GameMain.Scripts.UI;
@@ -11,7 +12,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureHome : ProcedureBase
     {
-        private GameForm gameForm = null;
+        private readonly FormComponent formComponent = new FormComponent();
+
 
         private const float GameOverDelayedSeconds = 2f;
 
@@ -50,10 +52,9 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             m_CurrentGame = m_Games[gameMode];
             m_CurrentGame.Initialize();
 
-            GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
+            formComponent.AddForm(UIFormId.GameForm);
 
-      
-            GameEntry.UI.OpenUIForm(UIFormId.GameForm, this);
+            formComponent.OnEnter(procedureOwner);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -66,24 +67,10 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
             base.OnLeave(procedureOwner, isShutdown);
 
-            GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-
-            if (gameForm == null) return;
-            gameForm.Close(true);
-            gameForm = null;
+            formComponent.OnLeave(procedureOwner, isShutdown);
         }
 
-        private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
-        {
-            var ne = (OpenUIFormSuccessEventArgs)e;
-            if (ne.UserData != this)
-            {
-                return;
-            }
 
-            gameForm = (GameForm)ne.UIForm.Logic;
-        }
-     
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
