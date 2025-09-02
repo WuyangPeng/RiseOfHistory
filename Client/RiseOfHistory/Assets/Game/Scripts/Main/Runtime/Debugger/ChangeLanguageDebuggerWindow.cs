@@ -7,10 +7,11 @@
 
 using GameFramework.Debugger;
 using GameFramework.Localization;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Debugger
 {
     public class ChangeLanguageDebuggerWindow : IDebuggerWindow
     {
