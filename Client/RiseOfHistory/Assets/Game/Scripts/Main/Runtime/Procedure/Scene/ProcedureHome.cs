@@ -52,7 +52,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             m_CurrentGame = m_Games[gameMode];
             m_CurrentGame.Initialize();
 
-            formComponent.AddForm(UIFormId.GameForm);
+            formComponent.AddForm(UIFormId.BottomForm);
+            formComponent.AddForm(UIFormId.UpperForm);
 
             formComponent.OnEnter(procedureOwner);
         }

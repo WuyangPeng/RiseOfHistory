@@ -36,8 +36,13 @@ namespace RiseOfHistory
 
 
         /// <summary>
-        /// 游戏。
+        /// 下部菜单。
         /// </summary>
-        GameForm = 103,
+        BottomForm = 103,
+
+        /// <summary>
+        /// 上部菜单。
+        /// </summary>
+        UpperForm = 104,
     }
 }

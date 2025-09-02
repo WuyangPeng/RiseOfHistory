@@ -1,10 +1,8 @@
 using RiseOfHistory;
-using UnityEngine;
-using UnityGameFramework.Runtime;
 
-namespace GameMain.Scripts.UI
+namespace Game.Scripts.Main.Runtime.UI.UICommon
 {
-    public class GameForm : UGuiForm
+    public class UpperForm : UGuiForm
     {
         protected override void OnOpen(object userData)
         {
@@ -18,7 +16,7 @@ namespace GameMain.Scripts.UI
 
         public void OnRoleButtonClick()
         {
-             
+
         }
 
         public void OnSkillButtonClick()
