@@ -35,7 +35,7 @@ namespace RiseOfHistory
             float toHPRatio = m_TargetableObjectData.HPRatio;
             if (fromHPRatio > toHPRatio)
             {
-                Game.Scripts.Main.Runtime.Base.GameEntry.HPBar.ShowHPBar(this, fromHPRatio, toHPRatio);
+                Game.Scripts.Main.Runtime.Base.GameEntry.HpBar.ShowHPBar(this, fromHPRatio, toHPRatio);
             }
 
             if (m_TargetableObjectData.HP <= 0)

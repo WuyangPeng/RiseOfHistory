@@ -1,4 +1,5 @@
-﻿using RiseOfHistory;
+﻿using Game.Scripts.Main.Runtime.BuiltinData;
+using RiseOfHistory;
 using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.Base
@@ -14,7 +15,7 @@ namespace Game.Scripts.Main.Runtime.Base
             private set;
         }
 
-        public static HPBarComponent HPBar
+        public static HPBarComponent HpBar
         {
             get;
             private set;
@@ -23,7 +24,7 @@ namespace Game.Scripts.Main.Runtime.Base
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
-            HPBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent>();
+            HpBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent>();
         }
     }
 }

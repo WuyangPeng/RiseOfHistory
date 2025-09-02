@@ -1,5 +1,4 @@
 using Game.Scripts.Main.Runtime.GameModule.Base;
-using RiseOfHistory;
 using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.Base

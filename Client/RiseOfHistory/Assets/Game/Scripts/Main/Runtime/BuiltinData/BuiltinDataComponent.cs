@@ -6,10 +6,11 @@
 //------------------------------------------------------------
 
 using GameFramework;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.BuiltinData
 {
     public class BuiltinDataComponent : GameFrameworkComponent
     {
@@ -22,23 +23,9 @@ namespace RiseOfHistory
         [SerializeField]
         private UpdateResourceForm m_UpdateResourceFormTemplate = null;
 
-        private BuildInfo m_BuildInfo = null;
+        public BuildInfo BuildInfo { get; private set; } = null;
 
-        public BuildInfo BuildInfo
-        {
-            get
-            {
-                return m_BuildInfo;
-            }
-        }
-
-        public UpdateResourceForm UpdateResourceFormTemplate
-        {
-            get
-            {
-                return m_UpdateResourceFormTemplate;
-            }
-        }
+        public UpdateResourceForm UpdateResourceFormTemplate => m_UpdateResourceFormTemplate;
 
         public void InitBuildInfo()
         {
@@ -48,12 +35,10 @@ namespace RiseOfHistory
                 return;
             }
 
-            m_BuildInfo = Utility.Json.ToObject<BuildInfo>(m_BuildInfoTextAsset.text);
-            if (m_BuildInfo == null)
-            {
-                Log.Warning("Parse build info failure.");
-                return;
-            }
+            BuildInfo = Utility.Json.ToObject<BuildInfo>(m_BuildInfoTextAsset.text);
+            if (BuildInfo != null) return;
+            Log.Warning("Parse build info failure.");
+
         }
 
         public void InitDefaultDictionary()
@@ -64,11 +49,8 @@ namespace RiseOfHistory
                 return;
             }
 
-            if (!Game.Scripts.Main.Runtime.Base.GameEntry.Localization.ParseData(m_DefaultDictionaryTextAsset.text))
-            {
-                Log.Warning("Parse default dictionary failure.");
-                return;
-            }
+            if (Base.GameEntry.Localization.ParseData(m_DefaultDictionaryTextAsset.text)) return;
+            Log.Warning("Parse default dictionary failure.");
         }
     }
 }
