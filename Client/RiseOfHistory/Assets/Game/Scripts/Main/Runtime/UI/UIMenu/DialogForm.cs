@@ -1,17 +1,11 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.UI.UICommon;
+﻿using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework;
+using RiseOfHistory;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class DialogForm : UGuiForm
     {
@@ -40,69 +34,39 @@ namespace RiseOfHistory
         private GameFrameworkAction<object> m_OnClickCancel = null;
         private GameFrameworkAction<object> m_OnClickOther = null;
 
-        public int DialogMode
-        {
-            get
-            {
-                return m_DialogMode;
-            }
-        }
+        public int DialogMode => m_DialogMode;
 
-        public bool PauseGame
-        {
-            get
-            {
-                return m_PauseGame;
-            }
-        }
+        public bool PauseGame => m_PauseGame;
 
-        public object UserData
-        {
-            get
-            {
-                return m_UserData;
-            }
-        }
+        public object UserData => m_UserData;
 
         public void OnConfirmButtonClick()
         {
             Close();
 
-            if (m_OnClickConfirm != null)
-            {
-                m_OnClickConfirm(m_UserData);
-            }
+            m_OnClickConfirm?.Invoke(m_UserData);
         }
 
         public void OnCancelButtonClick()
         {
             Close();
 
-            if (m_OnClickCancel != null)
-            {
-                m_OnClickCancel(m_UserData);
-            }
+            m_OnClickCancel?.Invoke(m_UserData);
         }
 
         public void OnOtherButtonClick()
         {
             Close();
 
-            if (m_OnClickOther != null)
-            {
-                m_OnClickOther(m_UserData);
-            }
+            m_OnClickOther?.Invoke(m_UserData);
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnOpen(object userData)
-#else
-        protected internal override void OnOpen(object userData)
-#endif
         {
             base.OnOpen(userData);
 
-            DialogParams dialogParams = (DialogParams)userData;
+            var dialogParams = (DialogParams)userData;
             if (dialogParams == null)
             {
                 Log.Warning("DialogParams is invalid.");
@@ -130,15 +94,12 @@ namespace RiseOfHistory
             m_OnClickOther = dialogParams.OnClickOther;
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnClose(bool isShutdown, object userData)
-#else
-        protected internal override void OnClose(bool isShutdown, object userData)
-#endif
         {
             if (m_PauseGame)
             {
-                Game.Scripts.Main.Runtime.Base.GameEntry.Base.ResumeGame();
+                global::Game.Scripts.Main.Runtime.Base.GameEntry.Base.ResumeGame();
             }
 
             m_DialogMode = 1;
@@ -161,7 +122,7 @@ namespace RiseOfHistory
 
         private void RefreshDialogMode()
         {
-            for (int i = 1; i <= m_ModeObjects.Length; i++)
+            for (var i = 1; i <= m_ModeObjects.Length; i++)
             {
                 m_ModeObjects[i - 1].SetActive(i == m_DialogMode);
             }
@@ -171,7 +132,7 @@ namespace RiseOfHistory
         {
             if (m_PauseGame)
             {
-                Game.Scripts.Main.Runtime.Base.GameEntry.Base.PauseGame();
+                global::Game.Scripts.Main.Runtime.Base.GameEntry.Base.PauseGame();
             }
         }
 
@@ -179,12 +140,12 @@ namespace RiseOfHistory
         {
             if (string.IsNullOrEmpty(confirmText))
             {
-                confirmText = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.ConfirmButton");
+                confirmText = global::Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.ConfirmButton");
             }
 
-            for (int i = 0; i < m_ConfirmTexts.Length; i++)
+            foreach (var text in m_ConfirmTexts)
             {
-                m_ConfirmTexts[i].text = confirmText;
+                text.text = confirmText;
             }
         }
 
@@ -192,12 +153,12 @@ namespace RiseOfHistory
         {
             if (string.IsNullOrEmpty(cancelText))
             {
-                cancelText = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.CancelButton");
+                cancelText = global::Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.CancelButton");
             }
 
-            for (int i = 0; i < m_CancelTexts.Length; i++)
+            foreach (var text in m_CancelTexts)
             {
-                m_CancelTexts[i].text = cancelText;
+                text.text = cancelText;
             }
         }
 
@@ -205,12 +166,12 @@ namespace RiseOfHistory
         {
             if (string.IsNullOrEmpty(otherText))
             {
-                otherText = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.OtherButton");
+                otherText = global::Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.OtherButton");
             }
 
-            for (int i = 0; i < m_OtherTexts.Length; i++)
+            foreach (var text in m_OtherTexts)
             {
-                m_OtherTexts[i].text = otherText;
+                text.text = otherText;
             }
         }
     }

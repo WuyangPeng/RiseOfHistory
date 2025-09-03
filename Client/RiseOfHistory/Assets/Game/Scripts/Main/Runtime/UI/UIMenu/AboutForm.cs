@@ -1,17 +1,10 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Sound;
+﻿using Game.Scripts.Main.Runtime.Sound;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class AboutForm : UGuiForm
     {
@@ -23,15 +16,11 @@ namespace RiseOfHistory
 
         private float m_InitPosition = 0f;
 
-#if UNITY_2017_3_OR_NEWER
         protected override void OnInit(object userData)
-#else
-        protected internal override void OnInit(object userData)
-#endif
         {
             base.OnInit(userData);
 
-            CanvasScaler canvasScaler = GetComponentInParent<CanvasScaler>();
+            var canvasScaler = GetComponentInParent<CanvasScaler>();
             if (canvasScaler == null)
             {
                 Log.Warning("Can not find CanvasScaler component.");
@@ -41,40 +30,31 @@ namespace RiseOfHistory
             m_InitPosition = -0.5f * canvasScaler.referenceResolution.x * Screen.height / Screen.width;
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnOpen(object userData)
-#else
-        protected internal override void OnOpen(object userData)
-#endif
         {
             base.OnOpen(userData);
 
             m_Transform.SetLocalPositionY(m_InitPosition);
 
             // 换个音乐
-            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlayMusic(3);
+            Base.GameEntry.Sound.PlayMusic(3);
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnClose(bool isShutdown, object userData)
-#else
-        protected internal override void OnClose(bool isShutdown, object userData)
-#endif
         {
             base.OnClose(isShutdown, userData);
 
             // 还原音乐
             if (!isShutdown)
             {
-                Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlayMusic(1);
+                Base.GameEntry.Sound.PlayMusic(1);
             }
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#else
-        protected internal override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#endif
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
