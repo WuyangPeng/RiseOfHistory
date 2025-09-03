@@ -1,17 +1,10 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
+﻿using System.Collections.Generic;
 using GameFramework.ObjectPool;
-using System.Collections.Generic;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using Entity = Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.HPBar
 {
     public class HPBarComponent : GameFrameworkComponent
     {
@@ -37,7 +30,7 @@ namespace RiseOfHistory
             }
 
             m_CachedCanvas = m_HPBarInstanceRoot.GetComponent<Canvas>();
-            m_HPBarItemObjectPool = Game.Scripts.Main.Runtime.Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", m_InstancePoolCapacity);
+            m_HPBarItemObjectPool = global::Game.Scripts.Main.Runtime.Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", m_InstancePoolCapacity);
             m_ActiveHPBarItems = new List<HPBarItem>();
         }
 
@@ -59,7 +52,7 @@ namespace RiseOfHistory
             }
         }
 
-        public void ShowHPBar(Entity entity, float fromHPRatio, float toHPRatio)
+        public void ShowHPBar(Entity.EntityLogic.Entity entity, float fromHPRatio, float toHPRatio)
         {
             if (entity == null)
             {
@@ -84,7 +77,7 @@ namespace RiseOfHistory
             m_HPBarItemObjectPool.Unspawn(hpBarItem);
         }
 
-        private HPBarItem GetActiveHPBarItem(Entity entity)
+        private HPBarItem GetActiveHPBarItem(Entity.EntityLogic.Entity entity)
         {
             if (entity == null)
             {
@@ -102,7 +95,7 @@ namespace RiseOfHistory
             return null;
         }
 
-        private HPBarItem CreateHPBarItem(Entity entity)
+        private HPBarItem CreateHPBarItem(Entity.EntityLogic.Entity entity)
         {
             HPBarItem hpBarItem = null;
             HPBarItemObject hpBarItemObject = m_HPBarItemObjectPool.Spawn();
