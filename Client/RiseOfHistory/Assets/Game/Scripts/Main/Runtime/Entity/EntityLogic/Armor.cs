@@ -1,59 +1,43 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Entity.EntityData;
+﻿using Game.Scripts.Main.Runtime.Entity.EntityData;
 using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     /// <summary>
     /// 装甲类。
     /// </summary>
-    public class Armor : Entity
+    public class Armor : RiseOfHistory.Entity
     {
         private const string AttachPoint = "Armor Point";
 
         [SerializeField]
-        private ArmorData m_ArmorData = null;
+        private ArmorData armorData = null;
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnInit(object userData)
-#else
-        protected internal override void OnInit(object userData)
-#endif
         {
             base.OnInit(userData);
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnShow(object userData)
-#else
-        protected internal override void OnShow(object userData)
-#endif
         {
             base.OnShow(userData);
 
-            m_ArmorData = userData as ArmorData;
-            if (m_ArmorData == null)
+            armorData = userData as ArmorData;
+            if (armorData == null)
             {
                 Log.Error("Armor data is invalid.");
                 return;
             }
 
-            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.AttachEntity(Entity, m_ArmorData.OwnerId, AttachPoint);
+            Base.GameEntry.Entity.AttachEntity(Entity, armorData.OwnerId, AttachPoint);
         }
 
-#if UNITY_2017_3_OR_NEWER
-        protected override void OnAttachTo(EntityLogic parentEntity, Transform parentTransform, object userData)
-#else
-        protected internal override void OnAttachTo(EntityLogic parentEntity, Transform parentTransform, object userData)
-#endif
+
+        protected override void OnAttachTo(UnityGameFramework.Runtime.EntityLogic parentEntity, Transform parentTransform, object userData)
         {
             base.OnAttachTo(parentEntity, parentTransform, userData);
 

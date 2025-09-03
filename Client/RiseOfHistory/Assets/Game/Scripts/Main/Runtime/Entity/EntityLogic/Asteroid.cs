@@ -1,17 +1,10 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Definition.DataStruct;
-using Game.Scripts.Main.Runtime.Entity;
+﻿using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     /// <summary>
     /// 小行星类。
@@ -19,63 +12,54 @@ namespace RiseOfHistory
     public class Asteroid : TargetableObject
     {
         [SerializeField]
-        private AsteroidData m_AsteroidData = null;
+        private AsteroidData asteroidData = null;
 
-        private Vector3 m_RotateSphere = Vector3.zero;
+        private Vector3 rotateSphere = Vector3.zero;
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnInit(object userData)
-#else
-        protected internal override void OnInit(object userData)
-#endif
         {
             base.OnInit(userData);
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnShow(object userData)
-#else
-        protected internal override void OnShow(object userData)
-#endif
         {
             base.OnShow(userData);
 
-            m_AsteroidData = userData as AsteroidData;
-            if (m_AsteroidData == null)
+            asteroidData = userData as AsteroidData;
+            if (asteroidData == null)
             {
                 Log.Error("Asteroid data is invalid.");
                 return;
             }
 
-            m_RotateSphere = Random.insideUnitSphere;
+            rotateSphere = Random.insideUnitSphere;
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#else
-        protected internal override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#endif
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            CachedTransform.Translate(Vector3.back * m_AsteroidData.Speed * elapseSeconds, Space.World);
-            CachedTransform.Rotate(m_RotateSphere * m_AsteroidData.AngularSpeed * elapseSeconds, Space.Self);
+            CachedTransform.Translate(Vector3.back * asteroidData.Speed * elapseSeconds, Space.World);
+            CachedTransform.Rotate(rotateSphere * asteroidData.AngularSpeed * elapseSeconds, Space.Self);
         }
 
-        protected override void OnDead(Entity attacker)
+        protected override void OnDead(RiseOfHistory.Entity attacker)
         {
             base.OnDead(attacker);
 
-            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowEffect(new EffectData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), m_AsteroidData.DeadEffectId)
+            Base.GameEntry.Entity.ShowEffect(new EffectData(Base.GameEntry.Entity.GenerateSerialId(), asteroidData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlaySound(m_AsteroidData.DeadSoundId);
+            Base.GameEntry.Sound.PlaySound(asteroidData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()
         {
-            return new ImpactData(m_AsteroidData.Camp, m_AsteroidData.Hp, m_AsteroidData.Attack, 0);
+            return new ImpactData(asteroidData.Camp, asteroidData.Hp, asteroidData.Attack, 0);
         }
     }
 }

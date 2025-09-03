@@ -14,24 +14,24 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     public abstract class Aircraft : TargetableObject
     {
         [SerializeField]
-        private AircraftData m_AircraftData = null;
+        private AircraftData aircraftData = null;
 
         [SerializeField]
-        protected Thruster m_Thruster = null;
+        protected Thruster thruster = null;
 
         [SerializeField]
-        protected List<Weapon> m_Weapons = new List<Weapon>();
+        protected List<Weapon> weapons = new List<Weapon>();
 
         [SerializeField]
-        protected List<Armor> m_Armors = new List<Armor>();
+        protected List<Armor> armors = new List<Armor>();
 
 
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
 
-            m_AircraftData = userData as AircraftData;
-            if (m_AircraftData == null)
+            aircraftData = userData as AircraftData;
+            if (aircraftData == null)
             {
                 Log.Error("Aircraft data is invalid.");
                 return;
@@ -39,15 +39,15 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 
             Name = Utility.Text.Format("Aircraft ({0})", Id);
 
-            Base.GameEntry.Entity.ShowThruster(m_AircraftData.GetThrusterData());
+            Base.GameEntry.Entity.ShowThruster(aircraftData.GetThrusterData());
 
-            var weaponDatas = m_AircraftData.GetAllWeaponDatas();
+            var weaponDatas = aircraftData.GetAllWeaponDatas();
             foreach (var data in weaponDatas)
             {
                 Base.GameEntry.Entity.ShowWeapon(data);
             }
 
-            var armorDatas = m_AircraftData.GetAllArmorDatas();
+            var armorDatas = aircraftData.GetAllArmorDatas();
             foreach (var data in armorDatas)
             {
                 Base.GameEntry.Entity.ShowArmor(data);
@@ -68,13 +68,13 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
             switch (childEntity)
             {
                 case Thruster entity:
-                    m_Thruster = entity;
+                    thruster = entity;
                     return;
                 case Weapon weapon:
-                    m_Weapons.Add(weapon);
+                    weapons.Add(weapon);
                     return;
                 case Armor armor:
-                    m_Armors.Add(armor);
+                    armors.Add(armor);
                     return;
             }
         }
@@ -87,13 +87,13 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
             switch (childEntity)
             {
                 case Thruster:
-                    m_Thruster = null;
+                    thruster = null;
                     return;
                 case Weapon weapon:
-                    m_Weapons.Remove(weapon);
+                    weapons.Remove(weapon);
                     return;
                 case Armor armor:
-                    m_Armors.Remove(armor);
+                    armors.Remove(armor);
                     return;
             }
         }
@@ -102,16 +102,16 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         {
             base.OnDead(attacker);
 
-            Base.GameEntry.Entity.ShowEffect(new EffectData(Base.GameEntry.Entity.GenerateSerialId(), m_AircraftData.DeadEffectId)
+            Base.GameEntry.Entity.ShowEffect(new EffectData(Base.GameEntry.Entity.GenerateSerialId(), aircraftData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            Base.GameEntry.Sound.PlaySound(m_AircraftData.DeadSoundId);
+            Base.GameEntry.Sound.PlaySound(aircraftData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()
         {
-            return new ImpactData(m_AircraftData.Camp, m_AircraftData.Hp, 0, m_AircraftData.Defense);
+            return new ImpactData(aircraftData.Camp, aircraftData.Hp, 0, aircraftData.Defense);
         }
     }
 }
