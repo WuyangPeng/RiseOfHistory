@@ -1,57 +1,43 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Entity;
-using Game.Scripts.Main.Runtime.Entity.EntityData;
+﻿using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     /// <summary>
     /// 特效类。
     /// </summary>
-    public class Effect : Entity
+    public class Effect : RiseOfHistory.Entity
     {
         [SerializeField]
-        private EffectData m_EffectData = null;
+        private EffectData effectData = null;
 
-        private float m_ElapseSeconds = 0f;
+        private float elapseSeconds = 0f;
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnShow(object userData)
-#else
-        protected internal override void OnShow(object userData)
-#endif
         {
             base.OnShow(userData);
 
-            m_EffectData = userData as EffectData;
-            if (m_EffectData == null)
+            effectData = userData as EffectData;
+            if (effectData == null)
             {
                 Log.Error("Effect data is invalid.");
                 return;
             }
 
-            m_ElapseSeconds = 0f;
+            elapseSeconds = 0f;
         }
 
-#if UNITY_2017_3_OR_NEWER
-        protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#else
-        protected internal override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#endif
-        {
-            base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            m_ElapseSeconds += elapseSeconds;
-            if (m_ElapseSeconds >= m_EffectData.KeepTime)
+        protected override void OnUpdate(float aElapseSeconds, float realElapseSeconds)
+        {
+            base.OnUpdate(aElapseSeconds, realElapseSeconds);
+
+            elapseSeconds += aElapseSeconds;
+            if (elapseSeconds >= effectData.KeepTime)
             {
-                Game.Scripts.Main.Runtime.Base.GameEntry.Entity.HideEntity(this);
+                Base.GameEntry.Entity.HideEntity(this);
             }
         }
     }
