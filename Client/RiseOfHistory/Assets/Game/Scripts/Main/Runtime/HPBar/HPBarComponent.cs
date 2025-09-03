@@ -30,19 +30,15 @@ namespace Game.Scripts.Main.Runtime.HPBar
             }
 
             m_CachedCanvas = m_HPBarInstanceRoot.GetComponent<Canvas>();
-            m_HPBarItemObjectPool = global::Game.Scripts.Main.Runtime.Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", m_InstancePoolCapacity);
+            m_HPBarItemObjectPool = Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", m_InstancePoolCapacity);
             m_ActiveHPBarItems = new List<HPBarItem>();
-        }
-
-        private void OnDestroy()
-        {
         }
 
         private void Update()
         {
-            for (int i = m_ActiveHPBarItems.Count - 1; i >= 0; i--)
+            for (var i = m_ActiveHPBarItems.Count - 1; i >= 0; i--)
             {
-                HPBarItem hpBarItem = m_ActiveHPBarItems[i];
+                var hpBarItem = m_ActiveHPBarItems[i];
                 if (hpBarItem.Refresh())
                 {
                     continue;
@@ -60,7 +56,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
                 return;
             }
 
-            HPBarItem hpBarItem = GetActiveHPBarItem(entity);
+            var hpBarItem = GetActiveHPBarItem(entity);
             if (hpBarItem == null)
             {
                 hpBarItem = CreateHPBarItem(entity);
@@ -84,11 +80,11 @@ namespace Game.Scripts.Main.Runtime.HPBar
                 return null;
             }
 
-            for (int i = 0; i < m_ActiveHPBarItems.Count; i++)
+            foreach (var item in m_ActiveHPBarItems)
             {
-                if (m_ActiveHPBarItems[i].Owner == entity)
+                if (item.Owner == entity)
                 {
-                    return m_ActiveHPBarItems[i];
+                    return item;
                 }
             }
 
@@ -98,7 +94,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
         private HPBarItem CreateHPBarItem(Entity.EntityLogic.Entity entity)
         {
             HPBarItem hpBarItem = null;
-            HPBarItemObject hpBarItemObject = m_HPBarItemObjectPool.Spawn();
+            var hpBarItemObject = m_HPBarItemObjectPool.Spawn();
             if (hpBarItemObject != null)
             {
                 hpBarItem = (HPBarItem)hpBarItemObject.Target;
@@ -106,7 +102,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
             else
             {
                 hpBarItem = Instantiate(m_HPBarItemTemplate);
-                Transform transform = hpBarItem.GetComponent<Transform>();
+                var transform = hpBarItem.GetComponent<Transform>();
                 transform.SetParent(m_HPBarInstanceRoot);
                 transform.localScale = Vector3.one;
                 m_HPBarItemObjectPool.Register(HPBarItemObject.Create(hpBarItem), true);
