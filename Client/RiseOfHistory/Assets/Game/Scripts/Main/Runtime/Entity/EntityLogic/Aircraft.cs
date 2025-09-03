@@ -9,6 +9,7 @@ using GameFramework;
 using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.Entity;
+using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 

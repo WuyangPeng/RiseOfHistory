@@ -1,62 +1,41 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework.DataTable;
-using System;
+﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Definition.Enum;
-using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityData
 {
     [Serializable]
     public class ArmorData : AccessoryObjectData
     {
         [SerializeField]
-        private int m_MaxHP = 0;
+        private int maxHp = 0;
 
         [SerializeField]
-        private int m_Defense = 0;
+        private int defense = 0;
 
         public ArmorData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            IDataTable<DRArmor> dtArmor = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRArmor>();
-            DRArmor drArmor = dtArmor.GetDataRow(TypeId);
+            var dtArmor = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRArmor>();
+            var drArmor = dtArmor.GetDataRow(TypeId);
             if (drArmor == null)
             {
                 return;
             }
 
-            m_MaxHP = drArmor.MaxHP;
-            m_Defense = drArmor.Defense;
+            maxHp = drArmor.MaxHP;
+            defense = drArmor.Defense;
         }
 
         /// <summary>
         /// 最大生命。
         /// </summary>
-        public int MaxHP
-        {
-            get
-            {
-                return m_MaxHP;
-            }
-        }
+        public int MaxHp => maxHp;
 
         /// <summary>
         /// 防御力。
         /// </summary>
-        public int Defense
-        {
-            get
-            {
-                return m_Defense;
-            }
-        }
+        public int Defense => defense;
     }
 }

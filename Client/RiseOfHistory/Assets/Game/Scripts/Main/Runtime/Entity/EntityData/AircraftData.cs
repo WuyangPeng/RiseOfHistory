@@ -1,129 +1,91 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework.DataTable;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Definition.Enum;
-using Game.Scripts.Main.Runtime.Entity;
+using RiseOfHistory;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityData
 {
     [Serializable]
     public abstract class AircraftData : TargetableObjectData
     {
         [SerializeField]
-        private ThrusterData m_ThrusterData = null;
+        private ThrusterData thrusterData = null;
 
         [SerializeField]
-        private List<WeaponData> m_WeaponDatas = new List<WeaponData>();
+        private List<WeaponData> weaponDatas = new List<WeaponData>();
 
         [SerializeField]
-        private List<ArmorData> m_ArmorDatas = new List<ArmorData>();
+        private List<ArmorData> armorDatas = new List<ArmorData>();
 
         [SerializeField]
-        private int m_MaxHP = 0;
+        private int maxHp = 0;
 
         [SerializeField]
-        private int m_Defense = 0;
+        private int defense = 0;
 
         [SerializeField]
-        private int m_DeadEffectId = 0;
+        private int deadEffectId = 0;
 
         [SerializeField]
-        private int m_DeadSoundId = 0;
+        private int deadSoundId = 0;
 
-        public AircraftData(int entityId, int typeId, CampType camp)
+        protected AircraftData(int entityId, int typeId, CampType camp)
             : base(entityId, typeId, camp)
         {
-            IDataTable<DRAircraft> dtAircraft = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRAircraft>();
-            DRAircraft drAircraft = dtAircraft.GetDataRow(TypeId);
+            var dtAircraft = Base.GameEntry.DataTable.GetDataTable<DRAircraft>();
+            var drAircraft = dtAircraft.GetDataRow(TypeId);
             if (drAircraft == null)
             {
                 return;
             }
 
-            m_ThrusterData = new ThrusterData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), drAircraft.ThrusterId, Id, Camp);
+            thrusterData = new ThrusterData(Base.GameEntry.Entity.GenerateSerialId(), drAircraft.ThrusterId, Id, Camp);
 
             for (int index = 0, weaponId = 0; (weaponId = drAircraft.GetWeaponIdAt(index)) > 0; index++)
             {
-                AttachWeaponData(new WeaponData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), weaponId, Id, Camp));
+                AttachWeaponData(new WeaponData(Base.GameEntry.Entity.GenerateSerialId(), weaponId, Id, Camp));
             }
 
             for (int index = 0, armorId = 0; (armorId = drAircraft.GetArmorIdAt(index)) > 0; index++)
             {
-                AttachArmorData(new ArmorData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), armorId, Id, Camp));
+                AttachArmorData(new ArmorData(Base.GameEntry.Entity.GenerateSerialId(), armorId, Id, Camp));
             }
 
-            m_DeadEffectId = drAircraft.DeadEffectId;
-            m_DeadSoundId = drAircraft.DeadSoundId;
+            deadEffectId = drAircraft.DeadEffectId;
+            deadSoundId = drAircraft.DeadSoundId;
 
-            HP = m_MaxHP;
+            HP = maxHp;
         }
 
         /// <summary>
         /// 最大生命。
         /// </summary>
-        public override int MaxHP
-        {
-            get
-            {
-                return m_MaxHP;
-            }
-        }
+        public override int MaxHP => maxHp;
 
         /// <summary>
         /// 防御。
         /// </summary>
-        public int Defense
-        {
-            get
-            {
-                return m_Defense;
-            }
-        }
+        public int Defense => defense;
 
         /// <summary>
         /// 速度。
         /// </summary>
-        public float Speed
-        {
-            get
-            {
-                return m_ThrusterData.Speed;
-            }
-        }
+        public float Speed => thrusterData.Speed;
 
-        public int DeadEffectId
-        {
-            get
-            {
-                return m_DeadEffectId;
-            }
-        }
+        public int DeadEffectId => deadEffectId;
 
-        public int DeadSoundId
-        {
-            get
-            {
-                return m_DeadSoundId;
-            }
-        }
+        public int DeadSoundId => deadSoundId;
 
         public ThrusterData GetThrusterData()
         {
-            return m_ThrusterData;
+            return thrusterData;
         }
 
         public List<WeaponData> GetAllWeaponDatas()
         {
-            return m_WeaponDatas;
+            return weaponDatas;
         }
 
         public void AttachWeaponData(WeaponData weaponData)
@@ -133,12 +95,12 @@ namespace RiseOfHistory
                 return;
             }
 
-            if (m_WeaponDatas.Contains(weaponData))
+            if (weaponDatas.Contains(weaponData))
             {
                 return;
             }
 
-            m_WeaponDatas.Add(weaponData);
+            weaponDatas.Add(weaponData);
         }
 
         public void DetachWeaponData(WeaponData weaponData)
@@ -148,12 +110,12 @@ namespace RiseOfHistory
                 return;
             }
 
-            m_WeaponDatas.Remove(weaponData);
+            weaponDatas.Remove(weaponData);
         }
 
         public List<ArmorData> GetAllArmorDatas()
         {
-            return m_ArmorDatas;
+            return armorDatas;
         }
 
         public void AttachArmorData(ArmorData armorData)
@@ -163,12 +125,12 @@ namespace RiseOfHistory
                 return;
             }
 
-            if (m_ArmorDatas.Contains(armorData))
+            if (armorDatas.Contains(armorData))
             {
                 return;
             }
 
-            m_ArmorDatas.Add(armorData);
+            armorDatas.Add(armorData);
             RefreshData();
         }
 
@@ -179,23 +141,23 @@ namespace RiseOfHistory
                 return;
             }
 
-            m_ArmorDatas.Remove(armorData);
+            armorDatas.Remove(armorData);
             RefreshData();
         }
 
         private void RefreshData()
         {
-            m_MaxHP = 0;
-            m_Defense = 0;
-            for (int i = 0; i < m_ArmorDatas.Count; i++)
+            maxHp = 0;
+            defense = 0;
+            foreach (var data in armorDatas)
             {
-                m_MaxHP += m_ArmorDatas[i].MaxHP;
-                m_Defense += m_ArmorDatas[i].Defense;
+                maxHp += data.MaxHp;
+                defense += data.Defense;
             }
 
-            if (HP > m_MaxHP)
+            if (HP > maxHp)
             {
-                HP = m_MaxHP;
+                HP = maxHp;
             }
         }
     }

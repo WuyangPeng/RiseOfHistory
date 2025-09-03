@@ -7,6 +7,7 @@
 
 using System;
 using Game.Scripts.Main.Runtime.Definition.Enum;
+using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 
 namespace RiseOfHistory

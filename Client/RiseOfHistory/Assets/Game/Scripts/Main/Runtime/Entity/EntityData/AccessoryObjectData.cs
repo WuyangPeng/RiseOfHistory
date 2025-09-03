@@ -8,26 +8,26 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public abstract class AccessoryObjectData : RiseOfHistory.EntityData
     {
         [SerializeField]
-        private int m_OwnerId = 0;
+        private int ownerId = 0;
 
         [SerializeField]
-        private CampType m_OwnerCamp = CampType.Unknown;
+        private CampType ownerCamp;
 
         protected AccessoryObjectData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId)
         {
-            m_OwnerId = ownerId;
-            m_OwnerCamp = ownerCamp;
+            this.ownerId = ownerId;
+            this.ownerCamp = ownerCamp;
         }
 
         /// <summary>
         /// 拥有者编号。
         /// </summary>
-        public int OwnerId => m_OwnerId;
+        public int OwnerId => ownerId;
 
         /// <summary>
         /// 拥有者阵营。
         /// </summary>
-        public CampType OwnerCamp => m_OwnerCamp;
+        public CampType OwnerCamp => ownerCamp;
     }
 }
