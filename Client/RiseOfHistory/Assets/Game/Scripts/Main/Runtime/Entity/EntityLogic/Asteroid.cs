@@ -44,7 +44,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
             CachedTransform.Rotate(rotateSphere * (asteroidData.AngularSpeed * elapseSeconds), Space.Self);
         }
 
-        protected override void OnDead(RiseOfHistory.Entity attacker)
+        protected override void OnDead(Entity attacker)
         {
             base.OnDead(attacker);
 

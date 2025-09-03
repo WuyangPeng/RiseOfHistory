@@ -8,7 +8,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     /// <summary>
     /// 子弹类。
     /// </summary>
-    public class Bullet : RiseOfHistory.Entity
+    public class Bullet : Entity
     {
         [SerializeField]
         private BulletData bulletData = null;

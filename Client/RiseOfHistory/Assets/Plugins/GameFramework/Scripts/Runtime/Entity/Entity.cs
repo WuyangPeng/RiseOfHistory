@@ -8,6 +8,7 @@
 using GameFramework;
 using GameFramework.Entity;
 using System;
+using Plugins.GameFramework.Scripts.Runtime.Entity;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime

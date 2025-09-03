@@ -6,8 +6,9 @@
 //------------------------------------------------------------
 
 using UnityEngine;
+using UnityGameFramework.Runtime;
 
-namespace UnityGameFramework.Runtime
+namespace Plugins.GameFramework.Scripts.Runtime.Entity
 {
     /// <summary>
     /// 实体逻辑基类。
@@ -16,7 +17,7 @@ namespace UnityGameFramework.Runtime
     {
         private bool m_Available = false;
         private bool m_Visible = false;
-        private Entity m_Entity = null;
+        private UnityGameFramework.Runtime.Entity m_Entity = null;
         private Transform m_CachedTransform = null;
         private int m_OriginalLayer = 0;
         private Transform m_OriginalTransform = null;
@@ -24,7 +25,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取实体。
         /// </summary>
-        public Entity Entity
+        public UnityGameFramework.Runtime.Entity Entity
         {
             get
             {
@@ -107,7 +108,7 @@ namespace UnityGameFramework.Runtime
                 m_CachedTransform = transform;
             }
 
-            m_Entity = GetComponent<Entity>();
+            m_Entity = GetComponent<UnityGameFramework.Runtime.Entity>();
             m_OriginalLayer = gameObject.layer;
             m_OriginalTransform = CachedTransform.parent;
         }

@@ -14,6 +14,7 @@ using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityLogic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Entity = Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity;
 
 namespace RiseOfHistory
 {

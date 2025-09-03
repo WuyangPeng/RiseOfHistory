@@ -61,7 +61,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         }
 
 
-        protected override void OnAttached(UnityGameFramework.Runtime.EntityLogic childEntity, Transform parentTransform, object userData)
+        protected override void OnAttached(Plugins.GameFramework.Scripts.Runtime.Entity.EntityLogic childEntity, Transform parentTransform, object userData)
         {
             base.OnAttached(childEntity, parentTransform, userData);
 
@@ -80,7 +80,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         }
 
 
-        protected override void OnDetached(UnityGameFramework.Runtime.EntityLogic childEntity, object userData)
+        protected override void OnDetached(Plugins.GameFramework.Scripts.Runtime.Entity.EntityLogic childEntity, object userData)
         {
             base.OnDetached(childEntity, userData);
 
@@ -98,7 +98,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
             }
         }
 
-        protected override void OnDead(RiseOfHistory.Entity attacker)
+        protected override void OnDead(Entity attacker)
         {
             base.OnDead(attacker);
 

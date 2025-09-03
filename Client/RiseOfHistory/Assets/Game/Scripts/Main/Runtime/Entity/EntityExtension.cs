@@ -15,7 +15,7 @@ namespace Game.Scripts.Main.Runtime.Entity
         // 负值用于本地生成的临时实体（如特效、FakeObject等）
         private static int s_SerialId = 0;
 
-        public static RiseOfHistory.Entity GetGameEntity(this EntityComponent entityComponent, int entityId)
+        public static EntityLogic.Entity GetGameEntity(this EntityComponent entityComponent, int entityId)
         {
             var entity = entityComponent.GetEntity(entityId);
             if (entity == null)
@@ -23,15 +23,15 @@ namespace Game.Scripts.Main.Runtime.Entity
                 return null;
             }
 
-            return (RiseOfHistory.Entity)entity.Logic;
+            return (EntityLogic.Entity)entity.Logic;
         }
 
-        public static void HideEntity(this EntityComponent entityComponent, RiseOfHistory.Entity entity)
+        public static void HideEntity(this EntityComponent entityComponent, EntityLogic.Entity entity)
         {
             entityComponent.HideEntity(entity.Entity);
         }
 
-        public static void AttachEntity(this EntityComponent entityComponent, RiseOfHistory.Entity entity, int ownerId, string parentTransformPath = null, object userData = null)
+        public static void AttachEntity(this EntityComponent entityComponent, EntityLogic.Entity entity, int ownerId, string parentTransformPath = null, object userData = null)
         {
             entityComponent.AttachEntity(entity.Entity, ownerId, parentTransformPath, userData);
         }

@@ -9,6 +9,7 @@ using GameFramework;
 using GameFramework.Sound;
 using System;
 using System.Collections;
+using Plugins.GameFramework.Scripts.Runtime.Entity;
 using UnityEngine;
 using UnityEngine.Audio;
 

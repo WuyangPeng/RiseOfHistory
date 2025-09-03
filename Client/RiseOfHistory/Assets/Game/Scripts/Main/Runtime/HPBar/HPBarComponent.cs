@@ -9,6 +9,7 @@ using GameFramework.ObjectPool;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Entity = Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity;
 
 namespace RiseOfHistory
 {

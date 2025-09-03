@@ -8,6 +8,7 @@
 using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
 using GameFramework;
+using Plugins.GameFramework.Scripts.Runtime.Entity;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -16,7 +17,7 @@ namespace RiseOfHistory
     /// <summary>
     /// 武器类。
     /// </summary>
-    public class Weapon : Entity
+    public class Weapon : Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity
     {
         private const string AttachPoint = "Weapon Point";
 

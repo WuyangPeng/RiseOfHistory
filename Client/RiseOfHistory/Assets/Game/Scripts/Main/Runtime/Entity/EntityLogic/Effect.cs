@@ -7,7 +7,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     /// <summary>
     /// 特效类。
     /// </summary>
-    public class Effect : RiseOfHistory.Entity
+    public class Effect : Entity
     {
         [SerializeField]
         private EffectData effectData = null;

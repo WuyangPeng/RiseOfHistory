@@ -10,6 +10,7 @@ using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Entity = Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity;
 
 namespace RiseOfHistory
 {

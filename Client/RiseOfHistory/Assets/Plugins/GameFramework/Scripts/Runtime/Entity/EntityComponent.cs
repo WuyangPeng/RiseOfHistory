@@ -11,6 +11,7 @@ using GameFramework.ObjectPool;
 using GameFramework.Resource;
 using System;
 using System.Collections.Generic;
+using Plugins.GameFramework.Scripts.Runtime.Entity;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime

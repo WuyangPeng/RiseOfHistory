@@ -10,6 +10,7 @@ using GameFramework;
 using GameFramework.DataTable;
 using GameFramework.Sound;
 using UnityGameFramework.Runtime;
+using Entity = Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity;
 
 namespace RiseOfHistory
 {

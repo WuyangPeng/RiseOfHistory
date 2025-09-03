@@ -8,7 +8,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     /// <summary>
     /// 装甲类。
     /// </summary>
-    public class Armor : RiseOfHistory.Entity
+    public class Armor : Entity
     {
         private const string AttachPoint = "Armor Point";
 
@@ -37,7 +37,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         }
 
 
-        protected override void OnAttachTo(UnityGameFramework.Runtime.EntityLogic parentEntity, Transform parentTransform, object userData)
+        protected override void OnAttachTo(Plugins.GameFramework.Scripts.Runtime.Entity.EntityLogic parentEntity, Transform parentTransform, object userData)
         {
             base.OnAttachTo(parentEntity, parentTransform, userData);
 
