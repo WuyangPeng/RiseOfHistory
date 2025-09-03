@@ -1,6 +1,5 @@
 ﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
-using GameFramework.DataTable;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 
@@ -75,7 +74,7 @@ namespace Game.Scripts.Main.Runtime.Entity
             entityComponent.ShowEntity(typeof(Effect), "Effect", Definition.Constant.Constant.AssetPriority.EffectAsset, data);
         }
 
-        private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
+        private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, RiseOfHistory.EntityData data)
         {
             if (data == null)
             {

@@ -2,10 +2,10 @@
 using Game.Scripts.Main.Runtime.Definition.Enum;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityData
 {
     [Serializable]
-    public abstract class AccessoryObjectData : EntityData
+    public abstract class AccessoryObjectData : RiseOfHistory.EntityData
     {
         [SerializeField]
         private int m_OwnerId = 0;
@@ -13,7 +13,7 @@ namespace RiseOfHistory
         [SerializeField]
         private CampType m_OwnerCamp = CampType.Unknown;
 
-        public AccessoryObjectData(int entityId, int typeId, int ownerId, CampType ownerCamp)
+        protected AccessoryObjectData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId)
         {
             m_OwnerId = ownerId;
@@ -23,23 +23,11 @@ namespace RiseOfHistory
         /// <summary>
         /// 拥有者编号。
         /// </summary>
-        public int OwnerId
-        {
-            get
-            {
-                return m_OwnerId;
-            }
-        }
+        public int OwnerId => m_OwnerId;
 
         /// <summary>
         /// 拥有者阵营。
         /// </summary>
-        public CampType OwnerCamp
-        {
-            get
-            {
-                return m_OwnerCamp;
-            }
-        }
+        public CampType OwnerCamp => m_OwnerCamp;
     }
 }
