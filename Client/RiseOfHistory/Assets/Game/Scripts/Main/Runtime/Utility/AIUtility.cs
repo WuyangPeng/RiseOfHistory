@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Game.Scripts.Main.Runtime.Definition.DataStruct;
+using Game.Scripts.Main.Runtime.Definition.Enum;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 

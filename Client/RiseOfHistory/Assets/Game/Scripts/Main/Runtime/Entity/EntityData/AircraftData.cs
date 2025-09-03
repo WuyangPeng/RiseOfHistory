@@ -9,6 +9,7 @@ using GameFramework.DataTable;
 using System;
 using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.Definition.Enum;
 using UnityEngine;
 
 namespace RiseOfHistory
