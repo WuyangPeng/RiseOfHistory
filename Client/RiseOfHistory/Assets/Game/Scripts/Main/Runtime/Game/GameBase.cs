@@ -7,6 +7,7 @@
 
 using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
+using Game.Scripts.Main.Runtime.Entity.EntityLogic;
 using GameFramework.Event;
 using UnityEngine;
 using UnityGameFramework.Runtime;

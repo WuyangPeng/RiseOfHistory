@@ -1,6 +1,7 @@
 ﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
+using Game.Scripts.Main.Runtime.Entity.EntityLogic;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 

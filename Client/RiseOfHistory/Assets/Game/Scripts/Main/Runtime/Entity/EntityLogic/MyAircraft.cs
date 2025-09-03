@@ -6,10 +6,11 @@
 //------------------------------------------------------------
 
 using Game.Scripts.Main.Runtime.Entity.EntityData;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     public class MyAircraft : Aircraft
     {
