@@ -132,7 +132,7 @@ namespace Game.Scripts.Main.Runtime.Network
             ReferencePool.Release(packetHeader);
 
             Serializer.SerializeWithLengthPrefix(m_CachedStream, packet, PrefixStyle.Fixed32);
-            ReferencePool.Release((IReference)packet);
+            ReferencePool.Release(packetImpl);
 
             m_CachedStream.WriteTo(destination);
             return true;
