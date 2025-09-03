@@ -1,20 +1,9 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
+﻿using RiseOfHistory;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Network
 {
     public sealed class CSPacketHeader : PacketHeaderBase
     {
-        public override PacketType PacketType
-        {
-            get
-            {
-                return PacketType.ClientToServer;
-            }
-        }
+        public override PacketType PacketType => PacketType.ClientToServer;
     }
 }

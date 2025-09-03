@@ -1,14 +1,8 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
+﻿using System;
 using ProtoBuf;
-using System;
+using RiseOfHistory;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Network.Packet
 {
     [Serializable, ProtoContract(Name = @"CSHeartBeat")]
     public class CSHeartBeat : CSPacketBase
@@ -17,13 +11,7 @@ namespace RiseOfHistory
         {
         }
 
-        public override int Id
-        {
-            get
-            {
-                return 1;
-            }
-        }
+        public override int Id => 1;
 
         public override void Clear()
         {

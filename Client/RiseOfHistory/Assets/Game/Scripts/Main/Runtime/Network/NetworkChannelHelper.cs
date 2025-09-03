@@ -1,22 +1,17 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using Game.Scripts.Main.Runtime.Network.Packet;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
 using ProtoBuf;
 using ProtoBuf.Meta;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Network
 {
     public class NetworkChannelHelper : INetworkChannelHelper
     {
@@ -27,13 +22,7 @@ namespace RiseOfHistory
         /// <summary>
         /// 获取消息包头长度。
         /// </summary>
-        public int PacketHeaderLength
-        {
-            get
-            {
-                return sizeof(int);
-            }
-        }
+        public int PacketHeaderLength => sizeof(int);
 
         /// <summary>
         /// 初始化网络频道辅助器。
@@ -44,41 +33,41 @@ namespace RiseOfHistory
             m_NetworkChannel = networkChannel;
 
             // 反射注册包和包处理函数。
-            Type packetBaseType = typeof(SCPacketBase);
-            Type packetHandlerBaseType = typeof(PacketHandlerBase);
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            Type[] types = assembly.GetTypes();
-            for (int i = 0; i < types.Length; i++)
+            var packetBaseType = typeof(SCPacketBase);
+            var packetHandlerBaseType = typeof(PacketHandlerBase);
+            var assembly = Assembly.GetExecutingAssembly();
+            var types = assembly.GetTypes();
+            foreach (var type in types)
             {
-                if (!types[i].IsClass || types[i].IsAbstract)
+                if (!type.IsClass || type.IsAbstract)
                 {
                     continue;
                 }
 
-                if (types[i].BaseType == packetBaseType)
+                if (type.BaseType == packetBaseType)
                 {
-                    PacketBase packetBase = (PacketBase)Activator.CreateInstance(types[i]);
-                    Type packetType = GetServerToClientPacketType(packetBase.Id);
+                    var packetBase = (PacketBase)Activator.CreateInstance(type);
+                    var packetType = GetServerToClientPacketType(packetBase.Id);
                     if (packetType != null)
                     {
                         Log.Warning("Already exist packet type '{0}', check '{1}' or '{2}'?.", packetBase.Id.ToString(), packetType.Name, packetBase.GetType().Name);
                         continue;
                     }
 
-                    m_ServerToClientPacketTypes.Add(packetBase.Id, types[i]);
+                    m_ServerToClientPacketTypes.Add(packetBase.Id, type);
                 }
-                else if (types[i].BaseType == packetHandlerBaseType)
+                else if (type.BaseType == packetHandlerBaseType)
                 {
-                    IPacketHandler packetHandler = (IPacketHandler)Activator.CreateInstance(types[i]);
+                    var packetHandler = (IPacketHandler)Activator.CreateInstance(type);
                     m_NetworkChannel.RegisterHandler(packetHandler);
                 }
             }
 
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
+            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
+            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
+            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
+            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
+            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
         }
 
         /// <summary>
@@ -86,11 +75,11 @@ namespace RiseOfHistory
         /// </summary>
         public void Shutdown()
         {
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
+            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
+            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
+            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
+            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
+            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
 
             m_NetworkChannel = null;
         }
@@ -121,10 +110,9 @@ namespace RiseOfHistory
         /// <param name="packet">要序列化的消息包。</param>
         /// <param name="destination">要序列化的目标流。</param>
         /// <returns>是否序列化成功。</returns>
-        public bool Serialize<T>(T packet, Stream destination) where T : Packet
+        public bool Serialize<T>(T packet, Stream destination) where T : GameFramework.Network.Packet
         {
-            PacketBase packetImpl = packet as PacketBase;
-            if (packetImpl == null)
+            if (packet is not PacketBase packetImpl)
             {
                 Log.Warning("Packet is invalid.");
                 return false;
@@ -139,7 +127,7 @@ namespace RiseOfHistory
             m_CachedStream.SetLength(m_CachedStream.Capacity); // 此行防止 Array.Copy 的数据无法写入
             m_CachedStream.Position = 0L;
 
-            CSPacketHeader packetHeader = ReferencePool.Acquire<CSPacketHeader>();
+            var packetHeader = ReferencePool.Acquire<CSPacketHeader>();
             Serializer.Serialize(m_CachedStream, packetHeader);
             ReferencePool.Release(packetHeader);
 
@@ -170,25 +158,25 @@ namespace RiseOfHistory
         /// <param name="source">要反序列化的来源流。</param>
         /// <param name="customErrorData">用户自定义错误数据。</param>
         /// <returns>反序列化后的消息包。</returns>
-        public Packet DeserializePacket(IPacketHeader packetHeader, Stream source, out object customErrorData)
+        public GameFramework.Network.Packet DeserializePacket(IPacketHeader packetHeader, Stream source, out object customErrorData)
         {
             // 注意：此函数并不在主线程调用！
             customErrorData = null;
 
-            SCPacketHeader scPacketHeader = packetHeader as SCPacketHeader;
+            var scPacketHeader = packetHeader as SCPacketHeader;
             if (scPacketHeader == null)
             {
                 Log.Warning("Packet header is invalid.");
                 return null;
             }
 
-            Packet packet = null;
+            GameFramework.Network.Packet packet = null;
             if (scPacketHeader.IsValid)
             {
-                Type packetType = GetServerToClientPacketType(scPacketHeader.Id);
+                var packetType = GetServerToClientPacketType(scPacketHeader.Id);
                 if (packetType != null)
                 {
-                    packet = (Packet)RuntimeTypeModel.Default.DeserializeWithLengthPrefix(source, ReferencePool.Acquire(packetType), packetType, PrefixStyle.Fixed32, 0);
+                    packet = (GameFramework.Network.Packet)RuntimeTypeModel.Default.DeserializeWithLengthPrefix(source, ReferencePool.Acquire(packetType), packetType, PrefixStyle.Fixed32, 0);
                 }
                 else
                 {
@@ -206,18 +194,12 @@ namespace RiseOfHistory
 
         private Type GetServerToClientPacketType(int id)
         {
-            Type type = null;
-            if (m_ServerToClientPacketTypes.TryGetValue(id, out type))
-            {
-                return type;
-            }
-
-            return null;
+            return m_ServerToClientPacketTypes.GetValueOrDefault(id);
         }
 
         private void OnNetworkConnected(object sender, GameEventArgs e)
         {
-            UnityGameFramework.Runtime.NetworkConnectedEventArgs ne = (UnityGameFramework.Runtime.NetworkConnectedEventArgs)e;
+            var ne = (UnityGameFramework.Runtime.NetworkConnectedEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
@@ -228,7 +210,7 @@ namespace RiseOfHistory
 
         private void OnNetworkClosed(object sender, GameEventArgs e)
         {
-            UnityGameFramework.Runtime.NetworkClosedEventArgs ne = (UnityGameFramework.Runtime.NetworkClosedEventArgs)e;
+            var ne = (UnityGameFramework.Runtime.NetworkClosedEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
@@ -239,7 +221,7 @@ namespace RiseOfHistory
 
         private void OnNetworkMissHeartBeat(object sender, GameEventArgs e)
         {
-            UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs ne = (UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs)e;
+            var ne = (UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
@@ -257,7 +239,7 @@ namespace RiseOfHistory
 
         private void OnNetworkError(object sender, GameEventArgs e)
         {
-            UnityGameFramework.Runtime.NetworkErrorEventArgs ne = (UnityGameFramework.Runtime.NetworkErrorEventArgs)e;
+            var ne = (UnityGameFramework.Runtime.NetworkErrorEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
@@ -270,7 +252,7 @@ namespace RiseOfHistory
 
         private void OnNetworkCustomError(object sender, GameEventArgs e)
         {
-            UnityGameFramework.Runtime.NetworkCustomErrorEventArgs ne = (UnityGameFramework.Runtime.NetworkCustomErrorEventArgs)e;
+            var ne = (UnityGameFramework.Runtime.NetworkCustomErrorEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;

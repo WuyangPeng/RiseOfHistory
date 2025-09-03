@@ -1,28 +1,16 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework.Network;
+﻿using Game.Scripts.Main.Runtime.Network.Packet;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Network.PacketHandler
 {
     public class SCHeartBeatHandler : PacketHandlerBase
     {
-        public override int Id
-        {
-            get
-            {
-                return 2;
-            }
-        }
+        public override int Id => 2;
 
-        public override void Handle(object sender, Packet packet)
+        public override void Handle(object sender, GameFramework.Network.Packet packet)
         {
-            SCHeartBeat packetImpl = (SCHeartBeat)packet;
+            var packetImpl = (SCHeartBeat)packet;
             Log.Info("Receive packet '{0}'.", packetImpl.Id.ToString());
         }
     }
