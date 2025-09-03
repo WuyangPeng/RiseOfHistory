@@ -7,6 +7,7 @@
 
 using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.Entity;
+using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -24,7 +25,7 @@ namespace RiseOfHistory
         {
             get
             {
-                return m_TargetableObjectData.HP <= 0;
+                return m_TargetableObjectData.Hp <= 0;
             }
         }
 
@@ -32,15 +33,15 @@ namespace RiseOfHistory
 
         public void ApplyDamage(Entity attacker, int damageHP)
         {
-            float fromHPRatio = m_TargetableObjectData.HPRatio;
-            m_TargetableObjectData.HP -= damageHP;
-            float toHPRatio = m_TargetableObjectData.HPRatio;
+            float fromHPRatio = m_TargetableObjectData.HpRatio;
+            m_TargetableObjectData.Hp -= damageHP;
+            float toHPRatio = m_TargetableObjectData.HpRatio;
             if (fromHPRatio > toHPRatio)
             {
                 Game.Scripts.Main.Runtime.Base.GameEntry.HpBar.ShowHPBar(this, fromHPRatio, toHPRatio);
             }
 
-            if (m_TargetableObjectData.HP <= 0)
+            if (m_TargetableObjectData.Hp <= 0)
             {
                 OnDead(attacker);
             }

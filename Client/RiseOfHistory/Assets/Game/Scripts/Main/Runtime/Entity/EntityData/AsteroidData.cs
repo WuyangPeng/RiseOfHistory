@@ -37,7 +37,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
                 return;
             }
 
-            HP = maxHp = drAsteroid.MaxHP;
+            Hp = maxHp = drAsteroid.MaxHP;
             attack = drAsteroid.Attack;
             speed = drAsteroid.Speed;
             angularSpeed = drAsteroid.AngularSpeed;
@@ -45,7 +45,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
             deadSoundId = drAsteroid.DeadSoundId;
         }
 
-        public override int MaxHP => maxHp;
+        public override int MaxHp => maxHp;
 
         public int Attack => attack;
 

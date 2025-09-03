@@ -1,107 +1,68 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework.DataTable;
-using System;
+﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Definition.Enum;
-using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityData
 {
     [Serializable]
     public class WeaponData : AccessoryObjectData
     {
         [SerializeField]
-        private int m_Attack = 0;
+        private int attack = 0;
 
         [SerializeField]
-        private float m_AttackInterval = 0f;
+        private float attackInterval = 0f;
 
         [SerializeField]
-        private int m_BulletId = 0;
+        private int bulletId = 0;
 
         [SerializeField]
-        private float m_BulletSpeed = 0f;
+        private float bulletSpeed = 0f;
 
         [SerializeField]
-        private int m_BulletSoundId = 0;
+        private int bulletSoundId = 0;
 
         public WeaponData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            IDataTable<DRWeapon> dtWeapon = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRWeapon>();
-            DRWeapon drWeapon = dtWeapon.GetDataRow(TypeId);
+            var dtWeapon = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRWeapon>();
+            var drWeapon = dtWeapon.GetDataRow(TypeId);
             if (drWeapon == null)
             {
                 return;
             }
 
-            m_Attack = drWeapon.Attack;
-            m_AttackInterval = drWeapon.AttackInterval;
-            m_BulletId = drWeapon.BulletId;
-            m_BulletSpeed = drWeapon.BulletSpeed;
-            m_BulletSoundId = drWeapon.BulletSoundId;
+            attack = drWeapon.Attack;
+            attackInterval = drWeapon.AttackInterval;
+            bulletId = drWeapon.BulletId;
+            bulletSpeed = drWeapon.BulletSpeed;
+            bulletSoundId = drWeapon.BulletSoundId;
         }
 
         /// <summary>
         /// 攻击力。
         /// </summary>
-        public int Attack
-        {
-            get
-            {
-                return m_Attack;
-            }
-        }
+        public int Attack => attack;
 
         /// <summary>
         /// 攻击间隔。
         /// </summary>
-        public float AttackInterval
-        {
-            get
-            {
-                return m_AttackInterval;
-            }
-        }
+        public float AttackInterval => attackInterval;
 
         /// <summary>
         /// 子弹编号。
         /// </summary>
-        public int BulletId
-        {
-            get
-            {
-                return m_BulletId;
-            }
-        }
+        public int BulletId => bulletId;
 
         /// <summary>
         /// 子弹速度。
         /// </summary>
-        public float BulletSpeed
-        {
-            get
-            {
-                return m_BulletSpeed;
-            }
-        }
+        public float BulletSpeed => bulletSpeed;
 
         /// <summary>
         /// 子弹声音编号。
         /// </summary>
-        public int BulletSoundId
-        {
-            get
-            {
-                return m_BulletSoundId;
-            }
-        }
+        public int BulletSoundId => bulletSoundId;
     }
 }

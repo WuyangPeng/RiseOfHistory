@@ -1,47 +1,32 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework.DataTable;
-using System;
+﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Definition.Enum;
-using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityData
 {
     [Serializable]
     public class ThrusterData : AccessoryObjectData
     {
         [SerializeField]
-        private float m_Speed = 0f;
+        private float speed = 0f;
 
         public ThrusterData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            IDataTable<DRThruster> dtThruster = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRThruster>();
-            DRThruster drThruster = dtThruster.GetDataRow(TypeId);
+            var dtThruster = Base.GameEntry.DataTable.GetDataTable<DRThruster>();
+            var drThruster = dtThruster.GetDataRow(TypeId);
             if (drThruster == null)
             {
                 return;
             }
 
-            m_Speed = drThruster.Speed;
+            speed = drThruster.Speed;
         }
 
         /// <summary>
         /// 速度。
         /// </summary>
-        public float Speed
-        {
-            get
-            {
-                return m_Speed;
-            }
-        }
+        public float Speed => speed;
     }
 }

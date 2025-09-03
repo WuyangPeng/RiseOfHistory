@@ -140,7 +140,7 @@ namespace RiseOfHistory
 
         public override ImpactData GetImpactData()
         {
-            return new ImpactData(m_AircraftData.Camp, m_AircraftData.HP, 0, m_AircraftData.Defense);
+            return new ImpactData(m_AircraftData.Camp, m_AircraftData.Hp, 0, m_AircraftData.Defense);
         }
     }
 }

@@ -56,13 +56,13 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
             deadEffectId = drAircraft.DeadEffectId;
             deadSoundId = drAircraft.DeadSoundId;
 
-            HP = maxHp;
+            Hp = maxHp;
         }
 
         /// <summary>
         /// 最大生命。
         /// </summary>
-        public override int MaxHP => maxHp;
+        public override int MaxHp => maxHp;
 
         /// <summary>
         /// 防御。
@@ -155,9 +155,9 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
                 defense += data.Defense;
             }
 
-            if (HP > maxHp)
+            if (Hp > maxHp)
             {
-                HP = maxHp;
+                Hp = maxHp;
             }
         }
     }

@@ -1,63 +1,43 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System;
+﻿using System;
 using Game.Scripts.Main.Runtime.Definition.Enum;
-using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityData
 {
     [Serializable]
     public abstract class TargetableObjectData : EntityData
     {
         [SerializeField]
-        private CampType m_Camp = CampType.Unknown;
+        private CampType camp;
 
         [SerializeField]
-        private int m_HP = 0;
+        private int hp = 0;
 
-        public TargetableObjectData(int entityId, int typeId, CampType camp)
+        protected TargetableObjectData(int entityId, int typeId, CampType camp)
             : base(entityId, typeId)
         {
-            m_Camp = camp;
-            m_HP = 0;
+            this.camp = camp;
+            hp = 0;
         }
 
         /// <summary>
         /// 角色阵营。
         /// </summary>
-        public CampType Camp
-        {
-            get
-            {
-                return m_Camp;
-            }
-        }
+        public CampType Camp => camp;
 
         /// <summary>
         /// 当前生命。
         /// </summary>
-        public int HP
+        public int Hp
         {
-            get
-            {
-                return m_HP;
-            }
-            set
-            {
-                m_HP = value;
-            }
+            get => hp;
+            set => hp = value;
         }
 
         /// <summary>
         /// 最大生命。
         /// </summary>
-        public abstract int MaxHP
+        public abstract int MaxHp
         {
             get;
         }
@@ -65,12 +45,6 @@ namespace RiseOfHistory
         /// <summary>
         /// 生命百分比。
         /// </summary>
-        public float HPRatio
-        {
-            get
-            {
-                return MaxHP > 0 ? (float)HP / MaxHP : 0f;
-            }
-        }
+        public float HpRatio => MaxHp > 0 ? (float)Hp / MaxHp : 0f;
     }
 }

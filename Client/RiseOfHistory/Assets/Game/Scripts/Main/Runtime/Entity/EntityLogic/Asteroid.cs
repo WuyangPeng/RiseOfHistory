@@ -75,7 +75,7 @@ namespace RiseOfHistory
 
         public override ImpactData GetImpactData()
         {
-            return new ImpactData(m_AsteroidData.Camp, m_AsteroidData.HP, m_AsteroidData.Attack, 0);
+            return new ImpactData(m_AsteroidData.Camp, m_AsteroidData.Hp, m_AsteroidData.Attack, 0);
         }
     }
 }
