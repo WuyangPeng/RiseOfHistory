@@ -23,13 +23,7 @@ namespace __DATA_TABLE_NAME_SPACE__
         /// <summary>
         /// __DATA_TABLE_ID_COMMENT__
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return m_Id;
-            }
-        }
+        public override int Id => m_Id;
 
 __DATA_TABLE_PROPERTIES__
 

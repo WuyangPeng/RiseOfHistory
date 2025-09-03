@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-02 22:00:50.412
+// 生成时间：2025-09-03 09:56:25.252
 //------------------------------------------------------------
 
 using GameFramework;
@@ -23,13 +23,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取场景编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return m_Id;
-            }
-        }
+        public override int Id => m_Id;
 
         /// <summary>
         /// 获取资源名称。
