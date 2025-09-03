@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using Game.Scripts.Main.Runtime.Sound;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework.Localization;
 using UnityEngine;
 using UnityEngine.UI;

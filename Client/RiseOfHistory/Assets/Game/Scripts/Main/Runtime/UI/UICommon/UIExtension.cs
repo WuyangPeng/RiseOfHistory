@@ -8,6 +8,7 @@
 using System.Collections;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Procedure;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework.DataTable;
 using GameFramework.UI;
 using RiseOfHistory;

@@ -2,6 +2,7 @@
 using GameFramework.Event;
 using RiseOfHistory;
 using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 

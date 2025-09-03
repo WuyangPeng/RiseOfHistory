@@ -1,19 +1,12 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.Sound;
-using Game.Scripts.Main.Runtime.UI;
+using RiseOfHistory;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.UI.UICommon
 {
     public abstract class UGuiForm : UIFormLogic
     {
@@ -21,9 +14,9 @@ namespace RiseOfHistory
         private const float FadeTime = 0.3f;
 
         private static Font s_MainFont = null;
-        private Canvas m_CachedCanvas = null;
-        private CanvasGroup m_CanvasGroup = null;
-        private List<Canvas> m_CachedCanvasContainer = new List<Canvas>();
+        private Canvas cachedCanvas = null;
+        private CanvasGroup canvasGroup = null;
+        private readonly List<Canvas> cachedCanvasContainer = new List<Canvas>();
 
         public int OriginalDepth
         {
@@ -31,13 +24,7 @@ namespace RiseOfHistory
             private set;
         }
 
-        public int Depth
-        {
-            get
-            {
-                return m_CachedCanvas.sortingOrder;
-            }
-        }
+        public int Depth => cachedCanvas.sortingOrder;
 
         public void Close()
         {
@@ -50,7 +37,7 @@ namespace RiseOfHistory
 
             if (ignoreFade)
             {
-                Game.Scripts.Main.Runtime.Base.GameEntry.UI.CloseUIForm(this);
+                Base.GameEntry.UI.CloseUIForm(this);
             }
             else
             {
@@ -60,7 +47,7 @@ namespace RiseOfHistory
 
         public void PlayUISound(int uiSoundId)
         {
-            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlayUISound(uiSoundId);
+            Base.GameEntry.Sound.PlayUISound(uiSoundId);
         }
 
         public static void SetMainFont(Font mainFont)
@@ -74,150 +61,114 @@ namespace RiseOfHistory
             s_MainFont = mainFont;
         }
 
-#if UNITY_2017_3_OR_NEWER
         protected override void OnInit(object userData)
-#else
-        protected internal override void OnInit(object userData)
-#endif
         {
             base.OnInit(userData);
 
-            m_CachedCanvas = gameObject.GetOrAddComponent<Canvas>();
-            m_CachedCanvas.overrideSorting = true;
-            OriginalDepth = m_CachedCanvas.sortingOrder;
+            cachedCanvas = gameObject.GetOrAddComponent<Canvas>();
+            cachedCanvas.overrideSorting = true;
+            OriginalDepth = cachedCanvas.sortingOrder;
 
-            m_CanvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
+            canvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
 
-            RectTransform transform = GetComponent<RectTransform>();
-            transform.anchorMin = Vector2.zero;
-            transform.anchorMax = Vector2.one;
-            transform.anchoredPosition = Vector2.zero;
-            transform.sizeDelta = Vector2.zero;
+            var rectTransform = GetComponent<RectTransform>();
+            rectTransform.anchorMin = Vector2.zero;
+            rectTransform.anchorMax = Vector2.one;
+            rectTransform.anchoredPosition = Vector2.zero;
+            rectTransform.sizeDelta = Vector2.zero;
 
             gameObject.GetOrAddComponent<GraphicRaycaster>();
 
-            Text[] texts = GetComponentsInChildren<Text>(true);
-            for (int i = 0; i < texts.Length; i++)
+            var texts = GetComponentsInChildren<Text>(true);
+            foreach (var text in texts)
             {
-                texts[i].font = s_MainFont;
-                if (!string.IsNullOrEmpty(texts[i].text))
+                text.font = s_MainFont;
+                if (!string.IsNullOrEmpty(text.text))
                 {
-                    texts[i].text = Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString(texts[i].text);
+                    text.text = Base.GameEntry.Localization.GetString(text.text);
                 }
             }
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnRecycle()
-#else
-        protected internal override void OnRecycle()
-#endif
         {
             base.OnRecycle();
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnOpen(object userData)
-#else
-        protected internal override void OnOpen(object userData)
-#endif
         {
             base.OnOpen(userData);
 
-            m_CanvasGroup.alpha = 0f;
+            canvasGroup.alpha = 0f;
             StopAllCoroutines();
-            StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));
+            StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnClose(bool isShutdown, object userData)
-#else
-        protected internal override void OnClose(bool isShutdown, object userData)
-#endif
         {
             base.OnClose(isShutdown, userData);
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnPause()
-#else
-        protected internal override void OnPause()
-#endif
         {
             base.OnPause();
         }
 
-#if UNITY_2017_3_OR_NEWER
         protected override void OnResume()
-#else
-        protected internal override void OnResume()
-#endif
         {
             base.OnResume();
 
-            m_CanvasGroup.alpha = 0f;
+            canvasGroup.alpha = 0f;
             StopAllCoroutines();
-            StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));
+            StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnCover()
-#else
-        protected internal override void OnCover()
-#endif
         {
             base.OnCover();
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnReveal()
-#else
-        protected internal override void OnReveal()
-#endif
         {
             base.OnReveal();
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnRefocus(object userData)
-#else
-        protected internal override void OnRefocus(object userData)
-#endif
         {
             base.OnRefocus(userData);
         }
 
-#if UNITY_2017_3_OR_NEWER
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#else
-        protected internal override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-#endif
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
-#else
-        protected internal override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
-#endif
         {
-            int oldDepth = Depth;
+            var oldDepth = Depth;
             base.OnDepthChanged(uiGroupDepth, depthInUIGroup);
-            int deltaDepth = UGuiGroupHelper.DepthFactor * uiGroupDepth + DepthFactor * depthInUIGroup - oldDepth + OriginalDepth;
-            GetComponentsInChildren(true, m_CachedCanvasContainer);
-            for (int i = 0; i < m_CachedCanvasContainer.Count; i++)
+            var deltaDepth = UGuiGroupHelper.DepthFactor * uiGroupDepth + DepthFactor * depthInUIGroup - oldDepth + OriginalDepth;
+            GetComponentsInChildren(true, cachedCanvasContainer);
+            foreach (var container in cachedCanvasContainer)
             {
-                m_CachedCanvasContainer[i].sortingOrder += deltaDepth;
+                container.sortingOrder += deltaDepth;
             }
 
-            m_CachedCanvasContainer.Clear();
+            cachedCanvasContainer.Clear();
         }
 
         private IEnumerator CloseCo(float duration)
         {
-            yield return m_CanvasGroup.FadeToAlpha(0f, duration);
-            Game.Scripts.Main.Runtime.Base.GameEntry.UI.CloseUIForm(this);
+            yield return canvasGroup.FadeToAlpha(0f, duration);
+            Base.GameEntry.UI.CloseUIForm(this);
         }
     }
 }

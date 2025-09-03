@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework;
 using UnityEngine;
 using UnityEngine.UI;
