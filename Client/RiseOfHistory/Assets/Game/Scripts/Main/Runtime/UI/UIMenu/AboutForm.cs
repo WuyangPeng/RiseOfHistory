@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Game.Scripts.Main.Runtime.Sound;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;

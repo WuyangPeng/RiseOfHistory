@@ -1,6 +1,7 @@
 ﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
+using Game.Scripts.Main.Runtime.Sound;
 using GameFramework.Event;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
