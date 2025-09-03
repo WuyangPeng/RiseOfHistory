@@ -12,7 +12,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         [SerializeField]
         private EffectData effectData = null;
 
-        private float elapseSeconds = 0f;
+        private float mElapseSeconds = 0f;
 
 
         protected override void OnShow(object userData)
@@ -26,16 +26,16 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
                 return;
             }
 
-            elapseSeconds = 0f;
+            mElapseSeconds = 0f;
         }
 
 
-        protected override void OnUpdate(float aElapseSeconds, float realElapseSeconds)
+        protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-            base.OnUpdate(aElapseSeconds, realElapseSeconds);
+            base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            elapseSeconds += aElapseSeconds;
-            if (elapseSeconds >= effectData.KeepTime)
+            mElapseSeconds += elapseSeconds;
+            if (mElapseSeconds >= effectData.KeepTime)
             {
                 Base.GameEntry.Entity.HideEntity(this);
             }

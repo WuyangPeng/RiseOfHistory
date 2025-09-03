@@ -26,7 +26,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
         public WeaponData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            var dtWeapon = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRWeapon>();
+            var dtWeapon = Base.GameEntry.DataTable.GetDataTable<DRWeapon>();
             var drWeapon = dtWeapon.GetDataRow(TypeId);
             if (drWeapon == null)
             {

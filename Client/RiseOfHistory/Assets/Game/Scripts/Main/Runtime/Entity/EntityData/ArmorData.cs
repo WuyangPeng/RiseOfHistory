@@ -17,7 +17,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
         public ArmorData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)
         {
-            var dtArmor = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRArmor>();
+            var dtArmor = Base.GameEntry.DataTable.GetDataTable<DRArmor>();
             var drArmor = dtArmor.GetDataRow(TypeId);
             if (drArmor == null)
             {

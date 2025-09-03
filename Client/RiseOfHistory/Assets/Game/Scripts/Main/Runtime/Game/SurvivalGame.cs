@@ -1,47 +1,32 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.DataTable;
+﻿using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
 using GameFramework;
-using GameFramework.DataTable;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Game
 {
     public class SurvivalGame : GameBase
     {
-        private float m_ElapseSeconds = 0f;
+        private float mElapseSeconds = 0f;
 
-        public override GameMode GameMode
-        {
-            get
-            {
-                return GameMode.Survival;
-            }
-        }
+        public override GameMode GameMode => GameMode.Survival;
 
         public override void Update(float elapseSeconds, float realElapseSeconds)
         {
             base.Update(elapseSeconds, realElapseSeconds);
 
-            m_ElapseSeconds += elapseSeconds;
-            if (m_ElapseSeconds >= 1f)
+            mElapseSeconds += elapseSeconds;
+            if (mElapseSeconds < 1f) return;
+
+            mElapseSeconds = 0f;
+            var dtAsteroid = Base.GameEntry.DataTable.GetDataTable<DRAsteroid>();
+            var randomPositionX = SceneBackground.EnemySpawnBoundary.bounds.min.x + SceneBackground.EnemySpawnBoundary.bounds.size.x * (float)Utility.Random.GetRandomDouble();
+            var randomPositionZ = SceneBackground.EnemySpawnBoundary.bounds.min.z + SceneBackground.EnemySpawnBoundary.bounds.size.z * (float)Utility.Random.GetRandomDouble();
+            Base.GameEntry.Entity.ShowAsteroid(new AsteroidData(Base.GameEntry.Entity.GenerateSerialId(), 60000 + Utility.Random.GetRandom(dtAsteroid.Count))
             {
-                m_ElapseSeconds = 0f;
-                IDataTable<DRAsteroid> dtAsteroid = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRAsteroid>();
-                float randomPositionX = SceneBackground.EnemySpawnBoundary.bounds.min.x + SceneBackground.EnemySpawnBoundary.bounds.size.x * (float)Utility.Random.GetRandomDouble();
-                float randomPositionZ = SceneBackground.EnemySpawnBoundary.bounds.min.z + SceneBackground.EnemySpawnBoundary.bounds.size.z * (float)Utility.Random.GetRandomDouble();
-                Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowAsteroid(new AsteroidData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), 60000 + Utility.Random.GetRandom(dtAsteroid.Count))
-                {
-                    Position = new Vector3(randomPositionX, 0f, randomPositionZ),
-                });
-            }
+                Position = new Vector3(randomPositionX, 0f, randomPositionZ),
+            });
         }
     }
 }

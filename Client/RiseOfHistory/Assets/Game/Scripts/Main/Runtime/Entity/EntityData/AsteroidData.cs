@@ -30,7 +30,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
         public AsteroidData(int entityId, int typeId)
             : base(entityId, typeId, CampType.Neutral)
         {
-            var dtAsteroid = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DRAsteroid>();
+            var dtAsteroid = Base.GameEntry.DataTable.GetDataTable<DRAsteroid>();
             var drAsteroid = dtAsteroid.GetDataRow(TypeId);
             if (drAsteroid == null)
             {

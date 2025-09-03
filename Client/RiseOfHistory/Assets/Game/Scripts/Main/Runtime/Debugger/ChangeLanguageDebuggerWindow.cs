@@ -70,7 +70,7 @@ namespace Game.Scripts.Main.Runtime.Debugger
 
         private void SaveLanguage()
         {
-            Base.GameEntry.Setting.SetString(Constant.Setting.Language, Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language.ToString());
+            Base.GameEntry.Setting.SetString(Constant.Setting.Language, Base.GameEntry.Localization.Language.ToString());
             Base.GameEntry.Setting.Save();
             m_NeedRestart = true;
         }

@@ -1,18 +1,12 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Entity;
+﻿using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
 using Game.Scripts.Main.Runtime.Entity.EntityLogic;
 using GameFramework.Event;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Game
 {
     public abstract class GameBase
     {
@@ -37,8 +31,8 @@ namespace RiseOfHistory
 
         public virtual void Initialize()
         {
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
+            Base.GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+            Base.GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
 
             SceneBackground = Object.FindObjectOfType<ScrollableBackground>();
             if (SceneBackground == null)
@@ -48,7 +42,7 @@ namespace RiseOfHistory
             }
 
             SceneBackground.VisibleBoundary.gameObject.GetOrAddComponent<HideByBoundary>();
-            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowMyAircraft(new MyAircraftData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), 10000)
+            Base.GameEntry.Entity.ShowMyAircraft(new MyAircraftData(Base.GameEntry.Entity.GenerateSerialId(), 10000)
             {
                 Name = "My Aircraft",
                 Position = Vector3.zero,
@@ -60,22 +54,19 @@ namespace RiseOfHistory
 
         public virtual void Shutdown()
         {
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
-            Game.Scripts.Main.Runtime.Base.GameEntry.Event.Unsubscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
+            Base.GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+            Base.GameEntry.Event.Unsubscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
         }
 
         public virtual void Update(float elapseSeconds, float realElapseSeconds)
         {
-            if (m_MyAircraft != null && m_MyAircraft.IsDead)
-            {
-                GameOver = true;
-                return;
-            }
+            if (m_MyAircraft == null || !m_MyAircraft.IsDead) return;
+            GameOver = true;
         }
 
         protected virtual void OnShowEntitySuccess(object sender, GameEventArgs e)
         {
-            ShowEntitySuccessEventArgs ne = (ShowEntitySuccessEventArgs)e;
+            var ne = (ShowEntitySuccessEventArgs)e;
             if (ne.EntityLogicType == typeof(MyAircraft))
             {
                 m_MyAircraft = (MyAircraft)ne.Entity.Logic;
@@ -84,7 +75,7 @@ namespace RiseOfHistory
 
         protected virtual void OnShowEntityFailure(object sender, GameEventArgs e)
         {
-            ShowEntityFailureEventArgs ne = (ShowEntityFailureEventArgs)e;
+            var ne = (ShowEntityFailureEventArgs)e;
             Log.Warning("Show entity failure with error message '{0}'.", ne.ErrorMessage);
         }
     }
