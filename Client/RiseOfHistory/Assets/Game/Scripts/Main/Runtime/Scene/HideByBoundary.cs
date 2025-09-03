@@ -8,16 +8,15 @@ namespace Game.Scripts.Main.Runtime.Scene
     {
         private void OnTriggerExit(Collider other)
         {
-            GameObject go = other.gameObject;
-            Entity.EntityLogic.Entity entity = go.GetComponent<Entity.EntityLogic.Entity>();
-            if (entity == null)
+            var go = other.gameObject;
+            if (go.TryGetComponent<Entity.EntityLogic.Entity>(out var entity))
             {
-                Log.Warning("Unknown GameObject '{0}', you must use entity only.", go.name);
-                Destroy(go);
+                Base.GameEntry.Entity.HideEntity(entity);
                 return;
             }
 
-            global::Game.Scripts.Main.Runtime.Base.GameEntry.Entity.HideEntity(entity);
+            Log.Warning("Unknown GameObject '{0}', you must use entity only.", go.name);
+            Destroy(go);
         }
     }
 }
