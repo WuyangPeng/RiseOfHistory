@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Definition.Enum;
+using Game.Scripts.Main.Runtime.Entity;
 using UnityEngine;
 
 namespace RiseOfHistory

@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using Game.Scripts.Main.Runtime.Definition.DataStruct;
+using Game.Scripts.Main.Runtime.Entity;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 

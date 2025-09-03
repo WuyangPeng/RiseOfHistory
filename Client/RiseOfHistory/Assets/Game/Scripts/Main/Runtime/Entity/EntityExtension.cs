@@ -1,16 +1,10 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework.DataTable;
-using System;
+﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
+using GameFramework.DataTable;
+using RiseOfHistory;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity
 {
     public static class EntityExtension
     {
@@ -20,65 +14,65 @@ namespace RiseOfHistory
         // 负值用于本地生成的临时实体（如特效、FakeObject等）
         private static int s_SerialId = 0;
 
-        public static Entity GetGameEntity(this EntityComponent entityComponent, int entityId)
+        public static RiseOfHistory.Entity GetGameEntity(this EntityComponent entityComponent, int entityId)
         {
-            UnityGameFramework.Runtime.Entity entity = entityComponent.GetEntity(entityId);
+            var entity = entityComponent.GetEntity(entityId);
             if (entity == null)
             {
                 return null;
             }
 
-            return (Entity)entity.Logic;
+            return (RiseOfHistory.Entity)entity.Logic;
         }
 
-        public static void HideEntity(this EntityComponent entityComponent, Entity entity)
+        public static void HideEntity(this EntityComponent entityComponent, RiseOfHistory.Entity entity)
         {
             entityComponent.HideEntity(entity.Entity);
         }
 
-        public static void AttachEntity(this EntityComponent entityComponent, Entity entity, int ownerId, string parentTransformPath = null, object userData = null)
+        public static void AttachEntity(this EntityComponent entityComponent, RiseOfHistory.Entity entity, int ownerId, string parentTransformPath = null, object userData = null)
         {
             entityComponent.AttachEntity(entity.Entity, ownerId, parentTransformPath, userData);
         }
 
         public static void ShowMyAircraft(this EntityComponent entityComponent, MyAircraftData data)
         {
-            entityComponent.ShowEntity(typeof(MyAircraft), "Aircraft", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.MyAircraftAsset, data);
+            entityComponent.ShowEntity(typeof(MyAircraft), "Aircraft", Definition.Constant.Constant.AssetPriority.MyAircraftAsset, data);
         }
 
         public static void ShowAircraft(this EntityComponent entityComponent, AircraftData data)
         {
-            entityComponent.ShowEntity(typeof(Aircraft), "Aircraft", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.AircraftAsset, data);
+            entityComponent.ShowEntity(typeof(Aircraft), "Aircraft", Definition.Constant.Constant.AssetPriority.AircraftAsset, data);
         }
 
         public static void ShowThruster(this EntityComponent entityComponent, ThrusterData data)
         {
-            entityComponent.ShowEntity(typeof(Thruster), "Thruster", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.ThrusterAsset, data);
+            entityComponent.ShowEntity(typeof(Thruster), "Thruster", Definition.Constant.Constant.AssetPriority.ThrusterAsset, data);
         }
 
         public static void ShowWeapon(this EntityComponent entityComponent, WeaponData data)
         {
-            entityComponent.ShowEntity(typeof(Weapon), "Weapon", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.WeaponAsset, data);
+            entityComponent.ShowEntity(typeof(Weapon), "Weapon", Definition.Constant.Constant.AssetPriority.WeaponAsset, data);
         }
 
         public static void ShowArmor(this EntityComponent entityComponent, ArmorData data)
         {
-            entityComponent.ShowEntity(typeof(Armor), "Armor", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.ArmorAsset, data);
+            entityComponent.ShowEntity(typeof(Armor), "Armor", Definition.Constant.Constant.AssetPriority.ArmorAsset, data);
         }
 
-        public static void ShowBullet(this EntityComponent entityCompoennt, BulletData data)
+        public static void ShowBullet(this EntityComponent entityComponent, BulletData data)
         {
-            entityCompoennt.ShowEntity(typeof(Bullet), "Bullet", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.BulletAsset, data);
+            entityComponent.ShowEntity(typeof(Bullet), "Bullet", Definition.Constant.Constant.AssetPriority.BulletAsset, data);
         }
 
-        public static void ShowAsteroid(this EntityComponent entityCompoennt, AsteroidData data)
+        public static void ShowAsteroid(this EntityComponent entityComponent, AsteroidData data)
         {
-            entityCompoennt.ShowEntity(typeof(Asteroid), "Asteroid", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.AsteroiAsset, data);
+            entityComponent.ShowEntity(typeof(Asteroid), "Asteroid", Definition.Constant.Constant.AssetPriority.AsteroiAsset, data);
         }
 
         public static void ShowEffect(this EntityComponent entityComponent, EffectData data)
         {
-            entityComponent.ShowEntity(typeof(Effect), "Effect", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.EffectAsset, data);
+            entityComponent.ShowEntity(typeof(Effect), "Effect", Definition.Constant.Constant.AssetPriority.EffectAsset, data);
         }
 
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
@@ -89,8 +83,8 @@ namespace RiseOfHistory
                 return;
             }
 
-            IDataTable<DREntity> dtEntity = Game.Scripts.Main.Runtime.Base.GameEntry.DataTable.GetDataTable<DREntity>();
-            DREntity drEntity = dtEntity.GetDataRow(data.TypeId);
+            var dtEntity = Base.GameEntry.DataTable.GetDataTable<DREntity>();
+            var drEntity = dtEntity.GetDataRow(data.TypeId);
             if (drEntity == null)
             {
                 Log.Warning("Can not load entity id '{0}' from data table.", data.TypeId.ToString());
