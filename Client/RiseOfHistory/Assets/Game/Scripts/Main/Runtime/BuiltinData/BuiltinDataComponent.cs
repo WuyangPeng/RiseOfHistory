@@ -1,11 +1,4 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework;
+﻿using GameFramework;
 using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -15,27 +8,27 @@ namespace Game.Scripts.Main.Runtime.BuiltinData
     public class BuiltinDataComponent : GameFrameworkComponent
     {
         [SerializeField]
-        private TextAsset m_BuildInfoTextAsset = null;
+        private TextAsset buildInfoTextAsset = null;
 
         [SerializeField]
-        private TextAsset m_DefaultDictionaryTextAsset = null;
+        private TextAsset defaultDictionaryTextAsset = null;
 
         [SerializeField]
-        private UpdateResourceForm m_UpdateResourceFormTemplate = null;
+        private UpdateResourceForm updateResourceFormTemplate = null;
 
         public BuildInfo BuildInfo { get; private set; } = null;
 
-        public UpdateResourceForm UpdateResourceFormTemplate => m_UpdateResourceFormTemplate;
+        public UpdateResourceForm UpdateResourceFormTemplate => updateResourceFormTemplate;
 
         public void InitBuildInfo()
         {
-            if (m_BuildInfoTextAsset == null || string.IsNullOrEmpty(m_BuildInfoTextAsset.text))
+            if (buildInfoTextAsset == null || string.IsNullOrEmpty(buildInfoTextAsset.text))
             {
                 Log.Info("Build info can not be found or empty.");
                 return;
             }
 
-            BuildInfo = Utility.Json.ToObject<BuildInfo>(m_BuildInfoTextAsset.text);
+            BuildInfo = Utility.Json.ToObject<BuildInfo>(buildInfoTextAsset.text);
             if (BuildInfo != null) return;
             Log.Warning("Parse build info failure.");
 
@@ -43,13 +36,13 @@ namespace Game.Scripts.Main.Runtime.BuiltinData
 
         public void InitDefaultDictionary()
         {
-            if (m_DefaultDictionaryTextAsset == null || string.IsNullOrEmpty(m_DefaultDictionaryTextAsset.text))
+            if (defaultDictionaryTextAsset == null || string.IsNullOrEmpty(defaultDictionaryTextAsset.text))
             {
                 Log.Info("Default dictionary can not be found or empty.");
                 return;
             }
 
-            if (Base.GameEntry.Localization.ParseData(m_DefaultDictionaryTextAsset.text)) return;
+            if (Base.GameEntry.Localization.ParseData(defaultDictionaryTextAsset.text)) return;
             Log.Warning("Parse default dictionary failure.");
         }
     }
