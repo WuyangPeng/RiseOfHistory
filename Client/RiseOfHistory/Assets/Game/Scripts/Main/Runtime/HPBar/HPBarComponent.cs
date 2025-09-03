@@ -10,13 +10,13 @@ namespace Game.Scripts.Main.Runtime.HPBar
     public class HPBarComponent : GameFrameworkComponent
     {
         [SerializeField]
-        private HPBarItem m_HPBarItemTemplate = null;
+        private HPBarItem hpBarItemTemplate = null;
 
         [SerializeField]
-        private Transform m_HPBarInstanceRoot = null;
+        private Transform hpBarInstanceRoot = null;
 
         [SerializeField]
-        private int m_InstancePoolCapacity = 16;
+        private int instancePoolCapacity = 16;
 
         private IObjectPool<HpBarItemObject> hpBarItemObjectPool = null;
         private List<HPBarItem> activeHpBarItems = null;
@@ -24,14 +24,14 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
         private void Start()
         {
-            if (m_HPBarInstanceRoot == null)
+            if (hpBarInstanceRoot == null)
             {
                 Log.Error("You must set HP bar instance root first.");
                 return;
             }
 
-            cachedCanvas = m_HPBarInstanceRoot.GetComponent<Canvas>();
-            hpBarItemObjectPool = Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HpBarItemObject>("HPBarItem", m_InstancePoolCapacity);
+            cachedCanvas = hpBarInstanceRoot.GetComponent<Canvas>();
+            hpBarItemObjectPool = Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HpBarItemObject>("HPBarItem", instancePoolCapacity);
             activeHpBarItems = new List<HPBarItem>();
         }
 
@@ -89,9 +89,9 @@ namespace Game.Scripts.Main.Runtime.HPBar
             }
             else
             {
-                hpBarItem = Instantiate(m_HPBarItemTemplate);
+                hpBarItem = Instantiate(hpBarItemTemplate);
                 var itemTransform = hpBarItem.GetComponent<Transform>();
-                itemTransform.SetParent(m_HPBarInstanceRoot);
+                itemTransform.SetParent(hpBarInstanceRoot);
                 itemTransform.localScale = Vector3.one;
                 hpBarItemObjectPool.Register(HpBarItemObject.Create(hpBarItem), true);
             }
