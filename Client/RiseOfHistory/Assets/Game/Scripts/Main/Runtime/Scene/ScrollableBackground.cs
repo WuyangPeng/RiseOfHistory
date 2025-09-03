@@ -1,13 +1,6 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
+﻿using UnityEngine;
 
-using UnityEngine;
-
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Scene
 {
     public class ScrollableBackground : MonoBehaviour
     {
@@ -37,32 +30,14 @@ namespace RiseOfHistory
 
         private void Update()
         {
-            float newPosition = Mathf.Repeat(Time.time * m_ScrollSpeed, m_TileSize);
+            var newPosition = Mathf.Repeat(Time.time * m_ScrollSpeed, m_TileSize);
             m_CachedTransform.position = m_StartPosition + Vector3.forward * newPosition;
         }
 
-        public BoxCollider VisibleBoundary
-        {
-            get
-            {
-                return m_VisibleBoundary;
-            }
-        }
+        public BoxCollider VisibleBoundary => m_VisibleBoundary;
 
-        public BoxCollider PlayerMoveBoundary
-        {
-            get
-            {
-                return m_PlayerMoveBoundary;
-            }
-        }
+        public BoxCollider PlayerMoveBoundary => m_PlayerMoveBoundary;
 
-        public BoxCollider EnemySpawnBoundary
-        {
-            get
-            {
-                return m_EnemySpawnBoundary;
-            }
-        }
+        public BoxCollider EnemySpawnBoundary => m_EnemySpawnBoundary;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Game.Scripts.Main.Runtime.Entity.EntityData;
+using Game.Scripts.Main.Runtime.Scene;
 using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
