@@ -1,15 +1,8 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.UI.UICommon
 {
     /// <summary>
     /// uGUI 界面组辅助器。
@@ -43,11 +36,11 @@ namespace RiseOfHistory
             m_CachedCanvas.overrideSorting = true;
             m_CachedCanvas.sortingOrder = DepthFactor * m_Depth;
 
-            RectTransform transform = GetComponent<RectTransform>();
-            transform.anchorMin = Vector2.zero;
-            transform.anchorMax = Vector2.one;
-            transform.anchoredPosition = Vector2.zero;
-            transform.sizeDelta = Vector2.zero;
+            var rectTransform = GetComponent<RectTransform>();
+            rectTransform.anchorMin = Vector2.zero;
+            rectTransform.anchorMax = Vector2.one;
+            rectTransform.anchoredPosition = Vector2.zero;
+            rectTransform.sizeDelta = Vector2.zero;
         }
     }
 }

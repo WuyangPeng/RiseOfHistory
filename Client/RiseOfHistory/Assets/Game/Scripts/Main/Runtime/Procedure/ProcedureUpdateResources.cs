@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.Main.Runtime.UI;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework;
 using GameFramework.Event;
 using RiseOfHistory;

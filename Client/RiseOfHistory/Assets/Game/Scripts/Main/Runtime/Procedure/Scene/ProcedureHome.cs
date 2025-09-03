@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.Form;
 using Game.Scripts.Main.Runtime.Game;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
