@@ -25,7 +25,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
             var toHpRatio = targetableObjectData.HpRatio;
             if (fromHpRatio > toHpRatio)
             {
-                Base.GameEntry.HpBar.ShowHPBar(this, fromHpRatio, toHpRatio);
+                Base.GameEntry.HpBar.ShowHpBar(this, fromHpRatio, toHpRatio);
             }
 
             if (targetableObjectData.Hp <= 0)
