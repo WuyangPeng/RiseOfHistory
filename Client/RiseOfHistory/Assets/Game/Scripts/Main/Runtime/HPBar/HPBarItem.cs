@@ -1,18 +1,10 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.Collections;
+﻿using System.Collections;
 using Game.Scripts.Main.Runtime.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
-using Entity = Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.HPBar
 {
     public class HPBarItem : MonoBehaviour
     {
@@ -26,18 +18,11 @@ namespace RiseOfHistory
         private Canvas m_ParentCanvas = null;
         private RectTransform m_CachedTransform = null;
         private CanvasGroup m_CachedCanvasGroup = null;
-        private Entity m_Owner = null;
         private int m_OwnerId = 0;
 
-        public Entity Owner
-        {
-            get
-            {
-                return m_Owner;
-            }
-        }
+        public Entity.EntityLogic.Entity Owner { get; private set; } = null;
 
-        public void Init(Entity owner, Canvas parentCanvas, float fromHPRatio, float toHPRatio)
+        public void Init(Entity.EntityLogic.Entity owner, Canvas parentCanvas, float fromHPRatio, float toHPRatio)
         {
             if (owner == null)
             {
@@ -51,10 +36,10 @@ namespace RiseOfHistory
             StopAllCoroutines();
 
             m_CachedCanvasGroup.alpha = 1f;
-            if (m_Owner != owner || m_OwnerId != owner.Id)
+            if (Owner != owner || m_OwnerId != owner.Id)
             {
                 m_HPBar.value = fromHPRatio;
-                m_Owner = owner;
+                Owner = owner;
                 m_OwnerId = owner.Id;
             }
 
@@ -70,17 +55,14 @@ namespace RiseOfHistory
                 return false;
             }
 
-            if (m_Owner != null && Owner.Available && Owner.Id == m_OwnerId)
-            {
-                Vector3 worldPosition = m_Owner.CachedTransform.position + Vector3.forward;
-                Vector3 screenPosition = Game.Scripts.Main.Runtime.Base.GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
+            if (Owner == null || !Owner.Available || Owner.Id != m_OwnerId) return true;
+            var worldPosition = Owner.CachedTransform.position + Vector3.forward;
+            var screenPosition = Base.GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
 
-                Vector2 position;
-                if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)m_ParentCanvas.transform, screenPosition,
-                    m_ParentCanvas.worldCamera, out position))
-                {
-                    m_CachedTransform.localPosition = position;
-                }
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)m_ParentCanvas.transform, screenPosition,
+                    m_ParentCanvas.worldCamera, out var position))
+            {
+                m_CachedTransform.localPosition = position;
             }
 
             return true;
@@ -91,7 +73,7 @@ namespace RiseOfHistory
             StopAllCoroutines();
             m_CachedCanvasGroup.alpha = 1f;
             m_HPBar.value = 1f;
-            m_Owner = null;
+            Owner = null;
             gameObject.SetActive(false);
         }
 
@@ -105,11 +87,8 @@ namespace RiseOfHistory
             }
 
             m_CachedCanvasGroup = GetComponent<CanvasGroup>();
-            if (m_CachedCanvasGroup == null)
-            {
-                Log.Error("CanvasGroup is invalid.");
-                return;
-            }
+            if (m_CachedCanvasGroup != null) return;
+            Log.Error("CanvasGroup is invalid.");
         }
 
         private IEnumerator HPBarCo(float value, float animationDuration, float keepDuration, float fadeOutDuration)
