@@ -1,14 +1,8 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework;
+﻿using GameFramework;
 using GameFramework.Network;
+using RiseOfHistory;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Network
 {
     public abstract class PacketHeaderBase : IPacketHeader, IReference
     {
@@ -29,13 +23,7 @@ namespace RiseOfHistory
             set;
         }
 
-        public bool IsValid
-        {
-            get
-            {
-                return PacketType != PacketType.Undefined && Id > 0 && PacketLength >= 0;
-            }
-        }
+        public bool IsValid => PacketType != PacketType.Undefined && Id > 0 && PacketLength >= 0;
 
         public void Clear()
         {

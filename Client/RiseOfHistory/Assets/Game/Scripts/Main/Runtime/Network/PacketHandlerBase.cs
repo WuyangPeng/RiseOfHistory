@@ -1,13 +1,6 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
+﻿using GameFramework.Network;
 
-using GameFramework.Network;
-
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Network
 {
     public abstract class PacketHandlerBase : IPacketHandler
     {
@@ -16,6 +9,6 @@ namespace RiseOfHistory
             get;
         }
 
-        public abstract void Handle(object sender, Packet packet);
+        public abstract void Handle(object sender, GameFramework.Network.Packet packet);
     }
 }
