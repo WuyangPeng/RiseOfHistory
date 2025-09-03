@@ -12,23 +12,23 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     public abstract class TargetableObject : Entity
     {
         [SerializeField]
-        private TargetableObjectData m_TargetableObjectData = null;
+        private TargetableObjectData targetableObjectData = null;
 
-        public bool IsDead => m_TargetableObjectData.Hp <= 0;
+        public bool IsDead => targetableObjectData.Hp <= 0;
 
         public abstract ImpactData GetImpactData();
 
         public void ApplyDamage(Entity attacker, int damageHp)
         {
-            var fromHpRatio = m_TargetableObjectData.HpRatio;
-            m_TargetableObjectData.Hp -= damageHp;
-            var toHpRatio = m_TargetableObjectData.HpRatio;
+            var fromHpRatio = targetableObjectData.HpRatio;
+            targetableObjectData.Hp -= damageHp;
+            var toHpRatio = targetableObjectData.HpRatio;
             if (fromHpRatio > toHpRatio)
             {
                 Base.GameEntry.HpBar.ShowHPBar(this, fromHpRatio, toHpRatio);
             }
 
-            if (m_TargetableObjectData.Hp <= 0)
+            if (targetableObjectData.Hp <= 0)
             {
                 OnDead(attacker);
             }
@@ -46,8 +46,8 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         {
             base.OnShow(userData);
 
-            m_TargetableObjectData = userData as TargetableObjectData;
-            if (m_TargetableObjectData != null) return;
+            targetableObjectData = userData as TargetableObjectData;
+            if (targetableObjectData != null) return;
             Log.Error("Targetable object data is invalid.");
         }
 
@@ -58,13 +58,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other == null || other.gameObject == null)
-            {
-                return;
-            }
-
-            var entity = other.gameObject.GetComponent<Entity>();
-            if (entity == null)
+            if (!other.gameObject.TryGetComponent<Entity>(out var entity))
             {
                 return;
             }

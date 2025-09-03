@@ -1,19 +1,9 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Entity;
-using Game.Scripts.Main.Runtime.Entity.EntityData;
+﻿using Game.Scripts.Main.Runtime.Entity.EntityData;
 using GameFramework;
-using Plugins.GameFramework.Scripts.Runtime.Entity;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using Entity = Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     /// <summary>
     /// 推进器类。
@@ -23,40 +13,31 @@ namespace RiseOfHistory
         private const string AttachPoint = "Thruster Point";
 
         [SerializeField]
-        private ThrusterData m_ThrusterData = null;
+        private ThrusterData thrusterData = null;
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnInit(object userData)
-#else
-        protected internal override void OnInit(object userData)
-#endif
         {
             base.OnInit(userData);
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnShow(object userData)
-#else
-        protected internal override void OnShow(object userData)
-#endif
         {
             base.OnShow(userData);
 
-            m_ThrusterData = userData as ThrusterData;
-            if (m_ThrusterData == null)
+            thrusterData = userData as ThrusterData;
+            if (thrusterData == null)
             {
                 Log.Error("Thruster data is invalid.");
                 return;
             }
 
-            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.AttachEntity(this, m_ThrusterData.OwnerId, AttachPoint);
+            Base.GameEntry.Entity.AttachEntity(this, thrusterData.OwnerId, AttachPoint);
         }
 
-#if UNITY_2017_3_OR_NEWER
-        protected override void OnAttachTo(EntityLogic parentEntity, Transform parentTransform, object userData)
-#else
-        protected internal override void OnAttachTo(EntityLogic parentEntity, Transform parentTransform, object userData)
-#endif
+
+        protected override void OnAttachTo(Plugins.GameFramework.Scripts.Runtime.Entity.EntityLogic parentEntity, Transform parentTransform, object userData)
         {
             base.OnAttachTo(parentEntity, parentTransform, userData);
 

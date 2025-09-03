@@ -1,63 +1,46 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using Game.Scripts.Main.Runtime.Entity;
-using Game.Scripts.Main.Runtime.Entity.EntityData;
+﻿using Game.Scripts.Main.Runtime.Entity.EntityData;
 using GameFramework;
-using Plugins.GameFramework.Scripts.Runtime.Entity;
+using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     /// <summary>
     /// 武器类。
     /// </summary>
-    public class Weapon : Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity
+    public class Weapon : Entity
     {
         private const string AttachPoint = "Weapon Point";
 
         [SerializeField]
-        private WeaponData m_WeaponData = null;
+        private WeaponData weaponData = null;
 
-        private float m_NextAttackTime = 0f;
+        private float nextAttackTime = 0f;
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnInit(object userData)
-#else
-        protected internal override void OnInit(object userData)
-#endif
         {
             base.OnInit(userData);
         }
 
-#if UNITY_2017_3_OR_NEWER
+
         protected override void OnShow(object userData)
-#else
-        protected internal override void OnShow(object userData)
-#endif
         {
             base.OnShow(userData);
 
-            m_WeaponData = userData as WeaponData;
-            if (m_WeaponData == null)
+            weaponData = userData as WeaponData;
+            if (weaponData == null)
             {
                 Log.Error("Weapon data is invalid.");
                 return;
             }
 
-            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.AttachEntity(Entity, m_WeaponData.OwnerId, AttachPoint);
+            Base.GameEntry.Entity.AttachEntity(Entity, weaponData.OwnerId, AttachPoint);
         }
 
-#if UNITY_2017_3_OR_NEWER
-        protected override void OnAttachTo(EntityLogic parentEntity, Transform parentTransform, object userData)
-#else
-        protected internal override void OnAttachTo(EntityLogic parentEntity, Transform parentTransform, object userData)
-#endif
+
+        protected override void OnAttachTo(Plugins.GameFramework.Scripts.Runtime.Entity.EntityLogic parentEntity, Transform parentTransform, object userData)
         {
             base.OnAttachTo(parentEntity, parentTransform, userData);
 
@@ -67,17 +50,17 @@ namespace RiseOfHistory
 
         public void TryAttack()
         {
-            if (Time.time < m_NextAttackTime)
+            if (Time.time < nextAttackTime)
             {
                 return;
             }
 
-            m_NextAttackTime = Time.time + m_WeaponData.AttackInterval;
-            Game.Scripts.Main.Runtime.Base.GameEntry.Entity.ShowBullet(new BulletData(Game.Scripts.Main.Runtime.Base.GameEntry.Entity.GenerateSerialId(), m_WeaponData.BulletId, m_WeaponData.OwnerId, m_WeaponData.OwnerCamp, m_WeaponData.Attack, m_WeaponData.BulletSpeed)
+            nextAttackTime = Time.time + weaponData.AttackInterval;
+            Base.GameEntry.Entity.ShowBullet(new BulletData(Base.GameEntry.Entity.GenerateSerialId(), weaponData.BulletId, weaponData.OwnerId, weaponData.OwnerCamp, weaponData.Attack, weaponData.BulletSpeed)
             {
                 Position = CachedTransform.position,
             });
-            Game.Scripts.Main.Runtime.Base.GameEntry.Sound.PlaySound(m_WeaponData.BulletSoundId);
+            Base.GameEntry.Sound.PlaySound(weaponData.BulletSoundId);
         }
     }
 }
