@@ -1,15 +1,9 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework.Debugger;
+﻿using GameFramework.Debugger;
 using GameFramework.Localization;
 using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 
 namespace Game.Scripts.Main.Runtime.Debugger
 {
@@ -36,11 +30,9 @@ namespace Game.Scripts.Main.Runtime.Debugger
 
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-            if (m_NeedRestart)
-            {
-                m_NeedRestart = false;
-                UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Restart);
-            }
+            if (!m_NeedRestart) return;
+            m_NeedRestart = false;
+            GameEntry.Shutdown(ShutdownType.Restart);
         }
 
         public void OnDraw()
@@ -59,17 +51,17 @@ namespace Game.Scripts.Main.Runtime.Debugger
             {
                 if (GUILayout.Button("Chinese Simplified", GUILayout.Height(30)))
                 {
-                    Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language = Language.ChineseSimplified;
+                    Base.GameEntry.Localization.Language = Language.ChineseSimplified;
                     SaveLanguage();
                 }
                 if (GUILayout.Button("Chinese Traditional", GUILayout.Height(30)))
                 {
-                    Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language = Language.ChineseTraditional;
+                    Base.GameEntry.Localization.Language = Language.ChineseTraditional;
                     SaveLanguage();
                 }
                 if (GUILayout.Button("English", GUILayout.Height(30)))
                 {
-                    Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language = Language.English;
+                    Base.GameEntry.Localization.Language = Language.English;
                     SaveLanguage();
                 }
             }
@@ -78,8 +70,8 @@ namespace Game.Scripts.Main.Runtime.Debugger
 
         private void SaveLanguage()
         {
-            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetString(Constant.Setting.Language, Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language.ToString());
-            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.Save();
+            Base.GameEntry.Setting.SetString(Constant.Setting.Language, Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language.ToString());
+            Base.GameEntry.Setting.Save();
             m_NeedRestart = true;
         }
     }

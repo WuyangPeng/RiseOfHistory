@@ -1,4 +1,5 @@
-﻿using GameFramework;
+﻿using Game.Scripts.Main.Runtime.Definition.DataStruct;
+using GameFramework;
 using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;

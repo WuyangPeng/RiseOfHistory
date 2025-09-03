@@ -36,7 +36,7 @@ namespace RiseOfHistory
             playSoundParams.VolumeInSoundGroup = 1f;
             playSoundParams.FadeInSeconds = FadeVolumeDuration;
             playSoundParams.SpatialBlend = 0f;
-            s_MusicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(drMusic.AssetName), "Music", Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
+            s_MusicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(drMusic.AssetName), "Music", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
             return s_MusicSerialId;
         }
 
@@ -66,7 +66,7 @@ namespace RiseOfHistory
             playSoundParams.Loop = drSound.Loop;
             playSoundParams.VolumeInSoundGroup = drSound.Volume;
             playSoundParams.SpatialBlend = drSound.SpatialBlend;
-            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
+            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
         }
 
         public static int? PlayUISound(this SoundComponent soundComponent, int uiSoundId, object userData = null)
@@ -84,7 +84,7 @@ namespace RiseOfHistory
             playSoundParams.Loop = false;
             playSoundParams.VolumeInSoundGroup = drUISound.Volume;
             playSoundParams.SpatialBlend = 0f;
-            return soundComponent.PlaySound(AssetUtility.GetUISoundAsset(drUISound.AssetName), "UISound", Constant.AssetPriority.UISoundAsset, playSoundParams, userData);
+            return soundComponent.PlaySound(AssetUtility.GetUISoundAsset(drUISound.AssetName), "UISound", Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.UISoundAsset, playSoundParams, userData);
         }
 
         public static bool IsMuted(this SoundComponent soundComponent, string soundGroupName)
@@ -122,7 +122,7 @@ namespace RiseOfHistory
 
             soundGroup.Mute = mute;
 
-            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetBool(Utility.Text.Format(Constant.Setting.SoundGroupMuted, soundGroupName), mute);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetBool(Utility.Text.Format(Game.Scripts.Main.Runtime.Definition.Constant.Constant.Setting.SoundGroupMuted, soundGroupName), mute);
             Game.Scripts.Main.Runtime.Base.GameEntry.Setting.Save();
         }
 
@@ -161,7 +161,7 @@ namespace RiseOfHistory
 
             soundGroup.Volume = volume;
 
-            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetFloat(Utility.Text.Format(Constant.Setting.SoundGroupVolume, soundGroupName), volume);
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetFloat(Utility.Text.Format(Game.Scripts.Main.Runtime.Definition.Constant.Constant.Setting.SoundGroupVolume, soundGroupName), volume);
             Game.Scripts.Main.Runtime.Base.GameEntry.Setting.Save();
         }
     }

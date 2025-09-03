@@ -8,6 +8,7 @@ using System.Reflection;
 using Game.Scripts.Main.Runtime.DataTable;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 using Entity = RiseOfHistory.Entity;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;

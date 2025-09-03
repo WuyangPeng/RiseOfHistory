@@ -134,7 +134,7 @@ namespace RiseOfHistory
                 return;
             }
 
-            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetString(Constant.Setting.Language, m_SelectedLanguage.ToString());
+            Game.Scripts.Main.Runtime.Base.GameEntry.Setting.SetString(Game.Scripts.Main.Runtime.Definition.Constant.Constant.Setting.Language, m_SelectedLanguage.ToString());
             Game.Scripts.Main.Runtime.Base.GameEntry.Setting.Save();
 
             Game.Scripts.Main.Runtime.Base.GameEntry.Sound.StopMusic();

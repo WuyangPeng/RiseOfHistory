@@ -7,6 +7,7 @@
 
 using GameFramework;
 using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 

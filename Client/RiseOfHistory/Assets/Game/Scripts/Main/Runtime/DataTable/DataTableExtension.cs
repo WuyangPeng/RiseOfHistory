@@ -2,6 +2,7 @@
 using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 
 namespace Game.Scripts.Main.Runtime.DataTable
 {

@@ -2,6 +2,7 @@
 using GameFramework.Localization;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
+using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 

@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -51,7 +52,7 @@ namespace RiseOfHistory
 #endif
         {
             base.OnInit(userData);
-            gameObject.SetLayerRecursively(Constant.Layer.TargetableObjectLayerId);
+            gameObject.SetLayerRecursively(Game.Scripts.Main.Runtime.Definition.Constant.Constant.Layer.TargetableObjectLayerId);
         }
 
 #if UNITY_2017_3_OR_NEWER
