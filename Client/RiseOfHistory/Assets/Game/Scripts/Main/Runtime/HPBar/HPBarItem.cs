@@ -15,10 +15,10 @@ namespace Game.Scripts.Main.Runtime.HPBar
         [SerializeField]
         private Slider m_HPBar = null;
 
-        private Canvas m_ParentCanvas = null;
-        private RectTransform m_CachedTransform = null;
-        private CanvasGroup m_CachedCanvasGroup = null;
-        private int m_OwnerId = 0;
+        private Canvas mParentCanvas = null;
+        private RectTransform cachedTransform = null;
+        private CanvasGroup cachedCanvasGroup = null;
+        private int ownerId = 0;
 
         public Entity.EntityLogic.Entity Owner { get; private set; } = null;
 
@@ -30,17 +30,17 @@ namespace Game.Scripts.Main.Runtime.HPBar
                 return;
             }
 
-            m_ParentCanvas = parentCanvas;
+            mParentCanvas = parentCanvas;
 
             gameObject.SetActive(true);
             StopAllCoroutines();
 
-            m_CachedCanvasGroup.alpha = 1f;
-            if (Owner != owner || m_OwnerId != owner.Id)
+            cachedCanvasGroup.alpha = 1f;
+            if (Owner != owner || ownerId != owner.Id)
             {
                 m_HPBar.value = fromHpRatio;
                 Owner = owner;
-                m_OwnerId = owner.Id;
+                ownerId = owner.Id;
             }
 
             Refresh();
@@ -50,19 +50,19 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
         public bool Refresh()
         {
-            if (m_CachedCanvasGroup.alpha <= 0f)
+            if (cachedCanvasGroup.alpha <= 0f)
             {
                 return false;
             }
 
-            if (Owner == null || !Owner.Available || Owner.Id != m_OwnerId) return true;
+            if (Owner == null || !Owner.Available || Owner.Id != ownerId) return true;
             var worldPosition = Owner.CachedTransform.position + Vector3.forward;
             var screenPosition = Base.GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
 
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)m_ParentCanvas.transform, screenPosition,
-                    m_ParentCanvas.worldCamera, out var position))
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)mParentCanvas.transform, screenPosition,
+                    mParentCanvas.worldCamera, out var position))
             {
-                m_CachedTransform.localPosition = position;
+                cachedTransform.localPosition = position;
             }
 
             return true;
@@ -71,7 +71,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
         public void Reset()
         {
             StopAllCoroutines();
-            m_CachedCanvasGroup.alpha = 1f;
+            cachedCanvasGroup.alpha = 1f;
             m_HPBar.value = 1f;
             Owner = null;
             gameObject.SetActive(false);
@@ -79,15 +79,15 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
         private void Awake()
         {
-            m_CachedTransform = GetComponent<RectTransform>();
-            if (m_CachedTransform == null)
+            cachedTransform = GetComponent<RectTransform>();
+            if (cachedTransform == null)
             {
                 Log.Error("RectTransform is invalid.");
                 return;
             }
 
-            m_CachedCanvasGroup = GetComponent<CanvasGroup>();
-            if (m_CachedCanvasGroup != null) return;
+            cachedCanvasGroup = GetComponent<CanvasGroup>();
+            if (cachedCanvasGroup != null) return;
             Log.Error("CanvasGroup is invalid.");
         }
 
@@ -95,7 +95,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
         {
             yield return m_HPBar.SmoothValue(value, animationDuration);
             yield return new WaitForSeconds(keepDuration);
-            yield return m_CachedCanvasGroup.FadeToAlpha(0f, fadeOutDuration);
+            yield return cachedCanvasGroup.FadeToAlpha(0f, fadeOutDuration);
         }
     }
 }
