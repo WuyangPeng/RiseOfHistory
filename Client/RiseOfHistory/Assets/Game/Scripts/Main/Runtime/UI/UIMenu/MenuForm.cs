@@ -1,13 +1,10 @@
-﻿using RiseOfHistory;
-using System;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
-using Game.Scripts.Main.Runtime.UI;
+﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace GameMain.Scripts.UI
+namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class MenuForm : UGuiForm
     {

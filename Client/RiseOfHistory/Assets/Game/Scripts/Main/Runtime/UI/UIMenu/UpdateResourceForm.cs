@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class UpdateResourceForm : MonoBehaviour
     {

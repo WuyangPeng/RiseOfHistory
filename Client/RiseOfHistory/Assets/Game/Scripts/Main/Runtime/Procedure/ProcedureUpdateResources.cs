@@ -2,6 +2,7 @@
 using System.Linq;
 using Game.Scripts.Main.Runtime.UI;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework;
 using GameFramework.Event;
 using RiseOfHistory;

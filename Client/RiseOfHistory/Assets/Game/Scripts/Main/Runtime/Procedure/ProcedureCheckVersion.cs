@@ -1,6 +1,7 @@
 ﻿using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.UI;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
