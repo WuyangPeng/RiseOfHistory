@@ -1,6 +1,6 @@
-using RiseOfHistory;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 
-namespace Game.Scripts.Main.Runtime.UI.UICommon
+namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class BottomForm : UGuiForm
     {

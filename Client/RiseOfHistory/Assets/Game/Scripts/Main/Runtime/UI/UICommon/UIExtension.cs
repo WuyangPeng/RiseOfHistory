@@ -79,7 +79,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             }
 
             var assetName = AssetUtility.GetUIFormAsset(drUIForm.AssetName);
-            UIForm uiForm = null;
+            UnityGameFramework.Runtime.UIForm uiForm = null;
             if (string.IsNullOrEmpty(uiGroupName))
             {
                 uiForm = uiComponent.GetUIForm(assetName);
@@ -97,7 +97,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 return null;
             }
 
-            uiForm = (UIForm)uiGroup.GetUIForm(assetName);
+            uiForm = (UnityGameFramework.Runtime.UIForm)uiGroup.GetUIForm(assetName);
             if (uiForm == null)
             {
                 return null;

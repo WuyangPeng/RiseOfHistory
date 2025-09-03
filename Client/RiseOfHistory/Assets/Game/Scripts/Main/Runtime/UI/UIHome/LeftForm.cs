@@ -1,11 +1,6 @@
-using RiseOfHistory;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 
-
-
-namespace Game.Scripts.Main.Runtime.UI.UICommon
+namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class LeftForm : UGuiForm
     {

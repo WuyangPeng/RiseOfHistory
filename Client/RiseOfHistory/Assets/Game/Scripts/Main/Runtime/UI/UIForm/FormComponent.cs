@@ -1,12 +1,10 @@
-﻿using Game.Scripts.Main.Runtime.UI;
-using GameFramework.Event;
-using RiseOfHistory;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using GameFramework.Event;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace Game.Scripts.Main.Runtime.Form
+namespace Game.Scripts.Main.Runtime.UI.UIForm
 {
     public class FormComponent
     {
