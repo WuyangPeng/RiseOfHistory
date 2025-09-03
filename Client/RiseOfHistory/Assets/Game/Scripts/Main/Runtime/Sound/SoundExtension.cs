@@ -1,6 +1,5 @@
 ﻿using Game.Scripts.Main.Runtime.DataTable;
 using GameFramework;
-using GameFramework.DataTable;
 using GameFramework.Sound;
 using RiseOfHistory;
 using UnityGameFramework.Runtime;
@@ -30,7 +29,7 @@ namespace Game.Scripts.Main.Runtime.Sound
             playSoundParams.VolumeInSoundGroup = 1f;
             playSoundParams.FadeInSeconds = FadeVolumeDuration;
             playSoundParams.SpatialBlend = 0f;
-            s_MusicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(drMusic.AssetName), "Music", global::Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
+            s_MusicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(drMusic.AssetName), "Music", Definition.Constant.Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
             return s_MusicSerialId;
         }
 
@@ -60,7 +59,7 @@ namespace Game.Scripts.Main.Runtime.Sound
             playSoundParams.Loop = drSound.Loop;
             playSoundParams.VolumeInSoundGroup = drSound.Volume;
             playSoundParams.SpatialBlend = drSound.SpatialBlend;
-            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", global::Game.Scripts.Main.Runtime.Definition.Constant.Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
+            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", Definition.Constant.Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
         }
 
         public static int? PlayUISound(this SoundComponent soundComponent, int uiSoundId, object userData = null)
