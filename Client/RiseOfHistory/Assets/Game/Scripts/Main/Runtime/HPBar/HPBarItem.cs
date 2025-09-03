@@ -22,7 +22,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
         public Entity.EntityLogic.Entity Owner { get; private set; } = null;
 
-        public void Init(Entity.EntityLogic.Entity owner, Canvas parentCanvas, float fromHPRatio, float toHPRatio)
+        public void Init(Entity.EntityLogic.Entity owner, Canvas parentCanvas, float fromHpRatio, float toHpRatio)
         {
             if (owner == null)
             {
@@ -38,14 +38,14 @@ namespace Game.Scripts.Main.Runtime.HPBar
             m_CachedCanvasGroup.alpha = 1f;
             if (Owner != owner || m_OwnerId != owner.Id)
             {
-                m_HPBar.value = fromHPRatio;
+                m_HPBar.value = fromHpRatio;
                 Owner = owner;
                 m_OwnerId = owner.Id;
             }
 
             Refresh();
 
-            StartCoroutine(HPBarCo(toHPRatio, AnimationSeconds, KeepSeconds, FadeOutSeconds));
+            StartCoroutine(HpBarCo(toHpRatio, AnimationSeconds, KeepSeconds, FadeOutSeconds));
         }
 
         public bool Refresh()
@@ -91,7 +91,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
             Log.Error("CanvasGroup is invalid.");
         }
 
-        private IEnumerator HPBarCo(float value, float animationDuration, float keepDuration, float fadeOutDuration)
+        private IEnumerator HpBarCo(float value, float animationDuration, float keepDuration, float fadeOutDuration)
         {
             yield return m_HPBar.SmoothValue(value, animationDuration);
             yield return new WaitForSeconds(keepDuration);
