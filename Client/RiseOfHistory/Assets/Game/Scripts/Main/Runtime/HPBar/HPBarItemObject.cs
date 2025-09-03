@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.HPBar
 {
-    public class HPBarItemObject : ObjectBase
+    public class HpBarItemObject : ObjectBase
     {
-        public static HPBarItemObject Create(object target)
+        public static HpBarItemObject Create(object target)
         {
-            var hpBarItemObject = ReferencePool.Acquire<HPBarItemObject>();
+            var hpBarItemObject = ReferencePool.Acquire<HpBarItemObject>();
             hpBarItemObject.Initialize(target);
             return hpBarItemObject;
         }

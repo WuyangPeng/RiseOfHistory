@@ -17,7 +17,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
         [SerializeField]
         private int m_InstancePoolCapacity = 16;
 
-        private IObjectPool<HPBarItemObject> m_HPBarItemObjectPool = null;
+        private IObjectPool<HpBarItemObject> m_HPBarItemObjectPool = null;
         private List<HPBarItem> m_ActiveHPBarItems = null;
         private Canvas m_CachedCanvas = null;
 
@@ -30,7 +30,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
             }
 
             m_CachedCanvas = m_HPBarInstanceRoot.GetComponent<Canvas>();
-            m_HPBarItemObjectPool = Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", m_InstancePoolCapacity);
+            m_HPBarItemObjectPool = Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HpBarItemObject>("HPBarItem", m_InstancePoolCapacity);
             m_ActiveHPBarItems = new List<HPBarItem>();
         }
 
@@ -105,7 +105,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
                 var transform = hpBarItem.GetComponent<Transform>();
                 transform.SetParent(m_HPBarInstanceRoot);
                 transform.localScale = Vector3.one;
-                m_HPBarItemObjectPool.Register(HPBarItemObject.Create(hpBarItem), true);
+                m_HPBarItemObjectPool.Register(HpBarItemObject.Create(hpBarItem), true);
             }
 
             return hpBarItem;
