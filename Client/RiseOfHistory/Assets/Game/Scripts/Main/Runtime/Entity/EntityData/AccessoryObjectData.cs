@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Scripts.Main.Runtime.Entity.EntityData
 {
     [Serializable]
-    public abstract class AccessoryObjectData : RiseOfHistory.EntityData
+    public abstract class AccessoryObjectData : EntityData
     {
         [SerializeField]
         private int ownerId = 0;

@@ -7,6 +7,7 @@
 
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Entity;
+using Game.Scripts.Main.Runtime.Entity.EntityData;
 using GameFramework;
 using GameFramework.DataTable;
 using UnityEngine;

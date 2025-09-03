@@ -1,71 +1,46 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System;
+﻿using System;
 using UnityEngine;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.Entity.EntityData
 {
     [Serializable]
     public abstract class EntityData
     {
         [SerializeField]
-        private int m_Id = 0;
+        private int id = 0;
 
         [SerializeField]
-        private int m_TypeId = 0;
+        private int typeId = 0;
 
         [SerializeField]
-        private Vector3 m_Position = Vector3.zero;
+        private Vector3 position = Vector3.zero;
 
         [SerializeField]
-        private Quaternion m_Rotation = Quaternion.identity;
+        private Quaternion rotation = Quaternion.identity;
 
-        public EntityData(int entityId, int typeId)
+        protected EntityData(int entityId, int typeId)
         {
-            m_Id = entityId;
-            m_TypeId = typeId;
+            id = entityId;
+            this.typeId = typeId;
         }
 
         /// <summary>
         /// 实体编号。
         /// </summary>
-        public int Id
-        {
-            get
-            {
-                return m_Id;
-            }
-        }
+        public int Id => id;
 
         /// <summary>
         /// 实体类型编号。
         /// </summary>
-        public int TypeId
-        {
-            get
-            {
-                return m_TypeId;
-            }
-        }
+        public int TypeId => typeId;
 
         /// <summary>
         /// 实体位置。
         /// </summary>
         public Vector3 Position
         {
-            get
-            {
-                return m_Position;
-            }
-            set
-            {
-                m_Position = value;
-            }
+            get => position;
+            set => position = value;
         }
 
         /// <summary>
@@ -73,14 +48,8 @@ namespace RiseOfHistory
         /// </summary>
         public Quaternion Rotation
         {
-            get
-            {
-                return m_Rotation;
-            }
-            set
-            {
-                m_Rotation = value;
-            }
+            get => rotation;
+            set => rotation = value;
         }
     }
 }

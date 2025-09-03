@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using Game.Scripts.Main.Runtime.Entity;
+using Game.Scripts.Main.Runtime.Entity.EntityData;
 using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;

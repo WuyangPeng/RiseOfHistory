@@ -75,7 +75,7 @@ namespace Game.Scripts.Main.Runtime.Entity
             entityComponent.ShowEntity(typeof(Effect), "Effect", Definition.Constant.Constant.AssetPriority.EffectAsset, data);
         }
 
-        private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, RiseOfHistory.EntityData data)
+        private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData.EntityData data)
         {
             if (data == null)
             {
