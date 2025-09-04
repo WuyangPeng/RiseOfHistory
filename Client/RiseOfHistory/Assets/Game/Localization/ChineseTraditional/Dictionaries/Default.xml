@@ -51,5 +51,9 @@
 		<String Key="Property.Perception.Description" Value="神识描述" />
 		<String Key="Property.Charm" Value="灵韵" />
 		<String Key="Property.Charm.Description" Value="灵韵描述" />
+		<String Key="Property.Luck" Value="气运" />
+		<String Key="Property.Luck.Description" Value="气运描述" />
+		<String Key="Property.Moral" Value="道心" />
+		<String Key="Property.Moral.Description" Value="道心描述" />
 	</Dictionary>
 </Dictionaries>
