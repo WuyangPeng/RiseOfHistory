@@ -2,6 +2,18 @@
 {
     public class UserData
     {
+        private SexType sexType;
 
+        private int age;
+
+        public UserData()
+        {
+            sexType = SexType.Male;
+        }
+
+        public UserData(SexType sexType)
+        {
+            this.sexType = sexType;
+        }
     }
 }

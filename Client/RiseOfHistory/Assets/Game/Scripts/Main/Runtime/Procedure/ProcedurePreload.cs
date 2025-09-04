@@ -31,6 +31,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "Weapon",
             "PropertyGroup",
             "Property",
+            "Spiritual",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();

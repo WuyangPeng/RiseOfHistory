@@ -6,5 +6,6 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
     public class UserModule : BaseModule
     {
         private UserData userData = new UserData();
+        private AttributeData attributeData = new AttributeData();
     }
 }

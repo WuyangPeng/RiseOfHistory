@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-04 14:53:13.102
+// 生成时间：2025-09-04 14:53:13.140
 //------------------------------------------------------------
 
 using GameFramework;
@@ -14,30 +14,30 @@ using UnityGameFramework.Runtime;
 namespace Game.Scripts.Main.Runtime.DataTable
 {
     /// <summary>
-    /// 装甲表。
+    /// 灵根表。
     /// </summary>
-    public class DRArmor : DataRowBase
+    public class DRSpiritual : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取装甲编号。
+        /// 获取灵根组编号。
         /// </summary>
         public override int Id => m_Id;
 
         /// <summary>
-        /// 获取最大生命。
+        /// 获取名字。
         /// </summary>
-        public int MaxHP
+        public string Name
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取防御力。
+        /// 获取描述。
         /// </summary>
-        public int Defense
+        public string Description
         {
             get;
             private set;
@@ -55,8 +55,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
             index++;
             m_Id = int.Parse(columnStrings[index++]);
             index++;
-            MaxHP = int.Parse(columnStrings[index++]);
-            Defense = int.Parse(columnStrings[index++]);
+            Name = columnStrings[index++];
+            Description = columnStrings[index++];
 
             GeneratePropertyArray();
             return true;
@@ -69,8 +69,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
-                    MaxHP = binaryReader.Read7BitEncodedInt32();
-                    Defense = binaryReader.Read7BitEncodedInt32();
+                    Name = binaryReader.ReadString();
+                    Description = binaryReader.ReadString();
                 }
             }
 
