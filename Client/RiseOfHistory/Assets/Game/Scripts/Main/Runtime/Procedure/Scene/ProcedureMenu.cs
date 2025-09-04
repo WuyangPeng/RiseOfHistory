@@ -13,9 +13,15 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
     public class ProcedureMenu : ProcedureBase
     {
         private bool m_StartGame = false;
+        private bool m_LoadGame = false;
         private MenuForm m_MenuForm = null;
 
         public override bool UseNativeDialog => false;
+
+        public void LoadGame()
+        {
+            m_LoadGame = true;
+        }
 
         public void StartGame()
         {
@@ -29,6 +35,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
             m_StartGame = false;
+            m_LoadGame = false;
             GameEntry.UI.OpenUIForm(UIFormId.MenuForm, this);
         }
 
@@ -43,12 +50,22 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             m_MenuForm = null;
         }
 
+        private int GetNextSceneId()
+        {
+            if (m_LoadGame)
+            {
+                return GameEntry.Config.GetInt("Scene.Home");
+            }
+
+            return m_StartGame ? GameEntry.Config.GetInt("Scene.Create") : 0;
+        }
+
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!m_StartGame) return;
-            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Game"));
+            if (!m_StartGame && !m_LoadGame) return;
+            procedureOwner.SetData<VarInt32>("NextSceneId", GetNextSceneId());
             procedureOwner.SetData<VarByte>("GameMode", (byte)GameMode.Survival);
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }

@@ -20,7 +20,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         public void OnLoadButtonClick()
         {
-            m_ProcedureMenu.StartGame();
+            m_ProcedureMenu.LoadGame();
         }
 
         public void OnSettingButtonClick()
@@ -63,6 +63,6 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             m_ProcedureMenu = null;
 
             base.OnClose(isShutdown, userData);
-        } 
+        }
     }
 }
