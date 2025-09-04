@@ -55,5 +55,25 @@
 		<String Key="Property.Luck.Description" Value="气运描述" />
 		<String Key="Property.Moral" Value="道心" />
 		<String Key="Property.Moral.Description" Value="道心描述" />
+		<String Key="Spiritual.Gold" Value="金灵根" />
+		<String Key="Spiritual.Gold.Description" Value="金灵根描述" />
+		<String Key="Spiritual.Wood" Value="木灵根" />
+		<String Key="Spiritual.Wood.Description" Value="木灵根描述" />
+		<String Key="Spiritual.Water" Value="水灵根" />
+		<String Key="Spiritual.Water.Description" Value="水灵根描述" />
+		<String Key="Spiritual.Fire" Value="火灵根" />
+		<String Key="Spiritual.Fire.Description" Value="火灵根描述" />
+		<String Key="Spiritual.Soil" Value="土灵根" />
+		<String Key="Spiritual.Soil.Description" Value="土灵根描述" />
+		<String Key="Spiritual.Thunder" Value="雷灵根" />
+		<String Key="Spiritual.Thunder.Description" Value="雷灵根描述" />
+		<String Key="Spiritual.Wind" Value="风灵根" />
+		<String Key="Spiritual.Wind.Description" Value="风灵根描述" />
+		<String Key="Spiritual.Mountain" Value="山灵根" />
+		<String Key="Spiritual.Mountain.Description" Value="山灵根描述" />
+		<String Key="Spiritual.Sky" Value="天灵根" />
+		<String Key="Spiritual.Sky.Description" Value="天灵根描述" />
+		<String Key="Spiritual.Land" Value="地灵根" />
+		<String Key="Spiritual.Land.Description" Value="地灵根描述" />
 	</Dictionary>
 </Dictionaries>
