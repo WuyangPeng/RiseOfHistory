@@ -39,5 +39,17 @@
 		<String Key="PropertyGroup.Battle.Description" Value="战斗属性" />
 		<String Key="PropertyGroup.Internal" Value="内政属性" />
 		<String Key="PropertyGroup.Internal.Description" Value="内政属性" />
+		<String Key="Property.Strength" Value="力道" />
+		<String Key="Property.Strength.Description" Value="力道描述" />
+		<String Key="Property.Agile" Value="身法" />
+		<String Key="Property.Agile.Description" Value="身法描述" />
+		<String Key="Property.Constitution" Value="根骨" />
+		<String Key="Property.Constitution.Description" Value="根骨描述" />
+		<String Key="Property.Intelligence" Value="悟性" />
+		<String Key="Property.Intelligence.Description" Value="悟性描述" />
+		<String Key="Property.Perception" Value="神识" />
+		<String Key="Property.Perception.Description" Value="神识描述" />
+		<String Key="Property.Charm" Value="灵韵" />
+		<String Key="Property.Charm.Description" Value="灵韵描述" />
 	</Dictionary>
 </Dictionaries>
