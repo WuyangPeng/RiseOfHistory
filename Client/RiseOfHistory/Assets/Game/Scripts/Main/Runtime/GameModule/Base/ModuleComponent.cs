@@ -22,6 +22,26 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base
             }
         }
 
+
+        public void ResetModule()
+        {
+            if (modules.Count == 0)
+            {
+                InitModule();
+                return;
+            }
+
+            var types = modules.Select(baseModule => baseModule.Key).ToList();
+
+            modules.Clear();
+
+            foreach (var type in types)
+            {
+                var instance = (BaseModule)Activator.CreateInstance(type);
+                modules.Add(type, instance);
+            }
+        }
+
         public static List<Type> ScanWithAttribute()
         {
             var list = new List<Type>();

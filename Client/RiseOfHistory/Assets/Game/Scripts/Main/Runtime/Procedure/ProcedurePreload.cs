@@ -63,8 +63,6 @@ namespace Game.Scripts.Main.Runtime.Procedure
             GameEntry.Event.Unsubscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
             base.OnLeave(procedureOwner, isShutdown);
-
-            GameEntry.ModuleComponent.InitModule();
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)

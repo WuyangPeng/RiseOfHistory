@@ -37,6 +37,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             m_StartGame = false;
             m_LoadGame = false;
             GameEntry.UI.OpenUIForm(UIFormId.MenuForm, this);
+
+            GameEntry.ModuleComponent.ResetModule();
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
