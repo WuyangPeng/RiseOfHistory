@@ -29,6 +29,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "UIForm",
             "UISound",
             "Weapon",
+            "Property",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
