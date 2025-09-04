@@ -29,6 +29,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "UIForm",
             "UISound",
             "Weapon",
+            "PropertyGroup",
             "Property",
         };
 

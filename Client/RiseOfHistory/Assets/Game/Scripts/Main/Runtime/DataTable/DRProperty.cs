@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-04 12:40:53.922
+// 生成时间：2025-09-04 13:41:32.525
 //------------------------------------------------------------
 
 using GameFramework;
@@ -52,6 +52,15 @@ namespace Game.Scripts.Main.Runtime.DataTable
             private set;
         }
 
+        /// <summary>
+        /// 获取属性组。
+        /// </summary>
+        public int Group
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -67,6 +76,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
             Name = columnStrings[index++];
             InitValue = int.Parse(columnStrings[index++]);
             Description = columnStrings[index++];
+            Group = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -82,6 +92,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     Name = binaryReader.ReadString();
                     InitValue = binaryReader.Read7BitEncodedInt32();
                     Description = binaryReader.ReadString();
+                    Group = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

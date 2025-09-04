@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-04 13:41:32.506
+// 生成时间：2025-09-04 13:41:32.523
 //------------------------------------------------------------
 
 using GameFramework;
@@ -14,21 +14,30 @@ using UnityGameFramework.Runtime;
 namespace Game.Scripts.Main.Runtime.DataTable
 {
     /// <summary>
-    /// 音乐配置表。
+    /// 属性组表。
     /// </summary>
-    public class DRMusic : DataRowBase
+    public class DRPropertyGroup : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取音乐编号。
+        /// 获取战机编号。
         /// </summary>
         public override int Id => m_Id;
 
         /// <summary>
-        /// 获取资源名称。
+        /// 获取名字。
         /// </summary>
-        public string AssetName
+        public string Name
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取描述。
+        /// </summary>
+        public string Description
         {
             get;
             private set;
@@ -46,7 +55,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
             index++;
             m_Id = int.Parse(columnStrings[index++]);
             index++;
-            AssetName = columnStrings[index++];
+            Name = columnStrings[index++];
+            Description = columnStrings[index++];
 
             GeneratePropertyArray();
             return true;
@@ -59,7 +69,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
-                    AssetName = binaryReader.ReadString();
+                    Name = binaryReader.ReadString();
+                    Description = binaryReader.ReadString();
                 }
             }
 
