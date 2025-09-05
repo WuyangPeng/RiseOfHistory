@@ -8,33 +8,40 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
 {
     public class FormComponent
     {
-        private readonly List<UIFormId> uiFormId = new();
-        private readonly List<UGuiForm> uGuiForm = new();
+
+        private readonly Dictionary<UIFormId, UGuiForm> uGuiForm = new();
 
         public void OnEnter(ProcedureOwner procedureOwner)
         {
             GameEntry.Event.Subscribe(UnityGameFramework.Runtime.OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
-            foreach (var id in uiFormId)
+            foreach (var form in uGuiForm)
             {
-                GameEntry.UI.OpenUIForm(id, this);
+                GameEntry.UI.OpenUIForm(form.Key, new FormComponentUserData(this, form.Key));
             }
+        }
+
+        public void OpenUIForm(UIFormId form)
+        {
+            AddForm(form);
+            GameEntry.UI.OpenUIForm(form, new FormComponentUserData(this, form));
         }
 
         public void AddForm(UIFormId form)
         {
-            uiFormId.Add(form);
+            uGuiForm.Add(form, null);
         }
 
         private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
         {
             var ne = (UnityGameFramework.Runtime.OpenUIFormSuccessEventArgs)e;
-            if (ne.UserData != this)
+            var userData = (FormComponentUserData)ne.UserData;
+            if (userData.FormComponent != this)
             {
                 return;
             }
 
-            uGuiForm.Add((UGuiForm)ne.UIForm.Logic);
+            uGuiForm[userData.FormId] = (UGuiForm)ne.UIForm.Logic;
         }
 
         public void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -43,7 +50,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
 
             foreach (var form in uGuiForm)
             {
-                form.Close(true);
+                form.Value.Close(true);
             }
 
             uGuiForm.Clear();
