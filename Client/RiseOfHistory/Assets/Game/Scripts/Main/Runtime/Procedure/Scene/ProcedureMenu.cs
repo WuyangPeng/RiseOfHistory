@@ -92,30 +92,41 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             // 1. 真实可写目录
             string rootPath = Path.Combine(Application.persistentDataPath, "GameSaves.idx");
-           
+            IFileSystem fileSystems = null;
+            if (File.Exists(rootPath))
+            {
+                fileSystems = GameEntry.FileSystem.LoadFileSystem(
+                  rootPath,
+                  FileSystemAccess.ReadWrite);
+            }
+            else
+            {
+                // 2. 创建（返回 IFileSystem 实例，同时内部以 rootPath 当 key 注册）
+                fileSystems = GameEntry.FileSystem.CreateFileSystem(
+                  rootPath,
+                  FileSystemAccess.ReadWrite,
+                  1024, 1024);
+            }
 
-            // 2. 创建（返回 IFileSystem 实例，同时内部以 rootPath 当 key 注册）
-            IFileSystem fileSystems = GameEntry.FileSystem.CreateFileSystem(
-                rootPath,
-                FileSystemAccess.ReadWrite,
-                1024, 1024);
+
+
 
             // 3. 以后读取：必须再传同一条完整路径
-            fileSystems = GameEntry.FileSystem.GetFileSystem(rootPath);   // 注意：不是 "GameSaves"
+            // fileSystems = GameEntry.FileSystem.GetFileSystem(rootPath);   // 注意：不是 "GameSaves"
 
 
 
             for (var i = 0; i < SaveMaxCount; ++i)
             {
-                var bytes = fileSystems.ReadFile("GameSaves/" + i + "/SaveHead.dat");
+                var bytes = fileSystems.ReadFile("GameSaves/" + i);
 
                 if (bytes == null)
                 {
                     var data0 = new HeadData();
+                   
                     var json1 = Utility.Json.ToJson(data0);
                     byte[] bytes1 = System.Text.Encoding.UTF8.GetBytes(json1);
                     fileSystems.WriteFile("GameSaves/" + i, bytes1, 0);
-                    fileSystems.SaveAsFile("GameSaves/" + i, "GameSaves/" + i + "/SaveHead.dat");
 
                     return;
                 }
