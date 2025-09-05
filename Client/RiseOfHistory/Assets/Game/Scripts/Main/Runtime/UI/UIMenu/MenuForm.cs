@@ -15,10 +15,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         public void OnStartButtonClick()
         {
-            m_ProcedureMenu.StartGame();
+            GameEntry.UI.OpenUIForm(UIFormId.LoadForm);
         }
 
-        public void OnLoadButtonClick()
+        public void OnAchievementButtonClick()
         {
             m_ProcedureMenu.LoadGame();
         }

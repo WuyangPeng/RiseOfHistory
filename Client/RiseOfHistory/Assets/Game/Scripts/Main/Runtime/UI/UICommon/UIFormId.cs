@@ -27,25 +27,30 @@
         /// </summary>
         AboutForm = 102,
 
+        /// <summary>
+        /// 载入。
+        /// </summary>
+        LoadForm = 103,
+
 
         /// <summary>
         /// 下部菜单。
         /// </summary>
-        BottomForm = 103,
+        BottomForm = 203,
 
         /// <summary>
         /// 上部菜单。
         /// </summary>
-        UpperForm = 104,
+        UpperForm = 204,
 
         /// <summary>
         /// 左部菜单。
         /// </summary>
-        LeftForm = 105,
+        LeftForm = 205,
 
         /// <summary>
         /// 左部菜单。
         /// </summary>
-        RightForm = 106
+        RightForm = 206,
     }
 }

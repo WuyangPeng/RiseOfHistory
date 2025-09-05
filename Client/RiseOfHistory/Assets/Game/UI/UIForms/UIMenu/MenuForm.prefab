@@ -375,6 +375,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 11436932}
@@ -390,8 +400,18 @@ PrefabInstance:
       objectReference: {fileID: 11436932}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnSettingButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayUISound
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
@@ -718,6 +738,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 11436932}
@@ -733,8 +763,18 @@ PrefabInstance:
       objectReference: {fileID: 11436932}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnAboutButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayUISound
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
@@ -1072,6 +1112,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 11436932}
@@ -1087,8 +1137,18 @@ PrefabInstance:
       objectReference: {fileID: 11436932}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnLoadButtonClick
+      value: OnAchievementButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayUISound
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}

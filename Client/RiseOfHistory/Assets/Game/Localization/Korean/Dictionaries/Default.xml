@@ -11,6 +11,7 @@
 		<String Key="Menu.SettingButton" Value="설정" />
 		<String Key="Menu.AboutButton" Value="정보" />
 		<String Key="Menu.QuitButton" Value="아웃" />
+		<String Key="Menu.ReturnButton" Value="返回" />
 		<String Key="Dialog.ConfirmButton" Value="확인" />
 		<String Key="Dialog.CancelButton" Value="취소" />
 		<String Key="Dialog.OtherButton" Value="" />
