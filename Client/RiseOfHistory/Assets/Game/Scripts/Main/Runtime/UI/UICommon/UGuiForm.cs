@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.Sound;
-using RiseOfHistory;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -169,6 +168,11 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         {
             yield return canvasGroup.FadeToAlpha(0f, duration);
             Base.GameEntry.UI.CloseUIForm(this);
+        }
+
+        protected GameFramework.Procedure.ProcedureBase GetCurrentProcedure()
+        {
+            return Base.GameEntry.Procedure.CurrentProcedure;
         }
     }
 }
