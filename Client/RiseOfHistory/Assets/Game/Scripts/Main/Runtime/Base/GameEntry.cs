@@ -12,6 +12,7 @@ namespace Game.Scripts.Main.Runtime.Base
             GameEntry.InitBuiltinComponents();
             GameEntry.InitCustomComponents();
             GameEntry.InitModuleComponent();
+            GameEntry.InitFileSystemComponent();
         }
     }
 }
