@@ -10,12 +10,12 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         public void OnReturnButtonClick()
         {
             Close();
+            procedureMenu.RemoveUIForm(UIFormId.LoadForm);
         }
 
         public void OnEnterButtonClick(int index)
         {
             procedureMenu.StartGame();
-            Close(true);
         }
 
         protected override void OnOpen(object userData)

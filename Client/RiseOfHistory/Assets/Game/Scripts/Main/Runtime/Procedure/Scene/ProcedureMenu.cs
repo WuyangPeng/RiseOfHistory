@@ -1,5 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.Game;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using Game.Scripts.Main.Runtime.UI.UIForm;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework.Event;
 using UnityGameFramework.Runtime;
@@ -12,7 +13,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
     {
         private bool m_StartGame = false;
         private bool m_LoadGame = false;
-        private MenuForm m_MenuForm = null;
+        private readonly FormComponent formComponent = new FormComponent();
 
         public override bool UseNativeDialog => false;
 
@@ -26,15 +27,25 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             m_StartGame = true;
         }
 
+        public void OpenUIForm(UIFormId form)
+        {
+            formComponent.OpenUIForm(form);
+        }
+
+        public void RemoveUIForm(UIFormId form)
+        {
+            formComponent.RemoveUIForm(form);
+        }
+
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
 
-            GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-
             m_StartGame = false;
             m_LoadGame = false;
-            GameEntry.UI.OpenUIForm(UIFormId.MenuForm, this);
+
+            formComponent.AddForm(UIFormId.MenuForm);
+            formComponent.OnEnter(procedureOwner);
 
             GameEntry.ModuleComponent.ResetModule();
         }
@@ -43,11 +54,9 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnLeave(procedureOwner, isShutdown);
 
-            GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
-            if (m_MenuForm == null) return;
-            m_MenuForm.Close(true);
-            m_MenuForm = null;
+
+            formComponent.OnLeave(procedureOwner, isShutdown);
         }
 
         private int GetNextSceneId()
@@ -68,17 +77,6 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             procedureOwner.SetData<VarInt32>("NextSceneId", GetNextSceneId());
             procedureOwner.SetData<VarByte>("GameMode", (byte)GameMode.Survival);
             ChangeState<ProcedureChangeScene>(procedureOwner);
-        }
-
-        private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
-        {
-            var ne = (OpenUIFormSuccessEventArgs)e;
-            if (ne.UserData != this)
-            {
-                return;
-            }
-
-            m_MenuForm = (MenuForm)ne.UIForm.Logic;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
 
         private float gotoMenuDelaySeconds = 0f;
-        private const float GameOverDelayedSeconds = 20f;
+        private const float GameOverDelayedSeconds = 10f;
 
         public override bool UseNativeDialog => false;
 

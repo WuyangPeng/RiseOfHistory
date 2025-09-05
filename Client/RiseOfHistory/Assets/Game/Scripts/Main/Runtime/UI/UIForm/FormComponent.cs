@@ -32,6 +32,11 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
             uGuiForm.Add(form, null);
         }
 
+        public void RemoveUIForm(UIFormId form)
+        {
+            uGuiForm.Remove(form);
+        }
+
         private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
         {
             var ne = (UnityGameFramework.Runtime.OpenUIFormSuccessEventArgs)e;

@@ -15,7 +15,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         public void OnStartButtonClick()
         {
-            GameEntry.UI.OpenUIForm(UIFormId.LoadForm);
+            m_ProcedureMenu.OpenUIForm(UIFormId.LoadForm);
         }
 
         public void OnAchievementButtonClick()
@@ -48,7 +48,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnOpen(userData);
 
-            m_ProcedureMenu = (ProcedureMenu)userData;
+            m_ProcedureMenu = (ProcedureMenu)GetCurrentProcedure();
             if (m_ProcedureMenu == null)
             {
                 Log.Warning("ProcedureMenu is invalid when open MenuForm.");
