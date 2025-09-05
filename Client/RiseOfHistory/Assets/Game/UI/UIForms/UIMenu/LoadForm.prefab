@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Game.Name
+  m_Text: Menu.LoadGame
 --- !u!1 &136392
 GameObject:
   m_ObjectHideFlags: 0

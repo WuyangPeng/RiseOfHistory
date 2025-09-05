@@ -179,7 +179,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Menu.StartButton
+  m_Text: Menu.Empty
 --- !u!1 &2750433323345819840
 GameObject:
   m_ObjectHideFlags: 0
