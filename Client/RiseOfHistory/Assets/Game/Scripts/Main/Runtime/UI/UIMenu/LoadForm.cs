@@ -14,7 +14,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         public void OnEnterButtonClick(int index)
         {
-            procedureMenu.StartGame();
+            if (procedureMenu.HasHeadData(index))
+            {
+                procedureMenu.LoadGame();
+            }
+            else
+            {
+                procedureMenu.StartGame();
+            }
         }
 
         protected override void OnOpen(object userData)

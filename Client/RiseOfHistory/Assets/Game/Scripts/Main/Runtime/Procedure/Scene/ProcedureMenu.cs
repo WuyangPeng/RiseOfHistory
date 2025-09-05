@@ -17,8 +17,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureMenu : ProcedureBase
     {
-        private bool m_StartGame = false;
-        private bool m_LoadGame = false;
+        private int m_NextSceneId = 0;
         private readonly FormComponent formComponent = new FormComponent();
         private readonly List<HeadData> headData = new List<HeadData>();
 
@@ -28,12 +27,12 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         public void LoadGame()
         {
-            m_LoadGame = true;
+            m_NextSceneId = GameEntry.Config.GetInt("Scene.Home");
         }
 
         public void StartGame()
         {
-            m_StartGame = true;
+            m_NextSceneId = GameEntry.Config.GetInt("Scene.Create");
         }
 
         public void OpenUIForm(UIFormId form)
@@ -50,8 +49,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnEnter(procedureOwner);
 
-            m_StartGame = false;
-            m_LoadGame = false;
+            m_NextSceneId = 0;
 
             formComponent.AddForm(UIFormId.MenuForm);
             formComponent.OnEnter(procedureOwner);
@@ -63,27 +61,16 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnLeave(procedureOwner, isShutdown);
 
-
-
             formComponent.OnLeave(procedureOwner, isShutdown);
         }
 
-        private int GetNextSceneId()
-        {
-            if (m_LoadGame)
-            {
-                return GameEntry.Config.GetInt("Scene.Home");
-            }
-
-            return m_StartGame ? GameEntry.Config.GetInt("Scene.Create") : 0;
-        }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!m_StartGame && !m_LoadGame) return;
-            procedureOwner.SetData<VarInt32>("NextSceneId", GetNextSceneId());
+            if (m_NextSceneId <= 0) return;
+            procedureOwner.SetData<VarInt32>("NextSceneId", m_NextSceneId);
             procedureOwner.SetData<VarByte>("GameMode", (byte)GameMode.Survival);
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }
@@ -105,6 +92,11 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
                 var data = Utility.Json.ToObject<HeadData>(json);
                 headData.Add(data);
             }
+        }
+
+        public bool HasHeadData(int index)
+        {
+            return headData.Any(data => data.Index == index);
         }
     }
 }
