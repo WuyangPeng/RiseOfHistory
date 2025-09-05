@@ -292,6 +292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
       propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -304,7 +309,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 8189433502215612127}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
       propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -314,6 +319,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnEnterButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -327,8 +337,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIMenu.LoadForm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
       propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -461,6 +481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
       propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -473,7 +498,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 8189433502215612127}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
       propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -486,6 +511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnEnterButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
       propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -493,6 +523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIMenu.LoadForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}

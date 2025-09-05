@@ -8,5 +8,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             Close();
         }
+
+        public void OnEnterButtonClick(int index)
+        {
+
+        }
     }
 }
