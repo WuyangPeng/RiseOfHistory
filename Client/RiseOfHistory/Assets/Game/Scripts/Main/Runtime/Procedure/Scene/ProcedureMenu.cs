@@ -6,6 +6,7 @@ using GameFramework;
 using GameFramework.FileSystem;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -89,29 +90,40 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         public void LoadHeadData()
         {
+            // 1. 真实可写目录
+            string rootPath = Path.Combine(Application.persistentDataPath, "GameSaves.idx");
+           
 
-            /*    var fileSystems = GameEntry.FileSystem.CreateFileSystem("GameSaves", FileSystemAccess.ReadWrite, 100, 100);
-                if (fileSystems == null)
+            // 2. 创建（返回 IFileSystem 实例，同时内部以 rootPath 当 key 注册）
+            IFileSystem fileSystems = GameEntry.FileSystem.CreateFileSystem(
+                rootPath,
+                FileSystemAccess.ReadWrite,
+                1024, 1024);
+
+            // 3. 以后读取：必须再传同一条完整路径
+            fileSystems = GameEntry.FileSystem.GetFileSystem(rootPath);   // 注意：不是 "GameSaves"
+
+
+
+            for (var i = 0; i < SaveMaxCount; ++i)
+            {
+                var bytes = fileSystems.ReadFile("GameSaves/" + i + "/SaveHead.dat");
+
+                if (bytes == null)
                 {
+                    var data0 = new HeadData();
+                    var json1 = Utility.Json.ToJson(data0);
+                    byte[] bytes1 = System.Text.Encoding.UTF8.GetBytes(json1);
+                    fileSystems.WriteFile("GameSaves/" + i, bytes1, 0);
+                    fileSystems.SaveAsFile("GameSaves/" + i, "GameSaves/" + i + "/SaveHead.dat");
+
                     return;
                 }
 
-                for (var i = 0; i < SaveMaxCount; ++i)
-                {
-                    var bytes = fileSystems.ReadFile("Save/" + i + "/SaveHead.dat");
-
-                    if (bytes == null)
-                    {
-                        var data0 = new HeadData();
-                        var json1 = Utility.Json.ToJson(data0);
-                        fileSystems.WriteFile("Save/" + i + "/SaveHead.dat", json1);
-                        return;
-                    }
-
-                    var json = Encoding.UTF8.GetString(bytes);
-                    var data = Utility.Json.ToObject<HeadData>(json);
-                    headData.Add(data);
-                }*/
+                var json = Encoding.UTF8.GetString(bytes);
+                var data = Utility.Json.ToObject<HeadData>(json);
+                headData.Add(data);
+            }
         }
     }
 }
