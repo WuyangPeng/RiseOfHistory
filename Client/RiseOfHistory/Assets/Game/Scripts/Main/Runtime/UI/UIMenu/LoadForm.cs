@@ -26,7 +26,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             if (procedureMenu == null)
             {
                 Log.Warning("ProcedureMenu is invalid when open LoadForm.");
+                return;
             }
+
+            procedureMenu.LoadHeadData();
         }
 
         protected override void OnClose(bool isShutdown, object userData)
