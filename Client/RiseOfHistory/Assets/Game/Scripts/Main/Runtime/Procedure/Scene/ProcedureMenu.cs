@@ -2,9 +2,12 @@
 using Game.Scripts.Main.Runtime.SaveData;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIForm;
-using System.Collections.Generic;
-using System.Text;
 using GameFramework;
+using GameFramework.FileSystem;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
@@ -86,8 +89,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         public void LoadHeadData()
         {
-            var fileSystems = GameEntry.FileSystem.GetFileSystem("Local");
 
+            var fileSystems = GameEntry.FileSystem.CreateFileSystem("GameSaves", FileSystemAccess.ReadWrite, 100, 100);
             if (fileSystems == null)
             {
                 return;
