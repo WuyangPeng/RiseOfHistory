@@ -34,6 +34,12 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
 
         public void RemoveUIForm(UIFormId form)
         {
+            var ui = uGuiForm[form];
+            if (ui != null)
+            {
+                ui.Close();
+            }
+
             uGuiForm.Remove(form);
         }
 

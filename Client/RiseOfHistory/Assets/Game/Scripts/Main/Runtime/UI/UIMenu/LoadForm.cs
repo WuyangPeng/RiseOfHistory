@@ -9,7 +9,6 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         private ProcedureMenu procedureMenu = null;
         public void OnReturnButtonClick()
         {
-            Close();
             procedureMenu.RemoveUIForm(UIFormId.LoadForm);
         }
 
