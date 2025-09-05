@@ -1462,7 +1462,7 @@ GameObject:
   - component: {fileID: 7680039290785291856}
   - component: {fileID: 3996818583075693604}
   m_Layer: 5
-  m_Name: Load
+  m_Name: Achievement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1629,4 +1629,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Menu.LoadButton
+  m_Text: Menu.AchievementButton
