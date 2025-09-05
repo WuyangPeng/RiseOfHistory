@@ -285,6 +285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Load2
       objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351318916, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
+      propertyPath: m_Text
+      value: Menu.CreateNewGame
+      objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -358,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -368,7 +373,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -378,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -433,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: -740
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -473,6 +478,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Load1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351318916, guid: bf4a74772ca3460429b390b03d20aa8b,
+        type: 3}
+      propertyPath: m_Text
+      value: Menu.CreateNewGame
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -617,7 +627,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -400
+      value: -320
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -721,7 +731,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
@@ -731,7 +741,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
@@ -741,7 +751,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
@@ -796,7 +806,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -500
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}

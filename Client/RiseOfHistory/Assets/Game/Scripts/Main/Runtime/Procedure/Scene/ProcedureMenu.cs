@@ -90,28 +90,28 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         public void LoadHeadData()
         {
 
-            var fileSystems = GameEntry.FileSystem.CreateFileSystem("GameSaves", FileSystemAccess.ReadWrite, 100, 100);
-            if (fileSystems == null)
-            {
-                return;
-            }
-
-            for (var i = 0; i < SaveMaxCount; ++i)
-            {
-                var bytes = fileSystems.ReadFile("Save/" + i + "/SaveHead.dat");
-
-                if (bytes == null)
+            /*    var fileSystems = GameEntry.FileSystem.CreateFileSystem("GameSaves", FileSystemAccess.ReadWrite, 100, 100);
+                if (fileSystems == null)
                 {
-                    var data0 = new HeadData();
-                    var json1 = Utility.Json.ToJson(data0);
-                    fileSystems.WriteFile("Save/" + i + "/SaveHead.dat", json1);
                     return;
                 }
 
-                var json = Encoding.UTF8.GetString(bytes);
-                var data = Utility.Json.ToObject<HeadData>(json);
-                headData.Add(data);
-            }
+                for (var i = 0; i < SaveMaxCount; ++i)
+                {
+                    var bytes = fileSystems.ReadFile("Save/" + i + "/SaveHead.dat");
+
+                    if (bytes == null)
+                    {
+                        var data0 = new HeadData();
+                        var json1 = Utility.Json.ToJson(data0);
+                        fileSystems.WriteFile("Save/" + i + "/SaveHead.dat", json1);
+                        return;
+                    }
+
+                    var json = Encoding.UTF8.GetString(bytes);
+                    var data = Utility.Json.ToObject<HeadData>(json);
+                    headData.Add(data);
+                }*/
         }
     }
 }
