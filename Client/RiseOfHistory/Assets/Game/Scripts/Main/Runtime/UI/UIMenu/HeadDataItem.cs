@@ -6,9 +6,7 @@ using Game.Scripts.Main.Runtime.Base;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Scripts.Main.Runtime.GameData.User;
 using Game.Scripts.Main.Runtime.DataTable;
-using Object = System.Object;
 using GameFramework.Resource;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
@@ -42,22 +40,28 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             }
 
             var avatar = GameEntry.DataTable.GetDataTable<DRAvatar>();
-            var avatarRow = avatar.GetDataRow(10001);
+            var avatarRow = avatar.GetDataRow(data.Avatar);
             if (avatarRow != null)
             {
-               /* GameEntry.Resource.LoadAsset(avatarRow.Path,new LoadAssetCallbacks(
-                    new LoadAssetSuccessCallback(  "",
-                          asset,
-                          duration,
-                          userData)
-                    {
-
-                    } */
+                GameEntry.Resource.LoadAsset(avatarRow.Path, typeof(Sprite), 0,
+                    new LoadAssetCallbacks(
+                        (assetName, asset, duration, userData) =>
+                        {
+                            avatarImage.sprite = asset as Sprite;
+                        },
+                        (assetName, asset, duration, userData) =>
+                        {
+                            Debug.LogError("LoadAsset " + avatarRow.Path + " error:" + duration);
+                        }));
+            }
+            else
+            {
+                avatarImage.gameObject.SetActive(false);
             }
 
             createNewGame.gameObject.SetActive(false);
         }
 
-       
+
     }
 }

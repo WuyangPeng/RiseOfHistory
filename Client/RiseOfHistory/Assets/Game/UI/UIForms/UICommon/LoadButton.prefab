@@ -704,4 +704,5 @@ MonoBehaviour:
   dateText: {fileID: 3776926513361895427}
   cultivationRealmText: {fileID: 3107648322196514007}
   gameDifficultyText: {fileID: 990960250389827257}
+  avatarImage: {fileID: 6713841793900852189}
   createNewGame: {fileID: 2750433323351318916}

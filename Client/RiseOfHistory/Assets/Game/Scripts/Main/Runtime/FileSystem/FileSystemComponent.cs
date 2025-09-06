@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -16,17 +17,15 @@ namespace Game.Scripts.Main.Runtime.FileSystem
 
         public IFileSystem GetFileSystem(string rootPath)
         {
-            if (File.Exists(rootPath))
-            {
-                return GameEntry.FileSystem.LoadFileSystem(rootPath, FileSystemAccess.ReadWrite);
-            }
-            else
-            {
-                var result = GameEntry.FileSystem.CreateFileSystem(rootPath, FileSystemAccess.ReadWrite, 1024, 1024);
-                result.WriteFile("$dummy", new byte[] { 1 });
+            return File.Exists(rootPath) ? GameEntry.FileSystem.LoadFileSystem(rootPath, FileSystemAccess.ReadWrite) : CreateFileSystem(rootPath);
+        }
 
-                return result;
-            }
+        public IFileSystem CreateFileSystem(string rootPath)
+        {
+            var result = GameEntry.FileSystem.CreateFileSystem(rootPath, FileSystemAccess.ReadWrite, 1024, 1024);
+            result.WriteFile("$dummy", new byte[] { 1 });
+
+            return result;
         }
 
         public IFileSystem CreateFileSystem(string directory, string pathName)
