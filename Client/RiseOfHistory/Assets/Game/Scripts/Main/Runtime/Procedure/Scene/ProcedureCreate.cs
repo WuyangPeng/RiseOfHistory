@@ -31,14 +31,11 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
-            base.OnEnter(procedureOwner); ;
-
-            formComponent.AddForm(UIFormId.BottomForm);
-            formComponent.AddForm(UIFormId.UpperForm);
-            formComponent.AddForm(UIFormId.LeftForm);
-            formComponent.AddForm(UIFormId.RightForm);
+            base.OnEnter(procedureOwner); 
 
             formComponent.OnEnter(procedureOwner);
+
+            gotoMenuDelaySeconds = 0;
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)

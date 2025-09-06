@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-06 13:57:27.465
+// 生成时间：2025-09-06 23:24:03.154
 //------------------------------------------------------------
 
 using GameFramework;
@@ -35,9 +35,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
         }
 
         /// <summary>
-        /// 获取描述。
+        /// 获取世界描述。
         /// </summary>
-        public string Description
+        public string WorldDescription
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取敌人描述。
+        /// </summary>
+        public string EnemyDescription
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取队伍描述。
+        /// </summary>
+        public string TeamDescription
         {
             get;
             private set;
@@ -56,7 +74,9 @@ namespace Game.Scripts.Main.Runtime.DataTable
             m_Id = int.Parse(columnStrings[index++]);
             index++;
             Name = columnStrings[index++];
-            Description = columnStrings[index++];
+            WorldDescription = columnStrings[index++];
+            EnemyDescription = columnStrings[index++];
+            TeamDescription = columnStrings[index++];
 
             GeneratePropertyArray();
             return true;
@@ -70,7 +90,9 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
-                    Description = binaryReader.ReadString();
+                    WorldDescription = binaryReader.ReadString();
+                    EnemyDescription = binaryReader.ReadString();
+                    TeamDescription = binaryReader.ReadString();
                 }
             }
 

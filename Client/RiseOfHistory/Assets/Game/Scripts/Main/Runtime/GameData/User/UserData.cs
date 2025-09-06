@@ -2,6 +2,8 @@
 {
     public class UserData
     {
+        public GameDifficultyType GameDifficultyType { get; set; } = GameDifficultyType.Mortal;
+
         private SexType sexType;
 
         private int age;
@@ -15,5 +17,7 @@
         {
             this.sexType = sexType;
         }
+
+
     }
 }

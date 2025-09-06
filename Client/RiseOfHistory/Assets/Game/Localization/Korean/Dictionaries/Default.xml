@@ -99,15 +99,29 @@
 		<String Key="CultivationRealm.Level" Value="层" />
 		<String Key="Date.SaveData" Value="第{0}年{1}月" />
 		<String Key="GameDifficulty.Mortal" Value="凡人" />
-		<String Key="GameDifficulty.Mortal.Description" Value="凡人描述" />
+		<String Key="GameDifficulty.Mortal.World.Description" Value="资源：丰富" />
+		<String Key="GameDifficulty.Mortal.Enemy.Description" Value="敌人生命 -50%" />
+		<String Key="GameDifficulty.Mortal.Team.Description" Value="队友误伤 无" />
 		<String Key="GameDifficulty.Cultivator" Value="修士" />
-		<String Key="GameDifficulty.Cultivator.Description" Value="修士描述" />
+		<String Key="GameDifficulty.Cultivator.World.Description" Value="资源：一般" />
+		<String Key="GameDifficulty.Cultivator.Enemy.Description" Value="敌人生命 基准值" />
+		<String Key="GameDifficulty.Cultivator.Team.Description" Value="队友误伤 无" />
 		<String Key="GameDifficulty.TruePerson" Value="真人" />
-		<String Key="GameDifficulty.TruePerson.Description" Value="真人描述" />
+		<String Key="GameDifficulty.TruePerson.World.Description" Value="资源：稀少" />
+		<String Key="GameDifficulty.TruePerson.Enemy.Description" Value="敌人生命 +50%" />
+		<String Key="GameDifficulty.TruePerson.Team.Description" Value="队友误伤 50%" />
 		<String Key="GameDifficulty.ImmortalLord" Value="仙尊" />
-		<String Key="GameDifficulty.ImmortalLord.Description" Value="仙尊描述" />
+		<String Key="GameDifficulty.ImmortalLord.World.Description" Value="资源：一般" />
+		<String Key="GameDifficulty.ImmortalLord.Enemy.Description" Value="敌人生命 +100%" />
+		<String Key="GameDifficulty.ImmortalLord.Team.Description" Value="队友误伤 100%" />
 		<String Key="GameDifficulty.HeavenlyDao" Value="天道" />
-		<String Key="GameDifficulty.HeavenlyDao.Description" Value="天道描述" />
+		<String Key="GameDifficulty.HeavenlyDao.World.Description" Value="资源：贫乏" />
+		<String Key="GameDifficulty.HeavenlyDao.Enemy.Description" Value="敌人生命 +200%" />
+		<String Key="GameDifficulty.HeavenlyDao.Team.Description" Value="队友误伤 100%" />
 		<String Key="GameDifficulty.Description" Value="难度" />
+		<String Key="GameDifficulty.Select" Value="选择难度" />
+		<String Key="GameDifficulty.World" Value="世界" />
+		<String Key="GameDifficulty.Enemy" Value="敌人" />
+		<String Key="GameDifficulty.Team" Value="队伍" />
 	</Dictionary>
 </Dictionaries>
