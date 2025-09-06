@@ -53,6 +53,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             procedureMenu = null;
 
             base.OnClose(isShutdown, userData);
+
+            headDataDisplay.ReleaseAsset();
         }
     }
 }

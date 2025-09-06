@@ -1,9 +1,5 @@
 ﻿using Game.Scripts.Main.Runtime.SaveData;
-using System.ComponentModel;
-using System.Reflection;
-using System;
 using Game.Scripts.Main.Runtime.Base;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Game.Scripts.Main.Runtime.DataTable;
@@ -19,7 +15,6 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         [SerializeField] private Text gameDifficultyText;
         [SerializeField] private Image avatarImage;
         [SerializeField] private Text createNewGame;
-
         public void SetData(HeadData data)
         {
             titleText.text = data.Name;
@@ -62,6 +57,12 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             createNewGame.gameObject.SetActive(false);
         }
 
+        public void ReleaseAsset()
+        {
+            if (avatarImage.sprite == null) return;
 
+            GameEntry.Resource.UnloadAsset(avatarImage.sprite);
+            avatarImage.sprite = null;
+        }
     }
 }

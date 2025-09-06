@@ -16,5 +16,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 items[data.Index].gameObject.SetActive(true);
             }
         }
+
+        public void ReleaseAsset()
+        {
+            foreach (var data in items)
+            {
+                data.ReleaseAsset();
+            }
+        }
     }
 }
