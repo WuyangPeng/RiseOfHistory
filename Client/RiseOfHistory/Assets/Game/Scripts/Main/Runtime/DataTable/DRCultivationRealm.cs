@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-06 13:40:30.250
+// 生成时间：2025-09-06 13:40:30.257
 //------------------------------------------------------------
 
 using GameFramework;
@@ -14,14 +14,14 @@ using UnityGameFramework.Runtime;
 namespace Game.Scripts.Main.Runtime.DataTable
 {
     /// <summary>
-    /// 属性表。
+    /// 境界表。
     /// </summary>
-    public class DRProperty : DataRowBase
+    public class DRCultivationRealm : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取属性编号。
+        /// 获取境界编号。
         /// </summary>
         public override int Id => m_Id;
 
@@ -35,36 +35,9 @@ namespace Game.Scripts.Main.Runtime.DataTable
         }
 
         /// <summary>
-        /// 获取初始值。
-        /// </summary>
-        public int InitValue
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// 获取描述。
         /// </summary>
         public string Description
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取属性组。
-        /// </summary>
-        public int Group
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取最大值。
-        /// </summary>
-        public int MaxValue
         {
             get;
             private set;
@@ -83,10 +56,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
             m_Id = int.Parse(columnStrings[index++]);
             index++;
             Name = columnStrings[index++];
-            InitValue = int.Parse(columnStrings[index++]);
             Description = columnStrings[index++];
-            Group = int.Parse(columnStrings[index++]);
-            MaxValue = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -100,10 +70,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
-                    InitValue = binaryReader.Read7BitEncodedInt32();
                     Description = binaryReader.ReadString();
-                    Group = binaryReader.Read7BitEncodedInt32();
-                    MaxValue = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

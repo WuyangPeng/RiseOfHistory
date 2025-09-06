@@ -78,5 +78,36 @@
 		<String Key="Spiritual.Sky.Description" Value="天灵根描述" />
 		<String Key="Spiritual.Land" Value="地灵根" />
 		<String Key="Spiritual.Land.Description" Value="地灵根描述" />
+		<String Key="CultivationRealm.QiRefining" Value="炼气期" />
+		<String Key="CultivationRealm.QiRefining.Description" Value="炼气期描述" />
+		<String Key="CultivationRealm.FoundationBuilding" Value="筑基期" />
+		<String Key="CultivationRealm.FoundationBuilding.Description" Value="筑基期描述" />
+		<String Key="CultivationRealm.GoldenCore" Value="金丹期" />
+		<String Key="CultivationRealm.GoldenCore.Description" Value="金丹期描述" />
+		<String Key="CultivationRealm.NascentSoul" Value="元婴期" />
+		<String Key="CultivationRealm.NascentSoul.Description" Value="元婴期描述" />
+		<String Key="CultivationRealm.SoulFormation" Value="化神期" />
+		<String Key="CultivationRealm.SoulFormation.Description" Value="化神期描述" />
+		<String Key="CultivationRealm.VoidRefining" Value="炼虚期" />
+		<String Key="CultivationRealm.VoidRefining.Description" Value="炼虚期描述" />
+		<String Key="CultivationRealm.BodyIntegration" Value="合体期" />
+		<String Key="CultivationRealm.BodyIntegration.Description" Value="合体期描述" />
+		<String Key="CultivationRealm.Mahayana" Value="大乘期" />
+		<String Key="CultivationRealm.Mahayana.Description" Value="大乘期描述" />
+		<String Key="CultivationRealm.Transcendence" Value="渡劫期" />
+		<String Key="CultivationRealm.Transcendence.Description" Value="渡劫期描述" />
+		<String Key="CultivationRealm.Level" Value="层" />
+		<String Key="Date.SaveData" Value="第{0}年{1}月" />
+		<String Key="GameDifficulty.Mortal" Value="凡人" />
+		<String Key="GameDifficulty.Mortal.Description" Value="凡人描述" />
+		<String Key="GameDifficulty.Cultivator" Value="修士" />
+		<String Key="GameDifficulty.Cultivator.Description" Value="修士描述" />
+		<String Key="GameDifficulty.TruePerson" Value="真人" />
+		<String Key="GameDifficulty.TruePerson.Description" Value="真人描述" />
+		<String Key="GameDifficulty.ImmortalLord" Value="仙尊" />
+		<String Key="GameDifficulty.ImmortalLord.Description" Value="仙尊描述" />
+		<String Key="GameDifficulty.HeavenlyDao" Value="天道" />
+		<String Key="GameDifficulty.HeavenlyDao.Description" Value="天道描述" />
+		<String Key="GameDifficulty.Description" Value="难度" />
 	</Dictionary>
 </Dictionaries>

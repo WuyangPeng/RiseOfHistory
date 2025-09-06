@@ -32,6 +32,8 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "PropertyGroup",
             "Property",
             "Spiritual",
+            "CultivationRealm",
+            "GameDifficulty",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
