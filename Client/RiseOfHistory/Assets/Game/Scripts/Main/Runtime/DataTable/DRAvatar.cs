@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-06 13:57:27.431
+// 生成时间：2025-09-06 13:57:27.467
 //------------------------------------------------------------
 
 using GameFramework;
@@ -14,66 +14,30 @@ using UnityGameFramework.Runtime;
 namespace Game.Scripts.Main.Runtime.DataTable
 {
     /// <summary>
-    /// 声音配置表。
+    /// 头像表。
     /// </summary>
-    public class DRSound : DataRowBase
+    public class DRAvatar : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取声音编号。
+        /// 获取头像编号。
         /// </summary>
         public override int Id => m_Id;
 
         /// <summary>
-        /// 获取资源名称。
+        /// 获取名字。
         /// </summary>
-        public string AssetName
+        public string Name
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取优先级（默认0，128最高，-128最低）。
+        /// 获取路径。
         /// </summary>
-        public int Priority
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取是否循环。
-        /// </summary>
-        public bool Loop
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取音量（0~1）。
-        /// </summary>
-        public float Volume
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取声音空间混合量（0为2D，1为3D，中间值混合效果）。
-        /// </summary>
-        public float SpatialBlend
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取声音最大距离。
-        /// </summary>
-        public float MaxDistance
+        public string Path
         {
             get;
             private set;
@@ -91,12 +55,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
             index++;
             m_Id = int.Parse(columnStrings[index++]);
             index++;
-            AssetName = columnStrings[index++];
-            Priority = int.Parse(columnStrings[index++]);
-            Loop = bool.Parse(columnStrings[index++]);
-            Volume = float.Parse(columnStrings[index++]);
-            SpatialBlend = float.Parse(columnStrings[index++]);
-            MaxDistance = float.Parse(columnStrings[index++]);
+            Name = columnStrings[index++];
+            Path = columnStrings[index++];
 
             GeneratePropertyArray();
             return true;
@@ -109,12 +69,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
-                    AssetName = binaryReader.ReadString();
-                    Priority = binaryReader.Read7BitEncodedInt32();
-                    Loop = binaryReader.ReadBoolean();
-                    Volume = binaryReader.ReadSingle();
-                    SpatialBlend = binaryReader.ReadSingle();
-                    MaxDistance = binaryReader.ReadSingle();
+                    Name = binaryReader.ReadString();
+                    Path = binaryReader.ReadString();
                 }
             }
 

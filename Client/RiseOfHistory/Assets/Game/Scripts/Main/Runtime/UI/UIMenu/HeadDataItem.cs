@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Game.Scripts.Main.Runtime.GameData.User;
 using Game.Scripts.Main.Runtime.DataTable;
+using Object = System.Object;
+using GameFramework.Resource;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
@@ -17,14 +19,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         [SerializeField] private Text dateText;
         [SerializeField] private Text cultivationRealmText;
         [SerializeField] private Text gameDifficultyText;
+        [SerializeField] private Image avatarImage;
         [SerializeField] private Text createNewGame;
-
-        public static string GetDescription(GameDifficultyType value)
-        {
-            FieldInfo fi = value.GetType().GetField(value.ToString());
-            var attr = (DescriptionAttribute)Attribute.GetCustomAttribute(fi, typeof(DescriptionAttribute));
-            return attr == null ? value.ToString() : attr.Description;
-        }
 
         public void SetData(HeadData data)
         {
@@ -45,7 +41,23 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 gameDifficultyText.text = $"{GameEntry.Localization.GetString("GameDifficulty.Description")}:{GameEntry.Localization.GetString(gameDifficultyRow.Name)}";
             }
 
+            var avatar = GameEntry.DataTable.GetDataTable<DRAvatar>();
+            var avatarRow = avatar.GetDataRow(10001);
+            if (avatarRow != null)
+            {
+               /* GameEntry.Resource.LoadAsset(avatarRow.Path,new LoadAssetCallbacks(
+                    new LoadAssetSuccessCallback(  "",
+                          asset,
+                          duration,
+                          userData)
+                    {
+
+                    } */
+            }
+
             createNewGame.gameObject.SetActive(false);
         }
+
+       
     }
 }

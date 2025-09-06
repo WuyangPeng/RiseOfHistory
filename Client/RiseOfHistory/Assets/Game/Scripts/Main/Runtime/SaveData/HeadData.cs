@@ -11,7 +11,7 @@ namespace Game.Scripts.Main.Runtime.SaveData
 
         public int Index { get; set; }
 
-        public int Avatar { get; set; }
+        public int Avatar { get; set; } = 10001;
 
         public CultivationRealmType CultivationRealmType { get; set; } = CultivationRealmType.QiRefining;
 
