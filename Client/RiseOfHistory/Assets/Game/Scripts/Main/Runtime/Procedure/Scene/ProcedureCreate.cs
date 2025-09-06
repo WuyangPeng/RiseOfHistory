@@ -8,16 +8,16 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureCreate : ProcedureBase
     {
-
         private readonly FormComponent formComponent = new FormComponent();
-
-
-        private float gotoMenuDelaySeconds = 0f;
-        private const float GameOverDelayedSeconds = 10f;
 
         public override bool UseNativeDialog => false;
 
+        private bool isReturnMenu;
 
+        public void ReturnMenu()
+        {
+            isReturnMenu = true;
+        }
 
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
@@ -31,11 +31,12 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
-            base.OnEnter(procedureOwner); 
+            base.OnEnter(procedureOwner);
 
+            formComponent.AddForm(UIFormId.SelectGameDifficultyForm);
             formComponent.OnEnter(procedureOwner);
 
-            gotoMenuDelaySeconds = 0;
+            isReturnMenu = false;
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -50,8 +51,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            gotoMenuDelaySeconds += elapseSeconds;
-            if (!(gotoMenuDelaySeconds >= GameOverDelayedSeconds)) return;
+            if (!isReturnMenu) return;
+
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }

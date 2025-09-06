@@ -3,7 +3,7 @@
     /// <summary>
     /// 界面编号。
     /// </summary>
-    public enum UIFormId : byte
+    public enum UIFormId  
     {
         Undefined = 0,
 
@@ -32,25 +32,29 @@
         /// </summary>
         LoadForm = 103,
 
+        /// <summary>
+        /// 选择难度。
+        /// </summary>
+        SelectGameDifficultyForm = 200,
 
         /// <summary>
         /// 下部菜单。
         /// </summary>
-        BottomForm = 203,
+        BottomForm = 303,
 
         /// <summary>
         /// 上部菜单。
         /// </summary>
-        UpperForm = 204,
+        UpperForm = 304,
 
         /// <summary>
         /// 左部菜单。
         /// </summary>
-        LeftForm = 205,
+        LeftForm = 305,
 
         /// <summary>
         /// 左部菜单。
         /// </summary>
-        RightForm = 206,
+        RightForm = 306,
     }
 }
