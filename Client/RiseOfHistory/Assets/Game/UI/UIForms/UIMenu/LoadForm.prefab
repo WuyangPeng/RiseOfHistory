@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 22254414}
   - component: {fileID: 22372286}
   - component: {fileID: 8189433502215612127}
+  - component: {fileID: 5447375021027701738}
   m_Layer: 5
   m_Name: LoadForm
   m_TagString: Untagged
@@ -272,6 +273,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091474ea69c6e5849b75c317e878f524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headDataDisplay: {fileID: 5447375021027701738}
+--- !u!114 &5447375021027701738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10634229bd94f42a8456a0217c0754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 5315085534607396176}
+  - {fileID: 3738109405152426537}
 --- !u!1001 &680563269510342387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -284,11 +301,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Load2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750433323351318916, guid: bf4a74772ca3460429b390b03d20aa8b,
-        type: 3}
-      propertyPath: m_Text
-      value: Menu.CreateNewGame
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -466,6 +478,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 680563269510342387}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3738109405152426537 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4220354449018690778, guid: bf4a74772ca3460429b390b03d20aa8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 680563269510342387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a15bc411b937b94482703c5025ab2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8310069441356943754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,11 +502,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Load1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750433323351318916, guid: bf4a74772ca3460429b390b03d20aa8b,
-        type: 3}
-      propertyPath: m_Text
-      value: Menu.CreateNewGame
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: bf4a74772ca3460429b390b03d20aa8b,
         type: 3}
@@ -649,6 +668,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf4a74772ca3460429b390b03d20aa8b, type: 3}
+--- !u!114 &5315085534607396176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4220354449018690778, guid: bf4a74772ca3460429b390b03d20aa8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8310069441356943754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a15bc411b937b94482703c5025ab2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6158897520271450942 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: bf4a74772ca3460429b390b03d20aa8b,

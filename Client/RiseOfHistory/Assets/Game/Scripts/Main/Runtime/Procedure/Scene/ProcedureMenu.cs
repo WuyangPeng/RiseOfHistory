@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Game.Scripts.Main.Runtime.UI.UIMenu;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -97,6 +98,11 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         public bool HasHeadData(int index)
         {
             return headData.Any(data => data.Index == index);
+        }
+
+        public List<HeadData> GetHeadData()
+        {
+            return headData;
         }
     }
 }

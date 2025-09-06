@@ -15,7 +15,7 @@ namespace Game.Scripts.Main.Runtime.SaveData
 
         public CultivationRealmType CultivationRealmType { get; set; } = CultivationRealmType.QiRefining;
 
-        public int CultivationRealmLevel { get; set; }
+        public int CultivationRealmLevel { get; set; } = 1;
 
         public GameDifficultyType GameDifficultyType { get; set; } = GameDifficultyType.Mortal;
     }

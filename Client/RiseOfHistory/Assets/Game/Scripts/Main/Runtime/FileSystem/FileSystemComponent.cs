@@ -14,6 +14,21 @@ namespace Game.Scripts.Main.Runtime.FileSystem
     {
         private readonly Dictionary<string, IFileSystem> fileSystem = new();
 
+        public IFileSystem GetFileSystem(string rootPath)
+        {
+            if (File.Exists(rootPath))
+            {
+                return GameEntry.FileSystem.LoadFileSystem(rootPath, FileSystemAccess.ReadWrite);
+            }
+            else
+            {
+                var result = GameEntry.FileSystem.CreateFileSystem(rootPath, FileSystemAccess.ReadWrite, 1024, 1024);
+                result.WriteFile("$dummy", new byte[] { 1 });
+
+                return result;
+            }
+        }
+
         public IFileSystem CreateFileSystem(string directory, string pathName)
         {
             Directory.CreateDirectory(directory);
@@ -25,9 +40,7 @@ namespace Game.Scripts.Main.Runtime.FileSystem
                 return result;
             }
 
-            var file = File.Exists(rootPath) ?
-                GameEntry.FileSystem.LoadFileSystem(rootPath, FileSystemAccess.ReadWrite) :
-                GameEntry.FileSystem.CreateFileSystem(rootPath, FileSystemAccess.ReadWrite, 1024, 1024);
+            var file = GetFileSystem(rootPath);
 
             if (file != null)
             {
