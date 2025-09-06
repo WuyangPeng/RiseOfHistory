@@ -46,7 +46,12 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
         private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
         {
             var ne = (UnityGameFramework.Runtime.OpenUIFormSuccessEventArgs)e;
-            var userData = (FormComponentUserData)ne.UserData;
+
+            if (ne.UserData is not FormComponentUserData userData)
+            {
+                return;
+            }
+
             if (userData.FormComponent != this)
             {
                 return;

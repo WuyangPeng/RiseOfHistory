@@ -1,7 +1,11 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameData.User;
+using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
@@ -15,11 +19,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         public void OnReturnButtonClick()
         {
             procedureCreate.ReturnMenu();
-        }
+        }   
 
-        public void OnEnterButtonClick(int index)
+        public void OnEnterButtonClick(int gameDifficulty)
         {
-
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.SetGameDifficulty((GameDifficultyType)gameDifficulty);
         }
 
         protected override void OnOpen(object userData)

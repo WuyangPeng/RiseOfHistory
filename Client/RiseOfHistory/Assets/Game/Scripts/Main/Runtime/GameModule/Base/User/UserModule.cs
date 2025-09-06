@@ -5,7 +5,12 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
     [Module]
     public class UserModule : BaseModule
     {
-        private UserData userData = new UserData();
+        private readonly UserData userData = new UserData();
         private AttributeData attributeData = new AttributeData();
+
+        public void SetGameDifficulty(GameDifficultyType gameDifficulty)
+        {
+            userData.GameDifficultyType = gameDifficulty;
+        }
     }
 }
