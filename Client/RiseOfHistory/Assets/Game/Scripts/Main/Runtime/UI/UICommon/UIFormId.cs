@@ -38,6 +38,11 @@
         SelectGameDifficultyForm = 200,
 
         /// <summary>
+        /// 选择参数。
+        /// </summary>
+        SelectGameParameterForm = 201,
+
+        /// <summary>
         /// 下部菜单。
         /// </summary>
         BottomForm = 303,

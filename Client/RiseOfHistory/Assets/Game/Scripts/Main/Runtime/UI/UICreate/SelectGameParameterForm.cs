@@ -1,5 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.GameData.User;
+﻿using Game.Scripts.Main.Runtime.GameData.User;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
@@ -9,24 +8,20 @@ using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
-    public class SelectGameDifficultyForm : UGuiForm
+    public class SelectGameParameterForm : UGuiForm
     {
         private ProcedureCreate procedureCreate = null;
 
-        [SerializeField]
-        private GameDifficultyDisplay gameDifficultyDisplay;
+
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.ReturnMenu();
-        }   
+            Close();
+        }
 
-        public void OnEnterButtonClick(int gameDifficulty)
+        public void OnEnterButtonClick()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetGameDifficulty((GameDifficultyType)gameDifficulty);
 
-            GameEntry.UI.OpenUIForm(UIFormId.SelectGameParameterForm);
         }
 
         protected override void OnOpen(object userData)
@@ -40,7 +35,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 Log.Warning("ProcedureCreate is invalid when open SelectGameDifficultyForm.");
             }
 
-            gameDifficultyDisplay.Refresh();
+
         }
 
         protected override void OnClose(bool isShutdown, object userData)
