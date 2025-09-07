@@ -21,6 +21,24 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         }
 
+        public void OnLeftButtonClick(int index)
+        {
+           
+
+        }
+
+        public void OnMiddleButtonClick(int index)
+        {
+
+
+        }
+
+        public void OnRightButtonClick(int index)
+        {
+
+
+        }
+
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
