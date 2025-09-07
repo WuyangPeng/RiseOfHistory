@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 22254414}
   - component: {fileID: 22372286}
   - component: {fileID: 18906571423510249}
+  - component: {fileID: 5689695387547580633}
   m_Layer: 5
   m_Name: SelectGameParameterForm
   m_TagString: Untagged
@@ -279,6 +280,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfedf93c245dfd4d9f6aea5e679bcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameParameterDisplay: {fileID: 5689695387547580633}
+--- !u!114 &5689695387547580633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a88911e00095a4ba2897f17c57f6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 5428799155827009632}
+  - {fileID: 7363114620759989303}
+  - {fileID: 5963923646881176891}
+  - {fileID: 2690815487289193354}
 --- !u!1 &4370326062465911629
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +917,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1556257633800806952}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7363114620759989303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8338407764632911391, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556257633800806952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d446340380d7aff479368cc5ea263d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2410522406803874596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1022,6 +1053,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2410522406803874596}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5963923646881176891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8338407764632911391, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 2410522406803874596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d446340380d7aff479368cc5ea263d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4098559057266202239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1146,6 +1189,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4098559057266202239}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5428799155827009632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8338407764632911391, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 4098559057266202239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d446340380d7aff479368cc5ea263d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6260086783886773653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1264,6 +1319,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18f2778e68c1274d8a25f38babba534, type: 3}
+--- !u!114 &2690815487289193354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8338407764632911391, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 6260086783886773653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d446340380d7aff479368cc5ea263d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8127813472173489953 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: f18f2778e68c1274d8a25f38babba534,
@@ -1282,6 +1349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConfirmButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351318916, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_Text
+      value: Menu.ConfirmButton
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}

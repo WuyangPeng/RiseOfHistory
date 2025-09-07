@@ -12,6 +12,7 @@
 		<String Key="Menu.AboutButton" Value="정보" />
 		<String Key="Menu.QuitButton" Value="아웃" />
 		<String Key="Menu.ReturnButton" Value="返回" />
+		<String Key="Menu.ConfirmButton" Value="确定" />
 		<String Key="Menu.LoadGame" Value="进入游戏" />
 		<String Key="Menu.CreateNewGame" Value="创建新游戏" />
 		<String Key="Dialog.ConfirmButton" Value="확인" />
