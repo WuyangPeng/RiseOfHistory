@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: GameDifficulty.Select
+  m_Text: Parameter.Select
 --- !u!1 &136392
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: GameDifficulty.Select
+  m_Text: Parameter.MapSize
 --- !u!1 &7551589507813506408
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 8045559667933548613}
   - component: {fileID: 1856319274012478144}
   m_Layer: 5
-  m_Name: FamilyTitle
+  m_Name: FamilyCountTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: GameDifficulty.Select
+  m_Text: Parameter.FamilyCount
 --- !u!1 &7658447565468648201
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 22002450535288471}
   - component: {fileID: 9197329841830454963}
   m_Layer: 5
-  m_Name: SectTitle
+  m_Name: SectCountTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: GameDifficulty.Select
+  m_Text: Parameter.SectCount
 --- !u!1 &7812836908938787682
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 5429232963047289087}
   - component: {fileID: 2188224753723113691}
   m_Layer: 5
-  m_Name: NpcSizeTitle
+  m_Name: NpcCountTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,7 +594,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: GameDifficulty.Select
+  m_Text: Parameter.NpcCount
 --- !u!1001 &809108119200171848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -785,7 +785,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: m_Name
-      value: NpcSizeButton
+      value: NpcCountButton
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -909,7 +909,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: m_Name
-      value: SectButton
+      value: SectCountButton
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -1157,7 +1157,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: m_Name
-      value: FamilyButton
+      value: FamilyCountButton
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}

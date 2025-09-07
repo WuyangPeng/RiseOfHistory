@@ -1,10 +1,6 @@
-﻿using Game.Scripts.Main.Runtime.GameData.User;
-using Game.Scripts.Main.Runtime.GameModule.Base.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
-using UnityEngine;
 using UnityGameFramework.Runtime;
-using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {

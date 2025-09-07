@@ -123,5 +123,22 @@
 		<String Key="GameDifficulty.World" Value="世界" />
 		<String Key="GameDifficulty.Enemy" Value="敌人" />
 		<String Key="GameDifficulty.Team" Value="队伍" />
+		<String Key="Parameter.Select" Value="选择游戏规模" />
+		<String Key="Parameter.MapSize" Value="生成地图大小" />
+		<String Key="Parameter.MapSize.Small" Value="小" />
+		<String Key="Parameter.MapSize.Middle" Value="中" />
+		<String Key="Parameter.MapSize.Big" Value="大" />
+		<String Key="Parameter.NpcCount" Value="生成NPC数量" />
+		<String Key="Parameter.NpcCount.Small" Value="较少" />
+		<String Key="Parameter.NpcCount.Middle" Value="中等" />
+		<String Key="Parameter.NpcCount.Big" Value="较多" />
+		<String Key="Parameter.SectCount" Value="生成宗门数量" />
+		<String Key="Parameter.SectCount.Small" Value="较少" />
+		<String Key="Parameter.SectCount.Middle" Value="中等" />
+		<String Key="Parameter.SectCount.Big" Value="较多" />
+		<String Key="Parameter.FamilyCount" Value="生成家族数量" />
+		<String Key="Parameter.FamilyCount.Small" Value="较少" />
+		<String Key="Parameter.FamilyCount.Middle" Value="中等" />
+		<String Key="Parameter.FamilyCount.Big" Value="较多" />
 	</Dictionary>
 </Dictionaries>
