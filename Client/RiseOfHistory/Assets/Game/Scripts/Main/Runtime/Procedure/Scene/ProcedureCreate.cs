@@ -3,6 +3,7 @@ using Game.Scripts.Main.Runtime.UI.UIForm;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
+using Game.Scripts.Main.Runtime.GameModule.Base.User;
 
 namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
@@ -17,6 +18,11 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         public void ReturnMenu()
         {
             isReturnMenu = true;
+        }
+
+        public void OpenUIForm(UIFormId form)
+        {
+            formComponent.OpenUIForm(form);
         }
 
         protected override void OnInit(ProcedureOwner procedureOwner)
@@ -37,6 +43,9 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             formComponent.OnEnter(procedureOwner);
 
             isReturnMenu = false;
+
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.InitGameParameter();
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -55,6 +64,11 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
             ChangeState<ProcedureChangeScene>(procedureOwner);
+        }
+
+        public void RemoveUIForm(UIFormId formId)
+        {
+            formComponent.RemoveUIForm(formId);
         }
     }
 }

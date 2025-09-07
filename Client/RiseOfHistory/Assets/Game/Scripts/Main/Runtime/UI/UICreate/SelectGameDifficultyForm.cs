@@ -19,14 +19,14 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         public void OnReturnButtonClick()
         {
             procedureCreate.ReturnMenu();
-        }   
+        }
 
         public void OnEnterButtonClick(int gameDifficulty)
         {
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetGameDifficulty((GameDifficultyType)gameDifficulty);
 
-            GameEntry.UI.OpenUIForm(UIFormId.SelectGameParameterForm);
+            procedureCreate.OpenUIForm(UIFormId.SelectGameParameterForm);
         }
 
         protected override void OnOpen(object userData)

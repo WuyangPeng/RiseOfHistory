@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-07 22:41:28.033
+// 生成时间：2025-09-07 22:41:28.071
 //------------------------------------------------------------
 
 using GameFramework;
@@ -14,66 +14,84 @@ using UnityGameFramework.Runtime;
 namespace Game.Scripts.Main.Runtime.DataTable
 {
     /// <summary>
-    /// 声音配置表。
+    /// 游戏参数表。
     /// </summary>
-    public class DRSound : DataRowBase
+    public class DRGameParameter : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取声音编号。
+        /// 获取游戏参数编号。
         /// </summary>
         public override int Id => m_Id;
 
         /// <summary>
-        /// 获取资源名称。
+        /// 获取最小地图大小。
         /// </summary>
-        public string AssetName
+        public int MinMapSize
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取优先级（默认0，128最高，-128最低）。
+        /// 获取最大地图大小。
         /// </summary>
-        public int Priority
+        public int MaxMapSize
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取是否循环。
+        /// 获取最小NPC数量。
         /// </summary>
-        public bool Loop
+        public int MinNpcCount
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取音量（0~1）。
+        /// 获取最大NPC数量。
         /// </summary>
-        public float Volume
+        public int MaxNpcCount
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取声音空间混合量（0为2D，1为3D，中间值混合效果）。
+        /// 获取最小宗门数量。
         /// </summary>
-        public float SpatialBlend
+        public int MinSectCount
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取声音最大距离。
+        /// 获取最大宗门数量。
         /// </summary>
-        public float MaxDistance
+        public int MaxSectCount
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取最小家族数量。
+        /// </summary>
+        public int MinFamilyCount
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取最大家族数量。
+        /// </summary>
+        public int MaxFamilyCount
         {
             get;
             private set;
@@ -91,12 +109,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
             index++;
             m_Id = int.Parse(columnStrings[index++]);
             index++;
-            AssetName = columnStrings[index++];
-            Priority = int.Parse(columnStrings[index++]);
-            Loop = bool.Parse(columnStrings[index++]);
-            Volume = float.Parse(columnStrings[index++]);
-            SpatialBlend = float.Parse(columnStrings[index++]);
-            MaxDistance = float.Parse(columnStrings[index++]);
+            MinMapSize = int.Parse(columnStrings[index++]);
+            MaxMapSize = int.Parse(columnStrings[index++]);
+            MinNpcCount = int.Parse(columnStrings[index++]);
+            MaxNpcCount = int.Parse(columnStrings[index++]);
+            MinSectCount = int.Parse(columnStrings[index++]);
+            MaxSectCount = int.Parse(columnStrings[index++]);
+            MinFamilyCount = int.Parse(columnStrings[index++]);
+            MaxFamilyCount = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -109,12 +129,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
-                    AssetName = binaryReader.ReadString();
-                    Priority = binaryReader.Read7BitEncodedInt32();
-                    Loop = binaryReader.ReadBoolean();
-                    Volume = binaryReader.ReadSingle();
-                    SpatialBlend = binaryReader.ReadSingle();
-                    MaxDistance = binaryReader.ReadSingle();
+                    MinMapSize = binaryReader.Read7BitEncodedInt32();
+                    MaxMapSize = binaryReader.Read7BitEncodedInt32();
+                    MinNpcCount = binaryReader.Read7BitEncodedInt32();
+                    MaxNpcCount = binaryReader.Read7BitEncodedInt32();
+                    MinSectCount = binaryReader.Read7BitEncodedInt32();
+                    MaxSectCount = binaryReader.Read7BitEncodedInt32();
+                    MinFamilyCount = binaryReader.Read7BitEncodedInt32();
+                    MaxFamilyCount = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

@@ -35,6 +35,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "CultivationRealm",
             "GameDifficulty",
             "Avatar",
+            "GameParameter",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();

@@ -12,5 +12,30 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             userData.GameDifficultyType = gameDifficulty;
         }
+
+        public void InitGameParameter()
+        {
+            userData.InitGameParameter();
+        }
+
+        public void SetMapSize(GameParameterType gameParameterType)
+        {
+            userData.SetMapSize(gameParameterType);
+        }
+
+        public void SetNpcCount(GameParameterType gameParameterType)
+        {
+            userData.SetNpcCount(gameParameterType);
+        }
+
+        public void SetSectCount(GameParameterType gameParameterType)
+        {
+            userData.SetSectCount(gameParameterType);
+        }
+
+        public void SetFamilyCount(GameParameterType gameParameterType)
+        {
+            userData.SetFamilyCount(gameParameterType);
+        }
     }
 }
