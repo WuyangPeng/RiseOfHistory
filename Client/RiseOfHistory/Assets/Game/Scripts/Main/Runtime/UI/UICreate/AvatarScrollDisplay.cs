@@ -21,21 +21,32 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         private void Start()
         {
+            var go = Instantiate(itemPrefab.gameObject, content);
+            var item = go.GetComponent<AvatarItem>();
+            if (item == null)
+            {
+                Log.Error("预制体没挂 AvatarItem");
+                return;
+            }
+
             pool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<AvatarItemObject>(
                 "AvatarItemPool",
                 poolCapacity,
                 30f,
                 16);
 
+            pool.Register(AvatarItemObject.Create(item), true);
+
             var avatar = GameEntry.DataTable.GetDataTable<DRAvatar>();
             dataList.AddRange(avatar.GetAllDataRows());
 
             Refresh();
-        }
+        } 
+
 
         private void Refresh()
         {
-            while (pool.Count > 0) pool.Unspawn(pool.Spawn());
+            //while (pool.Count > 0) pool.Unspawn(pool.Spawn());
 
             for (var i = 0; i < dataList.Count; i++)
             {

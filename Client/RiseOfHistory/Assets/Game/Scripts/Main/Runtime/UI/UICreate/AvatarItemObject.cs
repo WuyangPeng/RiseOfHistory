@@ -9,7 +9,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public static AvatarItemObject Create(AvatarItem item)
         {
-            AvatarItemObject obj = ReferencePool.Acquire<AvatarItemObject>();
+            var obj = ReferencePool.Acquire<AvatarItemObject>();
             obj.Initialize(item);
             return obj;
         }
