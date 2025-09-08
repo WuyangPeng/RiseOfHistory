@@ -1,8 +1,9 @@
-﻿using Game.Scripts.Main.Runtime.SaveData;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.SaveData;
+using Game.Scripts.Main.Runtime.UI.UIMenu.Item;
 using UnityEngine;
 
-namespace Game.Scripts.Main.Runtime.UI.UIMenu
+namespace Game.Scripts.Main.Runtime.UI.UIMenu.Display
 {
     public class HeadDataDisplay : MonoBehaviour
     {

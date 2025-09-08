@@ -1,8 +1,8 @@
-﻿using GameFramework;
+﻿using Game.Scripts.Main.Runtime.UI.UICreate.Item;
+using GameFramework;
 using GameFramework.ObjectPool;
-using Object = UnityEngine.Object;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate
+namespace Game.Scripts.Main.Runtime.UI.UICreate.Object
 {
     public class AvatarItemObject : ObjectBase
     {
@@ -29,7 +29,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             var item = (AvatarItem)Target;
             item.OnRecycle();
-            Object.Destroy(item.gameObject);
+            UnityEngine.Object.Destroy(item.gameObject);
             ReferencePool.Release(this);
         }
 

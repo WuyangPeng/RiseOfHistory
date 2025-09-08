@@ -1,9 +1,10 @@
 ﻿using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameData.User;
+using Game.Scripts.Main.Runtime.UI.UICreate.Item;
 using UnityEngine;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate
+namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 {
     public class GameDifficultyDisplay : MonoBehaviour
     {

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Game.Scripts.Main.Runtime.UI.UICreate.Item;
+using UnityEngine;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate
+namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 {
     public class GameParameterDisplay : MonoBehaviour
     {

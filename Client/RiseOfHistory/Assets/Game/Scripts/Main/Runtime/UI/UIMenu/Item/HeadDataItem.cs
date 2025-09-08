@@ -1,11 +1,11 @@
-﻿using Game.Scripts.Main.Runtime.SaveData;
-using Game.Scripts.Main.Runtime.Base;
+﻿using Game.Scripts.Main.Runtime.Base;
+using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.SaveData;
+using GameFramework.Resource;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Scripts.Main.Runtime.DataTable;
-using GameFramework.Resource;
 
-namespace Game.Scripts.Main.Runtime.UI.UIMenu
+namespace Game.Scripts.Main.Runtime.UI.UIMenu.Item
 {
     public class HeadDataItem : MonoBehaviour
     {

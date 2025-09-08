@@ -1,13 +1,11 @@
 ﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.SaveData;
 using GameFramework.Resource;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate
+namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
 {
     public class AvatarItem : MonoBehaviour
     {

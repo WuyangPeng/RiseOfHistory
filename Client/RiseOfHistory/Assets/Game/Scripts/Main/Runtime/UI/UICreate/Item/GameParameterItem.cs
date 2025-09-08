@@ -1,9 +1,8 @@
 ﻿using Game.Scripts.Main.Runtime.Base;
-using Game.Scripts.Main.Runtime.DataTable;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate
+namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
 {
     public class GameParameterItem : MonoBehaviour
     {
