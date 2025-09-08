@@ -19,7 +19,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         [SerializeField] private int poolCapacity = 20;
 
         private IObjectPool<AvatarItemObject> pool;
-        private readonly List<DRAvatar> dataList = new();
+        private readonly List<DRAvatar> avatarData = new();
         private int selectedIndex = -1;
         private readonly List<AvatarItemObject> activeAvatarItemObject = new();
 
@@ -38,7 +38,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             {
                 if ((avatar.Sex & (int)sexType) != 0)
                 {
-                    dataList.Add(avatar);
+                    avatarData.Add(avatar);
                 }
             }
 
@@ -53,7 +53,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
         private void SpawnAvatar()
         {
-            for (var i = 0; i < dataList.Count; i++)
+            for (var i = 0; i < avatarData.Count; i++)
             {
                 var spawn = GetSpawn();
                 if (spawn == null) return;
@@ -62,7 +62,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
                 var avatarItem = (AvatarItem)spawn.Target;
                 avatarItem.transform.SetParent(content, false);
-                avatarItem.SetData(i, dataList[i], OnItemClick);
+                avatarItem.SetData(i, avatarData[i], OnItemClick);
                 avatarItem.SetSelected(i == selectedIndex);
             }
         }
@@ -102,6 +102,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         {
             selectedIndex = index;
             Refresh();
+
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.SetAvatarId(avatarData[index].Id);
         }
     }
 }

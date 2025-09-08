@@ -67,5 +67,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             userData.SexType = sexType;
         }
+
+        public void SetAvatarId(int avatarId)
+        {
+            userData.AvatarId = avatarId;
+        }
     }
 }
