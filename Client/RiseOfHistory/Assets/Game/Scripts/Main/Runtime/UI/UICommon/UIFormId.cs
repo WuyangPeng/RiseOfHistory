@@ -47,11 +47,40 @@
         /// </summary>
         SelectAvatarForm = 202,
 
-
         /// <summary>
         /// 选择性格。
         /// </summary>
         SelectPersonalityForm = 203,
+
+        /// <summary>
+        /// 选择种族。
+        /// </summary>
+        SelectRaceForm = 204,
+
+        /// <summary>
+        /// 选择属性。
+        /// </summary>
+        SelectAttributeForm = 205,
+
+        /// <summary>
+        /// 选择灵根。
+        /// </summary>
+        SelectSpiritualForm = 206,
+
+        /// <summary>
+        /// 选择武器熟练度。
+        /// </summary>
+        SelectWeaponProficiencyForm = 207,
+
+        /// <summary>
+        /// 选择科技。
+        /// </summary>
+        SelectTechnologyForm = 208,
+
+        /// <summary>
+        /// 选择天赋。
+        /// </summary>
+        SelectTalentForm = 209,
 
         /// <summary>
         /// 下部菜单。
