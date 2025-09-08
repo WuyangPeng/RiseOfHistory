@@ -73,19 +73,19 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             var result = pool.Spawn();
             if (result != null) return result;
 
-            var go = Instantiate(itemPrefab.gameObject, content);
-            if (gameObject.TryGetComponent<AvatarItem>(out var item))
+            var itemGameObject = Instantiate(itemPrefab.gameObject, content);
+            if (itemGameObject.TryGetComponent<AvatarItem>(out var item))
             {
-                var obj = AvatarItemObject.Create(item);
-                pool.Register(obj, true);
-                pool.Unspawn(obj);
+                var avatarItemObject = AvatarItemObject.Create(item);
+                pool.Register(avatarItemObject, true);
+                pool.Unspawn(avatarItemObject);
                 result = pool.Spawn();
 
                 return result;
             }
 
             Log.Error("预制体没挂 AvatarItem");
-            Destroy(go);
+            Destroy(itemGameObject);
             return null;
         }
 
