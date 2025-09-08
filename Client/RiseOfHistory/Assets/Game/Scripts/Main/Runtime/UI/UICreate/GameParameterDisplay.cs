@@ -1,6 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.GameData.User;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {

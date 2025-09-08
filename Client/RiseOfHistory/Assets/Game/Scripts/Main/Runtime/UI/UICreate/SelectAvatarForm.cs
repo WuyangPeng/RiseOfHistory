@@ -1,5 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
@@ -8,6 +9,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         private ProcedureCreate procedureCreate = null;
 
+        [SerializeField]
+        private GameSexDisplay gameSexDisplay;
         public void OnReturnButtonClick()
         {
             procedureCreate.RemoveUIForm(UIFormId.SelectAvatarForm);
@@ -29,7 +32,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 Log.Warning("ProcedureCreate is invalid when open SelectAvatarForm.");
             }
 
-
+            gameSexDisplay.Refresh();
         }
 
         protected override void OnClose(bool isShutdown, object userData)

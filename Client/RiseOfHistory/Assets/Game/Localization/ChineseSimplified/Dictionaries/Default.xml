@@ -141,5 +141,7 @@
 		<String Key="Parameter.FamilyCount.Small" Value="较少" />
 		<String Key="Parameter.FamilyCount.Middle" Value="中等" />
 		<String Key="Parameter.FamilyCount.Big" Value="较多" />
+		<String Key="Sex.Male" Value="男" />
+		<String Key="Sex.Female" Value="女" />
 	</Dictionary>
 </Dictionaries>
