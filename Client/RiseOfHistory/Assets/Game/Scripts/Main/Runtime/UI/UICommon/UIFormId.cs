@@ -73,9 +73,9 @@
         SelectWeaponProficiencyForm = 207,
 
         /// <summary>
-        /// 选择科技。
+        /// 选择技艺。
         /// </summary>
-        SelectTechnologyForm = 208,
+        SelectTechniqueForm = 208,
 
         /// <summary>
         /// 选择天赋。
