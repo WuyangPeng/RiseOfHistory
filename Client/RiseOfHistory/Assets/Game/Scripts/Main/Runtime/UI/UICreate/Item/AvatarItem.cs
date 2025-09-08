@@ -6,15 +6,14 @@ using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
-{
-    public class AvatarItem : MonoBehaviour
+{ public class AvatarItem : MonoBehaviour
     {
-        [SerializeField] private Image imgBg;
-        [SerializeField] private Image imgAvatar;
+        [SerializeField] private Image imageBackground;
+        [SerializeField] private Image imageAvatar;
+
         private object avatarHandle;
         private System.Action<int> onClick;
         private int myIndex;
-
 
         public void SetData(int index, DRAvatar data, System.Action<int> clickCallback)
         {
@@ -32,7 +31,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
                      (assetName, asset, duration, userData) =>
                     {
                         avatarHandle = asset;
-                        imgAvatar.sprite = asset as Sprite;
+                        imageAvatar.sprite = asset as Sprite;
                     },
                     (assetName, status, errorMessage, userData) =>
                     {
@@ -42,7 +41,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
    
         public void SetSelected(bool selected)
         {
-            imgBg.color = selected ? Color.yellow : Color.white;
+            imageBackground.color = selected ? Color.yellow : Color.white;
         }
 
         // 点击按钮
@@ -59,7 +58,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
                 GameEntry.Resource.UnloadAsset(avatarHandle);
                 avatarHandle = null;
             }
-            imgAvatar.sprite = null;
+            imageAvatar.sprite = null;
             onClick = null;
         }
     }

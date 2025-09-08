@@ -6,12 +6,11 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Object
 {
     public class AvatarItemObject : ObjectBase
     {
-
         public static AvatarItemObject Create(AvatarItem item)
         {
-            var obj = ReferencePool.Acquire<AvatarItemObject>();
-            obj.Initialize(item);
-            return obj;
+            var avatarItemObject = ReferencePool.Acquire<AvatarItemObject>();
+            avatarItemObject.Initialize(item);
+            return avatarItemObject;
         }
 
         protected override void OnSpawn()

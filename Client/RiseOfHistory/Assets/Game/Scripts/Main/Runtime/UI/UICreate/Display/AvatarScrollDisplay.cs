@@ -30,50 +30,63 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
                 30f,
                 16);
 
-
             var avatar = GameEntry.DataTable.GetDataTable<DRAvatar>();
             dataList.AddRange(avatar.GetAllDataRows());
 
             Refresh();
         }
 
-
         private void Refresh()
+        {
+            UnSpawnAvatar();
+            SpawnAvatar();
+        }
+
+        private void SpawnAvatar()
+        {
+            for (var i = 0; i < dataList.Count; i++)
+            {
+                var spawn = GetSpawn();
+                if (spawn == null) return;
+
+                activeAvatarItemObject.Add(spawn);
+
+                var avatarItem = (AvatarItem)spawn.Target;
+                avatarItem.transform.SetParent(content, false);
+                avatarItem.SetData(i, dataList[i], OnItemClick);
+                avatarItem.SetSelected(i == selectedIndex);
+            }
+        }
+
+        private void UnSpawnAvatar()
         {
             foreach (var obj in activeAvatarItemObject)
             {
                 pool.Unspawn(obj);
             }
+
             activeAvatarItemObject.Clear();
+        }
 
-            for (var i = 0; i < dataList.Count; i++)
+        private AvatarItemObject GetSpawn()
+        {
+            var result = pool.Spawn();
+            if (result != null) return result;
+
+            var go = Instantiate(itemPrefab.gameObject, content);
+            if (gameObject.TryGetComponent<AvatarItem>(out var item))
             {
-                var poolObj = pool.Spawn();
-                if (poolObj == null)
-                {
+                var obj = AvatarItemObject.Create(item);
+                pool.Register(obj, true);
+                pool.Unspawn(obj);
+                result = pool.Spawn();
 
-                    var go = Instantiate(itemPrefab.gameObject, content);
-                    var item = go.GetComponent<AvatarItem>();
-                    if (item == null)
-                    {
-                        Log.Error("预制体没挂 AvatarItem");
-                        Destroy(go);
-                        return;
-                    }
-
-                    var obj = AvatarItemObject.Create(item);
-                    pool.Register(obj, true);
-                    pool.Unspawn(obj);
-                    poolObj = pool.Spawn();
-                }
-
-                activeAvatarItemObject.Add(poolObj);
-
-                var avatarItem = (AvatarItem)poolObj.Target;
-                avatarItem.transform.SetParent(content, false);
-                avatarItem.SetData(i, dataList[i], OnItemClick);
-                avatarItem.SetSelected(i == selectedIndex);
+                return result;
             }
+
+            Log.Error("预制体没挂 AvatarItem");
+            Destroy(go);
+            return null;
         }
 
         private void OnItemClick(int index)

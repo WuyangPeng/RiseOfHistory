@@ -468,6 +468,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968bf515a2e9dcc4ebfa716214e47c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgBg: {fileID: 5554555046858487341}
-  imgAvatar: {fileID: 8091868826252276520}
-  txtName: {fileID: 0}
+  imageBackground: {fileID: 5554555046858487341}
+  imageAvatar: {fileID: 8091868826252276520}
