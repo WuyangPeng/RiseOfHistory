@@ -1,9 +1,5 @@
 ﻿using GameFramework;
 using GameFramework.ObjectPool;
-using System;
-using UnityEngine;
-using UnityEngine.Pool;
-using static UnityEngine.GraphicsBuffer;
 using Object = UnityEngine.Object;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
@@ -31,7 +27,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void Release(bool isShutdown)
         {
-            AvatarItem item = (AvatarItem)Target;
+            var item = (AvatarItem)Target;
             item.OnRecycle();
             Object.Destroy(item.gameObject);
             ReferencePool.Release(this);

@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.SaveData;
+﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.SaveData;
 using GameFramework.Resource;
 using TMPro;
 using UnityEngine;
@@ -13,30 +14,24 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         [SerializeField] private Image imgBg;
         [SerializeField] private Image imgAvatar;
         [SerializeField] private TextMeshProUGUI txtName;
-        private object avatarHandle;          // 资源句柄
-        private System.Action<int> onClick;     // 回调
-        private int myIndex;                    // 自己在列表里的序号
+        private object avatarHandle;
+        private System.Action<int> onClick;
+        private int myIndex;
 
-        // 外部调用：设置数据 + 回调
-        public void SetData(int index, HeadData data, System.Action<int> clickCallback)
+
+        public void SetData(int index, DRAvatar data, System.Action<int> clickCallback)
         {
             myIndex = index;
             onClick = clickCallback;
-
             txtName.text = data.Name;
 
-            // 1. 先卸载旧图
             if (avatarHandle != null)
             {
                 GameEntry.Resource.UnloadAsset(avatarHandle);
                 avatarHandle = null;
             }
 
-            // 2. 拼路径（必须 Assets/ 开头）
-            string path = $"Assets/Game/Textures/Avatar/{data.Avatar}.png";
-
-            // 3. 异步加载
-            GameEntry.Resource.LoadAsset(path, typeof(Sprite), 0,
+            GameEntry.Resource.LoadAsset(data.Name, typeof(Sprite), 0,
                 new LoadAssetCallbacks(
                      (assetName, asset, duration, userData) =>
                     {
@@ -48,8 +43,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                         Log.Error($"头像加载失败:{errorMessage}");
                     }));
         }
-
-        // 选中状态
+   
         public void SetSelected(bool selected)
         {
             imgBg.color = selected ? Color.yellow : Color.white;
