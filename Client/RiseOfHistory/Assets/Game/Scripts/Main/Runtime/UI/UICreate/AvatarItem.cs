@@ -13,7 +13,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         [SerializeField] private Image imgBg;
         [SerializeField] private Image imgAvatar;
-        [SerializeField] private TextMeshProUGUI txtName;
         private object avatarHandle;
         private System.Action<int> onClick;
         private int myIndex;
@@ -23,7 +22,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             myIndex = index;
             onClick = clickCallback;
-            txtName.text = data.Name;
 
             if (avatarHandle != null)
             {
@@ -31,7 +29,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 avatarHandle = null;
             }
 
-            GameEntry.Resource.LoadAsset(data.Name, typeof(Sprite), 0,
+            GameEntry.Resource.LoadAsset(data.Path, typeof(Sprite), 0,
                 new LoadAssetCallbacks(
                      (assetName, asset, duration, userData) =>
                     {
