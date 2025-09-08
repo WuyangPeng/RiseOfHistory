@@ -47,6 +47,12 @@
         /// </summary>
         SelectAvatarForm = 202,
 
+
+        /// <summary>
+        /// 选择性格。
+        /// </summary>
+        SelectPersonalityForm = 203,
+
         /// <summary>
         /// 下部菜单。
         /// </summary>
