@@ -18,16 +18,11 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         private IObjectPool<AvatarItemObject> pool;
         private readonly List<DRAvatar> dataList = new();
         private int selectedIndex = -1;
+        private readonly List<AvatarItemObject> spawnedObjects = new();
 
         private void Start()
         {
-            var go = Instantiate(itemPrefab.gameObject, content);
-            var item = go.GetComponent<AvatarItem>();
-            if (item == null)
-            {
-                Log.Error("预制体没挂 AvatarItem");
-                return;
-            }
+
 
             pool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<AvatarItemObject>(
                 "AvatarItemPool",
@@ -35,22 +30,47 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 30f,
                 16);
 
-            pool.Register(AvatarItemObject.Create(item), true);
+            for (var i = 0; i < poolCapacity; i++)
+            {
+                var go = Instantiate(itemPrefab.gameObject, content);
+                var item = go.GetComponent<AvatarItem>();
+                if (item == null)
+                {
+                    Log.Error("预制体没挂 AvatarItem");
+                    return;
+                }
+
+                var obj = AvatarItemObject.Create(item);
+                pool.Register(obj, true);
+                pool.Unspawn(obj);
+            }
 
             var avatar = GameEntry.DataTable.GetDataTable<DRAvatar>();
             dataList.AddRange(avatar.GetAllDataRows());
 
             Refresh();
-        } 
+        }
 
 
         private void Refresh()
         {
-            //while (pool.Count > 0) pool.Unspawn(pool.Spawn());
+            foreach (var obj in spawnedObjects)
+            {
+                pool.Unspawn(obj);
+            }
+            spawnedObjects.Clear();
 
             for (var i = 0; i < dataList.Count; i++)
             {
                 var obj = pool.Spawn();
+                if (obj == null)
+                {
+                    Log.Warning("对象池中没有足够的 AvatarItemObject");
+                    continue;
+                }
+
+                spawnedObjects.Add(obj);
+
                 var item = (AvatarItem)obj.Target;
                 item.transform.SetParent(content, false);
                 item.SetData(i, dataList[i], OnItemClick);
