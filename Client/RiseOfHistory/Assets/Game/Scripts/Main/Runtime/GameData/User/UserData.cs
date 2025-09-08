@@ -13,9 +13,9 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public int InitNpcCount { get; set; } = 0;
 
-        public int SectCount { get; set; } = 0;
+        public int InitSectCount { get; set; } = 0;
 
-        public int FamilyCount { get; set; } = 0;
+        public int InitFamilyCount { get; set; } = 0;
 
         private SexType sexType;
 
@@ -40,8 +40,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
             InitMapSize = Utility.Random.GetRandom(gameParameterRow.MinMapSize, gameParameterRow.MaxMapSize + 1);
             InitNpcCount = Utility.Random.GetRandom(gameParameterRow.MinNpcCount, gameParameterRow.MaxNpcCount + 1);
-            SectCount = Utility.Random.GetRandom(gameParameterRow.MinSectCount, gameParameterRow.MaxSectCount + 1);
-            FamilyCount = Utility.Random.GetRandom(gameParameterRow.MinFamilyCount, gameParameterRow.MaxFamilyCount + 1);
+            InitSectCount = Utility.Random.GetRandom(gameParameterRow.MinSectCount, gameParameterRow.MaxSectCount + 1);
+            InitFamilyCount = Utility.Random.GetRandom(gameParameterRow.MinFamilyCount, gameParameterRow.MaxFamilyCount + 1);
         }
 
         public void SetMapSize(GameParameterType gameParameterType)
@@ -62,14 +62,14 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         {
             var gameParameterRow = GetGameParameter(gameParameterType);
 
-            SectCount = Utility.Random.GetRandom(gameParameterRow.MinSectCount, gameParameterRow.MaxSectCount + 1);
+            InitSectCount = Utility.Random.GetRandom(gameParameterRow.MinSectCount, gameParameterRow.MaxSectCount + 1);
         }
 
         public void SetFamilyCount(GameParameterType gameParameterType)
         {
             var gameParameterRow = GetGameParameter(gameParameterType);
 
-            FamilyCount = Utility.Random.GetRandom(gameParameterRow.MinFamilyCount, gameParameterRow.MaxFamilyCount + 1);
+            InitFamilyCount = Utility.Random.GetRandom(gameParameterRow.MinFamilyCount, gameParameterRow.MaxFamilyCount + 1);
         }
 
         public DRGameParameter GetGameParameter(GameParameterType gameParameterType)

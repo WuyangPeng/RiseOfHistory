@@ -37,5 +37,25 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             userData.SetFamilyCount(gameParameterType);
         }
+
+        public int GetInitMapSize()
+        {
+            return userData.InitMapSize;
+        }
+
+        public int GetInitNpcCount()
+        {
+            return userData.InitNpcCount;
+        }
+
+        public int GetInitSectCount()
+        {
+            return userData.InitSectCount;
+        }
+
+        public int GetInitFamilyCount()
+        {
+            return userData.InitFamilyCount;
+        }
     }
 }

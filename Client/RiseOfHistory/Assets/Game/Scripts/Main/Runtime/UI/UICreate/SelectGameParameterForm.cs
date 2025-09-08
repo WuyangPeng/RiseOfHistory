@@ -1,8 +1,10 @@
-﻿using Game.Scripts.Main.Runtime.GameData.User;
+﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameData.User;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
@@ -14,6 +16,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         [SerializeField]
         private GameParameterDisplay gameParameterDisplay;
+
+        [SerializeField]
+        private Toggle[] mapSizeToggle = null;
+
+        [SerializeField]
+        private Toggle[] npcCountToggle = null;
+
+        [SerializeField]
+        private Toggle[] sectCountToggle = null;
+
+        [SerializeField]
+        private Toggle[] familyCountToggle = null;
 
         public void OnReturnButtonClick()
         {
@@ -172,6 +186,44 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             }
 
             gameParameterDisplay.Refresh();
+
+            InitGameParameter();
+        }
+
+        private void InitGameParameter()
+        {
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+
+            var gameParameter = GameEntry.DataTable.GetDataTable<DRGameParameter>();
+            var rows = gameParameter.GetAllDataRows();
+            var initMapSize = userModule.GetInitMapSize();
+            var initNpcCount = userModule.GetInitNpcCount();
+            var initSectCount = userModule.GetInitSectCount();
+            var initFamilyCount = userModule.GetInitFamilyCount();
+
+            for (var i = 0; i < rows.Length; ++i)
+            {
+                var row = rows[i];
+                if (row.MinMapSize <= initMapSize && initMapSize <= row.MaxMapSize)
+                {
+                    mapSizeToggle[i].isOn = true;
+                }
+
+                if (row.MinNpcCount <= initNpcCount && initNpcCount <= row.MaxNpcCount)
+                {
+                    npcCountToggle[i].isOn = true;
+                }
+
+                if (row.MinSectCount <= initSectCount && initSectCount <= row.MaxSectCount)
+                {
+                    sectCountToggle[i].isOn = true;
+                }
+
+                if (row.MinFamilyCount <= initFamilyCount && initFamilyCount <= row.MaxFamilyCount)
+                {
+                    familyCountToggle[i].isOn = true;
+                }
+            }
         }
 
         protected override void OnClose(bool isShutdown, object userData)
