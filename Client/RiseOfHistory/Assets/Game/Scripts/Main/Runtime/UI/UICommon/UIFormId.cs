@@ -68,9 +68,9 @@
         SelectSpiritualForm = 206,
 
         /// <summary>
-        /// 选择武器熟练度。
+        /// 选择功法。
         /// </summary>
-        SelectWeaponProficiencyForm = 207,
+        SelectMartialArtsForm = 207,
 
         /// <summary>
         /// 选择技艺。
