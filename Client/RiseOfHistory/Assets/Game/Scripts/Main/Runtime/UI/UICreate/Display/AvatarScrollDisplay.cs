@@ -32,14 +32,24 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
                 16);
 
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var avatarId = userModule.GetAvatarId();
             var sexType = userModule.GetSexType();
             var avatars = GameEntry.DataTable.GetDataTable<DRAvatar>();
             foreach (var avatar in avatars)
             {
-                if ((avatar.Sex & (int)sexType) != 0)
+                if ((avatar.Sex & (int)sexType) == 0) continue;
+
+                avatarData.Add(avatar);
+                if (avatarId == avatar.Id)
                 {
-                    avatarData.Add(avatar);
+                    selectedIndex = avatarData.Count - 1;
                 }
+            }
+
+            if (selectedIndex == -1)
+            {
+                selectedIndex = 0;
+                userModule.SetAvatarId(avatarData[0].Id);
             }
 
             Refresh();

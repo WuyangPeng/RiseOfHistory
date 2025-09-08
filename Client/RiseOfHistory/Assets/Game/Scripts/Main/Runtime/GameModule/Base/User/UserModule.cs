@@ -72,5 +72,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             userData.AvatarId = avatarId;
         }
+
+        public int GetAvatarId()
+        {
+            return userData.AvatarId;
+        }
     }
 }
