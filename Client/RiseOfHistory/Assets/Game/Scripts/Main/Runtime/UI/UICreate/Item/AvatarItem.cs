@@ -6,7 +6,8 @@ using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
-{ public class AvatarItem : MonoBehaviour
+{
+    public class AvatarItem : MonoBehaviour
     {
         [SerializeField] private Image imageBackground;
         [SerializeField] private Image imageAvatar;
@@ -38,7 +39,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
                         Log.Error($"头像加载失败:{errorMessage}");
                     }));
         }
-   
+
         public void SetSelected(bool selected)
         {
             imageBackground.color = selected ? Color.yellow : Color.white;

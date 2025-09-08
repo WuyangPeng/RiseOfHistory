@@ -143,5 +143,7 @@
 		<String Key="Parameter.FamilyCount.Big" Value="较多" />
 		<String Key="Sex.Male" Value="男" />
 		<String Key="Sex.Female" Value="女" />
+		<String Key="Avatar.Select" Value="选择头像" />
+		<String Key="Avatar.Sex.Select" Value="选择性别" />
 	</Dictionary>
 </Dictionaries>

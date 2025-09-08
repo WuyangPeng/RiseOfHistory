@@ -83,7 +83,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 800}
+  m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2750433323359564434
 CanvasRenderer:
@@ -198,8 +198,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2750433323359343646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f89d2028517a554395fa1066be93d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollRect: {fileID: 0}
-  content: {fileID: 0}
+  scrollRect: {fileID: 5867633109598010098}
+  content: {fileID: 2750433323359187636}
   itemPrefab: {fileID: 3027247565771039248, guid: f95001c11fb247b4eb74e083ee4f6d92,
     type: 3}
   poolCapacity: 20
