@@ -43,6 +43,11 @@
         SelectGameParameterForm = 201,
 
         /// <summary>
+        /// 选择头像。
+        /// </summary>
+        SelectAvatarForm = 202,
+
+        /// <summary>
         /// 下部菜单。
         /// </summary>
         BottomForm = 303,

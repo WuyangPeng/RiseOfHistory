@@ -36,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
-
+            procedureCreate.OpenUIForm(UIFormId.SelectAvatarForm);
         }
 
         public void OnSmallMapSizeButtonClick(bool isOn)
@@ -105,9 +105,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetNpcCount(GameParameterType.Big);
         }
-
-
-
 
         public void OnSmallSectCountButtonClick(bool isOn)
         {
@@ -201,28 +198,33 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var initSectCount = userModule.GetInitSectCount();
             var initFamilyCount = userModule.GetInitFamilyCount();
 
-            for (var i = 0; i < rows.Length; ++i)
+            for (var index = 0; index < rows.Length; ++index)
             {
-                var row = rows[i];
-                if (row.MinMapSize <= initMapSize && initMapSize <= row.MaxMapSize)
-                {
-                    mapSizeToggle[i].isOn = true;
-                }
+                SetToggleOn(rows, index, initMapSize, initNpcCount, initSectCount, initFamilyCount);
+            }
+        }
 
-                if (row.MinNpcCount <= initNpcCount && initNpcCount <= row.MaxNpcCount)
-                {
-                    npcCountToggle[i].isOn = true;
-                }
+        private void SetToggleOn(DRGameParameter[] rows, int index, int initMapSize, int initNpcCount, int initSectCount, int initFamilyCount)
+        {
+            var row = rows[index];
+            if (row.MinMapSize <= initMapSize && initMapSize <= row.MaxMapSize)
+            {
+                mapSizeToggle[index].isOn = true;
+            }
 
-                if (row.MinSectCount <= initSectCount && initSectCount <= row.MaxSectCount)
-                {
-                    sectCountToggle[i].isOn = true;
-                }
+            if (row.MinNpcCount <= initNpcCount && initNpcCount <= row.MaxNpcCount)
+            {
+                npcCountToggle[index].isOn = true;
+            }
 
-                if (row.MinFamilyCount <= initFamilyCount && initFamilyCount <= row.MaxFamilyCount)
-                {
-                    familyCountToggle[i].isOn = true;
-                }
+            if (row.MinSectCount <= initSectCount && initSectCount <= row.MaxSectCount)
+            {
+                sectCountToggle[index].isOn = true;
+            }
+
+            if (row.MinFamilyCount <= initFamilyCount && initFamilyCount <= row.MaxFamilyCount)
+            {
+                familyCountToggle[index].isOn = true;
             }
         }
 

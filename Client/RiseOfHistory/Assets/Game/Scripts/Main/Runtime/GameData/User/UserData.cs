@@ -1,7 +1,7 @@
 ﻿using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.RuntimeException;
-using GameFramework; 
+using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.GameData.User
 {
@@ -17,20 +17,16 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public int InitFamilyCount { get; set; } = 0;
 
-        private SexType sexType;
+        public SexType SexType { get; set; } = SexType.Male;
+
+        public int AvatarId { get; set; } = 0;
 
         private int age;
 
         public UserData()
         {
-            sexType = SexType.Male;
-        }
 
-        public UserData(SexType sexType)
-        {
-            this.sexType = sexType;
         }
-
 
         public void InitGameParameter()
         {
