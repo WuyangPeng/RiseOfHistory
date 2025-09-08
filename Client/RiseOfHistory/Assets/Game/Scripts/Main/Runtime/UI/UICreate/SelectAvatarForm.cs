@@ -1,8 +1,12 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.GameData.User;
+using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UICreate.Display;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
@@ -12,6 +16,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         [SerializeField]
         private GameSexDisplay gameSexDisplay;
+
+        [SerializeField]
+        private AvatarScrollDisplay avatarScrollDisplay;
+
+
+        [SerializeField]
+        private Toggle[] sexToggle = null;
+
+
         public void OnReturnButtonClick()
         {
             procedureCreate.RemoveUIForm(UIFormId.SelectAvatarForm);
@@ -20,6 +33,32 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         public void OnEnterButtonClick()
         {
 
+        }
+
+        public void OnSelectMaleButtonClick(bool isOn)
+        {
+            if (!isOn)
+            {
+                return;
+            }
+
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.SetSexType(SexType.Male);
+
+            avatarScrollDisplay.Refresh();
+        }
+
+        public void OnSelectFemaleButtonClick(bool isOn)
+        {
+            if (!isOn)
+            {
+                return;
+            }
+
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.SetSexType(SexType.Female);
+
+            avatarScrollDisplay.Refresh();
         }
 
         protected override void OnOpen(object userData)
@@ -34,6 +73,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             }
 
             gameSexDisplay.Refresh();
+
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+
+            sexToggle[(int)(userModule.GetSexType() - 1)].isOn = true;
         }
 
         protected override void OnClose(bool isShutdown, object userData)

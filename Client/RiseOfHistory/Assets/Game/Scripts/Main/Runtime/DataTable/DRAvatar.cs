@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-07 22:41:28.069
+// 生成时间：2025-09-08 16:38:30.487
 //------------------------------------------------------------
 
 using GameFramework;
@@ -43,6 +43,15 @@ namespace Game.Scripts.Main.Runtime.DataTable
             private set;
         }
 
+        /// <summary>
+        /// 获取姓别。
+        /// </summary>
+        public int Sex
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -57,6 +66,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
             index++;
             Name = columnStrings[index++];
             Path = columnStrings[index++];
+            Sex = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -71,6 +81,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
                     Path = binaryReader.ReadString();
+                    Sex = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

@@ -57,5 +57,15 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             return userData.InitFamilyCount;
         }
+
+        public SexType GetSexType()
+        {
+            return userData.SexType;
+        }
+
+        public void SetSexType(SexType sexType)
+        {
+            userData.SexType = sexType;
+        }
     }
 }

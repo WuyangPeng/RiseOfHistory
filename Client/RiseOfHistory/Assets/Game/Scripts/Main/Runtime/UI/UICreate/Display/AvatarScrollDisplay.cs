@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using Game.Scripts.Main.Runtime.DataTable;
+﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.UI.UICreate.Item;
 using Game.Scripts.Main.Runtime.UI.UICreate.Object;
 using GameFramework.ObjectPool;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -30,13 +31,21 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
                 30f,
                 16);
 
-            var avatar = GameEntry.DataTable.GetDataTable<DRAvatar>();
-            dataList.AddRange(avatar.GetAllDataRows());
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var sexType = userModule.GetSexType();
+            var avatars = GameEntry.DataTable.GetDataTable<DRAvatar>();
+            foreach (var avatar in avatars)
+            {
+                if ((avatar.Sex & (int)sexType) != 0)
+                {
+                    dataList.Add(avatar);
+                }
+            }
 
             Refresh();
         }
 
-        private void Refresh()
+        public void Refresh()
         {
             UnSpawnAvatar();
             SpawnAvatar();
