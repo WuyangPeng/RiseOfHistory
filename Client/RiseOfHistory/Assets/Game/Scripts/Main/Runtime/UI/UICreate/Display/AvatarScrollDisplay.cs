@@ -31,6 +31,13 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
                 30f,
                 16);
 
+            Refresh();
+        }
+
+        private void SetAvatarData()
+        {
+            avatarData.Clear();
+
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             var avatarId = userModule.GetAvatarId();
             var sexType = userModule.GetSexType();
@@ -46,17 +53,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
                 }
             }
 
-            if (selectedIndex == -1)
-            {
-                selectedIndex = 0;
-                userModule.SetAvatarId(avatarData[0].Id);
-            }
+            if (selectedIndex >= 0) return;
 
-            Refresh();
+            selectedIndex = 0;
+            userModule.SetAvatarId(avatarData[0].Id);
         }
 
         public void Refresh()
         {
+            SetAvatarData();
             UnSpawnAvatar();
             SpawnAvatar();
         }
