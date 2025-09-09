@@ -19,5 +19,15 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         {
             return defaultProperty.GetValueOrDefault(defaultPropertyType, 0);
         }
+
+        public void AddBaseProperty(int propertyId)
+        {
+            baseProperty.Add((BasePropertyType)propertyId, 1);
+        }
+
+        public void ReduceBaseProperty(int propertyId)
+        {
+            baseProperty.Add((BasePropertyType)propertyId, -1);
+        }
     }
 }

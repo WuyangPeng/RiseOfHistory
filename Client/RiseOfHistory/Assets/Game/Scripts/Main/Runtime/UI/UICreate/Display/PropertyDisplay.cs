@@ -18,13 +18,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             var index = 0;
             foreach (var element in property)
             {
-                if (element.Group == (int)PropertyGroupType.Base)
-                {
-                    var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-                    items[index].SetNum(element.Name, userModule.GetBaseProperty((BasePropertyType)element.Id));
+                if (element.Group != (int)PropertyGroupType.Base) continue;
 
-                    ++index;
-                }
+                var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+                items[index].SetNum(element.Name, userModule.GetBaseProperty((BasePropertyType)element.Id));
+
+                ++index;
             }
 
         }

@@ -26,6 +26,9 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public RaceType RaceType { get; set; } = RaceType.Human;
 
+
+        public int PropertyCount { get; set; } = 10;
+
         private int age;
 
         public UserData()
@@ -97,6 +100,16 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public MoralityType GetMoralityType()
         {
             return (MoralityType)((int)MoralityType.Empty | (int)CampType);
+        }
+
+        public void ReduceProperty()
+        {
+            --PropertyCount;
+        }
+
+        public void AddProperty()
+        {
+            ++PropertyCount;
         }
     }
 }

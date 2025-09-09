@@ -111,11 +111,16 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             userData.RaceType = raceType;
         }
 
-        public int GetBaseProperty(BasePropertyType basePropertyType)
+        public int GetPropertyCount()
+        {
+            return userData.PropertyCount;
+        }
+
+        public int GetInitBaseProperty(BasePropertyType basePropertyType)
         {
             var property = GameEntry.DataTable.GetDataTable<DRProperty>();
 
-            var result = propertyData.GetBaseProperty(basePropertyType) + property.GetDataRow((int)basePropertyType).InitValue;
+            var result = property.GetDataRow((int)basePropertyType).InitValue;
 
             var race = GameEntry.DataTable.GetDataTable<DRRace>();
 
@@ -132,6 +137,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             }
 
             return result;
+        }
+
+        public int GetBaseProperty(BasePropertyType basePropertyType)
+        {
+            return propertyData.GetBaseProperty(basePropertyType) + GetInitBaseProperty(basePropertyType);
         }
 
         public int GetDefaultProperty(DefaultPropertyType defaultPropertyType)
@@ -155,6 +165,19 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             }
 
             return result;
+        }
+
+        public void AddBaseProperty(int propertyId)
+        {
+            userData.ReduceProperty();
+            propertyData.AddBaseProperty(propertyId);
+        }
+
+        public void ReduceBaseProperty(int propertyId)
+        {
+            userData.AddProperty();
+            propertyData.ReduceBaseProperty(propertyId);
+
         }
     }
 }

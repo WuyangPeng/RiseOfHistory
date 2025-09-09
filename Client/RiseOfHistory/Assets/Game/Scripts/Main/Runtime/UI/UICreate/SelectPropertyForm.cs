@@ -1,8 +1,12 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameEnum;
+using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UICreate.Display;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
@@ -25,12 +29,35 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnReduceButtonClick(int propertyId)
         {
+            var property = GameEntry.DataTable.GetDataTable<DRProperty>();
 
+            var row = property.GetDataRow(propertyId);
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var baseProperty = userModule.GetBaseProperty((BasePropertyType)propertyId);
+            var initBaseProperty = userModule.GetInitBaseProperty((BasePropertyType)propertyId);
+            if (baseProperty <= initBaseProperty || userModule.GetPropertyCount() >= 10)
+            {
+                return;
+            }
+
+            userModule.ReduceBaseProperty(propertyId);
+            propertyDisplay.Refresh();
         }
 
         public void OnAddButtonClick(int propertyId)
         {
+            var property = GameEntry.DataTable.GetDataTable<DRProperty>();
 
+            var row = property.GetDataRow(propertyId);
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var baseProperty = userModule.GetBaseProperty((BasePropertyType)propertyId);
+            if (baseProperty >= row.MaxValue || userModule.GetPropertyCount() <= 0)
+            {
+                return;
+            }
+
+            userModule.AddBaseProperty(propertyId);
+            propertyDisplay.Refresh();
         }
 
         protected override void OnOpen(object userData)
