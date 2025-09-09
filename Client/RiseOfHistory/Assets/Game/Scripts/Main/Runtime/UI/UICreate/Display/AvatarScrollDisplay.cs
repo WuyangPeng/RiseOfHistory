@@ -22,6 +22,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         private readonly List<DRAvatar> avatarData = new();
         private int selectedIndex = -1;
         private readonly List<AvatarItemObject> activeAvatarItemObject = new();
+        private const int PerRow = 4;
 
         private void Start()
         {
@@ -53,7 +54,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
                 }
             }
 
-            if (selectedIndex >= 0) return;
+            if (selectedIndex >= 0)
+            {
+                return;
+            }
 
             selectedIndex = 0;
             userModule.SetAvatarId(avatarData[0].Id);
@@ -66,20 +70,74 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             SpawnAvatar();
         }
 
+        public GameObject GetRowGameObject(int row)
+        {
+            var rowGameObject = new GameObject($"Row{row}", typeof(RectTransform));
+            rowGameObject.transform.SetParent(content, false);
+
+            var horizontalLayoutGroup = rowGameObject.AddComponent<HorizontalLayoutGroup>();
+            horizontalLayoutGroup.spacing = 20f;
+            horizontalLayoutGroup.childControlWidth = false;
+            horizontalLayoutGroup.childControlHeight = false;
+            horizontalLayoutGroup.childAlignment = TextAnchor.MiddleCenter;
+
+            var rowRectTransform = rowGameObject.GetComponent<RectTransform>();
+            rowRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 400);
+            rowRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
+
+            return rowGameObject;
+        }
+
         private void SpawnAvatar()
         {
-            for (var i = 0; i < avatarData.Count; i++)
+            var rowCount = Mathf.CeilToInt((float)avatarData.Count / PerRow);
+
+            for (var row = 0; row < rowCount; row++)
             {
-                var spawn = GetSpawn();
-                if (spawn == null) return;
-
-                activeAvatarItemObject.Add(spawn);
-
-                var avatarItem = (AvatarItem)spawn.Target;
-                avatarItem.transform.SetParent(content, false);
-                avatarItem.SetData(i, avatarData[i], OnItemClick);
-                avatarItem.SetSelected(i == selectedIndex);
+                if (!SpawnAvatar(row))
+                {
+                    return;
+                }
             }
+        }
+
+        private bool SpawnAvatar(int row)
+        {
+            var rowGameObject = GetRowGameObject(row);
+
+            for (var column = 0; column < PerRow; column++)
+            {
+                if (!SpawnAvatar(row, column, rowGameObject))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool SpawnAvatar(int row, int column, GameObject rowGameObject)
+        {
+            var idx = row * PerRow + column;
+            if (idx >= avatarData.Count)
+            {
+                return true;
+            }
+
+            var spawn = GetSpawn();
+            if (spawn == null)
+            {
+                return false;
+            }
+
+            activeAvatarItemObject.Add(spawn);
+
+            var avatarItem = (AvatarItem)spawn.Target;
+            avatarItem.transform.SetParent(rowGameObject.transform, false);
+            avatarItem.SetData(idx, avatarData[idx], OnItemClick);
+            avatarItem.SetSelected(idx == selectedIndex);
+
+            return true;
         }
 
         private void UnSpawnAvatar()
