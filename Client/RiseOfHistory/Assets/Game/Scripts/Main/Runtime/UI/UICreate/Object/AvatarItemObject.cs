@@ -29,7 +29,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Object
             var item = (AvatarItem)Target;
             item.OnRecycle();
             UnityEngine.Object.Destroy(item.gameObject);
-            ReferencePool.Release(this);
         }
 
     }
