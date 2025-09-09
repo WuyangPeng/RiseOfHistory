@@ -1,4 +1,5 @@
 using Game.Scripts.Main.Runtime.GameData.User;
+using Game.Scripts.Main.Runtime.GameEnum;
 
 namespace Game.Scripts.Main.Runtime.GameModule.Base.User
 {
@@ -6,7 +7,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
     public class UserModule : BaseModule
     {
         private readonly UserData userData = new UserData();
-        private AttributeData attributeData = new AttributeData();
+        private readonly PropertyData propertyData = new PropertyData();
 
         public void SetGameDifficulty(GameDifficultyType gameDifficulty)
         {
@@ -16,7 +17,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         public void Init()
         {
             userData.InitGameParameter();
-            attributeData.InitAttribute();
+            propertyData.InitAttribute();
         }
 
         public void SetMapSize(GameParameterType gameParameterType)

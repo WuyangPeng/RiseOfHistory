@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Game.Scripts.Main.Runtime.GameData.User
+namespace Game.Scripts.Main.Runtime.GameEnum
 {
 
-    public enum BaseAttributeType
+    public enum BasePropertyType
     {
         [InspectorName("力道")] Strength = 200001,
         [InspectorName("身法")] Agile = 200002,

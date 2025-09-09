@@ -1,6 +1,7 @@
 ﻿using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameData.User;
+using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.UI.UICreate.Item;
 using UnityEngine;
 
