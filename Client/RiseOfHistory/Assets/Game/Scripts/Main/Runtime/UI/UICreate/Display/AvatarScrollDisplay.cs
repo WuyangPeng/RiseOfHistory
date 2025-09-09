@@ -79,7 +79,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             horizontalLayoutGroup.spacing = 20f;
             horizontalLayoutGroup.childControlWidth = false;
             horizontalLayoutGroup.childControlHeight = false;
-            horizontalLayoutGroup.childAlignment = TextAnchor.MiddleCenter;
+            horizontalLayoutGroup.childAlignment = TextAnchor.LowerLeft;
 
             var rowRectTransform = rowGameObject.GetComponent<RectTransform>();
             rowRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 400);
