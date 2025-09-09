@@ -50,7 +50,7 @@
         /// <summary>
         /// 选择性格。
         /// </summary>
-        SelectPersonalityForm = 203,
+        SelectCampForm = 203,
 
         /// <summary>
         /// 选择种族。

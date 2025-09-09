@@ -1,13 +1,10 @@
-﻿using Game.Scripts.Main.Runtime.GameModule.Base.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
-using Game.Scripts.Main.Runtime.UI.UICreate.Display;
-using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
-    public class SelectPersonalityForm : UGuiForm
+    public class SelectCampForm : UGuiForm
     {
         private ProcedureCreate procedureCreate = null;
 
@@ -31,5 +28,16 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
             base.OnClose(isShutdown, userData);
         }
+
+        public void OnReturnButtonClick()
+        {
+            procedureCreate.RemoveUIForm(UIFormId.SelectCampForm);
+        }
+
+        public void OnEnterButtonClick()
+        {
+            procedureCreate.OpenUIForm(UIFormId.SelectRaceForm);
+        }
+
     }
 }

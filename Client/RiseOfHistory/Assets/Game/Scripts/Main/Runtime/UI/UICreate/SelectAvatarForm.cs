@@ -32,7 +32,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
-            procedureCreate.OpenUIForm(UIFormId.SelectPersonalityForm);
+            procedureCreate.OpenUIForm(UIFormId.SelectCampForm);
         }
 
         public void OnSelectMaleButtonClick(bool isOn)
