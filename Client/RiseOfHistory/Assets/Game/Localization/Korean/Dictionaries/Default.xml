@@ -183,5 +183,7 @@
 		<String Key="Race.Demon" Value="妖族" />
 		<String Key="Race.Demon.Description" Value="妖族 身法 +2 根骨 -2" />
 		<String Key="Race.Select" Value="选择种族" />
+		<String Key="Property.Select" Value="选择属性" />
+		<String Key="Property.Remaining" Value="剩余属性点：" />
 	</Dictionary>
 </Dictionaries>

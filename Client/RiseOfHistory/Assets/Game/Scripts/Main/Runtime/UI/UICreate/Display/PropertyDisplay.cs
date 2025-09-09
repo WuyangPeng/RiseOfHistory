@@ -4,6 +4,7 @@ using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.UI.UICreate.Item;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 {
@@ -11,20 +12,25 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
     {
         [SerializeField] private Radio2Item[] items = null;
 
+        [SerializeField] private Text remainingText;
+
         public void Refresh()
         {
             var property = GameEntry.DataTable.GetDataTable<DRProperty>();
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
             var index = 0;
             foreach (var element in property)
             {
                 if (element.Group != (int)PropertyGroupType.Base) continue;
 
-                var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+              
                 items[index].SetNum(element.Name, userModule.GetBaseProperty((BasePropertyType)element.Id));
 
                 ++index;
             }
+
+            remainingText.text = userModule.GetPropertyCount().ToString();
 
         }
     }

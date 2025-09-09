@@ -22,12 +22,12 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public void AddBaseProperty(int propertyId)
         {
-            baseProperty.Add((BasePropertyType)propertyId, 1);
+            baseProperty[(BasePropertyType)propertyId] = GetBaseProperty((BasePropertyType)propertyId) + 1;
         }
 
         public void ReduceBaseProperty(int propertyId)
         {
-            baseProperty.Add((BasePropertyType)propertyId, -1);
+            baseProperty[(BasePropertyType)propertyId] = GetBaseProperty((BasePropertyType)propertyId) - 1;
         }
     }
 }
