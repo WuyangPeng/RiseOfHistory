@@ -23,6 +23,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         private int selectedIndex = -1;
         private readonly List<AvatarItemObject> activeAvatarItemObject = new();
         private const int PerRow = 4;
+        private readonly List<GameObject> rowGameObjects = new();
 
         private void Start()
         {
@@ -80,9 +81,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             horizontalLayoutGroup.childControlWidth = false;
             horizontalLayoutGroup.childControlHeight = false;
             horizontalLayoutGroup.childAlignment = TextAnchor.LowerLeft;
+            horizontalLayoutGroup.childForceExpandWidth = false;
 
             var rowRectTransform = rowGameObject.GetComponent<RectTransform>();
-            rowRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 400);
+            rowRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 480);
             rowRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
 
             return rowGameObject;
@@ -90,6 +92,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
         private void SpawnAvatar()
         {
+
             var rowCount = Mathf.CeilToInt((float)avatarData.Count / PerRow);
 
             for (var row = 0; row < rowCount; row++)
@@ -104,6 +107,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         private bool SpawnAvatar(int row)
         {
             var rowGameObject = GetRowGameObject(row);
+
+            rowGameObjects.Add(rowGameObject);
 
             for (var column = 0; column < PerRow; column++)
             {
@@ -144,10 +149,22 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         {
             foreach (var obj in activeAvatarItemObject)
             {
+                var item = (AvatarItem)obj.Target;
+                if (item != null && item.gameObject != null)
+                {
+                    item.transform.SetParent(null, false);
+                }
                 pool.Unspawn(obj);
             }
 
             activeAvatarItemObject.Clear();
+
+            foreach (var rowGameObject in rowGameObjects)
+            {
+                DestroyImmediate(rowGameObject);
+            }
+
+            rowGameObjects.Clear();
         }
 
         private AvatarItemObject GetSpawn()
