@@ -175,5 +175,8 @@
 		<String Key="Camp.ChaosModeration.Description" Value="混乱中道描述" />
 		<String Key="Camp.ChaosCraftiness" Value="混乱诡诈" />
 		<String Key="Camp.ChaosCraftiness.Description" Value="混乱诡诈描述" />
+		<String Key="Camp.Select" Value="选择阵营" />
+		<String Key="Camp.Rules.Select" Value="选择规则" />
+		<String Key="Camp.Morality.Select" Value="选择道德" />
 	</Dictionary>
 </Dictionaries>

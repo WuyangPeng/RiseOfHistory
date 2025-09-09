@@ -18,8 +18,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectPersonalityForm.");
             }
-
-
         }
 
         protected override void OnClose(bool isShutdown, object userData)
