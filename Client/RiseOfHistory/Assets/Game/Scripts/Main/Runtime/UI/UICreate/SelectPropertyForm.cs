@@ -1,16 +1,21 @@
 ﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using Game.Scripts.Main.Runtime.UI.UICreate.Display;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
-    public class SelectAttributeForm : UGuiForm
+    public class SelectPropertyForm : UGuiForm
     {
         private ProcedureCreate procedureCreate = null;
 
+        [SerializeField]
+        private PropertyDisplay propertyDisplay;
+
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectAttributeForm);
+            procedureCreate.RemoveUIForm(UIFormId.SelectPropertyForm);
         }
 
         public void OnEnterButtonClick()
@@ -20,7 +25,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnReduceButtonClick(int propertyId)
         {
-           
+
         }
 
         public void OnAddButtonClick(int propertyId)
@@ -38,6 +43,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectAvatarForm.");
             }
+
+            propertyDisplay.Refresh();
         }
 
         protected override void OnClose(bool isShutdown, object userData)

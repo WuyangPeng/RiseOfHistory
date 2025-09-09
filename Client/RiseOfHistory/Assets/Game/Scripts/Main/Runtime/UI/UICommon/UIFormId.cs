@@ -60,7 +60,7 @@
         /// <summary>
         /// 选择属性。
         /// </summary>
-        SelectAttributeForm = 205,
+        SelectPropertyForm = 205,
 
         /// <summary>
         /// 选择灵根。

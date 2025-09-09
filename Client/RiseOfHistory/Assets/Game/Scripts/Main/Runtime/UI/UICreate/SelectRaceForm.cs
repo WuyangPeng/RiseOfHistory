@@ -95,7 +95,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
-            procedureCreate.OpenUIForm(UIFormId.SelectAttributeForm);
+            procedureCreate.OpenUIForm(UIFormId.SelectPropertyForm);
         }
 
     }

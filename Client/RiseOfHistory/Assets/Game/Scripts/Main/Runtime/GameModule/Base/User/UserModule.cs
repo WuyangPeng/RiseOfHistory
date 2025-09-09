@@ -1,3 +1,5 @@
+using Game.Scripts.Main.Runtime.Base;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameData.User;
 using Game.Scripts.Main.Runtime.GameEnum;
 
@@ -17,7 +19,6 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         public void Init()
         {
             userData.InitGameParameter();
-            propertyData.InitAttribute();
         }
 
         public void SetMapSize(GameParameterType gameParameterType)
@@ -108,6 +109,52 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         public void SetRaceType(RaceType raceType)
         {
             userData.RaceType = raceType;
+        }
+
+        public int GetBaseProperty(BasePropertyType basePropertyType)
+        {
+            var property = GameEntry.DataTable.GetDataTable<DRProperty>();
+
+            var result = propertyData.GetBaseProperty(basePropertyType) + property.GetDataRow((int)basePropertyType).InitValue;
+
+            var race = GameEntry.DataTable.GetDataTable<DRRace>();
+
+            var raceRow = race.GetDataRow((int)GetRaceType());
+
+            if (raceRow.PropertyId0 == (int)basePropertyType)
+            {
+                result += raceRow.PropertyChange0;
+            }
+
+            if (raceRow.PropertyId1 == (int)basePropertyType)
+            {
+                result += raceRow.PropertyChange1;
+            }
+
+            return result;
+        }
+
+        public int GetDefaultProperty(DefaultPropertyType defaultPropertyType)
+        {
+            var property = GameEntry.DataTable.GetDataTable<DRProperty>();
+
+            var result = propertyData.GetDefaultProperty(defaultPropertyType) + property.GetDataRow((int)defaultPropertyType).InitValue;
+
+            var race = GameEntry.DataTable.GetDataTable<DRRace>();
+
+            var raceRow = race.GetDataRow((int)GetRaceType());
+
+            if (raceRow.PropertyId0 == (int)defaultPropertyType)
+            {
+                result += raceRow.PropertyChange0;
+            }
+
+            if (raceRow.PropertyId1 == (int)defaultPropertyType)
+            {
+                result += raceRow.PropertyChange1;
+            }
+
+            return result;
         }
     }
 }

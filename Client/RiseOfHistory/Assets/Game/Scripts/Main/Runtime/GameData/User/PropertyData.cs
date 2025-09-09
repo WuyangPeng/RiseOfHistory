@@ -10,16 +10,14 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         private readonly Dictionary<BasePropertyType, int> baseProperty = new();
         private readonly Dictionary<DefaultPropertyType, int> defaultProperty = new();
 
-        public void InitAttribute()
+        public int GetBaseProperty(BasePropertyType basePropertyType)
         {
-            baseProperty.Clear();
-            defaultProperty.Clear();
+            return baseProperty.GetValueOrDefault(basePropertyType, 0);
+        }
 
-            var property = GameEntry.DataTable.GetDataTable<DRProperty>();
-            foreach (var element in property)
-            {
-
-            }
+        public int GetDefaultProperty(DefaultPropertyType defaultPropertyType)
+        {
+            return defaultProperty.GetValueOrDefault(defaultPropertyType, 0);
         }
     }
 }

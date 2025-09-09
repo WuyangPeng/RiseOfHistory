@@ -16,7 +16,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         {
             var race = GameEntry.DataTable.GetDataTable<DRRace>();
 
-
             items.SetData(race.GetDataRow((int)RaceType.Human).Name, race.GetDataRow((int)RaceType.Demon).Name);
         }
     }
