@@ -145,5 +145,35 @@
 		<String Key="Sex.Female" Value="女" />
 		<String Key="Avatar.Select" Value="选择头像" />
 		<String Key="Avatar.Sex.Select" Value="选择性别" />
+		<String Key="Camp.Lawful" Value="守序" />
+		<String Key="Camp.Lawful.Description" Value="守序描述" />
+		<String Key="Camp.Carefree" Value="逍遥" />
+		<String Key="Camp.Carefree.Description" Value="逍遥描述" />
+		<String Key="Camp.Chaos" Value="混乱" />
+		<String Key="Camp.Chaos.Description" Value="混乱描述" />
+		<String Key="Camp.Benevolence" Value="仁德" />
+		<String Key="Camp.Benevolence.Description" Value="仁德描述" />
+		<String Key="Camp.Moderation" Value="中道" />
+		<String Key="Camp.Moderation.Description" Value="中道描述" />
+		<String Key="Camp.Craftiness" Value="诡诈" />
+		<String Key="Camp.Craftiness.Description" Value="诡诈描述" />
+		<String Key="Camp.LawfulBenevolence" Value="守序仁德" />
+		<String Key="Camp.LawfulBenevolence.Description" Value="守序仁德描述" />
+		<String Key="Camp.LawfulModeration" Value="守序中道" />
+		<String Key="Camp.LawfulModeration.Description" Value="守序中道描述" />
+		<String Key="Camp.LawfulCraftiness" Value="守序诡诈" />
+		<String Key="Camp.LawfulCraftiness.Description" Value="守序诡诈描述" />
+		<String Key="Camp.CarefreeBenevolence" Value="逍遥仁德" />
+		<String Key="Camp.CarefreeBenevolence.Description" Value="逍遥仁德描述" />
+		<String Key="Camp.CarefreeModeration" Value="逍遥中道" />
+		<String Key="Camp.CarefreeModeration.Description" Value="逍遥中道描述" />
+		<String Key="Camp.CarefreeCraftiness" Value="逍遥诡诈" />
+		<String Key="Camp.CarefreeCraftiness.Description" Value="逍遥诡诈描述" />
+		<String Key="Camp.ChaosBenevolence" Value="混乱仁德" />
+		<String Key="Camp.ChaosBenevolence.Description" Value="混乱仁德描述" />
+		<String Key="Camp.ChaosModeration" Value="混乱中道" />
+		<String Key="Camp.ChaosModeration.Description" Value="混乱中道描述" />
+		<String Key="Camp.ChaosCraftiness" Value="混乱诡诈" />
+		<String Key="Camp.ChaosCraftiness.Description" Value="混乱诡诈描述" />
 	</Dictionary>
 </Dictionaries>

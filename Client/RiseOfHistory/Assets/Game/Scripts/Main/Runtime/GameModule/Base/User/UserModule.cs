@@ -77,5 +77,25 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             return userData.AvatarId;
         }
+
+        public void SetRulesType(RulesType rulesType)
+        {
+            userData.SetRulesType(rulesType);
+        }
+
+        public void SetMoralityType(MoralityType moralityType)
+        {
+            userData.SetMoralityType(moralityType);
+        }
+
+        public RulesType GetRulesType()
+        {
+            return userData.GetRulesType();
+        }
+
+        public MoralityType GetMoralityType()
+        {
+            return userData.GetMoralityType();
+        }
     }
 }

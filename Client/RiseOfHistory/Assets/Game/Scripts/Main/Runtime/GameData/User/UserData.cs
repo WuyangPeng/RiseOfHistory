@@ -21,6 +21,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public int AvatarId { get; set; } = 0;
 
+        public CampType CampType { get; set; } = CampType.CarefreeModeration;
+
         private int age;
 
         public UserData()
@@ -74,6 +76,24 @@ namespace Game.Scripts.Main.Runtime.GameData.User
             var row = gameParameter.GetDataRow((int)gameParameterType);
             return row ?? throw new GameException(Utility.Text.Format("Can not get game parameter '{0}' from data table.", gameParameterType.ToString()));
         }
+        public void SetRulesType(RulesType rulesType)
+        {
+            CampType = (CampType)((int)RulesType.Empty & (int)CampType & (int)rulesType);
+        }
 
+        public void SetMoralityType(MoralityType moralityType)
+        {
+            CampType = (CampType)((int)MoralityType.Empty & (int)CampType & (int)moralityType);
+        }
+
+        public RulesType GetRulesType()
+        {
+            return (RulesType)((int)RulesType.Empty | (int)CampType);
+        }
+
+        public MoralityType GetMoralityType()
+        {
+            return (MoralityType)((int)MoralityType.Empty | (int)CampType);
+        }
     }
 }
