@@ -5,10 +5,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 {
     public class GameSexDisplay : MonoBehaviour
     {
-        [SerializeField] private GameSexItem gameSexItem;
+        [SerializeField] private Radio2Item radio2Item;
         public void Refresh()
         {
-            gameSexItem.SetData("Sex.Male", "Sex.Female");
+            radio2Item.SetData("Sex.Male", "Sex.Female");
         }
     }
 }

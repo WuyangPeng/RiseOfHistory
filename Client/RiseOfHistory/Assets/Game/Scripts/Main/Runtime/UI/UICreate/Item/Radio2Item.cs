@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
 {
-    public class GameSexItem : MonoBehaviour
+    public class Radio2Item : MonoBehaviour
     {
         [SerializeField] private Text leftText;
         [SerializeField] private Text rightText;
