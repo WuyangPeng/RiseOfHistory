@@ -1,6 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
-using System.Collections.Generic;
-using Game.Scripts.Main.Runtime.Base;
+﻿using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.GameEnum;
 
 namespace Game.Scripts.Main.Runtime.GameData.User

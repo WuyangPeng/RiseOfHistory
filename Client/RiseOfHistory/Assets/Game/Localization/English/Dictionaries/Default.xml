@@ -185,5 +185,7 @@
 		<String Key="Race.Select" Value="选择种族" />
 		<String Key="Property.Select" Value="选择属性" />
 		<String Key="Property.Remaining" Value="剩余属性点：" />
+		<String Key="Property.Allocate.Title" Value="属性点" />
+		<String Key="Property.Allocate.Content" Value="属性点未完全分配。" />
 	</Dictionary>
 </Dictionaries>
