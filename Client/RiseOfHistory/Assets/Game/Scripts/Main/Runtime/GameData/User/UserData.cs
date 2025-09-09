@@ -84,12 +84,16 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         }
         public void SetRulesType(RulesType rulesType)
         {
-            CampType = (CampType)((int)RulesType.Empty & (int)CampType & (int)rulesType);
+            var clean = (int)CampType & (int)RulesType.Empty;
+
+            CampType = (CampType)(clean | ((int)rulesType & (int)MoralityType.Empty));
         }
 
         public void SetMoralityType(MoralityType moralityType)
         {
-            CampType = (CampType)((int)MoralityType.Empty & (int)CampType & (int)moralityType);
+            var clean = (int)CampType & (int)MoralityType.Empty;
+
+            CampType = (CampType)(clean | ((int)moralityType & (int)RulesType.Empty));
         }
 
         public RulesType GetRulesType()

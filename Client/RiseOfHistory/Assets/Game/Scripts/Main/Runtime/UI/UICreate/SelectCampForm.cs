@@ -113,7 +113,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
-            var rulesType = (int)userModule.GetRulesType();
+            var rulesType = (int)userModule.GetRulesType() & (int)MoralityType.Empty;
 
             for (var i = 0; i < rulesToggle.Length; i++)
             {
@@ -129,7 +129,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             {
                 if ((moralityType & (1 << i)) != 0)
                 {
-                    rulesToggle[i].isOn = true;
+                    moralityToggle[i].isOn = true;
                 }
             }
         }

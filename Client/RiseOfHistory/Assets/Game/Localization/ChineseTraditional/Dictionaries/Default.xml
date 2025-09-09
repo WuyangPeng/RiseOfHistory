@@ -181,7 +181,7 @@
 		<String Key="Race.Human" Value="人族" />
 		<String Key="Race.Human.Description" Value="人族描述" />
 		<String Key="Race.Demon" Value="妖族" />
-		<String Key="Race.Demon.Description" Value="妖族描述" />
+		<String Key="Race.Demon.Description" Value="妖族 身法 +2 根骨 -2" />
 		<String Key="Race.Select" Value="选择种族" />
 	</Dictionary>
 </Dictionaries>
