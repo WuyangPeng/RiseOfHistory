@@ -18,6 +18,16 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm);
         }
 
+        public void OnReduceButtonClick(int propertyId)
+        {
+           
+        }
+
+        public void OnAddButtonClick(int propertyId)
+        {
+
+        }
+
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
@@ -28,8 +38,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectAvatarForm.");
             }
-
-
         }
 
         protected override void OnClose(bool isShutdown, object userData)

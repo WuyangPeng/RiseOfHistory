@@ -45,7 +45,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             isReturnMenu = false;
 
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.InitGameParameter();
+            userModule.Init();
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)

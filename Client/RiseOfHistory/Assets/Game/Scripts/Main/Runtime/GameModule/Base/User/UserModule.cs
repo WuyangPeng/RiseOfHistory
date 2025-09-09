@@ -13,9 +13,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             userData.GameDifficultyType = gameDifficulty;
         }
 
-        public void InitGameParameter()
+        public void Init()
         {
             userData.InitGameParameter();
+            attributeData.InitAttribute();
         }
 
         public void SetMapSize(GameParameterType gameParameterType)
