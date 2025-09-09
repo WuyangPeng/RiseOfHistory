@@ -10,11 +10,11 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
         [SerializeField] private Text middleText;
         [SerializeField] private Text rightText;
 
-        public void SetData(string key)
+        public void SetData(string leftKey, string middleKey, string rightKey)
         {
-            leftText.text = GameEntry.Localization.GetString("Parameter." + key + ".Small");
-            middleText.text = GameEntry.Localization.GetString("Parameter." + key + ".Middle");
-            rightText.text = GameEntry.Localization.GetString("Parameter." + key + ".Big");
+            leftText.text = GameEntry.Localization.GetString(leftKey);
+            middleText.text = GameEntry.Localization.GetString(middleKey);
+            rightText.text = GameEntry.Localization.GetString(rightKey);
         }
     }
 }

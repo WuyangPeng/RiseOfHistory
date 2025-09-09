@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 22254414}
   - component: {fileID: 22372286}
   - component: {fileID: 723453907084361412}
+  - component: {fileID: 5291543805959073599}
   m_Layer: 5
   m_Name: SelectCampForm
   m_TagString: Untagged
@@ -275,6 +276,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f412161d1c2524f81f92a1af72271f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  campDisplay: {fileID: 5291543805959073599}
+  rulesToggle:
+  - {fileID: 115420396387289095}
+  - {fileID: 5530608702122316792}
+  - {fileID: 7995054214605045162}
+  moralityToggle:
+  - {fileID: 3234709955158211664}
+  - {fileID: 7041759419671996335}
+  - {fileID: 4867778628003678717}
+--- !u!114 &5291543805959073599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f6cab167e413c4c868138cee9a5f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 5428799155827009632}
+  - {fileID: 7363114620759989303}
 --- !u!1 &4370326062465911629
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,13 +757,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnSmallNpcCountButtonClick
+      value: OnLeftMoralityButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -748,7 +783,7 @@ PrefabInstance:
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectGameParameterForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectCampForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -763,8 +798,18 @@ PrefabInstance:
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -773,7 +818,7 @@ PrefabInstance:
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnBigNpcCountButtonClick
+      value: OnRightMoralityButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -783,7 +828,7 @@ PrefabInstance:
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectGameParameterForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectCampForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -802,13 +847,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnMiddleNpcCountButtonClick
+      value: OnMiddleMoralityButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -818,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectGameParameterForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectCampForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -835,12 +890,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18f2778e68c1274d8a25f38babba534, type: 3}
+--- !u!114 &3234709955158211664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556257633800806952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3725445130213609628 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: f18f2778e68c1274d8a25f38babba534,
     type: 3}
   m_PrefabInstance: {fileID: 1556257633800806952}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4867778628003678717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556257633800806952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7041759419671996335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556257633800806952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7363114620759989303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8338407764632911391, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556257633800806952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d446340380d7aff479368cc5ea263d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4098559057266202239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -961,13 +1064,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnSmallMapSizeButtonClick
+      value: OnLeftRulesButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -977,7 +1090,7 @@ PrefabInstance:
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectGameParameterForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectCampForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -996,13 +1109,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnBigMapSizeButtonClick
+      value: OnRightRulesButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -1012,7 +1135,7 @@ PrefabInstance:
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectGameParameterForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectCampForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -1041,6 +1164,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 723453907084361412}
+    - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
+        type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -1052,7 +1185,7 @@ PrefabInstance:
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnMiddleMapSizeButtonClick
+      value: OnMiddleRulesButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -1062,7 +1195,7 @@ PrefabInstance:
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectGameParameterForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectCampForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
         type: 3}
@@ -1084,12 +1217,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18f2778e68c1274d8a25f38babba534, type: 3}
+--- !u!114 &115420396387289095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4141921335283555960, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 4098559057266202239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2218727836879381707 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: f18f2778e68c1274d8a25f38babba534,
     type: 3}
   m_PrefabInstance: {fileID: 4098559057266202239}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5428799155827009632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8338407764632911391, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 4098559057266202239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d446340380d7aff479368cc5ea263d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5530608702122316792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8368157533401023879, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 4098559057266202239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7995054214605045162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6202902328031980501, guid: f18f2778e68c1274d8a25f38babba534,
+    type: 3}
+  m_PrefabInstance: {fileID: 4098559057266202239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7693318080350590401
 PrefabInstance:
   m_ObjectHideFlags: 0

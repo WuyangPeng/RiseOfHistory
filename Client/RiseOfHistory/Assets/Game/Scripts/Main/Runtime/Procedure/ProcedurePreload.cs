@@ -36,6 +36,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "GameDifficulty",
             "Avatar",
             "GameParameter",
+            "Camp",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
