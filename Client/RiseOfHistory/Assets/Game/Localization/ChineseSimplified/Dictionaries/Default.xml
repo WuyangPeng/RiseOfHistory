@@ -145,5 +145,35 @@
 		<String Key="Sex.Female" Value="女" />
 		<String Key="Avatar.Select" Value="选择头像" />
 		<String Key="Avatar.Sex.Select" Value="选择性别" />
+		<String Key="Camp.Lawful" Value="" />
+		<String Key="Camp.Lawful.Description" Value="" />
+		<String Key="Camp.Carefree" Value="" />
+		<String Key="Camp.Carefree.Description" Value="" />
+		<String Key="Camp.Chaos" Value="" />
+		<String Key="Camp.Chaos.Description" Value="" />
+		<String Key="Camp.Benevolence" Value="" />
+		<String Key="Camp.Benevolence.Description" Value="" />
+		<String Key="Camp.Moderation" Value="" />
+		<String Key="Camp.Moderation.Description" Value="" />
+		<String Key="Camp.Craftiness" Value="" />
+		<String Key="Camp.Craftiness.Description" Value="" />
+		<String Key="Camp.LawfulBenevolence" Value="" />
+		<String Key="Camp.LawfulBenevolence.Description" Value="" />
+		<String Key="Camp.LawfulModeration" Value="" />
+		<String Key="Camp.LawfulModeration.Description" Value="" />
+		<String Key="Camp.LawfulCraftiness" Value="" />
+		<String Key="Camp.LawfulCraftiness.Description" Value="" />
+		<String Key="Camp.CarefreeBenevolence" Value="" />
+		<String Key="Camp.CarefreeBenevolence.Description" Value="" />
+		<String Key="Camp.CarefreeModeration" Value="" />
+		<String Key="Camp.CarefreeModeration.Description" Value="" />
+		<String Key="Camp.CarefreeCraftiness" Value="" />
+		<String Key="Camp.CarefreeCraftiness.Description" Value="" />
+		<String Key="Camp.ChaosBenevolence" Value="" />
+		<String Key="Camp.ChaosBenevolence.Description" Value="" />
+		<String Key="Camp.ChaosModeration" Value="" />
+		<String Key="Camp.ChaosModeration.Description" Value="" />
+		<String Key="Camp.ChaosCraftiness" Value="" />
+		<String Key="Camp.ChaosCraftiness.Description" Value="" />
 	</Dictionary>
 </Dictionaries>
