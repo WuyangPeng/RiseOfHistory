@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3170504b8574473468d7db4b52ec1957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSexItem: {fileID: 5277402815211495223}
+  radio2Item: {fileID: 5277402815211495223}
 --- !u!114 &836347592597983469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +832,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
@@ -842,7 +842,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
@@ -897,7 +897,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
