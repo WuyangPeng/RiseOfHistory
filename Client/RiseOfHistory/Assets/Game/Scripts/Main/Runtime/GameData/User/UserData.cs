@@ -23,6 +23,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public CampType CampType { get; set; } = CampType.CarefreeModeration;
 
+        public RaceType RaceType { get; set; } = RaceType.Human;
+
         private int age;
 
         public UserData()

@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 22254414}
   - component: {fileID: 22372286}
   - component: {fileID: 193982100853792750}
+  - component: {fileID: 5254563220704897882}
   m_Layer: 5
   m_Name: SelectRaceForm
   m_TagString: Untagged
@@ -275,6 +276,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd9620cffe91e04ba01e919347bcfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raceDisplay: {fileID: 5254563220704897882}
+  raceTitle: {fileID: 2704981906224117237}
+  raceDescriptionTitle: {fileID: 1013373898614310677}
+--- !u!114 &5254563220704897882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c465389d1d2dc04aa898eaa47c3a377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: {fileID: 7779140117150251289}
 --- !u!1 &472942283723461966
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +821,71 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4141921335283555960, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141921335283555960, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 193982100853792750}
+    - target: {fileID: 4141921335283555960, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 193982100853792750}
+    - target: {fileID: 4141921335283555960, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141921335283555960, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnSelectHumanButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141921335283555960, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141921335283555960, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectRaceForm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6202902328031980501, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 193982100853792750}
+    - target: {fileID: 6202902328031980501, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 193982100853792750}
+    - target: {fileID: 6202902328031980501, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 6202902328031980501, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnSelectDemonButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6202902328031980501, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6202902328031980501, guid: f83c8a43bc92c4c409044fb06ff900d7,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectRaceForm, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -815,6 +897,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3863048329445935159}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7779140117150251289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: f83c8a43bc92c4c409044fb06ff900d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3863048329445935159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7693318080350590401
 PrefabInstance:
   m_ObjectHideFlags: 0

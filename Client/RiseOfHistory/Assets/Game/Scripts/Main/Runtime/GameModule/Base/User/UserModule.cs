@@ -97,5 +97,15 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             return userData.GetMoralityType();
         }
+
+        public RaceType GetRaceType()
+        {
+            return userData.RaceType;
+        }
+
+        public void SetRaceType(RaceType raceType)
+        {
+            userData.RaceType = raceType;
+        }
     }
 }
