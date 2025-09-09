@@ -178,5 +178,9 @@
 		<String Key="Camp.Select" Value="选择阵营" />
 		<String Key="Camp.Rules.Select" Value="选择规则" />
 		<String Key="Camp.Morality.Select" Value="选择道德" />
+		<String Key="Race.Human" Value="人族" />
+		<String Key="Race.Human.Description" Value="人族描述" />
+		<String Key="Race.Demon" Value="妖族" />
+		<String Key="Race.Demon.Description" Value="妖族描述" />
 	</Dictionary>
 </Dictionaries>

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-09 15:39:04.510
+// 生成时间：2025-09-09 16:25:41.116
 //------------------------------------------------------------
 
 using GameFramework;
@@ -61,6 +61,24 @@ namespace Game.Scripts.Main.Runtime.DataTable
             private set;
         }
 
+        /// <summary>
+        /// 获取属性id-1。
+        /// </summary>
+        public int PropertyId1
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取属性改变-1。
+        /// </summary>
+        public int PropertyChange1
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -77,6 +95,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
             Description = columnStrings[index++];
             PropertyId0 = int.Parse(columnStrings[index++]);
             PropertyChange0 = int.Parse(columnStrings[index++]);
+            PropertyId1 = int.Parse(columnStrings[index++]);
+            PropertyChange1 = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -93,6 +113,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     Description = binaryReader.ReadString();
                     PropertyId0 = binaryReader.Read7BitEncodedInt32();
                     PropertyChange0 = binaryReader.Read7BitEncodedInt32();
+                    PropertyId1 = binaryReader.Read7BitEncodedInt32();
+                    PropertyChange1 = binaryReader.Read7BitEncodedInt32();
                 }
             }
 
@@ -171,11 +193,13 @@ namespace Game.Scripts.Main.Runtime.DataTable
             m_PropertyId = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, PropertyId0),
+                new KeyValuePair<int, int>(1, PropertyId1),
             };
 
             m_PropertyChange = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, PropertyChange0),
+                new KeyValuePair<int, int>(1, PropertyChange1),
             };
         }
     }
