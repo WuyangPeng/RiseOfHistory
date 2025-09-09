@@ -40,6 +40,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         {
             avatarData.Clear();
 
+            selectedIndex = -1;
+
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             var avatarId = userModule.GetAvatarId();
             var sexType = userModule.GetSexType();
@@ -92,7 +94,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
         private void SpawnAvatar()
         {
-
             var rowCount = Mathf.CeilToInt((float)avatarData.Count / PerRow);
 
             for (var row = 0; row < rowCount; row++)
@@ -191,7 +192,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         private void OnItemClick(int index)
         {
             selectedIndex = index;
-            Refresh();
+
+            for (var i = 0; i < activeAvatarItemObject.Count; i++)
+            {
+                var avatarItem = (AvatarItem)(activeAvatarItemObject[i].Target);
+                avatarItem.SetSelected(i == selectedIndex);
+            }
 
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetAvatarId(avatarData[index].Id);

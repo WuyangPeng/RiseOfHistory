@@ -1,13 +1,14 @@
 ﻿using Game.Scripts.Main.Runtime.DataTable;
 using GameFramework.Resource;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
 {
-    public class AvatarItem : MonoBehaviour
+    public class AvatarItem : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private Image imageBackground;
         [SerializeField] private Image imageAvatar;
@@ -45,8 +46,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
             imageBackground.color = selected ? Color.yellow : Color.white;
         }
 
-        // 点击按钮
-        public void OnItemClick()
+        public void OnPointerClick(PointerEventData eventData)
         {
             onClick?.Invoke(myIndex);
         }
