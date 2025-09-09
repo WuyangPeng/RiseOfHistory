@@ -799,6 +799,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Avatar
       objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351419608, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351419608, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351419608, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
       propertyPath: m_Pivot.x
@@ -817,7 +832,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
@@ -827,7 +842,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
@@ -882,7 +897,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 084a8f3aa61cd9d4db4a2e73c6e559fa,
         type: 3}
