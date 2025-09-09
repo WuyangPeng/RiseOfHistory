@@ -37,6 +37,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "Avatar",
             "GameParameter",
             "Camp",
+            "Race",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
