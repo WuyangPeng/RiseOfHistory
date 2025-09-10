@@ -5,9 +5,11 @@ using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UICreate.Display;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
+using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
@@ -53,7 +55,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             var baseProperty = userModule.GetBaseProperty((BasePropertyType)propertyId);
             var initBaseProperty = userModule.GetInitBaseProperty((BasePropertyType)propertyId);
-            if (baseProperty <= initBaseProperty || userModule.GetPropertyCount() >= 10)
+            if (baseProperty <= initBaseProperty || userModule.GetPropertyCount() >= Constant.Game.InitPropertyCount)
             {
                 return;
             }
@@ -86,7 +88,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
             if (procedureCreate == null)
             {
-                Log.Warning("ProcedureCreate is invalid when open SelectAvatarForm.");
+                Log.Warning("ProcedureCreate is invalid when open SelectPropertyForm.");
             }
 
             propertyDisplay.Refresh();

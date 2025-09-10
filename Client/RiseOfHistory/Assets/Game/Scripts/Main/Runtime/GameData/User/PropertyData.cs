@@ -27,5 +27,11 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         {
             baseProperty[(BasePropertyType)propertyId] = GetBaseProperty((BasePropertyType)propertyId) - 1;
         }
+
+        public void Init()
+        {
+             baseProperty.Clear();
+             defaultProperty.Clear();
+        }
     }
 }

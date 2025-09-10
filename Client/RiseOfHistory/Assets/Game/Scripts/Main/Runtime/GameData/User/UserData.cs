@@ -3,6 +3,7 @@ using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.RuntimeException;
 using GameFramework;
+using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 
 namespace Game.Scripts.Main.Runtime.GameData.User
 {
@@ -27,7 +28,7 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public RaceType RaceType { get; set; } = RaceType.Human;
 
 
-        public int PropertyCount { get; set; } = 10;
+        public int PropertyCount { get; set; } = Constant.Game.InitPropertyCount;
 
         private int age;
 
@@ -46,6 +47,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
             InitNpcCount = Utility.Random.GetRandom(gameParameterRow.MinNpcCount, gameParameterRow.MaxNpcCount + 1);
             InitSectCount = Utility.Random.GetRandom(gameParameterRow.MinSectCount, gameParameterRow.MaxSectCount + 1);
             InitFamilyCount = Utility.Random.GetRandom(gameParameterRow.MinFamilyCount, gameParameterRow.MaxFamilyCount + 1);
+
+            PropertyCount = Constant.Game.InitPropertyCount;
         }
 
         public void SetMapSize(GameParameterType gameParameterType)

@@ -19,6 +19,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         public void Init()
         {
             userData.InitGameParameter();
+            propertyData.Init();
         }
 
         public void SetMapSize(GameParameterType gameParameterType)

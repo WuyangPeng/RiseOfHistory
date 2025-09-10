@@ -1,5 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.GameData.User;
+﻿using Game.Scripts.Main.Runtime.DataTable; 
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
@@ -181,7 +180,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
             if (procedureCreate == null)
             {
-                Log.Warning("ProcedureCreate is invalid when open SelectGameDifficultyForm.");
+                Log.Warning("ProcedureCreate is invalid when open SelectGameParameterForm.");
             }
 
             gameParameterDisplay.Refresh();

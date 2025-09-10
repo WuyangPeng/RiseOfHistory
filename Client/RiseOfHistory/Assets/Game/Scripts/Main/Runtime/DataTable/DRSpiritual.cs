@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2025-09-09 16:25:40.822
+// 生成时间：2025-09-10 10:04:01.291
 //------------------------------------------------------------
 
 using GameFramework;
@@ -43,6 +43,33 @@ namespace Game.Scripts.Main.Runtime.DataTable
             private set;
         }
 
+        /// <summary>
+        /// 获取初始值。
+        /// </summary>
+        public int InitValue
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取最大值。
+        /// </summary>
+        public int MaxValue
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取激活值。
+        /// </summary>
+        public int EnableValue
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -57,6 +84,9 @@ namespace Game.Scripts.Main.Runtime.DataTable
             index++;
             Name = columnStrings[index++];
             Description = columnStrings[index++];
+            InitValue = int.Parse(columnStrings[index++]);
+            MaxValue = int.Parse(columnStrings[index++]);
+            EnableValue = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -71,6 +101,9 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
                     Description = binaryReader.ReadString();
+                    InitValue = binaryReader.Read7BitEncodedInt32();
+                    MaxValue = binaryReader.Read7BitEncodedInt32();
+                    EnableValue = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

@@ -101,7 +101,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
             if (procedureCreate == null)
             {
-                Log.Warning("ProcedureCreate is invalid when open SelectPersonalityForm.");
+                Log.Warning("ProcedureCreate is invalid when open SelectCampForm.");
             }
 
             campDisplay.Refresh();
