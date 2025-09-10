@@ -10,6 +10,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         private ProcedureCreate procedureCreate = null;
 
+        [SerializeField]
+        private SpiritualDisplay spiritualDisplay = null;
+
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
@@ -21,7 +24,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 Log.Warning("ProcedureCreate is invalid when open SelectSpiritualForm.");
             }
 
-             
+            spiritualDisplay.Refresh();
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -39,6 +42,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         public void OnEnterButtonClick()
         {
             procedureCreate.OpenUIForm(UIFormId.SelectMartialArtsForm);
+        }
+        public void OnReduceButtonClick(int spiritualId)
+        {
+            
+        }
+
+        public void OnAddButtonClick(int spiritualId)
+        {
+            
         }
 
     }

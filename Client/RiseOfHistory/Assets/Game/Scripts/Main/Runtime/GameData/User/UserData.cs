@@ -30,6 +30,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public int PropertyCount { get; set; } = Constant.Game.InitPropertyCount;
 
+        public int SpiritualCount { get; set; } = Constant.Game.InitSpiritualCount;
+
         private int age;
 
         public UserData()
@@ -117,6 +119,16 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public void AddProperty()
         {
             ++PropertyCount;
+        }
+
+        public void ReduceSpiritual()
+        {
+            --SpiritualCount;
+        }
+
+        public void AddSpiritual()
+        {
+            ++SpiritualCount;
         }
     }
 }

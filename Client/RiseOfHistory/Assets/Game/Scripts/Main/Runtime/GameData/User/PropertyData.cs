@@ -8,9 +8,17 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         private readonly Dictionary<BasePropertyType, int> baseProperty = new();
         private readonly Dictionary<DefaultPropertyType, int> defaultProperty = new();
 
+        private readonly Dictionary<SpiritualType, int> spiritual = new();
+        
+
         public int GetBaseProperty(BasePropertyType basePropertyType)
         {
             return baseProperty.GetValueOrDefault(basePropertyType, 0);
+        }
+
+        public int GetSpiritual(SpiritualType spiritualType)
+        {
+            return spiritual.GetValueOrDefault(spiritualType, 0);
         }
 
         public int GetDefaultProperty(DefaultPropertyType defaultPropertyType)
@@ -28,10 +36,21 @@ namespace Game.Scripts.Main.Runtime.GameData.User
             baseProperty[(BasePropertyType)propertyId] = GetBaseProperty((BasePropertyType)propertyId) - 1;
         }
 
+        public void AddSpiritual(int spiritualId)
+        {
+            spiritual[(SpiritualType)spiritualId] = GetSpiritual((SpiritualType)spiritualId) + 1;
+        }
+
+        public void ReduceSpiritual(int spiritualId)
+        {
+            spiritual[(SpiritualType)spiritualId] = GetSpiritual((SpiritualType)spiritualId) - 1;
+        }
+
         public void Init()
         {
-             baseProperty.Clear();
-             defaultProperty.Clear();
+            baseProperty.Clear();
+            defaultProperty.Clear();
+            spiritual.Clear();
         }
     }
 }

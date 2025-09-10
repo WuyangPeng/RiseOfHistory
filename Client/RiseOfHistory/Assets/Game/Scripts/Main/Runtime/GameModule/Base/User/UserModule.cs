@@ -116,7 +116,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             return userData.PropertyCount;
         }
-
+        public int GetSpiritualCount()
+        {
+            return userData.SpiritualCount;
+        }
         public int GetInitBaseProperty(BasePropertyType basePropertyType)
         {
             var property = GameEntry.DataTable.GetDataTable<DRProperty>();
@@ -143,6 +146,18 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         public int GetBaseProperty(BasePropertyType basePropertyType)
         {
             return propertyData.GetBaseProperty(basePropertyType) + GetInitBaseProperty(basePropertyType);
+        }
+
+        public int GetSpiritual(SpiritualType spiritual)
+        {
+            return propertyData.GetSpiritual(spiritual) + GetInitSpiritual(spiritual);
+        }
+
+        private static int GetInitSpiritual(SpiritualType spiritualId)
+        {
+            var spiritual = GameEntry.DataTable.GetDataTable<DRSpiritual>();
+
+            return spiritual.GetDataRow((int)spiritualId).InitValue;
         }
 
         public int GetDefaultProperty(DefaultPropertyType defaultPropertyType)
@@ -178,6 +193,19 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             userData.AddProperty();
             propertyData.ReduceBaseProperty(propertyId);
+
+        }
+
+        public void AddSpiritual(int spiritualId)
+        {
+            userData.ReduceSpiritual();
+            propertyData.AddSpiritual(spiritualId);
+        }
+
+        public void ReduceSpiritual(int spiritualId)
+        {
+            userData.AddSpiritual();
+            propertyData.ReduceSpiritual(spiritualId);
 
         }
     }
