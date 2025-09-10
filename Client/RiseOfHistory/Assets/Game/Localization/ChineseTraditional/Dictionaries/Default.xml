@@ -247,5 +247,10 @@
 		<String Key="Technique.Allocate.Content" Value="技艺点未完全分配。" />
 		<String Key="Technique.Select" Value="选择技艺" />
 		<String Key="Technique.Remaining" Value="剩余技艺点：" />
+		<String Key="Technique.Beginner" Value="（入门）" />
+		<String Key="Technique.Proficient" Value="（精通）" />
+		<String Key="Technique.Master" Value="（大师）" />
+		<String Key="Technique.Grandmaster" Value="（宗师）" />
+		<String Key="Technique.Legendary" Value="（传说）" />
 	</Dictionary>
 </Dictionaries>

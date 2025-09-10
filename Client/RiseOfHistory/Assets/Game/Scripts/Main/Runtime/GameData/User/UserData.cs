@@ -34,6 +34,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public int MartialArtsCount { get; set; } = Constant.Game.InitMartialArtsCount;
 
+        public int TechniqueCount { get; set; } = Constant.Game.InitTechniqueCount;
+
         private int age;
 
         public UserData()
@@ -53,6 +55,9 @@ namespace Game.Scripts.Main.Runtime.GameData.User
             InitFamilyCount = Utility.Random.GetRandom(gameParameterRow.MinFamilyCount, gameParameterRow.MaxFamilyCount + 1);
 
             PropertyCount = Constant.Game.InitPropertyCount;
+            SpiritualCount = Constant.Game.InitSpiritualCount;
+            MartialArtsCount = Constant.Game.InitMartialArtsCount;
+            TechniqueCount = Constant.Game.InitTechniqueCount;
         }
 
         public void SetMapSize(GameParameterType gameParameterType)
@@ -142,6 +147,16 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public void AddMartialArts()
         {
             ++MartialArtsCount;
+        }
+
+        public void ReduceTechnique()
+        {
+            --TechniqueCount;
+        }
+
+        public void AddTechnique()
+        {
+            ++TechniqueCount;
         }
     }
 }

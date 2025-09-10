@@ -16,45 +16,45 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
         public void Refresh()
         {
-            var martialArts = GameEntry.DataTable.GetDataTable<DRMartialArts>();
+            var technique = GameEntry.DataTable.GetDataTable<DRTechnique>();
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
             var index = 0;
-            foreach (var element in martialArts)
+            foreach (var element in technique)
             {
-                var currentMartialArts = userModule.GetMartialArts((MartialArtsType)element.Id);
-                items[index].SetNum(element.Name, GetMartialArtsName(currentMartialArts, element), userModule.GetMartialArts((MartialArtsType)element.Id));
+                var currentTechnique = userModule.GetTechnique((TechniqueType)element.Id);
+                items[index].SetNum(element.Name, GetTechniqueName(currentTechnique, element), userModule.GetTechnique((TechniqueType)element.Id));
 
                 ++index;
             }
 
-            remainingText.text = userModule.GetMartialArtsCount().ToString();
+            remainingText.text = userModule.GetTechniqueCount().ToString();
 
         }
 
-        private static string GetMartialArtsName(int currentMartialArts, DRMartialArts martialArts)
+        private static string GetTechniqueName(int currentTechnique, DRTechnique technique)
         {
-            if (currentMartialArts < martialArts.Beginner)
+            if (currentTechnique < technique.Beginner)
             {
                 return "";
             }
 
-            if (martialArts.Legendary <= currentMartialArts)
+            if (technique.Legendary <= currentTechnique)
             {
-                return "MartialArts.Legendary";
+                return "Technique.Legendary";
             }
 
-            if (martialArts.Grandmaster <= currentMartialArts)
+            if (technique.Grandmaster <= currentTechnique)
             {
-                return "MartialArts.Grandmaster";
+                return "Technique.Grandmaster";
             }
 
-            if (martialArts.Master <= currentMartialArts)
+            if (technique.Master <= currentTechnique)
             {
-                return "MartialArts.Master";
+                return "Technique.Master";
             }
 
-            return martialArts.Proficient <= currentMartialArts ? "MartialArts.Proficient" : "MartialArts.Beginner";
+            return technique.Proficient <= currentTechnique ? "Technique.Proficient" : "Technique.Beginner";
         }
     }
 }

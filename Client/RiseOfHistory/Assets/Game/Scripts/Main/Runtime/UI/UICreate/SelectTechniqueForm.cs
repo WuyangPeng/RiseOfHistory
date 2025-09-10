@@ -66,13 +66,13 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         public void OnEnterButtonClick()
         {
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (!userModule.HasSpiritual())
+            if (!userModule.HasTechnique())
             {
                 OpenDialog("Technique.OpenTechnique.Title", "Technique.OpenTechnique.Content");
                 return;
             }
 
-            if (0 < userModule.GetSpiritualCount())
+            if (0 < userModule.GetTechniqueCount())
             {
                 OpenDialog("Technique.Allocate.Title", "Technique.Allocate.Content");
                 return;
@@ -81,33 +81,33 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             procedureCreate.OpenUIForm(UIFormId.SelectTalentForm);
         }
 
-        public void OnReduceButtonClick(int spiritualId)
+        public void OnReduceButtonClick(int techniqueId)
         {
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
-            var initSpiritual = UserModule.GetInitSpiritual((SpiritualType)spiritualId);
-            if (spiritual <= initSpiritual || userModule.GetSpiritualCount() >= Constant.Game.InitSpiritualCount)
+            var technique = userModule.GetTechnique((TechniqueType)techniqueId);
+            var initTechnique = UserModule.GetInitTechnique((TechniqueType)techniqueId);
+            if (technique <= initTechnique || userModule.GetTechniqueCount() >= Constant.Game.InitTechniqueCount)
             {
                 return;
             }
 
-            userModule.ReduceSpiritual(spiritualId);
+            userModule.ReduceTechnique(techniqueId);
             techniqueDisplay.Refresh();
         }
 
-        public void OnAddButtonClick(int spiritualId)
+        public void OnAddButtonClick(int techniqueId)
         {
-            var spiritualTable = GameEntry.DataTable.GetDataTable<DRSpiritual>();
+            var techniqueTable = GameEntry.DataTable.GetDataTable<DRTechnique>();
 
-            var row = spiritualTable.GetDataRow(spiritualId);
+            var row = techniqueTable.GetDataRow(techniqueId);
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
-            if (spiritual >= row.MaxValue || userModule.GetSpiritualCount() <= 0)
+            var technique = userModule.GetTechnique((TechniqueType)techniqueId);
+            if (technique >= row.MaxValue || userModule.GetTechniqueCount() <= 0)
             {
                 return;
             }
 
-            userModule.AddSpiritual(spiritualId);
+            userModule.AddTechnique(techniqueId);
             techniqueDisplay.Refresh();
         }
     }

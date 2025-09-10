@@ -173,6 +173,30 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             return martialArts.GetDataRow((int)martialArtsType).InitValue;
         }
 
+        public int GetTechnique(TechniqueType techniqueType)
+        {
+            return propertyData.GetTechnique(techniqueType) + GetInitTechnique(techniqueType);
+        }
+
+        public static int GetInitTechnique(TechniqueType techniqueType)
+        {
+            var technique = GameEntry.DataTable.GetDataTable<DRTechnique>();
+
+            return technique.GetDataRow((int)techniqueType).InitValue;
+        }
+
+        public void AddTechnique(int techniqueId)
+        {
+            userData.ReduceTechnique();
+            propertyData.AddTechnique(techniqueId);
+        }
+
+        public void ReduceTechnique(int techniqueId)
+        {
+            userData.AddTechnique();
+            propertyData.ReduceTechnique(techniqueId);
+        }
+
         public void AddMartialArts(int martialArtsId)
         {
             userData.ReduceMartialArts();
@@ -228,6 +252,18 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         public int GetMartialArtsCount()
         {
             return userData.MartialArtsCount;
+        }
+
+        public int GetTechniqueCount()
+        {
+            return userData.TechniqueCount;
+        }
+
+        public bool HasTechnique()
+        {
+            var techniqueTable = GameEntry.DataTable.GetDataTable<DRTechnique>();
+
+            return (from row in techniqueTable.GetAllDataRows() let technique = GetTechnique((TechniqueType)row.Id) where row.Beginner <= technique select row).Any();
         }
     }
 }

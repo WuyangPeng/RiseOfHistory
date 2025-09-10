@@ -11,6 +11,13 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         private readonly Dictionary<SpiritualType, int> spiritual = new();
         private readonly Dictionary<MartialArtsType, int> martialArts = new();
 
+        private readonly Dictionary<TechniqueType, int> technique = new();
+
+        public int GetTechnique(TechniqueType techniqueType)
+        {
+            return technique.GetValueOrDefault(techniqueType, 0);
+        }
+
         public int GetBaseProperty(BasePropertyType basePropertyType)
         {
             return baseProperty.GetValueOrDefault(basePropertyType, 0);
@@ -61,12 +68,23 @@ namespace Game.Scripts.Main.Runtime.GameData.User
             martialArts[(MartialArtsType)martialArtsId] = GetMartialArts((MartialArtsType)martialArtsId) - 1;
         }
 
+        public void AddTechnique(int techniqueId)
+        {
+            technique[(TechniqueType)techniqueId] = GetTechnique((TechniqueType)techniqueId) + 1;
+        }
+
+        public void ReduceTechnique(int techniqueId)
+        {
+            technique[(TechniqueType)techniqueId] = GetTechnique((TechniqueType)techniqueId) - 1;
+        }
+
         public void Init()
         {
             baseProperty.Clear();
             defaultProperty.Clear();
             spiritual.Clear();
             martialArts.Clear();
+            technique.Clear();
         }
     }
 }
