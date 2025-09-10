@@ -72,7 +72,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取良品。
         /// </summary>
-        public int EnableValue1
+        public int QualityProduct
         {
             get;
             private set;
@@ -81,7 +81,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取上品。
         /// </summary>
-        public int EnableValue2
+        public int TopGrade
         {
             get;
             private set;
@@ -90,7 +90,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取极品。
         /// </summary>
-        public int EnableValue3
+        public int BestQuality
         {
             get;
             private set;
@@ -99,7 +99,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取先天。
         /// </summary>
-        public int EnableValue4
+        public int Innate
         {
             get;
             private set;
@@ -122,10 +122,10 @@ namespace Game.Scripts.Main.Runtime.DataTable
             InitValue = int.Parse(columnStrings[index++]);
             MaxValue = int.Parse(columnStrings[index++]);
             EnableValue = int.Parse(columnStrings[index++]);
-            EnableValue1 = int.Parse(columnStrings[index++]);
-            EnableValue2 = int.Parse(columnStrings[index++]);
-            EnableValue3 = int.Parse(columnStrings[index++]);
-            EnableValue4 = int.Parse(columnStrings[index++]);
+            QualityProduct = int.Parse(columnStrings[index++]);
+            TopGrade = int.Parse(columnStrings[index++]);
+            BestQuality = int.Parse(columnStrings[index++]);
+            Innate = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -143,10 +143,10 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     InitValue = binaryReader.Read7BitEncodedInt32();
                     MaxValue = binaryReader.Read7BitEncodedInt32();
                     EnableValue = binaryReader.Read7BitEncodedInt32();
-                    EnableValue1 = binaryReader.Read7BitEncodedInt32();
-                    EnableValue2 = binaryReader.Read7BitEncodedInt32();
-                    EnableValue3 = binaryReader.Read7BitEncodedInt32();
-                    EnableValue4 = binaryReader.Read7BitEncodedInt32();
+                    QualityProduct = binaryReader.Read7BitEncodedInt32();
+                    TopGrade = binaryReader.Read7BitEncodedInt32();
+                    BestQuality = binaryReader.Read7BitEncodedInt32();
+                    Innate = binaryReader.Read7BitEncodedInt32();
                 }
             }
 
@@ -154,48 +154,9 @@ namespace Game.Scripts.Main.Runtime.DataTable
             return true;
         }
 
-        private KeyValuePair<int, int>[] m_EnableValue = null;
-
-        public int EnableValueCount
-        {
-            get
-            {
-                return m_EnableValue.Length;
-            }
-        }
-
-        public int GetEnableValue(int id)
-        {
-            foreach (KeyValuePair<int, int> i in m_EnableValue)
-            {
-                if (i.Key == id)
-                {
-                    return i.Value;
-                }
-            }
-
-            throw new GameFrameworkException(Utility.Text.Format("GetEnableValue with invalid id '{0}'.", id));
-        }
-
-        public int GetEnableValueAt(int index)
-        {
-            if (index < 0 || index >= m_EnableValue.Length)
-            {
-                throw new GameFrameworkException(Utility.Text.Format("GetEnableValueAt with invalid index '{0}'.", index));
-            }
-
-            return m_EnableValue[index].Value;
-        }
-
         private void GeneratePropertyArray()
         {
-            m_EnableValue = new KeyValuePair<int, int>[]
-            {
-                new KeyValuePair<int, int>(1, EnableValue1),
-                new KeyValuePair<int, int>(2, EnableValue2),
-                new KeyValuePair<int, int>(3, EnableValue3),
-                new KeyValuePair<int, int>(4, EnableValue4),
-            };
+
         }
     }
 }
