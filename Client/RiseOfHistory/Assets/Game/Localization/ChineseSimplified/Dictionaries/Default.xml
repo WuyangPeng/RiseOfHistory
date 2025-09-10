@@ -196,5 +196,7 @@
 		<String Key="Spiritual.OpenSpiritual.Content" Value="未激活任何灵根。" />
 		<String Key="Spiritual.Allocate.Title" Value="灵根点" />
 		<String Key="Spiritual.Allocate.Content" Value="灵根点未完全分配。" />
+		<String Key="Spiritual.Select" Value="选择灵根" />
+		<String Key="Spiritual.Remaining" Value="剩余灵根点：" />
 	</Dictionary>
 </Dictionaries>
