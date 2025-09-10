@@ -187,5 +187,14 @@
 		<String Key="Property.Remaining" Value="剩余属性点：" />
 		<String Key="Property.Allocate.Title" Value="属性点" />
 		<String Key="Property.Allocate.Content" Value="属性点未完全分配。" />
+		<String Key="Spiritual.EnableValue" Value="（凡品）" />
+		<String Key="Spiritual.QualityProduct" Value="（良品）" />
+		<String Key="Spiritual.TopGrade" Value="（上品）" />
+		<String Key="Spiritual.BestQuality" Value="（极品）" />
+		<String Key="Spiritual.Innate" Value="（先天）" />
+		<String Key="Spiritual.OpenSpiritual.Title" Value="灵根点" />
+		<String Key="Spiritual.OpenSpiritual.Content" Value="未激活任何灵根。" />
+		<String Key="Spiritual.Allocate.Title" Value="灵根点" />
+		<String Key="Spiritual.Allocate.Content" Value="灵根点未完全分配。" />
 	</Dictionary>
 </Dictionaries>

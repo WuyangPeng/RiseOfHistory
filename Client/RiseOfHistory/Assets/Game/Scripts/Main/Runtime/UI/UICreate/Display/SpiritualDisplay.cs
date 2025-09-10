@@ -22,13 +22,39 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             var index = 0;
             foreach (var element in spiritual)
             {
-                 items[index].SetNum(element.Name, userModule.GetSpiritual((SpiritualType)element.Id));
+                var currentSpiritual = userModule.GetSpiritual((SpiritualType)element.Id);
+                items[index].SetNum(spiritual.Name, GetSpiritualName(currentSpiritual, element), userModule.GetSpiritual((SpiritualType)element.Id));
 
                 ++index;
             }
 
             remainingText.text = userModule.GetSpiritualCount().ToString();
 
+        }
+
+        private static string GetSpiritualName(int currentSpiritual, DRSpiritual spiritual)
+        {
+            if (currentSpiritual < spiritual.EnableValue)
+            {
+                return "";
+            }
+
+            if (spiritual.Innate <= currentSpiritual)
+            {
+                return "Spiritual.Innate";
+            }
+
+            if (spiritual.BestQuality <= currentSpiritual)
+            {
+                return "Spiritual.BestQuality";
+            }
+
+            if (spiritual.TopGrade <= currentSpiritual)
+            {
+                return "Spiritual.TopGrade";
+            }
+
+            return spiritual.QualityProduct <= currentSpiritual ? "Spiritual.QualityProduct" : "Spiritual.EnableValue";
         }
     }
 }

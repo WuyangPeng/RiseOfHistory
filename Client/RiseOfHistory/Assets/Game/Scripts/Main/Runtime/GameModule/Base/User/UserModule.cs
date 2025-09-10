@@ -1,3 +1,4 @@
+using System.Linq;
 using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameData.User;
@@ -153,7 +154,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             return propertyData.GetSpiritual(spiritual) + GetInitSpiritual(spiritual);
         }
 
-        private static int GetInitSpiritual(SpiritualType spiritualId)
+        public static int GetInitSpiritual(SpiritualType spiritualId)
         {
             var spiritual = GameEntry.DataTable.GetDataTable<DRSpiritual>();
 
@@ -207,6 +208,13 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             userData.AddSpiritual();
             propertyData.ReduceSpiritual(spiritualId);
 
+        }
+
+        public bool HasSpiritual()
+        {
+            var spiritualTable = GameEntry.DataTable.GetDataTable<DRSpiritual>();
+            
+            return (from row in spiritualTable.GetAllDataRows() let spiritual = GetSpiritual((SpiritualType)row.Id) where row.EnableValue <= spiritual select row).Any();
         }
     }
 }

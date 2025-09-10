@@ -1,8 +1,14 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameEnum;
+using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UICreate.Display;
+using Game.Scripts.Main.Runtime.UI.UIMenu;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
+using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
@@ -12,6 +18,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         [SerializeField]
         private SpiritualDisplay spiritualDisplay = null;
+
 
         protected override void OnOpen(object userData)
         {
@@ -39,18 +46,71 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             procedureCreate.RemoveUIForm(UIFormId.SelectSpiritualForm);
         }
 
+        private void OpenDialog(string title, string message)
+        {
+            GameEntry.UI.OpenDialog(new DialogParams()
+            {
+                Mode = 2,
+                Title = GameEntry.Localization.GetString(title),
+                Message = GameEntry.Localization.GetString(message),
+                OnClickConfirm = delegate (object userData)
+                {
+                    GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
+
+                    procedureCreate.OpenUIForm(UIFormId.SelectMartialArtsForm);
+                },
+            });
+        }
+
         public void OnEnterButtonClick()
         {
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            if (!userModule.HasSpiritual())
+            {
+                OpenDialog("Spiritual.OpenSpiritual.Title", "Spiritual.OpenSpiritual.Content");
+                return;
+            }
+        
+            if (0 < userModule.GetSpiritualCount())
+            {
+                OpenDialog("Spiritual.Allocate.Title", "Spiritual.Allocate.Content");
+                return;
+            }
+
             procedureCreate.OpenUIForm(UIFormId.SelectMartialArtsForm);
         }
+
         public void OnReduceButtonClick(int spiritualId)
         {
-            
+            var spiritualTable = GameEntry.DataTable.GetDataTable<DRSpiritual>();
+
+            var row = spiritualTable.GetDataRow(spiritualId);
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
+            var initSpiritual = UserModule.GetInitSpiritual((SpiritualType)spiritualId);
+            if (spiritual <= initSpiritual || userModule.GetPropertyCount() >= Constant.Game.InitSpiritualCount)
+            {
+                return;
+            }
+
+            userModule.ReduceSpiritual(spiritualId);
+            spiritualDisplay.Refresh();
         }
 
         public void OnAddButtonClick(int spiritualId)
         {
-            
+            var spiritualTable = GameEntry.DataTable.GetDataTable<DRSpiritual>();
+
+            var row = spiritualTable.GetDataRow(spiritualId);
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId); 
+            if (spiritual >= row.MaxValue || userModule.GetPropertyCount() <= 0)
+            {
+                return;
+            }
+
+            userModule.ReduceSpiritual(spiritualId);
+            spiritualDisplay.Refresh();
         }
 
     }

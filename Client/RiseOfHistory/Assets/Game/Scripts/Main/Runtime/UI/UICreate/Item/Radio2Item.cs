@@ -20,5 +20,19 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
             leftText.text = GameEntry.Localization.GetString(key);
             rightText.text = num.ToString();
         }
+
+        public void SetNum(string key, string suffixKey, int num)
+        {
+            if (suffixKey.Length == 0)
+            {
+                leftText.text = GameEntry.Localization.GetString(key);
+            }
+            else
+            {
+                leftText.text = GameEntry.Localization.GetString(key) + GameEntry.Localization.GetString(suffixKey);
+            }
+
+            rightText.text = num.ToString();
+        }
     }
 }
