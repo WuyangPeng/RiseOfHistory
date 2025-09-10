@@ -161,27 +161,28 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             return spiritual.GetDataRow((int)spiritualId).InitValue;
         }
 
-        public int GetDefaultProperty(DefaultPropertyType defaultPropertyType)
+        public int GetMartialArts(MartialArtsType martialArtsType)
         {
-            var property = GameEntry.DataTable.GetDataTable<DRProperty>();
+            return propertyData.GetMartialArts(martialArtsType) + GetInitMartialArts(martialArtsType);
+        }
 
-            var result = propertyData.GetDefaultProperty(defaultPropertyType) + property.GetDataRow((int)defaultPropertyType).InitValue;
+        public static int GetInitMartialArts(MartialArtsType martialArtsType)
+        {
+            var martialArts = GameEntry.DataTable.GetDataTable<DRMartialArts>();
 
-            var race = GameEntry.DataTable.GetDataTable<DRRace>();
+            return martialArts.GetDataRow((int)martialArtsType).InitValue;
+        }
 
-            var raceRow = race.GetDataRow((int)GetRaceType());
+        public void AddMartialArts(int martialArtsId)
+        {
+            userData.ReduceMartialArts();
+            propertyData.AddMartialArts(martialArtsId);
+        }
 
-            if (raceRow.PropertyId0 == (int)defaultPropertyType)
-            {
-                result += raceRow.PropertyChange0;
-            }
-
-            if (raceRow.PropertyId1 == (int)defaultPropertyType)
-            {
-                result += raceRow.PropertyChange1;
-            }
-
-            return result;
+        public void ReduceMartialArts(int martialArtsId)
+        {
+            userData.AddMartialArts();
+            propertyData.ReduceMartialArts(martialArtsId);
         }
 
         public void AddBaseProperty(int propertyId)
@@ -213,8 +214,20 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         public bool HasSpiritual()
         {
             var spiritualTable = GameEntry.DataTable.GetDataTable<DRSpiritual>();
-            
+
             return (from row in spiritualTable.GetAllDataRows() let spiritual = GetSpiritual((SpiritualType)row.Id) where row.EnableValue <= spiritual select row).Any();
+        }
+
+        public bool HasMartialArts()
+        {
+            var martialArtsTable = GameEntry.DataTable.GetDataTable<DRMartialArts>();
+
+            return (from row in martialArtsTable.GetAllDataRows() let martialArts = GetMartialArts((MartialArtsType)row.Id) where row.Beginner <= martialArts select row).Any();
+        }
+
+        public int GetMartialArtsCount()
+        {
+            return userData.MartialArtsCount;
         }
     }
 }

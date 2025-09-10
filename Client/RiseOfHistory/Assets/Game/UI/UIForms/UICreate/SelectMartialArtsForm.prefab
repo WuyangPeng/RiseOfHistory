@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Property.Select
+  m_Text: MartialArts.Select
 --- !u!1 &136392
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 22254414}
   - component: {fileID: 22372286}
   - component: {fileID: 1640916378340796404}
+  - component: {fileID: 895471779084773001}
   m_Layer: 5
   m_Name: SelectMartialArtsForm
   m_TagString: Untagged
@@ -282,6 +283,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffad6c96f283b0443a47a1a1f823d220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  martialArtsDisplay: {fileID: 895471779084773001}
+--- !u!114 &895471779084773001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cafc0db094eae4d88e86bd73b3882d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 6303565206723562213}
+  - {fileID: 2663213374409784817}
+  - {fileID: 3526985556783698238}
+  - {fileID: 766110385705594777}
+  - {fileID: 5828470862514411348}
+  - {fileID: 3392018662801156565}
+  - {fileID: 3669626363677840999}
+  - {fileID: 4913076802672521856}
+  - {fileID: 6216411446598241166}
+  - {fileID: 2468130389541043440}
+  remainingText: {fileID: 3786891703766425759}
 --- !u!1 &4603029051858623730
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +386,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Property.Remaining
+  m_Text: MartialArts.Remaining
 --- !u!1 &6323350351927092045
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -200, y: 100}
+  m_AnchoredPosition: {x: -200, y: 95}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &7634287467605336192
@@ -488,7 +514,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Sky
+      value: Palm
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -607,6 +633,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -628,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -638,7 +679,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 256
+      value: 300009
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -667,6 +708,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -688,7 +744,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -698,7 +754,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 256
+      value: 300009
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -721,6 +777,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 588953419966364320}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6216411446598241166 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 588953419966364320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &654007580484746187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -732,7 +800,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Gold
+      value: Knife
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -851,6 +919,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -872,7 +955,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -882,7 +965,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 1
+      value: 300001
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -911,6 +994,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -932,7 +1030,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -942,7 +1040,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 1
+      value: 300001
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -965,6 +1063,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 654007580484746187}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6303565206723562213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 654007580484746187}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &809108119200171848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -990,6 +1100,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -1011,7 +1136,7 @@ PrefabInstance:
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectAttributeForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
@@ -1140,7 +1265,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Soil
+      value: Stick
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1259,6 +1384,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -1280,7 +1420,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1290,7 +1430,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 16
+      value: 300005
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1319,6 +1459,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -1340,7 +1495,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1350,7 +1505,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 16
+      value: 300005
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1373,6 +1528,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1048107379902867066}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5828470862514411348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 1048107379902867066}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1893625206982853550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1384,7 +1551,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Mountain
+      value: Whip
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1503,6 +1670,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -1524,7 +1706,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1534,7 +1716,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 128
+      value: 300008
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1563,6 +1745,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -1584,7 +1781,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1594,7 +1791,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 128
+      value: 300008
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1617,6 +1814,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1893625206982853550}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4913076802672521856 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 1893625206982853550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6109280313790799543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1628,7 +1837,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Fire
+      value: Fist
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1747,6 +1956,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -1768,7 +1992,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1778,7 +2002,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 8
+      value: 300004
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1807,6 +2031,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -1828,7 +2067,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1838,7 +2077,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 8
+      value: 300004
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -1855,6 +2094,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61890aa1ac9047744b7b56a641b65905, type: 3}
+--- !u!114 &766110385705594777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 6109280313790799543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8278467801651424259 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
@@ -1891,6 +2142,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -1912,7 +2178,7 @@ PrefabInstance:
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectAttributeForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
@@ -2041,7 +2307,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Wind
+      value: Hammer
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2160,6 +2426,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -2181,7 +2462,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2191,7 +2472,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 64
+      value: 300007
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2220,6 +2501,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -2241,7 +2537,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2251,7 +2547,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 64
+      value: 300007
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2268,6 +2564,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61890aa1ac9047744b7b56a641b65905, type: 3}
+--- !u!114 &3669626363677840999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 7819483677680510793}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5381769053451064829 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
@@ -2285,7 +2593,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Water
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2404,6 +2712,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -2425,7 +2748,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2435,7 +2758,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 4
+      value: 300003
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2464,6 +2787,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -2485,7 +2823,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2495,7 +2833,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 4
+      value: 300003
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2512,6 +2850,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61890aa1ac9047744b7b56a641b65905, type: 3}
+--- !u!114 &3526985556783698238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 7969996851429974032}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5237859410181591716 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
@@ -2529,7 +2879,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Thunder
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2648,6 +2998,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -2669,7 +3034,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2679,7 +3044,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 32
+      value: 300006
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2708,6 +3073,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -2729,7 +3109,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2739,7 +3119,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 32
+      value: 300006
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2756,6 +3136,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61890aa1ac9047744b7b56a641b65905, type: 3}
+--- !u!114 &3392018662801156565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 8177301368683600123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6291560342011718223 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
@@ -2773,7 +3165,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Wood
+      value: Spear
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2892,6 +3284,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -2913,7 +3320,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2923,7 +3330,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 2
+      value: 300002
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2952,6 +3359,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -2973,7 +3395,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -2983,7 +3405,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 2
+      value: 300002
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -3000,6 +3422,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61890aa1ac9047744b7b56a641b65905, type: 3}
+--- !u!114 &2663213374409784817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 8835184172393958623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6680916017973739115 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
@@ -3017,7 +3451,7 @@ PrefabInstance:
     - target: {fileID: 2750433323345807988, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_Name
-      value: Land
+      value: Finger
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -3102,7 +3536,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -320
+      value: -360
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -3136,6 +3570,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -3157,7 +3606,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -3167,7 +3616,7 @@ PrefabInstance:
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 512
+      value: 300010
       objectReference: {fileID: 0}
     - target: {fileID: 6425849859950787764, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -3196,6 +3645,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
+      propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640916378340796404}
+    - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -3217,7 +3681,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectSpiritualForm, Assembly-CSharp
+      value: Game.Scripts.Main.Runtime.UI.UICreate.SelectMartialArtsForm, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -3227,7 +3691,7 @@ PrefabInstance:
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 512
+      value: 300010
       objectReference: {fileID: 0}
     - target: {fileID: 8751954674450868628, guid: 61890aa1ac9047744b7b56a641b65905,
         type: 3}
@@ -3244,6 +3708,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61890aa1ac9047744b7b56a641b65905, type: 3}
+--- !u!114 &2468130389541043440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803042678141464878, guid: 61890aa1ac9047744b7b56a641b65905,
+    type: 3}
+  m_PrefabInstance: {fileID: 8946907288636034526}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a605ea65d5f0c4a4fb0f8a2ee7eeb909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6485830318652243818 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: 61890aa1ac9047744b7b56a641b65905,

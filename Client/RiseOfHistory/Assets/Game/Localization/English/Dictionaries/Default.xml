@@ -79,6 +79,17 @@
 		<String Key="Spiritual.Sky.Description" Value="天灵根描述" />
 		<String Key="Spiritual.Land" Value="地灵根" />
 		<String Key="Spiritual.Land.Description" Value="地灵根描述" />
+		<String Key="Spiritual.EnableValue" Value="（凡品）" />
+		<String Key="Spiritual.QualityProduct" Value="（良品）" />
+		<String Key="Spiritual.TopGrade" Value="（上品）" />
+		<String Key="Spiritual.BestQuality" Value="（极品）" />
+		<String Key="Spiritual.Innate" Value="（先天）" />
+		<String Key="Spiritual.OpenSpiritual.Title" Value="灵根点" />
+		<String Key="Spiritual.OpenSpiritual.Content" Value="未激活任何灵根。" />
+		<String Key="Spiritual.Allocate.Title" Value="灵根点" />
+		<String Key="Spiritual.Allocate.Content" Value="灵根点未完全分配。" />
+		<String Key="Spiritual.Select" Value="选择灵根" />
+		<String Key="Spiritual.Remaining" Value="剩余灵根点：" />
 		<String Key="CultivationRealm.QiRefining" Value="炼气期" />
 		<String Key="CultivationRealm.QiRefining.Description" Value="炼气期描述" />
 		<String Key="CultivationRealm.FoundationBuilding" Value="筑基期" />
@@ -187,16 +198,36 @@
 		<String Key="Property.Remaining" Value="剩余属性点：" />
 		<String Key="Property.Allocate.Title" Value="属性点" />
 		<String Key="Property.Allocate.Content" Value="属性点未完全分配。" />
-		<String Key="Spiritual.EnableValue" Value="（凡品）" />
-		<String Key="Spiritual.QualityProduct" Value="（良品）" />
-		<String Key="Spiritual.TopGrade" Value="（上品）" />
-		<String Key="Spiritual.BestQuality" Value="（极品）" />
-		<String Key="Spiritual.Innate" Value="（先天）" />
-		<String Key="Spiritual.OpenSpiritual.Title" Value="灵根点" />
-		<String Key="Spiritual.OpenSpiritual.Content" Value="未激活任何灵根。" />
-		<String Key="Spiritual.Allocate.Title" Value="灵根点" />
-		<String Key="Spiritual.Allocate.Content" Value="灵根点未完全分配。" />
-		<String Key="Spiritual.Select" Value="选择灵根" />
-		<String Key="Spiritual.Remaining" Value="剩余灵根点：" />
+		<String Key="MartialArts.Knife" Value="刀法" />
+		<String Key="MartialArts.Knife.Description" Value="刀法描述" />
+		<String Key="MartialArts.Spear" Value="枪法" />
+		<String Key="MartialArts.Spear.Description" Value="枪法描述" />
+		<String Key="MartialArts.Sword" Value="剑法" />
+		<String Key="MartialArts.Sword.Description" Value="剑法描述" />
+		<String Key="MartialArts.Fist" Value="拳法" />
+		<String Key="MartialArts.Fist.Description" Value="拳法描述" />
+		<String Key="MartialArts.Stick" Value="棍法" />
+		<String Key="MartialArts.Stick.Description" Value="棍法描述" />
+		<String Key="MartialArts.Axe" Value="斧法" />
+		<String Key="MartialArts.Axe.Description" Value="斧法描述" />
+		<String Key="MartialArts.Hammer" Value="锤法" />
+		<String Key="MartialArts.Hammer.Description" Value="锤法描述" />
+		<String Key="MartialArts.Whip" Value="鞭法" />
+		<String Key="MartialArts.Whip.Description" Value="鞭法描述" />
+		<String Key="MartialArts.Palm" Value="掌法" />
+		<String Key="MartialArts.Palm.Description" Value="掌法描述" />
+		<String Key="MartialArts.Finger" Value="指法" />
+		<String Key="MartialArts.Finger.Description" Value="指法描述" />
+		<String Key="MartialArts.Beginner" Value="（入门）" />
+		<String Key="MartialArts.Proficient" Value="（精通）" />
+		<String Key="MartialArts.Master" Value="（大师）" />
+		<String Key="MartialArts.Grandmaster" Value="（宗师）" />
+		<String Key="MartialArts.Legendary" Value="（传说）" />
+		<String Key="MartialArts.OpenMartialArts.Title" Value="功法点" />
+		<String Key="MartialArts.OpenMartialArts.Content" Value="未激活任何功法。" />
+		<String Key="MartialArts.Allocate.Title" Value="功法点" />
+		<String Key="MartialArts.Allocate.Content" Value="功法点未完全分配。" />
+		<String Key="MartialArts.Select" Value="选择功法" />
+		<String Key="MartialArts.Remaining" Value="剩余功法点：" />
 	</Dictionary>
 </Dictionaries>

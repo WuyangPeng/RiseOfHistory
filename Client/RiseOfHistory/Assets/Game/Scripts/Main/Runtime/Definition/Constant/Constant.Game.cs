@@ -9,6 +9,7 @@ namespace Game.Scripts.Main.Runtime.Definition.Constant
         {
             public static readonly int InitPropertyCount = 10;
             public static readonly int InitSpiritualCount = 20;
+            public static readonly int InitMartialArtsCount = 30;
         }
     }
 }

@@ -32,6 +32,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public int SpiritualCount { get; set; } = Constant.Game.InitSpiritualCount;
 
+        public int MartialArtsCount { get; set; } = Constant.Game.InitMartialArtsCount;
+
         private int age;
 
         public UserData()
@@ -129,6 +131,17 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public void AddSpiritual()
         {
             ++SpiritualCount;
+        }
+
+
+        public void ReduceMartialArts()
+        {
+            --MartialArtsCount;
+        }
+
+        public void AddMartialArts()
+        {
+            ++MartialArtsCount;
         }
     }
 }

@@ -4,15 +4,24 @@ using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UICreate.Display;
+using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
+using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectMartialArtsForm : UGuiForm
     {
         private ProcedureCreate procedureCreate = null;
+
+        [SerializeField]
+        private MartialArtsDisplay martialArtsDisplay = null;
+
+
+
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
@@ -24,6 +33,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 Log.Warning("ProcedureCreate is invalid when open SelectMartialArtsForm.");
             }
 
+            martialArtsDisplay.Refresh();
 
         }
 
@@ -41,17 +51,66 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            if (!userModule.HasMartialArts())
+            {
+                OpenDialog("MartialArts.OpenMartialArts.Title", "MartialArts.OpenMartialArts.Content");
+                return;
+            }
+
+            if (0 < userModule.GetMartialArtsCount())
+            {
+                OpenDialog("MartialArts.Allocate.Title", "MartialArts.Allocate.Content");
+                return;
+            }
+
             procedureCreate.OpenUIForm(UIFormId.SelectTechniqueForm);
         }
 
-        public void OnReduceButtonClick(int spiritualId)
+        private void OpenDialog(string title, string message)
         {
+            GameEntry.UI.OpenDialog(new DialogParams()
+            {
+                Mode = 2,
+                Title = GameEntry.Localization.GetString(title),
+                Message = GameEntry.Localization.GetString(message),
+                OnClickConfirm = delegate (object userData)
+                {
+                    GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
 
+                    procedureCreate.OpenUIForm(UIFormId.SelectTechniqueForm);
+                },
+            });
         }
 
-        public void OnAddButtonClick(int spiritualId)
+        public void OnReduceButtonClick(int martialArtsId)
         {
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var martialArts = userModule.GetMartialArts((MartialArtsType)martialArtsId);
+            var initMartialArts = UserModule.GetInitMartialArts((MartialArtsType)martialArtsId);
+            if (martialArts <= initMartialArts || userModule.GetMartialArtsCount() >= Constant.Game.InitMartialArtsCount)
+            {
+                return;
+            }
 
+            userModule.ReduceMartialArts(martialArtsId);
+            martialArtsDisplay.Refresh();
+        }
+
+        public void OnAddButtonClick(int martialArtsId)
+        {
+            var martialArtsTable = GameEntry.DataTable.GetDataTable<DRMartialArts>();
+
+            var row = martialArtsTable.GetDataRow(martialArtsId);
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var martialArts = userModule.GetMartialArts((MartialArtsType)martialArtsId);
+            if (martialArts >= row.MaxValue || userModule.GetMartialArtsCount() <= 0)
+            {
+                return;
+            }
+
+            userModule.AddMartialArts(martialArtsId);
+            martialArtsDisplay.Refresh();
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 OpenDialog("Spiritual.OpenSpiritual.Title", "Spiritual.OpenSpiritual.Content");
                 return;
             }
-        
+
             if (0 < userModule.GetSpiritualCount())
             {
                 OpenDialog("Spiritual.Allocate.Title", "Spiritual.Allocate.Content");
@@ -82,9 +82,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnReduceButtonClick(int spiritualId)
         {
-            var spiritualTable = GameEntry.DataTable.GetDataTable<DRSpiritual>();
-
-            var row = spiritualTable.GetDataRow(spiritualId);
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
             var initSpiritual = UserModule.GetInitSpiritual((SpiritualType)spiritualId);
@@ -103,7 +100,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
             var row = spiritualTable.GetDataRow(spiritualId);
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId); 
+            var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
             if (spiritual >= row.MaxValue || userModule.GetSpiritualCount() <= 0)
             {
                 return;

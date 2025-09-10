@@ -38,6 +38,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "GameParameter",
             "Camp",
             "Race",
+            "MartialArts",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
