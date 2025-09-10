@@ -30,10 +30,13 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             {
                 GameEntry.UI.OpenDialog(new DialogParams()
                 {
-                    Mode = 1,
+                    Mode = 2,
                     Title = GameEntry.Localization.GetString("Property.Allocate.Title"),
                     Message = GameEntry.Localization.GetString("Property.Allocate.Content"),
-                    OnClickConfirm = delegate (object userData) { },
+                    OnClickConfirm = delegate (object userData) {
+                        GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
+                        
+                        procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm); },
                 });
                 return;
             }

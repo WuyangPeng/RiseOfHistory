@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Game.Scripts.Main.Runtime.GameEnum;
+﻿using Game.Scripts.Main.Runtime.GameEnum;
+using System.Collections.Generic;
 
 namespace Game.Scripts.Main.Runtime.GameData.User
 {
