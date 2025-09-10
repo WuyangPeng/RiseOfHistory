@@ -23,7 +23,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             foreach (var element in spiritual)
             {
                 var currentSpiritual = userModule.GetSpiritual((SpiritualType)element.Id);
-                items[index].SetNum(spiritual.Name, GetSpiritualName(currentSpiritual, element), userModule.GetSpiritual((SpiritualType)element.Id));
+                items[index].SetNum(element.Name, GetSpiritualName(currentSpiritual, element), userModule.GetSpiritual((SpiritualType)element.Id));
 
                 ++index;
             }

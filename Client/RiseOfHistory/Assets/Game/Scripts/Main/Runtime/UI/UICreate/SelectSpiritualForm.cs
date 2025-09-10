@@ -88,7 +88,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
             var initSpiritual = UserModule.GetInitSpiritual((SpiritualType)spiritualId);
-            if (spiritual <= initSpiritual || userModule.GetPropertyCount() >= Constant.Game.InitSpiritualCount)
+            if (spiritual <= initSpiritual || userModule.GetSpiritualCount() >= Constant.Game.InitSpiritualCount)
             {
                 return;
             }
@@ -104,12 +104,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var row = spiritualTable.GetDataRow(spiritualId);
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId); 
-            if (spiritual >= row.MaxValue || userModule.GetPropertyCount() <= 0)
+            if (spiritual >= row.MaxValue || userModule.GetSpiritualCount() <= 0)
             {
                 return;
             }
 
-            userModule.ReduceSpiritual(spiritualId);
+            userModule.AddSpiritual(spiritualId);
             spiritualDisplay.Refresh();
         }
 
