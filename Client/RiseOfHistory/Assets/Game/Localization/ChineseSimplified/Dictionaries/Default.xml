@@ -229,5 +229,23 @@
 		<String Key="MartialArts.Allocate.Content" Value="功法点未完全分配。" />
 		<String Key="MartialArts.Select" Value="选择功法" />
 		<String Key="MartialArts.Remaining" Value="剩余功法点：" />
+		<String Key="Technique.Alchemy" Value="炼丹" />
+		<String Key="Technique.Alchemy.Description" Value="炼丹描述" />
+		<String Key="Technique.ArtifactRefining" Value="炼器" />
+		<String Key="Technique.ArtifactRefining.Description" Value="炼器描述" />
+		<String Key="Technique.Talisman" Value="符箓" />
+		<String Key="Technique.Talisman.Description" Value="符箓描述" />
+		<String Key="Technique.Puppet" Value="傀儡" />
+		<String Key="Technique.Puppet.Description" Value="傀儡描述" />
+		<String Key="Technique.Formation" Value="阵法" />
+		<String Key="Technique.Formation.Description" Value="阵法描述" />
+		<String Key="Technique.Geomancy" Value="风水" />
+		<String Key="Technique.Geomancy.Description" Value="风水描述" />
+		<String Key="Technique.OpenTechnique.Title" Value="技艺点" />
+		<String Key="Technique.OpenTechnique.Content" Value="未激活任何技艺。" />
+		<String Key="Technique.Allocate.Title" Value="技艺点" />
+		<String Key="Technique.Allocate.Content" Value="技艺点未完全分配。" />
+		<String Key="Technique.Select" Value="选择技艺" />
+		<String Key="Technique.Remaining" Value="剩余技艺点：" />
 	</Dictionary>
 </Dictionaries>
