@@ -13,11 +13,16 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         public override bool UseNativeDialog => false;
 
-        private bool isReturnMenu;
+        private int nextSceneId;
+
+        public void EnterGame()
+        {
+            nextSceneId = GameEntry.Config.GetInt("Scene.Home");
+        }
 
         public void ReturnMenu()
         {
-            isReturnMenu = true;
+            nextSceneId = GameEntry.Config.GetInt("Scene.Menu");
         }
 
         public void OpenUIForm(UIFormId form)
@@ -42,7 +47,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             formComponent.AddForm(UIFormId.SelectGameDifficultyForm);
             formComponent.OnEnter(procedureOwner);
 
-            isReturnMenu = false;
+            nextSceneId = 0;
 
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.Init();
@@ -60,9 +65,9 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!isReturnMenu) return;
+            if (nextSceneId == 0) return;
 
-            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
+            procedureOwner.SetData<VarInt32>("NextSceneId", nextSceneId);
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }
 
