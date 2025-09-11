@@ -1,27 +1,21 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using GameFramework;
 using UnityEngine;
 
-namespace StarForce.Editor.DataTableTools
+namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed class DataTableGenerator
     {
         private const string DataTablePath = "Assets/Game/DataTables";
         private const string CSharpCodePath = "Assets/Game/Scripts/Main/Runtime/DataTable";
         private const string CSharpCodeTemplateFileName = "Assets/Game/Configs/DataTableCodeTemplate.txt";
-        private static readonly Regex EndWithNumberRegex = new Regex(@"\d+$");
-        private static readonly Regex NameRegex = new Regex(@"^[A-Z][A-Za-z0-9_]*$");
+        private static readonly Regex EndWithNumberRegex = new(@"\d+$");
+        private static readonly Regex NameRegex = new(@"^[A-Z][A-Za-z0-9_]*$");
 
         public static DataTableProcessor CreateDataTableProcessor(string dataTableName)
         {
@@ -30,19 +24,18 @@ namespace StarForce.Editor.DataTableTools
 
         public static bool CheckRawData(DataTableProcessor dataTableProcessor, string dataTableName)
         {
-            for (int i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
             {
-                string name = dataTableProcessor.GetName(i);
+                var name = dataTableProcessor.GetName(i);
                 if (string.IsNullOrEmpty(name) || name == "#")
                 {
                     continue;
                 }
 
-                if (!NameRegex.IsMatch(name))
-                {
-                    Debug.LogWarning(Utility.Text.Format("Check raw data failure. DataTableName='{0}' Name='{1}'", dataTableName, name));
-                    return false;
-                }
+                if (NameRegex.IsMatch(name)) continue;
+
+                Debug.LogWarning(Utility.Text.Format("Check raw data failure. DataTableName='{0}' Name='{1}'", dataTableName, name));
+                return false;
             }
 
             return true;
@@ -50,7 +43,7 @@ namespace StarForce.Editor.DataTableTools
 
         public static void GenerateDataFile(DataTableProcessor dataTableProcessor, string dataTableName)
         {
-            string binaryDataFileName = Utility.Path.GetRegularPath(Path.Combine(DataTablePath, dataTableName + ".bytes"));
+            var binaryDataFileName = Utility.Path.GetRegularPath(Path.Combine(DataTablePath, dataTableName + ".bytes"));
             if (!dataTableProcessor.GenerateDataFile(binaryDataFileName) && File.Exists(binaryDataFileName))
             {
                 File.Delete(binaryDataFileName);
@@ -62,7 +55,7 @@ namespace StarForce.Editor.DataTableTools
             dataTableProcessor.SetCodeTemplate(CSharpCodeTemplateFileName, Encoding.UTF8);
             dataTableProcessor.SetCodeGenerator(DataTableCodeGenerator);
 
-            string csharpCodeFileName = Utility.Path.GetRegularPath(Path.Combine(CSharpCodePath, "DR" + dataTableName + ".cs"));
+            var csharpCodeFileName = Utility.Path.GetRegularPath(Path.Combine(CSharpCodePath, "DR" + dataTableName + ".cs"));
             if (!dataTableProcessor.GenerateCodeFile(csharpCodeFileName, Encoding.UTF8, dataTableName) && File.Exists(csharpCodeFileName))
             {
                 File.Delete(csharpCodeFileName);
@@ -71,7 +64,7 @@ namespace StarForce.Editor.DataTableTools
 
         private static void DataTableCodeGenerator(DataTableProcessor dataTableProcessor, StringBuilder codeContent, object userData)
         {
-            string dataTableName = (string)userData;
+            var dataTableName = (string)userData;
 
             codeContent.Replace("__DATA_TABLE_CREATE_TIME__", DateTime.UtcNow.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss.fff"));
             codeContent.Replace("__DATA_TABLE_NAME_SPACE__", "Game.Scripts.Main.Runtime.DataTable");
@@ -85,9 +78,9 @@ namespace StarForce.Editor.DataTableTools
 
         private static string GenerateDataTableProperties(DataTableProcessor dataTableProcessor)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            bool firstProperty = true;
-            for (int i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            var stringBuilder = new StringBuilder();
+            var firstProperty = true;
+            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
             {
                 if (dataTableProcessor.IsCommentColumn(i))
                 {
@@ -126,7 +119,7 @@ namespace StarForce.Editor.DataTableTools
 
         private static string GenerateDataTableParser(DataTableProcessor dataTableProcessor)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             stringBuilder
                 .AppendLine("        public override bool ParseDataRow(string dataRowString, object userData)")
                 .AppendLine("        {")
@@ -138,7 +131,7 @@ namespace StarForce.Editor.DataTableTools
                 .AppendLine()
                 .AppendLine("            int index = 0;");
 
-            for (int i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
             {
                 if (dataTableProcessor.IsCommentColumn(i))
                 {
@@ -156,7 +149,7 @@ namespace StarForce.Editor.DataTableTools
 
                 if (dataTableProcessor.IsSystem(i))
                 {
-                    string languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
+                    var languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
                     if (languageKeyword == "string")
                     {
                         stringBuilder.AppendFormat("            {0} = columnStrings[index++];", dataTableProcessor.GetName(i)).AppendLine();
@@ -184,7 +177,7 @@ namespace StarForce.Editor.DataTableTools
                 .AppendLine("                using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))")
                 .AppendLine("                {");
 
-            for (int i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
             {
                 if (dataTableProcessor.IsCommentColumn(i))
                 {
@@ -199,7 +192,7 @@ namespace StarForce.Editor.DataTableTools
                     continue;
                 }
 
-                string languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
+                var languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
                 if (languageKeyword == "int" || languageKeyword == "uint" || languageKeyword == "long" || languageKeyword == "ulong")
                 {
                     stringBuilder.AppendFormat("                    {0} = binaryReader.Read7BitEncoded{1}();", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
@@ -223,8 +216,8 @@ namespace StarForce.Editor.DataTableTools
 
         private static string GenerateDataTablePropertyArray(DataTableProcessor dataTableProcessor)
         {
-            List<PropertyCollection> propertyCollections = new List<PropertyCollection>();
-            for (int i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            var propertyCollections = new List<PropertyCollection>();
+            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
             {
                 if (dataTableProcessor.IsCommentColumn(i))
                 {
@@ -238,24 +231,16 @@ namespace StarForce.Editor.DataTableTools
                     continue;
                 }
 
-                string name = dataTableProcessor.GetName(i);
+                var name = dataTableProcessor.GetName(i);
                 if (!EndWithNumberRegex.IsMatch(name))
                 {
                     continue;
                 }
 
-                string propertyCollectionName = EndWithNumberRegex.Replace(name, string.Empty);
-                int id = int.Parse(EndWithNumberRegex.Match(name).Value);
+                var propertyCollectionName = EndWithNumberRegex.Replace(name, string.Empty);
+                var id = int.Parse(EndWithNumberRegex.Match(name).Value);
 
-                PropertyCollection propertyCollection = null;
-                foreach (PropertyCollection pc in propertyCollections)
-                {
-                    if (pc.Name == propertyCollectionName)
-                    {
-                        propertyCollection = pc;
-                        break;
-                    }
-                }
+                var propertyCollection = propertyCollections.FirstOrDefault(pc => pc.Name == propertyCollectionName);
 
                 if (propertyCollection == null)
                 {
@@ -266,9 +251,9 @@ namespace StarForce.Editor.DataTableTools
                 propertyCollection.AddItem(id, name);
             }
 
-            StringBuilder stringBuilder = new StringBuilder();
-            bool firstProperty = true;
-            foreach (PropertyCollection propertyCollection in propertyCollections)
+            var stringBuilder = new StringBuilder();
+            var firstProperty = true;
+            foreach (var propertyCollection in propertyCollections)
             {
                 if (firstProperty)
                 {
@@ -324,7 +309,7 @@ namespace StarForce.Editor.DataTableTools
                 .AppendLine("        {");
 
             firstProperty = true;
-            foreach (PropertyCollection propertyCollection in propertyCollections)
+            foreach (var propertyCollection in propertyCollections)
             {
                 if (firstProperty)
                 {
@@ -339,10 +324,10 @@ namespace StarForce.Editor.DataTableTools
                     .AppendFormat("            m_{0} = new KeyValuePair<int, {1}>[]", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("            {");
 
-                int itemCount = propertyCollection.ItemCount;
-                for (int i = 0; i < itemCount; i++)
+                var itemCount = propertyCollection.ItemCount;
+                for (var i = 0; i < itemCount; i++)
                 {
-                    KeyValuePair<int, string> item = propertyCollection.GetItem(i);
+                    var item = propertyCollection.GetItem(i);
                     stringBuilder.AppendFormat("                new KeyValuePair<int, {0}>({1}, {2}),", propertyCollection.LanguageKeyword, item.Key.ToString(), item.Value).AppendLine();
                 }
 
@@ -358,40 +343,20 @@ namespace StarForce.Editor.DataTableTools
 
         private sealed class PropertyCollection
         {
-            private readonly string m_Name;
-            private readonly string m_LanguageKeyword;
             private readonly List<KeyValuePair<int, string>> m_Items;
 
             public PropertyCollection(string name, string languageKeyword)
             {
-                m_Name = name;
-                m_LanguageKeyword = languageKeyword;
+                Name = name;
+                LanguageKeyword = languageKeyword;
                 m_Items = new List<KeyValuePair<int, string>>();
             }
 
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name { get; }
 
-            public string LanguageKeyword
-            {
-                get
-                {
-                    return m_LanguageKeyword;
-                }
-            }
+            public string LanguageKeyword { get; }
 
-            public int ItemCount
-            {
-                get
-                {
-                    return m_Items.Count;
-                }
-            }
+            public int ItemCount => m_Items.Count;
 
             public KeyValuePair<int, string> GetItem(int index)
             {

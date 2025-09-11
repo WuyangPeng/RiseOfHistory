@@ -8,11 +8,11 @@
 using System.IO;
 using UnityEngine;
 
-namespace StarForce.Editor.DataTableTools
+namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class QuaternionProcessor : GenericDataProcessor<Quaternion>
+        private sealed class QuaternionProcessor : DataTableProcessor.GenericDataProcessor<Quaternion>
         {
             public override bool IsSystem
             {
@@ -45,7 +45,7 @@ namespace StarForce.Editor.DataTableTools
                 return new Quaternion(float.Parse(splitedValue[0]), float.Parse(splitedValue[1]), float.Parse(splitedValue[2]), float.Parse(splitedValue[3]));
             }
 
-            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
                 Quaternion quaternion = Parse(value);
                 binaryWriter.Write(quaternion.x);

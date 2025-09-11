@@ -8,11 +8,11 @@
 using System.IO;
 using UnityEngine;
 
-namespace StarForce.Editor.DataTableTools
+namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class Vector3Processor : GenericDataProcessor<Vector3>
+        private sealed class Vector3Processor : DataTableProcessor.GenericDataProcessor<Vector3>
         {
             public override bool IsSystem
             {
@@ -45,7 +45,7 @@ namespace StarForce.Editor.DataTableTools
                 return new Vector3(float.Parse(splitedValue[0]), float.Parse(splitedValue[1]), float.Parse(splitedValue[2]));
             }
 
-            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
                 Vector3 vector3 = Parse(value);
                 binaryWriter.Write(vector3.x);

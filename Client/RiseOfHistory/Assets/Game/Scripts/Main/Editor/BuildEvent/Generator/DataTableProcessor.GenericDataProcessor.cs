@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace StarForce.Editor.DataTableTools
+namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        public abstract class GenericDataProcessor<T> : DataProcessor
+        public abstract class GenericDataProcessor<T> : DataTableProcessor.DataProcessor
         {
             public override System.Type Type
             {

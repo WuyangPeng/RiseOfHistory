@@ -7,7 +7,7 @@
 
 using System.IO;
 
-namespace StarForce.Editor.DataTableTools
+namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
@@ -40,7 +40,7 @@ namespace StarForce.Editor.DataTableTools
 
             public abstract string[] GetTypeStrings();
 
-            public abstract void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value);
+            public abstract void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value);
         }
     }
 }

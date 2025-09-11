@@ -5,22 +5,22 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using GameFramework;
 
-namespace StarForce.Editor.DataTableTools
+namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
         private static class DataProcessorUtility
         {
-            private static readonly IDictionary<string, DataProcessor> s_DataProcessors = new SortedDictionary<string, DataProcessor>(StringComparer.Ordinal);
+            private static readonly IDictionary<string, DataTableProcessor.DataProcessor> s_DataProcessors = new SortedDictionary<string, DataTableProcessor.DataProcessor>(StringComparer.Ordinal);
 
             static DataProcessorUtility()
             {
-                System.Type dataProcessorBaseType = typeof(DataProcessor);
+                System.Type dataProcessorBaseType = typeof(DataTableProcessor.DataProcessor);
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 System.Type[] types = assembly.GetTypes();
                 for (int i = 0; i < types.Length; i++)
@@ -32,7 +32,7 @@ namespace StarForce.Editor.DataTableTools
 
                     if (dataProcessorBaseType.IsAssignableFrom(types[i]))
                     {
-                        DataProcessor dataProcessor = (DataProcessor)Activator.CreateInstance(types[i]);
+                        DataTableProcessor.DataProcessor dataProcessor = (DataTableProcessor.DataProcessor)Activator.CreateInstance(types[i]);
                         foreach (string typeString in dataProcessor.GetTypeStrings())
                         {
                             s_DataProcessors.Add(typeString.ToLowerInvariant(), dataProcessor);
@@ -41,14 +41,14 @@ namespace StarForce.Editor.DataTableTools
                 }
             }
 
-            public static DataProcessor GetDataProcessor(string type)
+            public static DataTableProcessor.DataProcessor GetDataProcessor(string type)
             {
                 if (type == null)
                 {
                     type = string.Empty;
                 }
 
-                DataProcessor dataProcessor = null;
+                DataTableProcessor.DataProcessor dataProcessor = null;
                 if (s_DataProcessors.TryGetValue(type.ToLowerInvariant(), out dataProcessor))
                 {
                     return dataProcessor;

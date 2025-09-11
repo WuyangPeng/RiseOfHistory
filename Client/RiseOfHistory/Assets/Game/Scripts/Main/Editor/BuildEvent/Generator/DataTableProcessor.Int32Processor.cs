@@ -7,11 +7,11 @@
 
 using System.IO;
 
-namespace StarForce.Editor.DataTableTools
+namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class Int32Processor : GenericDataProcessor<int>
+        private sealed class Int32Processor : DataTableProcessor.GenericDataProcessor<int>
         {
             public override bool IsSystem
             {
@@ -44,7 +44,7 @@ namespace StarForce.Editor.DataTableTools
                 return int.Parse(value);
             }
 
-            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
                 binaryWriter.Write7BitEncodedInt32(Parse(value));
             }

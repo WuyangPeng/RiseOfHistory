@@ -8,11 +8,11 @@
 using System.IO;
 using UnityEngine;
 
-namespace StarForce.Editor.DataTableTools
+namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class Color32Processor : GenericDataProcessor<Color32>
+        private sealed class Color32Processor : Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor.GenericDataProcessor<Color32>
         {
             public override bool IsSystem
             {
@@ -45,7 +45,7 @@ namespace StarForce.Editor.DataTableTools
                 return new Color32(byte.Parse(splitedValue[0]), byte.Parse(splitedValue[1]), byte.Parse(splitedValue[2]), byte.Parse(splitedValue[3]));
             }
 
-            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
                 Color32 color32 = Parse(value);
                 binaryWriter.Write(color32.r);
