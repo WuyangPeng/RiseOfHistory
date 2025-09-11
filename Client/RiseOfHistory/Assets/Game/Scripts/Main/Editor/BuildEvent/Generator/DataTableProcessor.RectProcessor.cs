@@ -1,38 +1,19 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class RectProcessor : DataTableProcessor.GenericDataProcessor<Rect>
+        private sealed class RectProcessor : GenericDataProcessor<Rect>
         {
-            public override bool IsSystem
-            {
-                get
-                {
-                    return false;
-                }
-            }
+            public override bool IsSystem => false;
 
-            public override string LanguageKeyword
-            {
-                get
-                {
-                    return "Rect";
-                }
-            }
+            public override string LanguageKeyword => "Rect";
 
             public override string[] GetTypeStrings()
             {
-                return new string[]
+                return new[]
                 {
                     "rect",
                     "unityengine.rect"
@@ -41,13 +22,13 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             public override Rect Parse(string value)
             {
-                string[] splitedValue = value.Split(',');
-                return new Rect(float.Parse(splitedValue[0]), float.Parse(splitedValue[1]), float.Parse(splitedValue[2]), float.Parse(splitedValue[3]));
+                var splitValue = value.Split(',');
+                return new Rect(float.Parse(splitValue[0]), float.Parse(splitValue[1]), float.Parse(splitValue[2]), float.Parse(splitValue[3]));
             }
 
-            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
-                Rect rect = Parse(value);
+                var rect = Parse(value);
                 binaryWriter.Write(rect.x);
                 binaryWriter.Write(rect.y);
                 binaryWriter.Write(rect.width);

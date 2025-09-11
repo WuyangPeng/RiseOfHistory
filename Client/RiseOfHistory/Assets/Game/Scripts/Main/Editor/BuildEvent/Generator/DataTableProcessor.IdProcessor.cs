@@ -1,67 +1,30 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.IO;
+﻿using System.IO;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class IdProcessor : DataTableProcessor.DataProcessor
+        private sealed class IdProcessor : DataProcessor
         {
-            public override System.Type Type
-            {
-                get
-                {
-                    return typeof(int);
-                }
-            }
+            public override System.Type Type => typeof(int);
 
-            public override bool IsId
-            {
-                get
-                {
-                    return true;
-                }
-            }
+            public override bool IsId => true;
 
-            public override bool IsComment
-            {
-                get
-                {
-                    return false;
-                }
-            }
+            public override bool IsComment => false;
 
-            public override bool IsSystem
-            {
-                get
-                {
-                    return false;
-                }
-            }
+            public override bool IsSystem => false;
 
-            public override string LanguageKeyword
-            {
-                get
-                {
-                    return "int";
-                }
-            }
+            public override string LanguageKeyword => "int";
 
             public override string[] GetTypeStrings()
             {
-                return new string[]
+                return new[]
                 {
                     "id"
                 };
             }
 
-            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
                 binaryWriter.Write7BitEncodedInt32(int.Parse(value));
             }

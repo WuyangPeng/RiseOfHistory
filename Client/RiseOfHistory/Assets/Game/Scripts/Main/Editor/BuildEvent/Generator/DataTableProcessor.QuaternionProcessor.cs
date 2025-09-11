@@ -1,34 +1,15 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class QuaternionProcessor : DataTableProcessor.GenericDataProcessor<Quaternion>
+        private sealed class QuaternionProcessor : GenericDataProcessor<Quaternion>
         {
-            public override bool IsSystem
-            {
-                get
-                {
-                    return false;
-                }
-            }
+            public override bool IsSystem => false;
 
-            public override string LanguageKeyword
-            {
-                get
-                {
-                    return "Quaternion";
-                }
-            }
+            public override string LanguageKeyword => "Quaternion";
 
             public override string[] GetTypeStrings()
             {
@@ -41,13 +22,13 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             public override Quaternion Parse(string value)
             {
-                string[] splitedValue = value.Split(',');
-                return new Quaternion(float.Parse(splitedValue[0]), float.Parse(splitedValue[1]), float.Parse(splitedValue[2]), float.Parse(splitedValue[3]));
+                var splitValue = value.Split(',');
+                return new Quaternion(float.Parse(splitValue[0]), float.Parse(splitValue[1]), float.Parse(splitValue[2]), float.Parse(splitValue[3]));
             }
 
-            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
-                Quaternion quaternion = Parse(value);
+                var quaternion = Parse(value);
                 binaryWriter.Write(quaternion.x);
                 binaryWriter.Write(quaternion.y);
                 binaryWriter.Write(quaternion.z);

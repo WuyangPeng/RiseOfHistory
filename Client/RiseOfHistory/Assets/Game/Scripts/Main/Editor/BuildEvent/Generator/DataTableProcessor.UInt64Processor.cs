@@ -1,37 +1,18 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.IO;
+﻿using System.IO;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class UInt64Processor : DataTableProcessor.GenericDataProcessor<ulong>
+        private sealed class UInt64Processor : GenericDataProcessor<ulong>
         {
-            public override bool IsSystem
-            {
-                get
-                {
-                    return true;
-                }
-            }
+            public override bool IsSystem => true;
 
-            public override string LanguageKeyword
-            {
-                get
-                {
-                    return "ulong";
-                }
-            }
+            public override string LanguageKeyword => "ulong";
 
             public override string[] GetTypeStrings()
             {
-                return new string[]
+                return new[]
                 {
                     "ulong",
                     "uint64",
@@ -44,7 +25,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 return ulong.Parse(value);
             }
 
-            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
                 binaryWriter.Write7BitEncodedUInt64(Parse(value));
             }

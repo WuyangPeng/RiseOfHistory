@@ -1,37 +1,18 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.IO;
+﻿using System.IO;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed partial class DataTableProcessor
     {
-        private sealed class DoubleProcessor : Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor.GenericDataProcessor<double>
+        private sealed class DoubleProcessor : GenericDataProcessor<double>
         {
-            public override bool IsSystem
-            {
-                get
-                {
-                    return true;
-                }
-            }
+            public override bool IsSystem => true;
 
-            public override string LanguageKeyword
-            {
-                get
-                {
-                    return "double";
-                }
-            }
+            public override string LanguageKeyword => "double";
 
             public override string[] GetTypeStrings()
             {
-                return new string[]
+                return new[]
                 {
                     "double",
                     "system.double"
@@ -43,7 +24,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 return double.Parse(value);
             }
 
-            public override void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
+            public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {
                 binaryWriter.Write(Parse(value));
             }
