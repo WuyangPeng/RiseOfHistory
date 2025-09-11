@@ -27,11 +27,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
         private void Start()
         {
-            pool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<AvatarItemObject>(
-                "AvatarItemPool",
-                poolCapacity,
-                30f,
-                16);
+            const string poolName = "AvatarItemPool";
+            pool = GameEntry.ObjectPool.HasObjectPool<AvatarItemObject>(poolName) ?
+                GameEntry.ObjectPool.GetObjectPool<AvatarItemObject>(poolName) :
+                GameEntry.ObjectPool.CreateSingleSpawnObjectPool<AvatarItemObject>(poolName, poolCapacity, 30f, 16); 
 
             Refresh();
         }
@@ -202,5 +201,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetAvatarId(avatarData[index].Id);
         }
+         
     }
 }

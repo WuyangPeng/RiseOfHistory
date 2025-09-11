@@ -13,10 +13,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         private ProcedureCreate procedureCreate = null;
 
-        [SerializeField]
-        private TalentDisplay talentDisplay = null;
-
-
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
@@ -27,8 +23,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectTalentForm.");
             }
-
-            talentDisplay.Refresh();
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -42,8 +36,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             procedureCreate.RemoveUIForm(UIFormId.SelectTalentForm);
         }
-
-        
 
         public void OnEnterButtonClick()
         {
@@ -63,7 +55,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
           
                 return;
             }
-
+      
             procedureCreate.SaveData();
             procedureCreate.EnterGame();
         }

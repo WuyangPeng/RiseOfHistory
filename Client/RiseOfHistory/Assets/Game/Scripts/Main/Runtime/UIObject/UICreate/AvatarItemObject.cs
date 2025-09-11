@@ -25,7 +25,10 @@ namespace Game.Scripts.Main.Runtime.UIObject.UICreate
 
         protected override void Release(bool isShutdown)
         {
-            var item = (AvatarItem)Target;
+            if (Target is not AvatarItem item)
+            {
+                return;
+            }
             item.OnRecycle();
             UnityEngine.Object.Destroy(item.gameObject);
         }

@@ -276,6 +276,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             userData.AddTalent(id);
         }
 
+        public bool HasTalent(int id)
+        {
+            return userData.HasTalent(id);
+        }
+
         public bool CanAddTalent(int id)
         {
             return userData.CanAddTalent(id);
@@ -283,7 +288,6 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
 
         public bool HasSelectTalent()
         {
-
             return userData.HasSelectTalent();
         }
 
@@ -305,6 +309,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         public string GetName()
         {
             return userData.Name;
+        }
+
+        public void RemoveTalent(int id)
+        {
+            userData.RemoveTalent(id);
         }
     }
 }

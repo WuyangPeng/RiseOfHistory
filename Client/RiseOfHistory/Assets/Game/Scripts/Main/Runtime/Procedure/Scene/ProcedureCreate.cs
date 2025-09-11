@@ -96,7 +96,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
             var json = Utility.Json.ToJson(headData);
 
-            fileSystems.WriteFile("GameSaves", json);
+            fileSystems.WriteFile("GameSaves", Encoding.UTF8.GetBytes(json));
         }
     }
 }

@@ -66,7 +66,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
             accountModule.Clear();
 
-            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("AccountSaves", "TalentData.idx");
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/AccountSaves", "TalentData.idx");
 
             var bytes = fileSystems?.ReadFile("AccountSaves");
 

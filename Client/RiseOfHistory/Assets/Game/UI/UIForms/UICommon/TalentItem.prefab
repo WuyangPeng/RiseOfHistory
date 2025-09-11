@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2750433323359536914
 CanvasRenderer:
@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624b77ad8090fe947b9f0894126889d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageBackground: {fileID: 0}
-  imageAvatar: {fileID: 0}
+  imageBackground: {fileID: 2750433323351419608}
+  talentText: {fileID: 2750433323351318916}
 --- !u!1 &2750433323345812646
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.000030517578}
-  m_SizeDelta: {x: 400, y: 60}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2750433323359564434
 CanvasRenderer:

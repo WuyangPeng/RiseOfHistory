@@ -550,7 +550,7 @@ PrefabInstance:
     - target: {fileID: 2750433323351417244, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}
@@ -747,6 +747,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351417244, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}
@@ -947,7 +952,7 @@ PrefabInstance:
     - target: {fileID: 2750433323351417244, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}
@@ -1148,7 +1153,7 @@ PrefabInstance:
     - target: {fileID: 2750433323351417244, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}
@@ -1349,7 +1354,7 @@ PrefabInstance:
     - target: {fileID: 2750433323351417244, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 31c2db0b64d90c44d96a1b3bb6c083d9,
         type: 3}

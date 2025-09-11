@@ -17,21 +17,21 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         [SerializeField] private Transform content;
         [SerializeField] private TalentItem itemPrefab;
         [SerializeField] private int poolCapacity = 20;
+        [SerializeField] private Text talentDescription;
 
         private IObjectPool<TalentItemObject> pool;
         private readonly List<DRTalent> talentData = new();
-        private List<int> selectedIndex = new();
+        private readonly List<int> selectedIndex = new();
         private readonly List<TalentItemObject> activeTalentItemObject = new();
-        private const int PerRow = 4;
+        private const int PerRow = 2;
         private readonly List<GameObject> rowGameObjects = new();
 
         private void Start()
         {
-            pool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(
-                "TalentItemPool",
-                poolCapacity,
-                30f,
-                16);
+            const string poolName = "TalentItemPool";
+            pool = GameEntry.ObjectPool.HasObjectPool<TalentItemObject>(poolName) ?
+                GameEntry.ObjectPool.GetObjectPool<TalentItemObject>(poolName):
+                GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(poolName, poolCapacity, 30f, 16); 
 
             Refresh();
         }
@@ -98,6 +98,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
                     return;
                 }
             }
+
+            talentDescription.text = "";
         }
 
         private bool SpawnAvatar(int row)
@@ -145,7 +147,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         {
             foreach (var obj in activeTalentItemObject)
             {
-                var item = (AvatarItem)obj.Target;
+                var item = (TalentItem)obj.Target;
                 if (item != null && item.gameObject != null)
                 {
                     item.transform.SetParent(null, false);
@@ -186,21 +188,38 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
         private void OnItemClick(int index)
         {
+            talentDescription.text = GameEntry.Localization.GetString(talentData[index].Description);
+
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (!userModule.CanAddTalent(talentData[index].Id))
+            if (userModule.HasTalent(talentData[index].Id))
             {
-                return;
+                userModule.RemoveTalent(talentData[index].Id);
+                selectedIndex.Remove(index);
+                UpdateSelected();
             }
+            else
+            {
+                if (!userModule.CanAddTalent(talentData[index].Id))
+                {
+                    return;
+                }
 
-            selectedIndex.Add(index);
+                selectedIndex.Add(index);
 
+                userModule.AddTalent(talentData[index].Id);
+
+                UpdateSelected();
+            }
+           
+        }
+
+        private void UpdateSelected()
+        {
             for (var i = 0; i < activeTalentItemObject.Count; i++)
             {
                 var avatarItem = (TalentItem)(activeTalentItemObject[i].Target);
                 avatarItem.SetSelected(selectedIndex.Contains(i));
             }
-           
-            userModule.AddTalent(talentData[index].Id);
-        }
+        } 
     }
 }

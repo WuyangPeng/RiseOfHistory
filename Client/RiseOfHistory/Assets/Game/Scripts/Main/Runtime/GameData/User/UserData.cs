@@ -190,5 +190,15 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         {
             return Talent.Count >= Constant.Game.MaxTalentCount;
         }
+
+        public bool HasTalent(int id)
+        {
+            return Talent.Contains(id);
+        }
+
+        public void RemoveTalent(int id)
+        {
+            Talent.Remove(id);
+        }
     }
 }

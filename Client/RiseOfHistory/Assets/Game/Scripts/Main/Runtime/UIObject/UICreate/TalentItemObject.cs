@@ -25,7 +25,11 @@ namespace Game.Scripts.Main.Runtime.UIObject.UICreate
 
         protected override void Release(bool isShutdown)
         {
-            var item = (TalentItem)Target;
+            if (Target is not TalentItem item)
+            {
+                return;
+            }
+           
             item.OnRecycle();
             UnityEngine.Object.Destroy(item.gameObject);
         }

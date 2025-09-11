@@ -11,9 +11,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
     public class TalentItem : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private Image imageBackground;
-        [SerializeField] private Image imageAvatar;
+        [SerializeField] private Text talentText;
 
-        private object avatarHandle;
+        private object talentHandle;
         private System.Action<int> onClick;
         private int myIndex;
 
@@ -21,12 +21,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
         {
             myIndex = index;
             onClick = clickCallback;
- 
+            talentText.text = GameEntry.Localization.GetString(data.Name);
         }
 
         public void SetSelected(bool selected)
         {
-            imageBackground.color = selected ? Color.yellow : Color.white;
+            imageBackground.color = selected ? Color.blue : Color.yellow;
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -37,9 +37,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
         // 回池时清理
         public void OnRecycle()
         {
-          
             onClick = null;
         }
     }
- 
+
 }

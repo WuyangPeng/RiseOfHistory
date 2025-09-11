@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Avatar.Select
+  m_Text: Talent.Select
 --- !u!1 &136392
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +203,6 @@ GameObject:
   - component: {fileID: 22254414}
   - component: {fileID: 22372286}
   - component: {fileID: -3878191685774431007}
-  - component: {fileID: 6655470263394039243}
   m_Layer: 5
   m_Name: SelectTalentForm
   m_TagString: Untagged
@@ -274,20 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f9b4d259d3ed4428787d5326795bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talentDisplay: {fileID: 6655470263394039243}
---- !u!114 &6655470263394039243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e5634a72797747418519097e173a30f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  talentDescription: {fileID: 677656106562688909}
+  talentScrollDisplay: {fileID: 7063042580488308462}
 --- !u!1 &6251246075384024449
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -700}
+  m_AnchoredPosition: {x: 0, y: -650}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4547034137436303571
@@ -582,7 +568,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: c0552054cb3a65c4d95c740dfc5a384d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: c0552054cb3a65c4d95c740dfc5a384d,
         type: 3}
@@ -592,7 +578,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: c0552054cb3a65c4d95c740dfc5a384d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: c0552054cb3a65c4d95c740dfc5a384d,
         type: 3}
@@ -647,7 +633,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: c0552054cb3a65c4d95c740dfc5a384d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 220
+      value: -400
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: c0552054cb3a65c4d95c740dfc5a384d,
         type: 3}
@@ -664,11 +650,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2913550477023433270, guid: c0552054cb3a65c4d95c740dfc5a384d,
+        type: 3}
+      propertyPath: talentDescription
+      value: 
+      objectReference: {fileID: 677656106562688909}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0552054cb3a65c4d95c740dfc5a384d, type: 3}
+--- !u!114 &7063042580488308462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2913550477023433270, guid: c0552054cb3a65c4d95c740dfc5a384d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5362649671847122136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fe379006f04134dbbbfc437d5ad367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7800364296045110892 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: c0552054cb3a65c4d95c740dfc5a384d,
