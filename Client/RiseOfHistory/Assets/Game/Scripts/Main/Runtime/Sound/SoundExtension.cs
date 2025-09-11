@@ -1,7 +1,7 @@
 ﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameUtility;
 using GameFramework;
 using GameFramework.Sound;
-using RiseOfHistory;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.Sound
@@ -9,7 +9,7 @@ namespace Game.Scripts.Main.Runtime.Sound
     public static class SoundExtension
     {
         private const float FadeVolumeDuration = 1f;
-        private static int? s_MusicSerialId = null;
+        private static int? s_MusicSerialId;
 
         public static int? PlayMusic(this SoundComponent soundComponent, int musicId, object userData = null)
         {
@@ -112,7 +112,7 @@ namespace Game.Scripts.Main.Runtime.Sound
 
             soundGroup.Mute = mute;
 
-            Base.GameEntry.Setting.SetBool(Utility.Text.Format(global::Game.Scripts.Main.Runtime.Definition.Constant.Constant.Setting.SoundGroupMuted, soundGroupName), mute);
+            Base.GameEntry.Setting.SetBool(Utility.Text.Format(Definition.Constant.Constant.Setting.SoundGroupMuted, soundGroupName), mute);
             Base.GameEntry.Setting.Save();
         }
 
@@ -148,7 +148,7 @@ namespace Game.Scripts.Main.Runtime.Sound
 
             soundGroup.Volume = volume;
 
-            Base.GameEntry.Setting.SetFloat(Utility.Text.Format(global::Game.Scripts.Main.Runtime.Definition.Constant.Constant.Setting.SoundGroupVolume, soundGroupName), volume);
+            Base.GameEntry.Setting.SetFloat(Utility.Text.Format(Definition.Constant.Constant.Setting.SoundGroupVolume, soundGroupName), volume);
             Base.GameEntry.Setting.Save();
         }
     }

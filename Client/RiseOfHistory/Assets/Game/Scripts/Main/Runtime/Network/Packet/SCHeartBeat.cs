@@ -1,6 +1,5 @@
 ﻿using System;
 using ProtoBuf;
-using RiseOfHistory;
 
 namespace Game.Scripts.Main.Runtime.Network.Packet
 {

@@ -1,7 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework;
-using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 

@@ -1,6 +1,5 @@
 ﻿using GameFramework.Debugger;
 using GameFramework.Localization;
-using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;

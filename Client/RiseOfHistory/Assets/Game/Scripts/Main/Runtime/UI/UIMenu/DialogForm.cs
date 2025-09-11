@@ -1,6 +1,5 @@
 ﻿using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework;
-using RiseOfHistory;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;

@@ -1,7 +1,6 @@
 ﻿using System;
 using Game.Scripts.Main.Runtime.Sound;
 using GameFramework.Localization;
-using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;

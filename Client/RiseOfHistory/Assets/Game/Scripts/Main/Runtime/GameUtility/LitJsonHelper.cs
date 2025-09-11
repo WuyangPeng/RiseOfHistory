@@ -1,8 +1,8 @@
-﻿using GameFramework;
+﻿using System;
+using GameFramework;
 using LitJson;
-using System;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.GameUtility
 {
     /// <summary>
     /// LitJSON 函数集辅助器。

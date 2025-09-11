@@ -1,6 +1,4 @@
-﻿using RiseOfHistory;
-
-namespace Game.Scripts.Main.Runtime.Network
+﻿namespace Game.Scripts.Main.Runtime.Network
 {
     public abstract class CSPacketBase : PacketBase
     {

@@ -1,10 +1,10 @@
 ﻿using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
-using RiseOfHistory;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameUtility;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
 using UnityGameFramework.Runtime;

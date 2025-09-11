@@ -1,6 +1,5 @@
 ﻿using System.Runtime.InteropServices;
 using Game.Scripts.Main.Runtime.Definition.Enum;
-using RiseOfHistory;
 
 namespace Game.Scripts.Main.Runtime.Definition.DataStruct
 {

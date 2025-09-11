@@ -1,6 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
-using RiseOfHistory;
+using Game.Scripts.Main.Runtime.GameUtility;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 

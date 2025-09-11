@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameUtility;
 using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
-using RiseOfHistory;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;

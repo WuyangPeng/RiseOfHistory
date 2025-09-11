@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.GameUtility
 {
     public static class WebUtility
     {

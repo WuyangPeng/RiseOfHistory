@@ -8,7 +8,6 @@ using GameFramework.Event;
 using GameFramework.Network;
 using ProtoBuf;
 using ProtoBuf.Meta;
-using RiseOfHistory;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.Network

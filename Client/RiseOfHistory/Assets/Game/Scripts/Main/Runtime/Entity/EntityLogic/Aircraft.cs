@@ -3,7 +3,6 @@ using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
 using Game.Scripts.Main.Runtime.Sound;
 using GameFramework;
-using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 

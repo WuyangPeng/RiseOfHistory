@@ -1,9 +1,9 @@
 ﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameUtility;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.Sound;
 using GameFramework.Event;
-using RiseOfHistory;
 using UnityGameFramework.Runtime;
 using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;

@@ -1,5 +1,4 @@
 ﻿using Game.Scripts.Main.Runtime.Network.Packet;
-using RiseOfHistory;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.Network.PacketHandler

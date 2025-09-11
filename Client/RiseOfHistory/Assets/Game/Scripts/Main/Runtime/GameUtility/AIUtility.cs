@@ -7,9 +7,8 @@ using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityLogic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using Entity = Game.Scripts.Main.Runtime.Entity.EntityLogic.Entity;
 
-namespace RiseOfHistory
+namespace Game.Scripts.Main.Runtime.GameUtility
 {
     /// <summary>
     /// AI 工具类。
@@ -112,14 +111,14 @@ namespace RiseOfHistory
         /// 获取实体间的距离。
         /// </summary>
         /// <returns>实体间的距离。</returns>
-        public static float GetDistance(Entity fromEntity, Entity toEntity)
+        public static float GetDistance(Entity.EntityLogic.Entity fromEntity, Entity.EntityLogic.Entity toEntity)
         {
             Transform fromTransform = fromEntity.CachedTransform;
             Transform toTransform = toEntity.CachedTransform;
             return (toTransform.position - fromTransform.position).magnitude;
         }
 
-        public static void PerformCollision(TargetableObject entity, Entity other)
+        public static void PerformCollision(TargetableObject entity, Entity.EntityLogic.Entity other)
         {
             if (entity == null || other == null)
             {
@@ -164,7 +163,7 @@ namespace RiseOfHistory
                 int entityDamageHP = CalcDamageHP(bulletImpactData.Attack, entityImpactData.Defense);
 
                 entity.ApplyDamage(bullet, entityDamageHP);
-                Game.Scripts.Main.Runtime.Base.GameEntry.Entity.HideEntity(bullet);
+                global::Game.Scripts.Main.Runtime.Base.GameEntry.Entity.HideEntity(bullet);
                 return;
             }
         }

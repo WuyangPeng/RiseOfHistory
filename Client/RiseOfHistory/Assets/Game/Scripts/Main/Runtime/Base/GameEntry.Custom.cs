@@ -1,6 +1,5 @@
 ﻿using Game.Scripts.Main.Runtime.BuiltinData;
 using Game.Scripts.Main.Runtime.HPBar;
-using RiseOfHistory;
 using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.Base

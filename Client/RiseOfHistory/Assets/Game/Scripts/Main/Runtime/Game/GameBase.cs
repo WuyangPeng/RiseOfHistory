@@ -3,7 +3,6 @@ using Game.Scripts.Main.Runtime.Entity.EntityData;
 using Game.Scripts.Main.Runtime.Entity.EntityLogic;
 using Game.Scripts.Main.Runtime.Scene;
 using GameFramework.Event;
-using RiseOfHistory;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 

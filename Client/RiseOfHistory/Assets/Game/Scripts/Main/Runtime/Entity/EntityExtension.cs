@@ -2,7 +2,7 @@
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
 using Game.Scripts.Main.Runtime.Entity.EntityLogic;
-using RiseOfHistory;
+using Game.Scripts.Main.Runtime.GameUtility;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.Entity
