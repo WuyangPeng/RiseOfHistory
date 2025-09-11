@@ -1,11 +1,4 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,7 +15,6 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         private static readonly char[] DataTrimSeparators = new char[] { '\"' };
 
         private readonly string[] m_NameRow;
-        private readonly string[] m_TypeRow;
         private readonly string[] m_DefaultValueRow;
         private readonly string[] m_CommentRow;
         private readonly int m_ContentStartRow;
@@ -130,7 +122,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             }
 
             m_NameRow = m_RawValues[nameRow];
-            m_TypeRow = m_RawValues[typeRow];
+            var mTypeRow = m_RawValues[typeRow];
             m_DefaultValueRow = defaultValueRow.HasValue ? m_RawValues[defaultValueRow.Value] : null;
             m_CommentRow = commentRow.HasValue ? m_RawValues[commentRow.Value] : null;
             m_ContentStartRow = contentStartRow;
@@ -145,7 +137,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
                 else
                 {
-                    m_DataProcessor[i] = DataProcessorUtility.GetDataProcessor(m_TypeRow[i]);
+                    m_DataProcessor[i] = DataProcessorUtility.GetDataProcessor(mTypeRow[i]);
                 }
             }
 

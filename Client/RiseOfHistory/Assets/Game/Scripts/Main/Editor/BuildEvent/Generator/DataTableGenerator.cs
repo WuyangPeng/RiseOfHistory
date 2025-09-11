@@ -32,7 +32,10 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     continue;
                 }
 
-                if (NameRegex.IsMatch(name)) continue;
+                if (NameRegex.IsMatch(name))
+                {
+                    continue;
+                }
 
                 Debug.LogWarning(Utility.Text.Format("Check raw data failure. DataTableName='{0}' Name='{1}'", dataTableName, name));
                 return false;
