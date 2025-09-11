@@ -17,8 +17,6 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         private readonly string[] m_NameRow;
         private readonly string[] m_DefaultValueRow;
         private readonly string[] m_CommentRow;
-        private readonly int m_ContentStartRow;
-        private readonly int m_IdColumn;
 
         private readonly DataProcessor[] m_DataProcessor;
         private readonly string[][] m_RawValues;
@@ -44,15 +42,15 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 throw new GameFrameworkException(Utility.Text.Format("Data table file '{0}' is not exist.", dataTableFileName));
             }
 
-            string[] lines = File.ReadAllLines(dataTableFileName, encoding);
-            int rawRowCount = lines.Length;
+            var lines = File.ReadAllLines(dataTableFileName, encoding);
+            var rawRowCount = lines.Length;
 
-            int rawColumnCount = 0;
-            List<string[]> rawValues = new List<string[]>();
-            for (int i = 0; i < lines.Length; i++)
+            var rawColumnCount = 0;
+            var rawValues = new List<string[]>();
+            for (var i = 0; i < lines.Length; i++)
             {
-                string[] rawValue = lines[i].Split(DataSplitSeparators);
-                for (int j = 0; j < rawValue.Length; j++)
+                var rawValue = lines[i].Split(DataSplitSeparators);
+                for (var j = 0; j < rawValue.Length; j++)
                 {
                     rawValue[j] = rawValue[j].Trim(DataTrimSeparators);
                 }
@@ -125,11 +123,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             var mTypeRow = m_RawValues[typeRow];
             m_DefaultValueRow = defaultValueRow.HasValue ? m_RawValues[defaultValueRow.Value] : null;
             m_CommentRow = commentRow.HasValue ? m_RawValues[commentRow.Value] : null;
-            m_ContentStartRow = contentStartRow;
-            m_IdColumn = idColumn;
+            ContentStartRow = contentStartRow;
+            IdColumn = idColumn;
 
             m_DataProcessor = new DataProcessor[rawColumnCount];
-            for (int i = 0; i < rawColumnCount; i++)
+            for (var i = 0; i < rawColumnCount; i++)
             {
                 if (i == IdColumn)
                 {
@@ -141,78 +139,44 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
             }
 
-            Dictionary<string, int> strings = new Dictionary<string, int>(StringComparer.Ordinal);
-            for (int i = contentStartRow; i < rawRowCount; i++)
+            var strings = new Dictionary<string, int>(StringComparer.Ordinal);
+            for (var i = contentStartRow; i < rawRowCount; i++)
             {
                 if (IsCommentRow(i))
                 {
                     continue;
                 }
 
-                for (int j = 0; j < rawColumnCount; j++)
+                for (var j = 0; j < rawColumnCount; j++)
                 {
                     if (m_DataProcessor[j].LanguageKeyword != "string")
                     {
                         continue;
                     }
 
-                    string str = m_RawValues[i][j];
-                    if (strings.ContainsKey(str))
+                    var str = m_RawValues[i][j];
+                    if (!strings.TryAdd(str, 1))
                     {
                         strings[str]++;
-                    }
-                    else
-                    {
-                        strings[str] = 1;
                     }
                 }
             }
 
-            m_Strings = strings.OrderBy(value => value.Key).OrderByDescending(value => value.Value).Select(value => value.Key).ToArray();
+            m_Strings = strings.OrderBy(value => value.Key).ThenByDescending(value => value.Value).Select(value => value.Key).ToArray();
 
             m_CodeTemplate = null;
             m_CodeGenerator = null;
         }
 
-        public int RawRowCount
-        {
-            get
-            {
-                return m_RawValues.Length;
-            }
-        }
+        public int RawRowCount => m_RawValues.Length;
 
-        public int RawColumnCount
-        {
-            get
-            {
-                return m_RawValues.Length > 0 ? m_RawValues[0].Length : 0;
-            }
-        }
+        public int RawColumnCount => m_RawValues.Length > 0 ? m_RawValues[0].Length : 0;
 
-        public int StringCount
-        {
-            get
-            {
-                return m_Strings.Length;
-            }
-        }
+        public int StringCount => m_Strings.Length;
 
-        public int ContentStartRow
-        {
-            get
-            {
-                return m_ContentStartRow;
-            }
-        }
+        public int ContentStartRow { get; }
 
-        public int IdColumn
-        {
-            get
-            {
-                return m_IdColumn;
-            }
-        }
+        public int IdColumn { get; }
 
         public bool IsIdColumn(int rawColumn)
         {
@@ -251,12 +215,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
-            if (IsIdColumn(rawColumn))
-            {
-                return "Id";
-            }
-
-            return m_NameRow[rawColumn];
+            return IsIdColumn(rawColumn) ? "Id" : m_NameRow[rawColumn];
         }
 
         public bool IsSystem(int rawColumn)
@@ -269,7 +228,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             return m_DataProcessor[rawColumn].IsSystem;
         }
 
-        public System.Type GetType(int rawColumn)
+        public Type GetType(int rawColumn)
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
@@ -296,7 +255,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
-            return m_DefaultValueRow != null ? m_DefaultValueRow[rawColumn] : null;
+            return m_DefaultValueRow?[rawColumn];
         }
 
         public string GetComment(int rawColumn)
@@ -306,7 +265,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
-            return m_CommentRow != null ? m_CommentRow[rawColumn] : null;
+            return m_CommentRow?[rawColumn];
         }
 
         public string GetValue(int rawRow, int rawColumn)
@@ -336,7 +295,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
         public int GetStringIndex(string str)
         {
-            for (int i = 0; i < StringCount; i++)
+            for (var i = 0; i < StringCount; i++)
             {
                 if (m_Strings[i] == str)
                 {
@@ -356,22 +315,18 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             try
             {
-                using (FileStream fileStream = new FileStream(outputFileName, FileMode.Create, FileAccess.Write))
+                using var fileStream = new FileStream(outputFileName, FileMode.Create, FileAccess.Write);
+                using var binaryWriter = new BinaryWriter(fileStream, Encoding.UTF8);
+                for (var rawRow = ContentStartRow; rawRow < RawRowCount; rawRow++)
                 {
-                    using (BinaryWriter binaryWriter = new BinaryWriter(fileStream, Encoding.UTF8))
+                    if (IsCommentRow(rawRow))
                     {
-                        for (int rawRow = ContentStartRow; rawRow < RawRowCount; rawRow++)
-                        {
-                            if (IsCommentRow(rawRow))
-                            {
-                                continue;
-                            }
-
-                            byte[] bytes = GetRowBytes(outputFileName, rawRow);
-                            binaryWriter.Write7BitEncodedInt32(bytes.Length);
-                            binaryWriter.Write(bytes);
-                        }
+                        continue;
                     }
+
+                    var bytes = GetRowBytes(outputFileName, rawRow);
+                    binaryWriter.Write7BitEncodedInt32(bytes.Length);
+                    binaryWriter.Write(bytes);
                 }
 
                 Debug.Log(Utility.Text.Format("Parse data table '{0}' success.", outputFileName));
@@ -418,19 +373,12 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             try
             {
-                StringBuilder stringBuilder = new StringBuilder(m_CodeTemplate);
-                if (m_CodeGenerator != null)
-                {
-                    m_CodeGenerator(this, stringBuilder, userData);
-                }
+                var stringBuilder = new StringBuilder(m_CodeTemplate);
+                m_CodeGenerator?.Invoke(this, stringBuilder, userData);
 
-                using (FileStream fileStream = new FileStream(outputFileName, FileMode.Create, FileAccess.Write))
-                {
-                    using (StreamWriter stream = new StreamWriter(fileStream, encoding))
-                    {
-                        stream.Write(stringBuilder.ToString());
-                    }
-                }
+                using var fileStream = new FileStream(outputFileName, FileMode.Create, FileAccess.Write);
+                using var stream = new StreamWriter(fileStream, encoding);
+                stream.Write(stringBuilder.ToString());
 
                 Debug.Log(Utility.Text.Format("Generate code file '{0}' success.", outputFileName));
                 return true;
@@ -444,47 +392,43 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
         private byte[] GetRowBytes(string outputFileName, int rawRow)
         {
-            using (MemoryStream memoryStream = new MemoryStream())
+            using var memoryStream = new MemoryStream();
+            using var binaryWriter = new BinaryWriter(memoryStream, Encoding.UTF8);
+            for (var rawColumn = 0; rawColumn < RawColumnCount; rawColumn++)
             {
-                using (BinaryWriter binaryWriter = new BinaryWriter(memoryStream, Encoding.UTF8))
+                if (IsCommentColumn(rawColumn))
                 {
-                    for (int rawColumn = 0; rawColumn < RawColumnCount; rawColumn++)
-                    {
-                        if (IsCommentColumn(rawColumn))
-                        {
-                            continue;
-                        }
+                    continue;
+                }
 
+                try
+                {
+                    m_DataProcessor[rawColumn].WriteToStream(this, binaryWriter, GetValue(rawRow, rawColumn));
+                }
+                catch
+                {
+                    if (m_DataProcessor[rawColumn].IsId || string.IsNullOrEmpty(GetDefaultValue(rawColumn)))
+                    {
+                        Debug.LogError(Utility.Text.Format("Parse raw value failure. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'", outputFileName, rawRow, rawColumn, GetName(rawColumn), GetLanguageKeyword(rawColumn), GetValue(rawRow, rawColumn)));
+                        return null;
+                    }
+                    else
+                    {
+                        Debug.LogWarning(Utility.Text.Format("Parse raw value failure, will try default value. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'", outputFileName, rawRow, rawColumn, GetName(rawColumn), GetLanguageKeyword(rawColumn), GetValue(rawRow, rawColumn)));
                         try
                         {
-                            m_DataProcessor[rawColumn].WriteToStream(this, binaryWriter, GetValue(rawRow, rawColumn));
+                            m_DataProcessor[rawColumn].WriteToStream(this, binaryWriter, GetDefaultValue(rawColumn));
                         }
                         catch
                         {
-                            if (m_DataProcessor[rawColumn].IsId || string.IsNullOrEmpty(GetDefaultValue(rawColumn)))
-                            {
-                                Debug.LogError(Utility.Text.Format("Parse raw value failure. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'", outputFileName, rawRow, rawColumn, GetName(rawColumn), GetLanguageKeyword(rawColumn), GetValue(rawRow, rawColumn)));
-                                return null;
-                            }
-                            else
-                            {
-                                Debug.LogWarning(Utility.Text.Format("Parse raw value failure, will try default value. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'", outputFileName, rawRow, rawColumn, GetName(rawColumn), GetLanguageKeyword(rawColumn), GetValue(rawRow, rawColumn)));
-                                try
-                                {
-                                    m_DataProcessor[rawColumn].WriteToStream(this, binaryWriter, GetDefaultValue(rawColumn));
-                                }
-                                catch
-                                {
-                                    Debug.LogError(Utility.Text.Format("Parse default value failure. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'", outputFileName, rawRow, rawColumn, GetName(rawColumn), GetLanguageKeyword(rawColumn), GetComment(rawColumn)));
-                                    return null;
-                                }
-                            }
+                            Debug.LogError(Utility.Text.Format("Parse default value failure. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'", outputFileName, rawRow, rawColumn, GetName(rawColumn), GetLanguageKeyword(rawColumn), GetComment(rawColumn)));
+                            return null;
                         }
                     }
-
-                    return memoryStream.ToArray();
                 }
             }
+
+            return memoryStream.ToArray();
         }
     }
 }
