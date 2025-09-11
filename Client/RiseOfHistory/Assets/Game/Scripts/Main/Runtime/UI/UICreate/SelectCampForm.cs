@@ -25,6 +25,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         [SerializeField]
         private Toggle[] moralityToggle = null;
 
+        [SerializeField] private InputField inputField;
+
+        public void OnClickConfirm()
+        {
+            var playerName = inputField.text;
+          
+           
+        }
+
         public void OnLeftRulesButtonClick(bool isOn)
         {
             if (!isOn)

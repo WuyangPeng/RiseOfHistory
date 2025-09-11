@@ -273,5 +273,6 @@
 		<String Key="Talent.Test8.Description" Value="天赋8描述" />
 		<String Key="Talent.Test9" Value="天赋9" />
 		<String Key="Talent.Test9.Description" Value="天赋9描述" />
+		<String Key="Name.Select" Value="选择名字" />
 	</Dictionary>
 </Dictionaries>
