@@ -31,7 +31,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             const string poolName = "TalentItemPool";
             pool = GameEntry.ObjectPool.HasObjectPool<TalentItemObject>(poolName) ?
                 GameEntry.ObjectPool.GetObjectPool<TalentItemObject>(poolName):
-                GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(poolName, poolCapacity, 30f, 16); 
+                GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(poolName, poolCapacity, 30f, 16);
 
             Refresh();
         }
