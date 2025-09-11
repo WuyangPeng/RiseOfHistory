@@ -4,7 +4,7 @@ using Game.Scripts.Main.Runtime.UI.UICreate.Item;
 using Game.Scripts.Main.Runtime.UI.UICreate.Object;
 using System.Collections.Generic;
 using GameFramework.ObjectPool;
-using UnityEngine; 
+using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -19,8 +19,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         [SerializeField] private int poolCapacity = 20;
 
         private IObjectPool<TalentItemObject> pool;
-        private readonly List<DRAvatar> avatarData = new();
-        private int selectedIndex = -1;
+        private readonly List<DRTalent> talentData = new();
+        private List<int> selectedIndex = new();
         private readonly List<TalentItemObject> activeTalentItemObject = new();
         private const int PerRow = 4;
         private readonly List<GameObject> rowGameObjects = new();
@@ -28,42 +28,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         private void Start()
         {
             pool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(
-                "AvatarItemPool",
+                "TalentItemPool",
                 poolCapacity,
                 30f,
                 16);
 
             Refresh();
-        }
-
-        private void SetAvatarData()
-        {
-            avatarData.Clear();
-
-            selectedIndex = -1;
-
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var avatarId = userModule.GetAvatarId();
-            var sexType = userModule.GetSexType();
-            var avatars = GameEntry.DataTable.GetDataTable<DRAvatar>();
-            foreach (var avatar in avatars)
-            {
-                if ((avatar.Sex & (int)sexType) == 0) continue;
-
-                avatarData.Add(avatar);
-                if (avatarId == avatar.Id)
-                {
-                    selectedIndex = avatarData.Count - 1;
-                }
-            }
-
-            if (selectedIndex >= 0)
-            {
-                return;
-            }
-
-            selectedIndex = 0;
-            userModule.SetAvatarId(avatarData[0].Id);
         }
 
         public void Refresh()
@@ -72,6 +42,31 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             UnSpawnAvatar();
             SpawnAvatar();
         }
+
+        private void SetAvatarData()
+        {
+            talentData.Clear();
+
+            selectedIndex.Clear();
+
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+
+            var talents = GameEntry.DataTable.GetDataTable<DRTalent>();
+            foreach (var talent in talents)
+            {
+                if (!talent.DefaultEnabled && !accountModule.HasTalent(talent.Id)) continue;
+
+                if (userModule.HasSelectedTalent(talent.Id))
+                {
+                    selectedIndex.Add(talentData.Count);
+                }
+
+                talentData.Add(talent);
+            }
+        }
+
+
 
         public GameObject GetRowGameObject(int row)
         {
@@ -94,7 +89,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
         private void SpawnAvatar()
         {
-            var rowCount = Mathf.CeilToInt((float)avatarData.Count / PerRow);
+            var rowCount = Mathf.CeilToInt((float)talentData.Count / PerRow);
 
             for (var row = 0; row < rowCount; row++)
             {
@@ -125,7 +120,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
         private bool SpawnAvatar(int row, int column, GameObject rowGameObject)
         {
             var idx = row * PerRow + column;
-            if (idx >= avatarData.Count)
+            if (idx >= talentData.Count)
             {
                 return true;
             }
@@ -138,10 +133,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
             activeTalentItemObject.Add(spawn);
 
-            var avatarItem = (AvatarItem)spawn.Target;
+            var avatarItem = (TalentItem)spawn.Target;
             avatarItem.transform.SetParent(rowGameObject.transform, false);
-            avatarItem.SetData(idx, avatarData[idx], OnItemClick);
-            avatarItem.SetSelected(idx == selectedIndex);
+            avatarItem.SetData(idx, talentData[idx], OnItemClick);
+            avatarItem.SetSelected(selectedIndex.Contains(idx));
 
             return true;
         }
@@ -191,16 +186,21 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
         private void OnItemClick(int index)
         {
-            selectedIndex = index;
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            if (!userModule.CanAddTalent(talentData[index].Id))
+            {
+                return;
+            }
+
+            selectedIndex.Add(index);
 
             for (var i = 0; i < activeTalentItemObject.Count; i++)
             {
                 var avatarItem = (TalentItem)(activeTalentItemObject[i].Target);
-                avatarItem.SetSelected(i == selectedIndex);
+                avatarItem.SetSelected(selectedIndex.Contains(i));
             }
-
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetAvatarId(avatarData[index].Id);
+           
+            userModule.AddTalent(talentData[index].Id);
         }
     }
 }

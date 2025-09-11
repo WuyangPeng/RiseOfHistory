@@ -1,14 +1,15 @@
 ﻿using Game.Scripts.Main.Runtime.Game;
+using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.SaveData;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIForm;
+using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework;
 using GameFramework.FileSystem;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Game.Scripts.Main.Runtime.UI.UIMenu;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -56,6 +57,27 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             formComponent.OnEnter(procedureOwner);
 
             GameEntry.ModuleComponent.ResetModule();
+
+            LoadAccountData();
+        }
+
+        private static void LoadAccountData()
+        {
+            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            accountModule.Clear();
+
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("AccountSaves", "TalentData.idx");
+
+            var bytes = fileSystems?.ReadFile("AccountSaves");
+
+            if (bytes == null)
+            {
+                return;
+            }
+
+            var json = Encoding.UTF8.GetString(bytes);
+            var talentData = Utility.Json.ToObject<TalentData>(json);
+            accountModule.SetTalentData(talentData);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)

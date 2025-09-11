@@ -195,6 +195,15 @@ namespace Game.Scripts.Main.Runtime.DataTable
             private set;
         }
 
+        /// <summary>
+        /// 获取默认开启。
+        /// </summary>
+        public bool DefaultEnabled
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -226,6 +235,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
             TechniqueId1 = int.Parse(columnStrings[index++]);
             TechniqueChange1 = int.Parse(columnStrings[index++]);
             Quality = int.Parse(columnStrings[index++]);
+            DefaultEnabled = bool.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -257,6 +267,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     TechniqueId1 = binaryReader.Read7BitEncodedInt32();
                     TechniqueChange1 = binaryReader.Read7BitEncodedInt32();
                     Quality = binaryReader.Read7BitEncodedInt32();
+                    DefaultEnabled = binaryReader.ReadBoolean();
                 }
             }
 

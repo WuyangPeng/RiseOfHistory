@@ -265,5 +265,20 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
 
             return (from row in techniqueTable.GetAllDataRows() let technique = GetTechnique((TechniqueType)row.Id) where row.Beginner <= technique select row).Any();
         }
+
+        public bool HasSelectedTalent(int talentId)
+        {
+            return userData.HasSelectedTalent(talentId);
+        }
+
+        public void AddTalent(int id)
+        {
+            userData.AddTalent(id);
+        }
+
+        public bool CanAddTalent(int id)
+        {
+            return userData.CanAddTalent(id);
+        }
     }
 }

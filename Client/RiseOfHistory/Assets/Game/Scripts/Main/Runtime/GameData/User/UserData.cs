@@ -3,6 +3,7 @@ using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.RuntimeException;
 using GameFramework;
+using System.Collections.Generic;
 using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 
 namespace Game.Scripts.Main.Runtime.GameData.User
@@ -35,6 +36,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public int MartialArtsCount { get; set; } = Constant.Game.InitMartialArtsCount;
 
         public int TechniqueCount { get; set; } = Constant.Game.InitTechniqueCount;
+
+        public HashSet<int> Talent { get; set; } = new();
 
         private int age;
 
@@ -157,6 +160,26 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public void AddTechnique()
         {
             ++TechniqueCount;
+        }
+
+        public bool HasSelectedTalent(int talentId)
+        {
+            return Talent.Contains(talentId);
+        }
+
+        public void AddTalent(int id)
+        {
+            Talent.Add(id);
+        }
+
+        public bool CanAddTalent(int id)
+        {
+            if (Talent.Count >= Constant.Game.MaxTalentCount)
+            {
+                return false;
+            }
+
+            return !Talent.Contains(id);
         }
     }
 }
