@@ -10,10 +10,10 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
     public static class ToolbarExtender
     {
         private static readonly int ToolCount;
-        private static GUIStyle s_CommandStyle = null;
+        private static GUIStyle s_CommandStyle;
 
-        public static readonly List<Action> LeftToolbarGUI = new List<Action>();
-        public static readonly List<Action> RightToolbarGUI = new List<Action>();
+        public static readonly List<Action> LeftToolbarGUI = new();
+        public static readonly List<Action> RightToolbarGUI = new();
 
         public const float Space = 8;
         public const float LargeSpace = 20;
@@ -38,27 +38,24 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
         private static void OnGUI()
         {
-            // Create two containers, left and right
-            // Screen is whole toolbar
             s_CommandStyle ??= new GUIStyle("CommandLeft");
 
             var screenWidth = EditorGUIUtility.currentViewWidth;
 
-            // Following calculations match code reflected from Toolbar.OldOnGUI()
             float playButtonsPosition = Mathf.RoundToInt((screenWidth - PlayPauseStopWidth) / 2);
 
             var leftRect = new Rect(0, 0, screenWidth, Screen.height);
-            leftRect.xMin += Space; // Spacing left
-            leftRect.xMin += ButtonWidth * ToolCount; // Tool buttons
+            leftRect.xMin += Space; // 左侧间距
+            leftRect.xMin += ButtonWidth * ToolCount; // 工具按钮
 
-            leftRect.xMin += Space; // Spacing between tools and pivot
+            leftRect.xMin += Space; // 工具和枢轴之间的间距
 
-            leftRect.xMin += 64 * 2; // Pivot buttons
+            leftRect.xMin += 64 * 2; // 枢轴按钮
             leftRect.xMax = playButtonsPosition;
 
             var rightRect = new Rect(playButtonsPosition, screenWidth, screenWidth, Screen.height);
 
-            rightRect.xMin += s_CommandStyle.fixedWidth * 3; // Play buttons
+            rightRect.xMin += s_CommandStyle.fixedWidth * 3; // 播放按钮
 
             rightRect.xMax -= Space; // Spacing right
             rightRect.xMax -= DropdownWidth; // Layout
@@ -109,7 +106,6 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
-
         }
 
         public static void GUILeft()
