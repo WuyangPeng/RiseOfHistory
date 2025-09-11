@@ -280,5 +280,31 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             return userData.CanAddTalent(id);
         }
+
+        public bool HasSelectTalent()
+        {
+
+            return userData.HasSelectTalent();
+        }
+
+        public int GetSaveIndex()
+        {
+            return userData.SaveIndex;
+        }
+
+        public void SetSaveIndex(int index)
+        {
+            userData.SaveIndex = index;
+        }
+
+        public GameDifficultyType GetGameDifficultyType()
+        {
+            return userData.GameDifficultyType;
+        }
+
+        public string GetName()
+        {
+            return userData.Name;
+        }
     }
 }

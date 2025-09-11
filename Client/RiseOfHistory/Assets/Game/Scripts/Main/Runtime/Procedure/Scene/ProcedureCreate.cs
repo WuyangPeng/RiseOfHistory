@@ -1,9 +1,12 @@
-﻿using Game.Scripts.Main.Runtime.UI.UICommon;
+﻿using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.SaveData;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIForm;
+using System.Text;
+using GameFramework;
 using UnityGameFramework.Runtime;
-using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
-using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
 namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
@@ -74,6 +77,26 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         public void RemoveUIForm(UIFormId formId)
         {
             formComponent.RemoveUIForm(formId);
+        }
+
+        public void SaveData()
+        {
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            var index = userModule.GetSaveIndex();
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + index, "HeadData.idx");
+
+            var headData = new HeadData
+            {
+                Index = index,
+                Avatar = userModule.GetAvatarId(),
+                GameDifficultyType = userModule.GetGameDifficultyType(),
+                Name = userModule.GetName()
+            };
+
+
+            var json = Utility.Json.ToJson(headData);
+
+            fileSystems.WriteFile("GameSaves", json);
         }
     }
 }

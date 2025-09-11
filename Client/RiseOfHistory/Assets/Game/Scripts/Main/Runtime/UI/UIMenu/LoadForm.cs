@@ -1,8 +1,10 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu.Display;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
@@ -26,6 +28,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             }
             else
             {
+                var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+                userModule.SetSaveIndex(index);
+
                 procedureMenu.StartGame();
             }
         }

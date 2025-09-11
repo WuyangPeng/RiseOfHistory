@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.Base;
+﻿using System;
+using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.RuntimeException;
@@ -10,6 +11,7 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 {
     public class UserData
     {
+        public int SaveIndex { get; set; } = 0;
         public GameDifficultyType GameDifficultyType { get; set; } = GameDifficultyType.Mortal;
 
         public int InitMapSize { get; set; } = 0;
@@ -38,6 +40,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public int TechniqueCount { get; set; } = Constant.Game.InitTechniqueCount;
 
         public HashSet<int> Talent { get; set; } = new();
+
+        public string Name { get; set; } = "";
 
         private int age;
 
@@ -180,6 +184,11 @@ namespace Game.Scripts.Main.Runtime.GameData.User
             }
 
             return !Talent.Contains(id);
+        }
+
+        public bool HasSelectTalent()
+        {
+            return Talent.Count >= Constant.Game.MaxTalentCount;
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UICreate.Display;
+using Game.Scripts.Main.Runtime.UI.UIMenu;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
@@ -44,6 +47,24 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            if (!userModule.HasSelectTalent())
+            {
+                GameEntry.UI.OpenDialog(new DialogParams()
+                {
+                    Mode = 1,
+                    Title = GameEntry.Localization.GetString("Talent.OpenTalent.Title"),
+                    Message = GameEntry.Localization.GetString("Talent.OpenTalent.Content"),
+                    OnClickConfirm = delegate (object userData)
+                    {
+                       
+                    },
+                });
+          
+                return;
+            }
+
+            procedureCreate.SaveData();
             procedureCreate.EnterGame();
         }
 
