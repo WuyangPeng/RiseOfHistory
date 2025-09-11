@@ -1,5 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.GameData.User;
-using Game.Scripts.Main.Runtime.GameEnum;
+﻿using Game.Scripts.Main.Runtime.GameEnum;
 
 namespace Game.Scripts.Main.Runtime.SaveData
 {
