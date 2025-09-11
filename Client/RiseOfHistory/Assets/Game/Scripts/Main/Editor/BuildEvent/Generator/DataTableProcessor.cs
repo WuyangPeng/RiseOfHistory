@@ -11,8 +11,8 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
     public sealed partial class DataTableProcessor
     {
         private const string CommentLineSeparator = "#";
-        private static readonly char[] DataSplitSeparators = new char[] { '\t' };
-        private static readonly char[] DataTrimSeparators = new char[] { '\"' };
+        private static readonly char[] DataSplitSeparators = { '\t' };
+        private static readonly char[] DataTrimSeparators = { '\"' };
 
         private readonly string[] m_NameRow;
         private readonly string[] m_DefaultValueRow;

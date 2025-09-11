@@ -1,11 +1,4 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System.IO;
+﻿using System.IO;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
@@ -40,7 +33,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             public abstract string[] GetTypeStrings();
 
-            public abstract void WriteToStream(Game.Scripts.Main.Editor.BuildEvent.Generator.DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value);
+            public abstract void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value);
         }
     }
 }

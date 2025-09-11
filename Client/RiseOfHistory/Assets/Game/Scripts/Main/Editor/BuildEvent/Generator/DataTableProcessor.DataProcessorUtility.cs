@@ -1,11 +1,4 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using GameFramework;
@@ -16,45 +9,38 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
     {
         private static class DataProcessorUtility
         {
-            private static readonly IDictionary<string, DataTableProcessor.DataProcessor> s_DataProcessors = new SortedDictionary<string, DataTableProcessor.DataProcessor>(StringComparer.Ordinal);
+            private static readonly IDictionary<string, DataProcessor> DataProcessors = new SortedDictionary<string, DataProcessor>(StringComparer.Ordinal);
 
             static DataProcessorUtility()
             {
-                System.Type dataProcessorBaseType = typeof(DataTableProcessor.DataProcessor);
-                Assembly assembly = Assembly.GetExecutingAssembly();
-                System.Type[] types = assembly.GetTypes();
-                for (int i = 0; i < types.Length; i++)
+                var dataProcessorBaseType = typeof(DataProcessor);
+                var assembly = Assembly.GetExecutingAssembly();
+                var types = assembly.GetTypes();
+                foreach (var type in types)
                 {
-                    if (!types[i].IsClass || types[i].IsAbstract)
+                    if (!type.IsClass || type.IsAbstract)
                     {
                         continue;
                     }
 
-                    if (dataProcessorBaseType.IsAssignableFrom(types[i]))
+                    if (!dataProcessorBaseType.IsAssignableFrom(type))
                     {
-                        DataTableProcessor.DataProcessor dataProcessor = (DataTableProcessor.DataProcessor)Activator.CreateInstance(types[i]);
-                        foreach (string typeString in dataProcessor.GetTypeStrings())
-                        {
-                            s_DataProcessors.Add(typeString.ToLowerInvariant(), dataProcessor);
-                        }
+                        continue;
+                    }
+
+                    var dataProcessor = (DataProcessor)Activator.CreateInstance(type);
+                    foreach (var typeString in dataProcessor.GetTypeStrings())
+                    {
+                        DataProcessors.Add(typeString.ToLowerInvariant(), dataProcessor);
                     }
                 }
             }
 
-            public static DataTableProcessor.DataProcessor GetDataProcessor(string type)
+            public static DataProcessor GetDataProcessor(string type)
             {
-                if (type == null)
-                {
-                    type = string.Empty;
-                }
+                type ??= string.Empty;
 
-                DataTableProcessor.DataProcessor dataProcessor = null;
-                if (s_DataProcessors.TryGetValue(type.ToLowerInvariant(), out dataProcessor))
-                {
-                    return dataProcessor;
-                }
-
-                throw new GameFrameworkException(Utility.Text.Format("Not supported data processor type '{0}'.", type));
+                return DataProcessors.TryGetValue(type.ToLowerInvariant(), out var dataProcessor) ? dataProcessor : throw new GameFrameworkException(Utility.Text.Format("Not supported data processor type '{0}'.", type));
             }
         }
     }
