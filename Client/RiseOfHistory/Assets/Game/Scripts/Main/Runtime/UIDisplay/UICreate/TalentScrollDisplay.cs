@@ -1,8 +1,8 @@
 ﻿using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.UI.UICreate.Item;
-using Game.Scripts.Main.Runtime.UI.UICreate.Object;
 using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.UIObject.UICreate;
 using GameFramework.ObjectPool;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,17 +1,16 @@
 ﻿using Game.Scripts.Main.Runtime.UI.UICreate.Item;
 using GameFramework;
 using GameFramework.ObjectPool;
-using UnityEngine;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Object
+namespace Game.Scripts.Main.Runtime.UIObject.UICreate
 {
     public class TalentItemObject : ObjectBase
     {
         public static TalentItemObject Create(TalentItem item)
         {
-            var avatarItemObject = ReferencePool.Acquire<TalentItemObject>();
-            avatarItemObject.Initialize(item);
-            return avatarItemObject;
+            var talentItemObject = ReferencePool.Acquire<TalentItemObject>();
+            talentItemObject.Initialize(item);
+            return talentItemObject;
         }
 
         protected override void OnSpawn()
@@ -21,7 +20,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Object
 
         protected override void OnUnspawn()
         {
-            ((TalentItem)Target).OnRecycle();
             ((TalentItem)Target).gameObject.SetActive(false);
         }
 

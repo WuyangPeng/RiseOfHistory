@@ -2,7 +2,7 @@
 using GameFramework;
 using GameFramework.ObjectPool;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Object
+namespace Game.Scripts.Main.Runtime.UIObject.UICreate
 {
     public class AvatarItemObject : ObjectBase
     {
@@ -20,7 +20,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Object
 
         protected override void OnUnspawn()
         {
-            ((AvatarItem)Target).OnRecycle();
             ((AvatarItem)Target).gameObject.SetActive(false);
         }
 
@@ -30,6 +29,5 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Object
             item.OnRecycle();
             UnityEngine.Object.Destroy(item.gameObject);
         }
-
     }
 }
