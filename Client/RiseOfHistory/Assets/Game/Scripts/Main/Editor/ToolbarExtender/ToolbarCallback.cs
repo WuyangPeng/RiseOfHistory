@@ -18,9 +18,6 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
         private static ScriptableObject s_CurrentToolbar;
 
-        /// <summary>
-        /// Callback for toolbar OnGUI method.
-        /// </summary>
         public static Action OnToolbarGUI;
         public static Action OnToolbarGUILeft;
         public static Action OnToolbarGUIRight;
@@ -33,10 +30,8 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
         private static void OnUpdate()
         {
-            // Relying on the fact that toolbar is ScriptableObject and gets deleted when layout changes
             if (s_CurrentToolbar != null) return;
 
-            // Find toolbar
             var toolbars = Resources.FindObjectsOfTypeAll(ToolbarType);
 
             s_CurrentToolbar = toolbars.Length > 0 ? (ScriptableObject)toolbars[0] : null;

@@ -57,26 +57,26 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
             rightRect.xMin += s_CommandStyle.fixedWidth * 3; // 播放按钮
 
-            rightRect.xMax -= Space; // Spacing right
-            rightRect.xMax -= DropdownWidth; // Layout
-            rightRect.xMax -= Space; // Spacing between layout and layers
-            rightRect.xMax -= DropdownWidth; // Layers
+            rightRect.xMax -= Space; // 右侧间距
+            rightRect.xMax -= DropdownWidth; // 布局
+            rightRect.xMax -= Space; // 布局和图层之间的间距
+            rightRect.xMax -= DropdownWidth; // 图层
 
-            rightRect.xMax -= Space; // Spacing between layers and account
+            rightRect.xMax -= Space; // 图层和账户之间的间距
 
-            rightRect.xMax -= DropdownWidth; // Account
-            rightRect.xMax -= Space; // Spacing between account and cloud
+            rightRect.xMax -= DropdownWidth; // 账户
+            rightRect.xMax -= Space; // 账户和Cloud之间的间距
             rightRect.xMax -= ButtonWidth; // Cloud
-            rightRect.xMax -= Space; // Spacing between cloud and collab
+            rightRect.xMax -= Space; // cloud和collab之间的间距
             rightRect.xMax -= 78; // Colab
 
-            // Add spacing around existing controls
+            // 在现有控件周围添加间距
             leftRect.xMin += Space;
             leftRect.xMax -= Space;
             rightRect.xMin += Space;
             rightRect.xMax -= Space;
 
-            // Add top and bottom margins
+            // 添加上下边距
             leftRect.y = 4;
             leftRect.height = 22;
             rightRect.y = 4;

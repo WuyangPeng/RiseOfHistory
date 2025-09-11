@@ -17,7 +17,6 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
             ToolbarExtender.LeftToolbarGUI.Add(OnToolbarGUI);
         }
 
-
         private static void OnToolbarGUI()
         {
             s_ButtonGuiStyle ??= new GUIStyle(ButtonStyleName)
@@ -64,8 +63,6 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
-                // need to get scene via search because the path to the scene
-                // file contains the package version so it'll change over time
                 var guids = AssetDatabase.FindAssets("t:scene " + s_SceneToOpen, null);
                 if (guids.Length == 0)
                 {
