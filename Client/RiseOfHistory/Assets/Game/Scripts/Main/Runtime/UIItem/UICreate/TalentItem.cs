@@ -13,7 +13,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
         [SerializeField] private Image imageBackground;
         [SerializeField] private Text talentText;
 
-        private object talentHandle;
         private System.Action<int> onClick;
         private int myIndex;
 
