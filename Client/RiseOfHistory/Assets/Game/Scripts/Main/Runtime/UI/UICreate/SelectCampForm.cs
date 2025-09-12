@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.GameEnum;
+﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
@@ -26,7 +27,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         [SerializeField] private TMP_InputField inputField;
 
-        [SerializeField] private Dropdown surnameDropdown;    
+        [SerializeField] private Dropdown surnameDropdown;
 
         public void OnClickConfirm()
         {
@@ -124,6 +125,23 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             campDisplay.Refresh();
 
             InitCamp();
+            InitDropdown();
+
+
+        }
+
+        private void InitDropdown()
+        {
+            var surname = GameEntry.DataTable.GetDataTable<DRSurname>();
+            foreach (var element in surname)
+            {
+                var optionData = new Dropdown.OptionData
+                {
+                    text = GameEntry.Localization.GetString(element.Name)
+                };
+
+                surnameDropdown.options.Add(optionData);
+            }
         }
 
         private void InitCamp()
