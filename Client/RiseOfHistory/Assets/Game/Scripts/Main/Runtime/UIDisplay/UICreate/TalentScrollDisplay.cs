@@ -11,14 +11,8 @@ using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
-    public class TalentScrollDisplay : MonoBehaviour
+    public class TalentScrollDisplay : ScrollDisplayBase
     {
-        [SerializeField]
-        private ScrollRect scrollRect;
-
-        [SerializeField]
-        private Transform content;
-
         [SerializeField]
         private TalentItem itemPrefab;
 
@@ -76,24 +70,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                 talentData.Add(talent);
             }
         }
-        public GameObject GetRowGameObject(int row)
-        {
-            var rowGameObject = new GameObject($"Row{row}", typeof(RectTransform));
-            rowGameObject.transform.SetParent(content, false);
 
-            var horizontalLayoutGroup = rowGameObject.AddComponent<HorizontalLayoutGroup>();
-            horizontalLayoutGroup.spacing = 20f;
-            horizontalLayoutGroup.childControlWidth = false;
-            horizontalLayoutGroup.childControlHeight = false;
-            horizontalLayoutGroup.childAlignment = TextAnchor.LowerLeft;
-            horizontalLayoutGroup.childForceExpandWidth = false;
-
-            var rowRectTransform = rowGameObject.GetComponent<RectTransform>();
-            rowRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 480);
-            rowRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
-
-            return rowGameObject;
-        }
 
         private void SpawnAvatar()
         {
@@ -178,7 +155,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             var result = pool.Spawn();
             if (result != null) return result;
 
-            var itemGameObject = Instantiate(itemPrefab.gameObject, content);
+            var itemGameObject = Instantiate(itemPrefab.gameObject, null);
             if (itemGameObject.TryGetComponent<TalentItem>(out var item))
             {
                 var avatarItemObject = TalentItemObject.Create(item);
