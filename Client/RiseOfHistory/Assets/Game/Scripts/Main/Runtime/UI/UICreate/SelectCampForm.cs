@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
@@ -29,6 +30,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         [SerializeField] private Dropdown surnameDropdown;
 
+
+        private List<DRSurname> surnames = new();
+
         public void OnClickConfirm()
         {
             var playerName = inputField.text;
@@ -38,7 +42,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         private void OnNameSelected(int index)
         {
-            var chosen = surnameDropdown.options[index].text;
+            var chosen = surnames[index].Id;
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetSurname(chosen);
         }

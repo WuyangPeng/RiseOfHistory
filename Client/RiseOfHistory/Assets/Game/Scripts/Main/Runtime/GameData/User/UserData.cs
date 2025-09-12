@@ -43,7 +43,7 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public string Name { get; set; } = "";
 
-        public string Surname { get; set; } = "";
+        public int Surname { get; set; } = 1;
 
         public bool InitWorld { get; set; } = false;
 

@@ -308,7 +308,9 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
 
         public string GetFullName()
         {
-            return userData.Surname + userData.Name;
+            var surname = GameEntry.DataTable.GetDataTable<DRSurname>();
+
+            return surname.GetDataRow(userData.Surname).Name + userData.Name;
         }
 
         public void RemoveTalent(int id)
@@ -321,7 +323,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             userData.Name = playerName;
         }
 
-        public void SetSurname(string surname)
+        public void SetSurname(int surname)
         {
             userData.Surname = surname;
         }
