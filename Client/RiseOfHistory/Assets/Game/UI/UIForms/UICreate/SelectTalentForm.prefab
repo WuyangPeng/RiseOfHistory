@@ -273,7 +273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f9b4d259d3ed4428787d5326795bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talentScrollDisplay: {fileID: 7063042580488308462}
 --- !u!1 &6251246075384024449
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ReturnButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351318916, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
@@ -521,6 +525,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2750433323359343646, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -660,18 +669,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0552054cb3a65c4d95c740dfc5a384d, type: 3}
---- !u!114 &7063042580488308462 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2913550477023433270, guid: c0552054cb3a65c4d95c740dfc5a384d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5362649671847122136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fe379006f04134dbbbfc437d5ad367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7800364296045110892 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2750433323359187636, guid: c0552054cb3a65c4d95c740dfc5a384d,
@@ -695,6 +692,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Menu.LoadGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323351318916, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
@@ -850,6 +852,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750433323359343646, guid: 04d4259f95633ac4eaddfcd2db8344d9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

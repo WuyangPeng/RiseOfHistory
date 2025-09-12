@@ -310,7 +310,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             var surname = GameEntry.DataTable.GetDataTable<DRSurname>();
 
-            return surname.GetDataRow(userData.Surname).Name + userData.Name;
+            return GameEntry.Localization.GetString(surname.GetDataRow(userData.Surname).Name) + userData.Name;
         }
 
         public string GetName()
