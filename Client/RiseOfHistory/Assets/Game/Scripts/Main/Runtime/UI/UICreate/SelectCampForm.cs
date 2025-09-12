@@ -31,7 +31,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         [SerializeField] private Dropdown surnameDropdown;
 
 
-        private List<DRSurname> surnames = new();
+        private readonly List<DRSurname> surnames = new();
 
         public void OnClickConfirm()
         {
@@ -131,7 +131,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             InitCamp();
             InitDropdown();
 
-
         }
 
         private void InitDropdown()
@@ -145,7 +144,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 };
 
                 surnameDropdown.options.Add(optionData);
+
+                surnames.Add(element);
             }
+
+            surnameDropdown.onValueChanged.AddListener(OnNameSelected);
+
+            surnameDropdown.value = 0;
+
+      
         }
 
         private void InitCamp()

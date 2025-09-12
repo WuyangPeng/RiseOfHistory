@@ -289,7 +289,7 @@ MonoBehaviour:
   - {fileID: 7041759419671996335}
   - {fileID: 4867778628003678717}
   inputField: {fileID: 5024268263540295083}
-  surnameDropdown: {fileID: 8411693726653363614}
+  surnameDropdown: {fileID: 8408472832314050396}
 --- !u!114 &5291543805959073599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,7 +817,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 0c90e3fa3a422ab49b524cb1a3b28726,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -300
+      value: -220
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 0c90e3fa3a422ab49b524cb1a3b28726,
         type: 3}
@@ -845,9 +845,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 831000581458575718}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8411693726653363614 stripped
+--- !u!114 &8408472832314050396 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9165977808411129080, guid: 0c90e3fa3a422ab49b524cb1a3b28726,
+  m_CorrespondingSourceObject: {fileID: 9167266011221673530, guid: 0c90e3fa3a422ab49b524cb1a3b28726,
     type: 3}
   m_PrefabInstance: {fileID: 831000581458575718}
   m_PrefabAsset: {fileID: 0}
@@ -1766,7 +1766,7 @@ PrefabInstance:
     - target: {fileID: 3839058364833886306, guid: 7464b322c6cad1747a7384feb97267c5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -300
+      value: -220
       objectReference: {fileID: 0}
     - target: {fileID: 3839058364833886306, guid: 7464b322c6cad1747a7384feb97267c5,
         type: 3}

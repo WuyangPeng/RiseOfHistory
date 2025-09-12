@@ -275,6 +275,9 @@
 		<String Key="Talent.Test9.Description" Value="天赋9描述" />
 		<String Key="Name.Select" Value="选择名字" />
 		<String Key="Surname.Lin" Value="林" />
+		<String Key="Surname.Huang" Value="黄" />
+		<String Key="Surname.Zhang" Value="张" />
+		<String Key="Surname.Wang" Value="王" />
 		<String Key="Sect.Wudang" Value="武当" />
 		<String Key="Sect.Wudang.Description" Value="武当描述" />
 	</Dictionary>
