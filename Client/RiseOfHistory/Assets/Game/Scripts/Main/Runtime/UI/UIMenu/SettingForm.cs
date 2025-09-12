@@ -22,27 +22,27 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         private Slider soundVolumeSlider;
 
         [SerializeField]
-        private Toggle uiSoundMuteToggle = null;
+        private Toggle uiSoundMuteToggle;
 
         [SerializeField]
-        private Slider uiSoundVolumeSlider = null;
+        private Slider uiSoundVolumeSlider;
 
         [SerializeField]
-        private CanvasGroup languageTipsCanvasGroup = null;
+        private CanvasGroup languageTipsCanvasGroup;
 
         [SerializeField]
-        private Toggle englishToggle = null;
+        private Toggle englishToggle;
 
         [SerializeField]
-        private Toggle chineseSimplifiedToggle = null;
+        private Toggle chineseSimplifiedToggle;
 
         [SerializeField]
-        private Toggle chineseTraditionalToggle = null;
+        private Toggle chineseTraditionalToggle;
 
         [SerializeField]
-        private Toggle koreanToggle = null;
+        private Toggle koreanToggle;
 
-        private Language m_SelectedLanguage = Language.Unspecified;
+        private Language selectedLanguage = Language.Unspecified;
 
         public void OnMusicMuteChanged(bool isOn)
         {
@@ -84,7 +84,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            m_SelectedLanguage = Language.English;
+            selectedLanguage = Language.English;
             RefreshLanguageTips();
         }
 
@@ -95,7 +95,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            m_SelectedLanguage = Language.ChineseSimplified;
+            selectedLanguage = Language.ChineseSimplified;
             RefreshLanguageTips();
         }
 
@@ -106,7 +106,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            m_SelectedLanguage = Language.ChineseTraditional;
+            selectedLanguage = Language.ChineseTraditional;
             RefreshLanguageTips();
         }
 
@@ -117,19 +117,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            m_SelectedLanguage = Language.Korean;
+            selectedLanguage = Language.Korean;
             RefreshLanguageTips();
         }
 
         public void OnSubmitButtonClick()
         {
-            if (m_SelectedLanguage == Base.GameEntry.Localization.Language)
+            if (selectedLanguage == Base.GameEntry.Localization.Language)
             {
                 Close();
                 return;
             }
 
-            Base.GameEntry.Setting.SetString(Definition.Constant.Constant.Setting.Language, m_SelectedLanguage.ToString());
+            Base.GameEntry.Setting.SetString(Definition.Constant.Constant.Setting.Language, selectedLanguage.ToString());
             Base.GameEntry.Setting.Save();
 
             Base.GameEntry.Sound.StopMusic();
@@ -150,8 +150,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             uiSoundMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("UISound");
             uiSoundVolumeSlider.value = Base.GameEntry.Sound.GetVolume("UISound");
 
-            m_SelectedLanguage = Base.GameEntry.Localization.Language;
-            switch (m_SelectedLanguage)
+            selectedLanguage = Base.GameEntry.Localization.Language;
+            switch (selectedLanguage)
             {
                 case Language.English:
                     englishToggle.isOn = true;
@@ -187,7 +187,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         private void RefreshLanguageTips()
         {
-            languageTipsCanvasGroup.gameObject.SetActive(m_SelectedLanguage != Base.GameEntry.Localization.Language);
+            languageTipsCanvasGroup.gameObject.SetActive(selectedLanguage != Base.GameEntry.Localization.Language);
         }
     }
 }

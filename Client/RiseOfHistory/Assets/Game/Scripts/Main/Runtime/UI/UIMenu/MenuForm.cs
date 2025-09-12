@@ -9,18 +9,18 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
     public class MenuForm : UGuiForm
     {
         [SerializeField]
-        private GameObject m_QuitButton = null;
+        private GameObject quitButton = null;
 
-        private ProcedureMenu m_ProcedureMenu = null;
+        private ProcedureMenu procedureMenu = null;
 
         public void OnStartButtonClick()
         {
-            m_ProcedureMenu.OpenUIForm(UIFormId.LoadForm);
+            procedureMenu.OpenUIForm(UIFormId.LoadForm);
         }
 
         public void OnAchievementButtonClick()
         {
-            m_ProcedureMenu.LoadGame();
+            procedureMenu.LoadGame();
         }
 
         public void OnSettingButtonClick()
@@ -48,19 +48,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnOpen(userData);
 
-            m_ProcedureMenu = (ProcedureMenu)GetCurrentProcedure();
-            if (m_ProcedureMenu == null)
+            procedureMenu = (ProcedureMenu)GetCurrentProcedure();
+            if (procedureMenu == null)
             {
                 Log.Warning("ProcedureMenu is invalid when open MenuForm.");
                 return;
             }
 
-            m_QuitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
+            quitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            m_ProcedureMenu = null;
+            procedureMenu = null;
 
             base.OnClose(isShutdown, userData);
         }

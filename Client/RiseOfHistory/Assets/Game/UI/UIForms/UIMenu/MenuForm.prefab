@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fea4037c7349d49af8583511aaeb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_QuitButton: {fileID: 6100347669070327240}
+  quitButton: {fileID: 6100347669070327240}
 --- !u!1001 &271319197589098854
 PrefabInstance:
   m_ObjectHideFlags: 0
