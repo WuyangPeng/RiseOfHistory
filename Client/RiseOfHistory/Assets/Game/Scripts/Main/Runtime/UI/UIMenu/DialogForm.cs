@@ -9,57 +9,53 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
     public class DialogForm : UGuiForm
     {
         [SerializeField]
-        private Text m_TitleText = null;
+        private Text titleText = null;
 
         [SerializeField]
-        private Text m_MessageText = null;
+        private Text messageText = null;
 
         [SerializeField]
-        private GameObject[] m_ModeObjects = null;
+        private GameObject[] modeObjects = null;
 
         [SerializeField]
-        private Text[] m_ConfirmTexts = null;
+        private Text[] confirmTexts = null;
 
         [SerializeField]
-        private Text[] m_CancelTexts = null;
+        private Text[] cancelTexts = null;
 
         [SerializeField]
-        private Text[] m_OtherTexts = null;
+        private Text[] otherTexts = null;
 
-        private int m_DialogMode = 1;
-        private bool m_PauseGame = false;
-        private object m_UserData = null;
         private GameFrameworkAction<object> m_OnClickConfirm = null;
         private GameFrameworkAction<object> m_OnClickCancel = null;
         private GameFrameworkAction<object> m_OnClickOther = null;
 
-        public int DialogMode => m_DialogMode;
+        public int DialogMode { get; private set; } = 1;
 
-        public bool PauseGame => m_PauseGame;
+        public bool PauseGame { get; private set; }
 
-        public object UserData => m_UserData;
+        public object UserData { get; private set; }
 
         public void OnConfirmButtonClick()
         {
             Close();
 
-            m_OnClickConfirm?.Invoke(m_UserData);
+            m_OnClickConfirm?.Invoke(UserData);
         }
 
         public void OnCancelButtonClick()
         {
             Close();
 
-            m_OnClickCancel?.Invoke(m_UserData);
+            m_OnClickCancel?.Invoke(UserData);
         }
 
         public void OnOtherButtonClick()
         {
             Close();
 
-            m_OnClickOther?.Invoke(m_UserData);
+            m_OnClickOther?.Invoke(UserData);
         }
-
 
         protected override void OnOpen(object userData)
         {
@@ -72,16 +68,16 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            m_DialogMode = dialogParams.Mode;
+            DialogMode = dialogParams.Mode;
             RefreshDialogMode();
 
-            m_TitleText.text = dialogParams.Title;
-            m_MessageText.text = dialogParams.Message;
+            titleText.text = dialogParams.Title;
+            messageText.text = dialogParams.Message;
 
-            m_PauseGame = dialogParams.PauseGame;
+            PauseGame = dialogParams.PauseGame;
             RefreshPauseGame();
 
-            m_UserData = dialogParams.UserData;
+            UserData = dialogParams.UserData;
 
             RefreshConfirmText(dialogParams.ConfirmText);
             m_OnClickConfirm = dialogParams.OnClickConfirm;
@@ -96,16 +92,16 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            if (m_PauseGame)
+            if (PauseGame)
             {
-                global::Game.Scripts.Main.Runtime.Base.GameEntry.Base.ResumeGame();
+                Base.GameEntry.Base.ResumeGame();
             }
 
-            m_DialogMode = 1;
-            m_TitleText.text = string.Empty;
-            m_MessageText.text = string.Empty;
-            m_PauseGame = false;
-            m_UserData = null;
+            DialogMode = 1;
+            titleText.text = string.Empty;
+            messageText.text = string.Empty;
+            PauseGame = false;
+            UserData = null;
 
             RefreshConfirmText(string.Empty);
             m_OnClickConfirm = null;
@@ -121,17 +117,17 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         private void RefreshDialogMode()
         {
-            for (var i = 1; i <= m_ModeObjects.Length; i++)
+            for (var i = 1; i <= modeObjects.Length; i++)
             {
-                m_ModeObjects[i - 1].SetActive(i == m_DialogMode);
+                modeObjects[i - 1].SetActive(i == DialogMode);
             }
         }
 
         private void RefreshPauseGame()
         {
-            if (m_PauseGame)
+            if (PauseGame)
             {
-                global::Game.Scripts.Main.Runtime.Base.GameEntry.Base.PauseGame();
+                Base.GameEntry.Base.PauseGame();
             }
         }
 
@@ -139,10 +135,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (string.IsNullOrEmpty(confirmText))
             {
-                confirmText = global::Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.ConfirmButton");
+                confirmText = Base.GameEntry.Localization.GetString("Dialog.ConfirmButton");
             }
 
-            foreach (var text in m_ConfirmTexts)
+            foreach (var text in confirmTexts)
             {
                 text.text = confirmText;
             }
@@ -152,10 +148,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (string.IsNullOrEmpty(cancelText))
             {
-                cancelText = global::Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.CancelButton");
+                cancelText = Base.GameEntry.Localization.GetString("Dialog.CancelButton");
             }
 
-            foreach (var text in m_CancelTexts)
+            foreach (var text in cancelTexts)
             {
                 text.text = cancelText;
             }
@@ -165,10 +161,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (string.IsNullOrEmpty(otherText))
             {
-                otherText = global::Game.Scripts.Main.Runtime.Base.GameEntry.Localization.GetString("Dialog.OtherButton");
+                otherText = Base.GameEntry.Localization.GetString("Dialog.OtherButton");
             }
 
-            foreach (var text in m_OtherTexts)
+            foreach (var text in otherTexts)
             {
                 text.text = otherText;
             }

@@ -10,7 +10,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class LoadForm : UGuiForm
     {
-        private ProcedureMenu procedureMenu = null;
+        private ProcedureMenu procedureMenu;
 
         [SerializeField]
         private HeadDataDisplay headDataDisplay;
