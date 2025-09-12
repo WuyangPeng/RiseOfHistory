@@ -41,6 +41,8 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "MartialArts",
             "Technique",
             "Talent",
+            "Surname",
+            "Sect",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
