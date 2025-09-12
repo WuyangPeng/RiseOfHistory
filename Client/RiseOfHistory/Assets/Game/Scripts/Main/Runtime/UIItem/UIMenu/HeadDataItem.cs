@@ -11,12 +11,23 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
 {
     public class HeadDataItem : MonoBehaviour
     {
-        [SerializeField] private Text titleText;
-        [SerializeField] private Text dateText;
-        [SerializeField] private Text cultivationRealmText;
-        [SerializeField] private Text gameDifficultyText;
-        [SerializeField] private Image avatarImage;
-        [SerializeField] private Text createNewGame;
+        [SerializeField] 
+        private Text titleText;
+
+        [SerializeField] 
+        private Text dateText;
+
+        [SerializeField] 
+        private Text cultivationRealmText;
+
+        [SerializeField] 
+        private Text gameDifficultyText;
+
+        [SerializeField] 
+        private Image avatarImage;
+
+        [SerializeField] 
+        private Text createNewGame;
 
         public void SetData(HeadData headData)
         {

@@ -3,14 +3,21 @@ using Game.Scripts.Main.Runtime.DataTable;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
+namespace Game.Scripts.Main.Runtime.UIItem.UICreate
 {
     public class GameDifficultyItem : MonoBehaviour
     {
-        [SerializeField] private Text gameDifficultyText;
-        [SerializeField] private Text worldText;
-        [SerializeField] private Text enemyText;
-        [SerializeField] private Text teamText;
+        [SerializeField] 
+        private Text gameDifficultyText;
+
+        [SerializeField] 
+        private Text worldText;
+
+        [SerializeField] 
+        private Text enemyText;
+
+        [SerializeField] 
+        private Text teamText;
 
         public void SetData(DRGameDifficulty data)
         {

@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.UI.UICreate.Item;
+﻿using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate.Display

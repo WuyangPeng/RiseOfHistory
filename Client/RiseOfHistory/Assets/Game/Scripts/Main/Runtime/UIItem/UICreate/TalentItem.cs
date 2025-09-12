@@ -1,25 +1,25 @@
 ﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.UIItem;
-using GameFramework.Resource;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
+namespace Game.Scripts.Main.Runtime.UIItem.UICreate
 {
     public class TalentItem : ItemBase, IPointerClickHandler
     {
-        [SerializeField] private Image imageBackground;
-        [SerializeField] private Text talentText;
+        [SerializeField] 
+        private Image imageBackground;
+
+        [SerializeField] 
+        private Text talentText;
 
         private System.Action<int> onClick;
-        private int myIndex;
+        private int selfIndex;
 
         public void SetData(int index, DRTalent data, System.Action<int> clickCallback)
         {
-            myIndex = index;
+            selfIndex = index;
             onClick = clickCallback;
             talentText.text = GameEntry.Localization.GetString(data.Name);
         }
@@ -31,10 +31,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClick?.Invoke(myIndex);
+            onClick?.Invoke(selfIndex);
         }
-
-        // 回池时清理
+       
         public override void OnRecycle()
         {
             onClick = null;

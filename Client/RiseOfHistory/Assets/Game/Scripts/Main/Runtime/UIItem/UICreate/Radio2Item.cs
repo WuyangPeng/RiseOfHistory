@@ -2,12 +2,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
+namespace Game.Scripts.Main.Runtime.UIItem.UICreate
 {
     public class Radio2Item : MonoBehaviour
     {
-        [SerializeField] private Text leftText;
-        [SerializeField] private Text rightText;
+        [SerializeField] 
+        private Text leftText;
+
+        [SerializeField] 
+        private Text rightText;
 
         public void SetData(string leftKey, string rightKey)
         {

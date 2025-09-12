@@ -1,5 +1,4 @@
 ﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.UIItem;
 using GameFramework.Resource;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,20 +6,23 @@ using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
+namespace Game.Scripts.Main.Runtime.UIItem.UICreate
 {
     public class AvatarItem : ItemBase, IPointerClickHandler
     {
-        [SerializeField] private Image imageBackground;
-        [SerializeField] private Image imageAvatar;
+        [SerializeField]
+        private Image imageBackground;
+
+        [SerializeField]
+        private Image imageAvatar;
 
         private object avatarHandle;
         private System.Action<int> onClick;
-        private int myIndex;
+        private int selfIndex;
 
         public void SetData(int index, DRAvatar data, System.Action<int> clickCallback)
         {
-            myIndex = index;
+            selfIndex = index;
             onClick = clickCallback;
 
             if (avatarHandle != null)
@@ -49,10 +51,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClick?.Invoke(myIndex);
+            onClick?.Invoke(selfIndex);
         }
 
-        // 回池时清理
         public override void OnRecycle()
         {
             if (avatarHandle != null)
