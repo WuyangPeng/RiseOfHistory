@@ -8,8 +8,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
     public static class DataTableExtension
     {
         private const string DataRowClassPrefixName = "Game.Scripts.Main.Runtime.DataTable.DR";
-        internal static readonly char[] DataSplitSeparators = new char[] { '\t' };
-        internal static readonly char[] DataTrimSeparators = new char[] { '\"' };
+        internal static readonly char[] DataSplitSeparators = { '\t' };
+        internal static readonly char[] DataTrimSeparators = { '\"' };
 
         public static void LoadDataTable(this DataTableComponent dataTableComponent, string dataTableName, string dataTableAssetName, object userData)
         {

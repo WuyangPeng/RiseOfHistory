@@ -9,15 +9,15 @@ namespace Game.Scripts.Main.Runtime.BuiltinData
     public class BuiltinDataComponent : GameFrameworkComponent
     {
         [SerializeField]
-        private TextAsset buildInfoTextAsset = null;
+        private TextAsset buildInfoTextAsset;
 
         [SerializeField]
-        private TextAsset defaultDictionaryTextAsset = null;
+        private TextAsset defaultDictionaryTextAsset;
 
         [SerializeField]
-        private UpdateResourceForm updateResourceFormTemplate = null;
+        private UpdateResourceForm updateResourceFormTemplate;
 
-        public BuildInfo BuildInfo { get; private set; } = null;
+        public BuildInfo BuildInfo { get; private set; }
 
         public UpdateResourceForm UpdateResourceFormTemplate => updateResourceFormTemplate;
 

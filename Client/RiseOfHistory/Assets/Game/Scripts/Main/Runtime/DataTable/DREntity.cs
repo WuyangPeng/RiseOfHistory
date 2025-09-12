@@ -35,13 +35,13 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public override bool ParseDataRow(string dataRowString, object userData)
         {
-            string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
-            for (int i = 0; i < columnStrings.Length; i++)
+            var columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
+            for (var i = 0; i < columnStrings.Length; i++)
             {
                 columnStrings[i] = columnStrings[i].Trim(DataTableExtension.DataTrimSeparators);
             }
 
-            int index = 0;
+            var index = 0;
             index++;
             m_Id = int.Parse(columnStrings[index++]);
             index++;
@@ -53,9 +53,9 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public override bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)
         {
-            using (MemoryStream memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))
+            using (var memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))
             {
-                using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
+                using (var binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     AssetName = binaryReader.ReadString();

@@ -15,6 +15,5 @@ namespace Game.Scripts.Main.Runtime.Base
         {
             ModuleComponent = UnityGameFramework.Runtime.GameEntry.GetComponent<ModuleComponent>(); 
         }
-
     }
 }

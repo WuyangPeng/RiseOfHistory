@@ -126,13 +126,13 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             stringBuilder
                 .AppendLine("        public override bool ParseDataRow(string dataRowString, object userData)")
                 .AppendLine("        {")
-                .AppendLine("            string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);")
-                .AppendLine("            for (int i = 0; i < columnStrings.Length; i++)")
+                .AppendLine("            var columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);")
+                .AppendLine("            for (var i = 0; i < columnStrings.Length; i++)")
                 .AppendLine("            {")
                 .AppendLine("                columnStrings[i] = columnStrings[i].Trim(DataTableExtension.DataTrimSeparators);")
                 .AppendLine("            }")
                 .AppendLine()
-                .AppendLine("            int index = 0;");
+                .AppendLine("            var index = 0;");
 
             for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
             {
@@ -175,9 +175,9 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .AppendLine()
                 .AppendLine("        public override bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)")
                 .AppendLine("        {")
-                .AppendLine("            using (MemoryStream memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))")
+                .AppendLine("            using (var memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))")
                 .AppendLine("            {")
-                .AppendLine("                using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))")
+                .AppendLine("                using (var binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))")
                 .AppendLine("                {");
 
             for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)

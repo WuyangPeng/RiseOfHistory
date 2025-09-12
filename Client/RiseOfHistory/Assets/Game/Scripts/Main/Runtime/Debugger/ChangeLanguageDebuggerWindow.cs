@@ -8,8 +8,8 @@ namespace Game.Scripts.Main.Runtime.Debugger
 {
     public class ChangeLanguageDebuggerWindow : IDebuggerWindow
     {
-        private Vector2 m_ScrollPosition = Vector2.zero;
-        private bool m_NeedRestart = false;
+        private Vector2 scrollPosition = Vector2.zero;
+        private bool needRestart;
 
         public void Initialize(params object[] args)
         {
@@ -29,14 +29,14 @@ namespace Game.Scripts.Main.Runtime.Debugger
 
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-            if (!m_NeedRestart) return;
-            m_NeedRestart = false;
+            if (!needRestart) return;
+            needRestart = false;
             GameEntry.Shutdown(ShutdownType.Restart);
         }
 
         public void OnDraw()
         {
-            m_ScrollPosition = GUILayout.BeginScrollView(m_ScrollPosition);
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition);
             {
                 DrawSectionChangeLanguage();
             }
@@ -71,7 +71,7 @@ namespace Game.Scripts.Main.Runtime.Debugger
         {
             Base.GameEntry.Setting.SetString(Constant.Setting.Language, Base.GameEntry.Localization.Language.ToString());
             Base.GameEntry.Setting.Save();
-            m_NeedRestart = true;
+            needRestart = true;
         }
     }
 }
