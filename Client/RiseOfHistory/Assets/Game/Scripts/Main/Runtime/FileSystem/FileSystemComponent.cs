@@ -10,7 +10,6 @@ using Path = System.IO.Path;
 namespace Game.Scripts.Main.Runtime.FileSystem
 {
 
-
     public class FileSystemComponent : GameFrameworkComponent
     {
         private readonly Dictionary<string, IFileSystem> fileSystem = new();
