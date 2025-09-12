@@ -166,7 +166,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetWeaponId(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_WeaponId)
+            foreach (var i in m_WeaponId)
             {
                 if (i.Key == id)
                 {
@@ -199,7 +199,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetArmorId(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_ArmorId)
+            foreach (var i in m_ArmorId)
             {
                 if (i.Key == id)
                 {

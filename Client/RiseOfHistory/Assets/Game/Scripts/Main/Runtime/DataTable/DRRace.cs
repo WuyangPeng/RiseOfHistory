@@ -133,7 +133,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetPropertyId(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_PropertyId)
+            foreach (var i in m_PropertyId)
             {
                 if (i.Key == id)
                 {
@@ -166,7 +166,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetPropertyChange(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_PropertyChange)
+            foreach (var i in m_PropertyChange)
             {
                 if (i.Key == id)
                 {

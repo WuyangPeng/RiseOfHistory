@@ -287,7 +287,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetPropertyId(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_PropertyId)
+            foreach (var i in m_PropertyId)
             {
                 if (i.Key == id)
                 {
@@ -320,7 +320,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetPropertyChange(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_PropertyChange)
+            foreach (var i in m_PropertyChange)
             {
                 if (i.Key == id)
                 {
@@ -353,7 +353,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetSpiritualId(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_SpiritualId)
+            foreach (var i in m_SpiritualId)
             {
                 if (i.Key == id)
                 {
@@ -386,7 +386,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetSpiritualChange(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_SpiritualChange)
+            foreach (var i in m_SpiritualChange)
             {
                 if (i.Key == id)
                 {
@@ -419,7 +419,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetMartialArtsId(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_MartialArtsId)
+            foreach (var i in m_MartialArtsId)
             {
                 if (i.Key == id)
                 {
@@ -452,7 +452,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetMartialArtsChange(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_MartialArtsChange)
+            foreach (var i in m_MartialArtsChange)
             {
                 if (i.Key == id)
                 {
@@ -485,7 +485,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetTechniqueId(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_TechniqueId)
+            foreach (var i in m_TechniqueId)
             {
                 if (i.Key == id)
                 {
@@ -518,7 +518,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetTechniqueChange(int id)
         {
-            foreach (KeyValuePair<int, int> i in m_TechniqueChange)
+            foreach (var i in m_TechniqueChange)
             {
                 if (i.Key == id)
                 {

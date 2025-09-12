@@ -32,7 +32,6 @@ namespace Game.Scripts.Main.Runtime.BuiltinData
             BuildInfo = Utility.Json.ToObject<BuildInfo>(buildInfoTextAsset.text);
             if (BuildInfo != null) return;
             Log.Warning("Parse build info failure.");
-
         }
 
         public void InitDefaultDictionary()

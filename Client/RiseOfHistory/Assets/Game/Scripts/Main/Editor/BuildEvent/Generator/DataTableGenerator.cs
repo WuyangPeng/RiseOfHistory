@@ -280,7 +280,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     .AppendLine()
                     .AppendFormat("        public {1} Get{0}(int id)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("        {")
-                    .AppendFormat("            foreach (KeyValuePair<int, {1}> i in m_{0})", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("            foreach (var i in m_{0})", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("            {")
                     .AppendLine("                if (i.Key == id)")
                     .AppendLine("                {")
