@@ -6,25 +6,15 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
     public class UpdateResourceForm : MonoBehaviour
     {
         [SerializeField]
-        private Text m_DescriptionText = null;
+        private Text descriptionText;
 
         [SerializeField]
-        private Slider m_ProgressSlider = null;
-
-        private void Start()
-        {
-
-        }
-
-        private void Update()
-        {
-
-        }
+        private Slider progressSlider;
 
         public void SetProgress(float progress, string description)
         {
-            m_ProgressSlider.value = progress;
-            m_DescriptionText.text = description;
+            progressSlider.value = progress;
+            descriptionText.text = description;
         }
     }
 }
