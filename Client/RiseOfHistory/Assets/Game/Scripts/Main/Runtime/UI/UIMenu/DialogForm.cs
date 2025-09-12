@@ -26,9 +26,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         [SerializeField]
         private Text[] otherTexts = null;
 
-        private GameFrameworkAction<object> m_OnClickConfirm = null;
-        private GameFrameworkAction<object> m_OnClickCancel = null;
-        private GameFrameworkAction<object> m_OnClickOther = null;
+        private GameFrameworkAction<object> onClickConfirm = null;
+        private GameFrameworkAction<object> onClickCancel = null;
+        private GameFrameworkAction<object> onClickOther = null;
 
         public int DialogMode { get; private set; } = 1;
 
@@ -40,21 +40,21 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             Close();
 
-            m_OnClickConfirm?.Invoke(UserData);
+            onClickConfirm?.Invoke(UserData);
         }
 
         public void OnCancelButtonClick()
         {
             Close();
 
-            m_OnClickCancel?.Invoke(UserData);
+            onClickCancel?.Invoke(UserData);
         }
 
         public void OnOtherButtonClick()
         {
             Close();
 
-            m_OnClickOther?.Invoke(UserData);
+            onClickOther?.Invoke(UserData);
         }
 
         protected override void OnOpen(object userData)
@@ -80,13 +80,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             UserData = dialogParams.UserData;
 
             RefreshConfirmText(dialogParams.ConfirmText);
-            m_OnClickConfirm = dialogParams.OnClickConfirm;
+            onClickConfirm = dialogParams.OnClickConfirm;
 
             RefreshCancelText(dialogParams.CancelText);
-            m_OnClickCancel = dialogParams.OnClickCancel;
+            onClickCancel = dialogParams.OnClickCancel;
 
             RefreshOtherText(dialogParams.OtherText);
-            m_OnClickOther = dialogParams.OnClickOther;
+            onClickOther = dialogParams.OnClickOther;
         }
 
 
@@ -104,13 +104,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             UserData = null;
 
             RefreshConfirmText(string.Empty);
-            m_OnClickConfirm = null;
+            onClickConfirm = null;
 
             RefreshCancelText(string.Empty);
-            m_OnClickCancel = null;
+            onClickCancel = null;
 
             RefreshOtherText(string.Empty);
-            m_OnClickOther = null;
+            onClickOther = null;
 
             base.OnClose(isShutdown, userData);
         }

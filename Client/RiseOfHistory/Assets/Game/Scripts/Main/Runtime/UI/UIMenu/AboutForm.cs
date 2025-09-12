@@ -9,12 +9,12 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
     public class AboutForm : UGuiForm
     {
         [SerializeField]
-        private RectTransform m_Transform = null;
+        private RectTransform rectTransform = null;
 
         [SerializeField]
-        private float m_ScrollSpeed = 1f;
+        private float scrollSpeed = 1f;
 
-        private float m_InitPosition = 0f;
+        private float initPosition = 0f;
 
         protected override void OnInit(object userData)
         {
@@ -27,15 +27,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            m_InitPosition = -0.5f * canvasScaler.referenceResolution.x * Screen.height / Screen.width;
+            initPosition = -0.5f * canvasScaler.referenceResolution.x * Screen.height / Screen.width;
         }
-
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            m_Transform.SetLocalPositionY(m_InitPosition);
+            rectTransform.SetLocalPositionY(initPosition);
 
             // 换个音乐
             Base.GameEntry.Sound.PlayMusic(3);
@@ -58,10 +57,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            m_Transform.AddLocalPositionY(m_ScrollSpeed * elapseSeconds);
-            if (m_Transform.localPosition.y > m_Transform.sizeDelta.y - m_InitPosition)
+            rectTransform.AddLocalPositionY(scrollSpeed * elapseSeconds);
+            if (rectTransform.localPosition.y > rectTransform.sizeDelta.y - initPosition)
             {
-                m_Transform.SetLocalPositionY(m_InitPosition);
+                rectTransform.SetLocalPositionY(initPosition);
             }
         }
     }
