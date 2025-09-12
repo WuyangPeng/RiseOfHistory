@@ -11,21 +11,21 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         private const float OnClickAlpha = 0.6f;
 
         [SerializeField]
-        private UnityEvent m_OnHover = null;
+        private UnityEvent m_OnHover;
 
         [SerializeField]
-        private UnityEvent m_OnClick = null;
+        private UnityEvent m_OnClick;
 
-        private CanvasGroup m_CanvasGroup = null;
+        private CanvasGroup canvasGroup;
 
         private void Awake()
         {
-            m_CanvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
+            canvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
         }
 
         private void OnDisable()
         {
-            m_CanvasGroup.alpha = 1f;
+            canvasGroup.alpha = 1f;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -36,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             }
 
             StopAllCoroutines();
-            StartCoroutine(m_CanvasGroup.FadeToAlpha(OnHoverAlpha, FadeTime));
+            StartCoroutine(canvasGroup.FadeToAlpha(OnHoverAlpha, FadeTime));
             m_OnHover.Invoke();
         }
 
@@ -48,7 +48,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             }
 
             StopAllCoroutines();
-            StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));
+            StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -58,7 +58,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 return;
             }
 
-            m_CanvasGroup.alpha = OnClickAlpha;
+            canvasGroup.alpha = OnClickAlpha;
             m_OnClick.Invoke();
         }
 
@@ -69,7 +69,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 return;
             }
 
-            m_CanvasGroup.alpha = OnHoverAlpha;
+            canvasGroup.alpha = OnHoverAlpha;
         }
     }
 }
