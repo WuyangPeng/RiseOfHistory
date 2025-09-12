@@ -121,19 +121,19 @@ namespace Game.Scripts.Main.Runtime.DataTable
             return true;
         }
 
-        private KeyValuePair<int, int>[] m_PropertyId = null;
+        private KeyValuePair<int, int>[] propertyId;
 
         public int PropertyIdCount
         {
             get
             {
-                return m_PropertyId.Length;
+                return propertyId.Length;
             }
         }
 
         public int GetPropertyId(int id)
         {
-            foreach (var i in m_PropertyId)
+            foreach (var i in propertyId)
             {
                 if (i.Key == id)
                 {
@@ -146,27 +146,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetPropertyIdAt(int index)
         {
-            if (index < 0 || index >= m_PropertyId.Length)
+            if (index < 0 || index >= propertyId.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetPropertyIdAt with invalid index '{0}'.", index));
             }
 
-            return m_PropertyId[index].Value;
+            return propertyId[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_PropertyChange = null;
+        private KeyValuePair<int, int>[] propertyChange;
 
         public int PropertyChangeCount
         {
             get
             {
-                return m_PropertyChange.Length;
+                return propertyChange.Length;
             }
         }
 
         public int GetPropertyChange(int id)
         {
-            foreach (var i in m_PropertyChange)
+            foreach (var i in propertyChange)
             {
                 if (i.Key == id)
                 {
@@ -179,23 +179,23 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetPropertyChangeAt(int index)
         {
-            if (index < 0 || index >= m_PropertyChange.Length)
+            if (index < 0 || index >= propertyChange.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetPropertyChangeAt with invalid index '{0}'.", index));
             }
 
-            return m_PropertyChange[index].Value;
+            return propertyChange[index].Value;
         }
 
         private void GeneratePropertyArray()
         {
-            m_PropertyId = new KeyValuePair<int, int>[]
+            propertyId = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, PropertyId0),
                 new KeyValuePair<int, int>(1, PropertyId1),
             };
 
-            m_PropertyChange = new KeyValuePair<int, int>[]
+            propertyChange = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, PropertyChange0),
                 new KeyValuePair<int, int>(1, PropertyChange1),

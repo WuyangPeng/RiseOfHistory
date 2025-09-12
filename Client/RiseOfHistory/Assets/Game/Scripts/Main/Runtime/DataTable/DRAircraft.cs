@@ -154,19 +154,19 @@ namespace Game.Scripts.Main.Runtime.DataTable
             return true;
         }
 
-        private KeyValuePair<int, int>[] m_WeaponId = null;
+        private KeyValuePair<int, int>[] weaponId;
 
         public int WeaponIdCount
         {
             get
             {
-                return m_WeaponId.Length;
+                return weaponId.Length;
             }
         }
 
         public int GetWeaponId(int id)
         {
-            foreach (var i in m_WeaponId)
+            foreach (var i in weaponId)
             {
                 if (i.Key == id)
                 {
@@ -179,27 +179,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetWeaponIdAt(int index)
         {
-            if (index < 0 || index >= m_WeaponId.Length)
+            if (index < 0 || index >= weaponId.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetWeaponIdAt with invalid index '{0}'.", index));
             }
 
-            return m_WeaponId[index].Value;
+            return weaponId[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_ArmorId = null;
+        private KeyValuePair<int, int>[] armorId;
 
         public int ArmorIdCount
         {
             get
             {
-                return m_ArmorId.Length;
+                return armorId.Length;
             }
         }
 
         public int GetArmorId(int id)
         {
-            foreach (var i in m_ArmorId)
+            foreach (var i in armorId)
             {
                 if (i.Key == id)
                 {
@@ -212,24 +212,24 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetArmorIdAt(int index)
         {
-            if (index < 0 || index >= m_ArmorId.Length)
+            if (index < 0 || index >= armorId.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetArmorIdAt with invalid index '{0}'.", index));
             }
 
-            return m_ArmorId[index].Value;
+            return armorId[index].Value;
         }
 
         private void GeneratePropertyArray()
         {
-            m_WeaponId = new KeyValuePair<int, int>[]
+            weaponId = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, WeaponId0),
                 new KeyValuePair<int, int>(1, WeaponId1),
                 new KeyValuePair<int, int>(2, WeaponId2),
             };
 
-            m_ArmorId = new KeyValuePair<int, int>[]
+            armorId = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, ArmorId0),
                 new KeyValuePair<int, int>(1, ArmorId1),

@@ -275,19 +275,19 @@ namespace Game.Scripts.Main.Runtime.DataTable
             return true;
         }
 
-        private KeyValuePair<int, int>[] m_PropertyId = null;
+        private KeyValuePair<int, int>[] propertyId;
 
         public int PropertyIdCount
         {
             get
             {
-                return m_PropertyId.Length;
+                return propertyId.Length;
             }
         }
 
         public int GetPropertyId(int id)
         {
-            foreach (var i in m_PropertyId)
+            foreach (var i in propertyId)
             {
                 if (i.Key == id)
                 {
@@ -300,27 +300,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetPropertyIdAt(int index)
         {
-            if (index < 0 || index >= m_PropertyId.Length)
+            if (index < 0 || index >= propertyId.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetPropertyIdAt with invalid index '{0}'.", index));
             }
 
-            return m_PropertyId[index].Value;
+            return propertyId[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_PropertyChange = null;
+        private KeyValuePair<int, int>[] propertyChange;
 
         public int PropertyChangeCount
         {
             get
             {
-                return m_PropertyChange.Length;
+                return propertyChange.Length;
             }
         }
 
         public int GetPropertyChange(int id)
         {
-            foreach (var i in m_PropertyChange)
+            foreach (var i in propertyChange)
             {
                 if (i.Key == id)
                 {
@@ -333,27 +333,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetPropertyChangeAt(int index)
         {
-            if (index < 0 || index >= m_PropertyChange.Length)
+            if (index < 0 || index >= propertyChange.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetPropertyChangeAt with invalid index '{0}'.", index));
             }
 
-            return m_PropertyChange[index].Value;
+            return propertyChange[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_SpiritualId = null;
+        private KeyValuePair<int, int>[] spiritualId;
 
         public int SpiritualIdCount
         {
             get
             {
-                return m_SpiritualId.Length;
+                return spiritualId.Length;
             }
         }
 
         public int GetSpiritualId(int id)
         {
-            foreach (var i in m_SpiritualId)
+            foreach (var i in spiritualId)
             {
                 if (i.Key == id)
                 {
@@ -366,27 +366,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetSpiritualIdAt(int index)
         {
-            if (index < 0 || index >= m_SpiritualId.Length)
+            if (index < 0 || index >= spiritualId.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetSpiritualIdAt with invalid index '{0}'.", index));
             }
 
-            return m_SpiritualId[index].Value;
+            return spiritualId[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_SpiritualChange = null;
+        private KeyValuePair<int, int>[] spiritualChange;
 
         public int SpiritualChangeCount
         {
             get
             {
-                return m_SpiritualChange.Length;
+                return spiritualChange.Length;
             }
         }
 
         public int GetSpiritualChange(int id)
         {
-            foreach (var i in m_SpiritualChange)
+            foreach (var i in spiritualChange)
             {
                 if (i.Key == id)
                 {
@@ -399,27 +399,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetSpiritualChangeAt(int index)
         {
-            if (index < 0 || index >= m_SpiritualChange.Length)
+            if (index < 0 || index >= spiritualChange.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetSpiritualChangeAt with invalid index '{0}'.", index));
             }
 
-            return m_SpiritualChange[index].Value;
+            return spiritualChange[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_MartialArtsId = null;
+        private KeyValuePair<int, int>[] martialArtsId;
 
         public int MartialArtsIdCount
         {
             get
             {
-                return m_MartialArtsId.Length;
+                return martialArtsId.Length;
             }
         }
 
         public int GetMartialArtsId(int id)
         {
-            foreach (var i in m_MartialArtsId)
+            foreach (var i in martialArtsId)
             {
                 if (i.Key == id)
                 {
@@ -432,27 +432,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetMartialArtsIdAt(int index)
         {
-            if (index < 0 || index >= m_MartialArtsId.Length)
+            if (index < 0 || index >= martialArtsId.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetMartialArtsIdAt with invalid index '{0}'.", index));
             }
 
-            return m_MartialArtsId[index].Value;
+            return martialArtsId[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_MartialArtsChange = null;
+        private KeyValuePair<int, int>[] martialArtsChange;
 
         public int MartialArtsChangeCount
         {
             get
             {
-                return m_MartialArtsChange.Length;
+                return martialArtsChange.Length;
             }
         }
 
         public int GetMartialArtsChange(int id)
         {
-            foreach (var i in m_MartialArtsChange)
+            foreach (var i in martialArtsChange)
             {
                 if (i.Key == id)
                 {
@@ -465,27 +465,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetMartialArtsChangeAt(int index)
         {
-            if (index < 0 || index >= m_MartialArtsChange.Length)
+            if (index < 0 || index >= martialArtsChange.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetMartialArtsChangeAt with invalid index '{0}'.", index));
             }
 
-            return m_MartialArtsChange[index].Value;
+            return martialArtsChange[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_TechniqueId = null;
+        private KeyValuePair<int, int>[] techniqueId;
 
         public int TechniqueIdCount
         {
             get
             {
-                return m_TechniqueId.Length;
+                return techniqueId.Length;
             }
         }
 
         public int GetTechniqueId(int id)
         {
-            foreach (var i in m_TechniqueId)
+            foreach (var i in techniqueId)
             {
                 if (i.Key == id)
                 {
@@ -498,27 +498,27 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetTechniqueIdAt(int index)
         {
-            if (index < 0 || index >= m_TechniqueId.Length)
+            if (index < 0 || index >= techniqueId.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetTechniqueIdAt with invalid index '{0}'.", index));
             }
 
-            return m_TechniqueId[index].Value;
+            return techniqueId[index].Value;
         }
 
-        private KeyValuePair<int, int>[] m_TechniqueChange = null;
+        private KeyValuePair<int, int>[] techniqueChange;
 
         public int TechniqueChangeCount
         {
             get
             {
-                return m_TechniqueChange.Length;
+                return techniqueChange.Length;
             }
         }
 
         public int GetTechniqueChange(int id)
         {
-            foreach (var i in m_TechniqueChange)
+            foreach (var i in techniqueChange)
             {
                 if (i.Key == id)
                 {
@@ -531,59 +531,59 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         public int GetTechniqueChangeAt(int index)
         {
-            if (index < 0 || index >= m_TechniqueChange.Length)
+            if (index < 0 || index >= techniqueChange.Length)
             {
                 throw new GameFrameworkException(Utility.Text.Format("GetTechniqueChangeAt with invalid index '{0}'.", index));
             }
 
-            return m_TechniqueChange[index].Value;
+            return techniqueChange[index].Value;
         }
 
         private void GeneratePropertyArray()
         {
-            m_PropertyId = new KeyValuePair<int, int>[]
+            propertyId = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, PropertyId0),
                 new KeyValuePair<int, int>(1, PropertyId1),
             };
 
-            m_PropertyChange = new KeyValuePair<int, int>[]
+            propertyChange = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, PropertyChange0),
                 new KeyValuePair<int, int>(1, PropertyChange1),
             };
 
-            m_SpiritualId = new KeyValuePair<int, int>[]
+            spiritualId = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, SpiritualId0),
                 new KeyValuePair<int, int>(1, SpiritualId1),
             };
 
-            m_SpiritualChange = new KeyValuePair<int, int>[]
+            spiritualChange = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, SpiritualChange0),
                 new KeyValuePair<int, int>(1, SpiritualChange1),
             };
 
-            m_MartialArtsId = new KeyValuePair<int, int>[]
+            martialArtsId = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, MartialArtsId0),
                 new KeyValuePair<int, int>(1, MartialArtsId1),
             };
 
-            m_MartialArtsChange = new KeyValuePair<int, int>[]
+            martialArtsChange = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, MartialArtsChange0),
                 new KeyValuePair<int, int>(1, MartialArtsChange1),
             };
 
-            m_TechniqueId = new KeyValuePair<int, int>[]
+            techniqueId = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, TechniqueId0),
                 new KeyValuePair<int, int>(1, TechniqueId1),
             };
 
-            m_TechniqueChange = new KeyValuePair<int, int>[]
+            techniqueChange = new KeyValuePair<int, int>[]
             {
                 new KeyValuePair<int, int>(0, TechniqueChange0),
                 new KeyValuePair<int, int>(1, TechniqueChange1),

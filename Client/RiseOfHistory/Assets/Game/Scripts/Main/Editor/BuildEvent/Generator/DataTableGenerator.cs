@@ -217,6 +217,10 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             return stringBuilder.ToString();
         }
 
+        public static string FirstCharToLower(string input) =>
+            string.IsNullOrEmpty(input) ? input :
+                char.ToLowerInvariant(input[0]) + (input.Length > 1 ? input[1..] : "");
+
         private static string GenerateDataTablePropertyArray(DataTableProcessor dataTableProcessor)
         {
             var propertyCollections = new List<PropertyCollection>();
@@ -268,19 +272,19 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
 
                 stringBuilder
-                    .AppendFormat("        private KeyValuePair<int, {1}>[] m_{0} = null;", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("        private KeyValuePair<int, {1}>[] {0};", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine()
                     .AppendFormat("        public int {0}Count", propertyCollection.Name).AppendLine()
                     .AppendLine("        {")
                     .AppendLine("            get")
                     .AppendLine("            {")
-                    .AppendFormat("                return m_{0}.Length;", propertyCollection.Name).AppendLine()
+                    .AppendFormat("                return {0}.Length;", FirstCharToLower(propertyCollection.Name)).AppendLine()
                     .AppendLine("            }")
                     .AppendLine("        }")
                     .AppendLine()
                     .AppendFormat("        public {1} Get{0}(int id)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("        {")
-                    .AppendFormat("            foreach (var i in m_{0})", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("            foreach (var i in {0})", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("            {")
                     .AppendLine("                if (i.Key == id)")
                     .AppendLine("                {")
@@ -293,12 +297,12 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     .AppendLine()
                     .AppendFormat("        public {1} Get{0}At(int index)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("        {")
-                    .AppendFormat("            if (index < 0 || index >= m_{0}.Length)", propertyCollection.Name).AppendLine()
+                    .AppendFormat("            if (index < 0 || index >= {0}.Length)", FirstCharToLower(propertyCollection.Name)).AppendLine()
                     .AppendLine("            {")
                     .AppendFormat("                throw new GameFrameworkException(Utility.Text.Format(\"Get{0}At with invalid index '{{0}}'.\", index));", propertyCollection.Name).AppendLine()
                     .AppendLine("            }")
                     .AppendLine()
-                    .AppendFormat("            return m_{0}[index].Value;", propertyCollection.Name).AppendLine()
+                    .AppendFormat("            return {0}[index].Value;", FirstCharToLower(propertyCollection.Name)).AppendLine()
                     .Append("        }");
             }
 
@@ -324,7 +328,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
 
                 stringBuilder
-                    .AppendFormat("            m_{0} = new KeyValuePair<int, {1}>[]", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("            {0} = new KeyValuePair<int, {1}>[]", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("            {");
 
                 var itemCount = propertyCollection.ItemCount;
