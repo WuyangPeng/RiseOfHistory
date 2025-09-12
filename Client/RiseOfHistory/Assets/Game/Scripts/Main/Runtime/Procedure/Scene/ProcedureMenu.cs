@@ -29,7 +29,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         public void LoadGame()
         {
-            m_NextSceneId = GameEntry.Config.GetInt("Scene.Home");
+            m_NextSceneId = GameEntry.Config.GetInt("Scene.InitGame");
         }
 
         public void StartGame()

@@ -325,5 +325,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
         {
             userData.Surname = surname;
         }
+
+        public bool IsInitWorld()
+        {
+            return userData.InitWorld;
+        }
     }
 }

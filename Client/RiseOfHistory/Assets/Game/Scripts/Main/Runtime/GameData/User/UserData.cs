@@ -45,6 +45,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public string Surname { get; set; } = "";
 
+        public bool InitWorld { get; set; } = false;
+
         private int age;
 
         public UserData()

@@ -1,5 +1,6 @@
-﻿using Game.Scripts.Main.Runtime.Game;
-using System.Collections.Generic;
+﻿using Game.Scripts.Main.Runtime.GameEnum;
+using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.InitGame;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
@@ -13,6 +14,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         private const float DelayedSeconds = 2f;
 
         private float gotoHomeDelaySeconds = 0f;
+
+        private InitGameType initGameType = InitGameType.Begin;
 
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
@@ -38,9 +41,31 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-
             gotoHomeDelaySeconds += elapseSeconds;
+
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            if (userModule.IsInitWorld())
+            {
+                var loadGameBase = LoadGame.LoadGameBase.Create(initGameType);
+                loadGameBase.LoadGame();
+            }
+            else
+            {
+                var initGame = InitGameBase.Create(initGameType);
+                initGame.InitGame();
+            }
+
+            if (initGameType < InitGameType.End)
+            {
+                ++initGameType;
+            }
+
             if (gotoHomeDelaySeconds < DelayedSeconds)
+            {
+                return;
+            }
+
+            if (initGameType < InitGameType.End)
             {
                 return;
             }
