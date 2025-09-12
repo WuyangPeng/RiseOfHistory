@@ -10,25 +10,25 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public abstract class AircraftData : TargetableObjectData
     {
         [SerializeField]
-        private ThrusterData thrusterData = null;
+        private ThrusterData thrusterData;
 
         [SerializeField]
-        private List<WeaponData> weaponDatas = new List<WeaponData>();
+        private List<WeaponData> weaponDatas = new();
 
         [SerializeField]
-        private List<ArmorData> armorDatas = new List<ArmorData>();
+        private List<ArmorData> armorDatas = new();
 
         [SerializeField]
-        private int maxHp = 0;
+        private int maxHp;
 
         [SerializeField]
-        private int defense = 0;
+        private int defense;
 
         [SerializeField]
-        private int deadEffectId = 0;
+        private int deadEffectId;
 
         [SerializeField]
-        private int deadSoundId = 0;
+        private int deadSoundId;
 
         protected AircraftData(int entityId, int typeId, CampType camp)
             : base(entityId, typeId, camp)
