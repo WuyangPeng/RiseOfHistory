@@ -11,15 +11,15 @@ namespace Game.Scripts.Main.Runtime.Scene
         private float m_TileSize = 30f;
 
         [SerializeField]
-        private BoxCollider m_VisibleBoundary = null;
+        private BoxCollider m_VisibleBoundary;
 
         [SerializeField]
-        private BoxCollider m_PlayerMoveBoundary = null;
+        private BoxCollider m_PlayerMoveBoundary;
 
         [SerializeField]
-        private BoxCollider m_EnemySpawnBoundary = null;
+        private BoxCollider m_EnemySpawnBoundary;
 
-        private Transform m_CachedTransform = null;
+        private Transform m_CachedTransform;
         private Vector3 m_StartPosition = Vector3.zero;
 
         private void Start()
