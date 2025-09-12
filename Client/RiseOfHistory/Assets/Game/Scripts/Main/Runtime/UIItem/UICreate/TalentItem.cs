@@ -1,4 +1,5 @@
 ﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.UIItem;
 using GameFramework.Resource;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,7 +9,7 @@ using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
 {
-    public class TalentItem : MonoBehaviour, IPointerClickHandler
+    public class TalentItem : ItemBase, IPointerClickHandler
     {
         [SerializeField] private Image imageBackground;
         [SerializeField] private Text talentText;
@@ -34,7 +35,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Item
         }
 
         // 回池时清理
-        public void OnRecycle()
+        public override void OnRecycle()
         {
             onClick = null;
         }

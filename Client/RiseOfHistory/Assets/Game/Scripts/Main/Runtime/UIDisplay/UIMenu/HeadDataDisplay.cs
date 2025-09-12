@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.SaveData;
-using Game.Scripts.Main.Runtime.UI.UIMenu.Item;
+using Game.Scripts.Main.Runtime.UIItem.UIMenu;
 using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu.Display
