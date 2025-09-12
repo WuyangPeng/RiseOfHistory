@@ -6,13 +6,15 @@ using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
+namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class TechniqueDisplay : MonoBehaviour
     {
-        [SerializeField] private Radio2Item[] items = null;
+        [SerializeField] 
+        private Radio2Item[] items;
 
-        [SerializeField] private Text remainingText;
+        [SerializeField] 
+        private Text remainingText;
 
         public void Refresh()
         {
@@ -29,7 +31,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
             }
 
             remainingText.text = userModule.GetTechniqueCount().ToString();
-
         }
 
         private static string GetTechniqueName(int currentTechnique, DRTechnique technique)

@@ -1,7 +1,7 @@
 ﻿using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using UnityEngine;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
+namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class GameSexDisplay : MonoBehaviour
     {

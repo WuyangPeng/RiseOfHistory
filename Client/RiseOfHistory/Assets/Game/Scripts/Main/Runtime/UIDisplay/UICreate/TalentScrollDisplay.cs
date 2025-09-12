@@ -1,6 +1,6 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
-using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using Game.Scripts.Main.Runtime.UIObject.UICreate;
 using GameFramework.ObjectPool;
@@ -9,15 +9,23 @@ using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
-{
-    public class TalentScrollDisplay : MonoBehaviour
+namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
+{ public class TalentScrollDisplay : MonoBehaviour
     {
-        [SerializeField] private ScrollRect scrollRect;
-        [SerializeField] private Transform content;
-        [SerializeField] private TalentItem itemPrefab;
-        [SerializeField] private int poolCapacity = 20;
-        [SerializeField] private Text talentDescription;
+        [SerializeField] 
+        private ScrollRect scrollRect;
+
+        [SerializeField] 
+        private Transform content;
+
+        [SerializeField] 
+        private TalentItem itemPrefab;
+
+        [SerializeField] 
+        private int poolCapacity = 20;
+
+        [SerializeField] 
+        private Text talentDescription;
 
         private IObjectPool<TalentItemObject> pool;
         private readonly List<DRTalent> talentData = new();
@@ -65,9 +73,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
                 talentData.Add(talent);
             }
         }
-
-
-
         public GameObject GetRowGameObject(int row)
         {
             var rowGameObject = new GameObject($"Row{row}", typeof(RectTransform));
@@ -86,7 +91,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
 
             return rowGameObject;
         }
-
         private void SpawnAvatar()
         {
             var rowCount = Mathf.CeilToInt((float)talentData.Count / PerRow);

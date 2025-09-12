@@ -1,15 +1,15 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
-using GameFramework.ObjectPool;
-using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using Game.Scripts.Main.Runtime.UIObject.UICreate;
+using GameFramework.ObjectPool;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
+namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class AvatarScrollDisplay : MonoBehaviour
     {

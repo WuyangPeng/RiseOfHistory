@@ -6,7 +6,7 @@ using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts.Main.Runtime.UI.UICreate.Display
+namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class MartialArtsDisplay : MonoBehaviour
     {

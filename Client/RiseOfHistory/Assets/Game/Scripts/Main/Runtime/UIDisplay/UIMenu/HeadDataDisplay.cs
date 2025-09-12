@@ -3,11 +3,12 @@ using Game.Scripts.Main.Runtime.SaveData;
 using Game.Scripts.Main.Runtime.UIItem.UIMenu;
 using UnityEngine;
 
-namespace Game.Scripts.Main.Runtime.UI.UIMenu.Display
+namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
 {
     public class HeadDataDisplay : MonoBehaviour
     {
-        [SerializeField] private HeadDataItem[] items;
+        [SerializeField] 
+        private HeadDataItem[] items;
 
         public void Refresh(List<HeadData> headData)
         {
