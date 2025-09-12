@@ -90,7 +90,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
                 Index = index,
                 Avatar = userModule.GetAvatarId(),
                 GameDifficultyType = userModule.GetGameDifficultyType(),
-                Name = userModule.GetName()
+                Name = userModule.GetFullName()
             };
 
 

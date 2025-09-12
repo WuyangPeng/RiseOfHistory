@@ -5,6 +5,7 @@ using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UICreate.Display;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -25,13 +26,22 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         [SerializeField]
         private Toggle[] moralityToggle = null;
 
-        [SerializeField] private InputField inputField;
+        [SerializeField] private TMP_InputField inputField;
+
+        [SerializeField] private Dropdown surnameDropdown;    
 
         public void OnClickConfirm()
         {
             var playerName = inputField.text;
-          
-           
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.SetName(playerName);
+        }
+
+        private void OnNameSelected(int index)
+        {
+            var chosen = surnameDropdown.options[index].text;
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.SetSurname(chosen);
         }
 
         public void OnLeftRulesButtonClick(bool isOn)

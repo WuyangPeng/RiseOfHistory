@@ -306,14 +306,24 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             return userData.GameDifficultyType;
         }
 
-        public string GetName()
+        public string GetFullName()
         {
-            return userData.Name;
+            return userData.Surname + userData.Name;
         }
 
         public void RemoveTalent(int id)
         {
             userData.RemoveTalent(id);
+        }
+
+        public void SetName(string playerName)
+        {
+            userData.Name = playerName;
+        }
+
+        public void SetSurname(string surname)
+        {
+            userData.Surname = surname;
         }
     }
 }

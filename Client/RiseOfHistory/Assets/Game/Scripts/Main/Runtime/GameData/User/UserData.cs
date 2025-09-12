@@ -43,6 +43,8 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public string Name { get; set; } = "";
 
+        public string Surname { get; set; } = "";
+
         private int age;
 
         public UserData()
