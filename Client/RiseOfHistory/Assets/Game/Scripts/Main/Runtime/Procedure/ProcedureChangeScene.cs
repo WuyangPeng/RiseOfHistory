@@ -98,6 +98,11 @@ namespace Game.Scripts.Main.Runtime.Procedure
                         ChangeState<ProcedureCreate>(procedureOwner);
                         break;
                     }
+                case SceneType.InitGame:
+                {
+                    ChangeState<ProcedureInitGame>(procedureOwner);
+                    break;
+                }
                 case SceneType.Home:
                     {
                         ChangeState<ProcedureHome>(procedureOwner);

@@ -20,7 +20,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         public void EnterGame()
         {
-            nextSceneId = GameEntry.Config.GetInt("Scene.Home");
+            nextSceneId = GameEntry.Config.GetInt("Scene.InitGame");
         }
 
         public void ReturnMenu()
