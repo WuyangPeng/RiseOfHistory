@@ -5,7 +5,6 @@ using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -15,10 +14,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectMartialArtsForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         [SerializeField]
-        private MartialArtsDisplay martialArtsDisplay = null;
+        private MartialArtsDisplay martialArtsDisplay;
 
 
 
@@ -34,7 +33,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             }
 
             martialArtsDisplay.Refresh();
-
         }
 
         protected override void OnClose(bool isShutdown, object userData)

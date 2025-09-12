@@ -14,7 +14,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectPropertyForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         [SerializeField]
         private PropertyDisplay propertyDisplay;

@@ -13,22 +13,22 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectGameParameterForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         [SerializeField]
         private GameParameterDisplay gameParameterDisplay;
 
         [SerializeField]
-        private Toggle[] mapSizeToggle = null;
+        private Toggle[] mapSizeToggle;
 
         [SerializeField]
-        private Toggle[] npcCountToggle = null;
+        private Toggle[] npcCountToggle;
 
         [SerializeField]
-        private Toggle[] sectCountToggle = null;
+        private Toggle[] sectCountToggle;
 
         [SerializeField]
-        private Toggle[] familyCountToggle = null;
+        private Toggle[] familyCountToggle;
 
         public void OnReturnButtonClick()
         {

@@ -14,11 +14,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectSpiritualForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         [SerializeField]
-        private SpiritualDisplay spiritualDisplay = null;
-
+        private SpiritualDisplay spiritualDisplay;
 
         protected override void OnOpen(object userData)
         {

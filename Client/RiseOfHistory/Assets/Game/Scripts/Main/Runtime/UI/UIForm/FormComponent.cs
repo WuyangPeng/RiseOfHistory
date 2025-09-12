@@ -71,7 +71,5 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
 
             uGuiForm.Clear();
         }
-
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Game.Scripts.Main.Runtime.UI.UICommon;
-using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.UI.UIForm
 {

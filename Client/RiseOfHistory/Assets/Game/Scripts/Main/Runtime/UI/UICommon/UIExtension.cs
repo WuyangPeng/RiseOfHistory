@@ -80,16 +80,16 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             }
 
             var assetName = AssetUtility.GetUIFormAsset(drUIForm.AssetName);
-            UnityGameFramework.Runtime.UIForm uiForm = null;
+
             if (string.IsNullOrEmpty(uiGroupName))
             {
-                uiForm = uiComponent.GetUIForm(assetName);
-                if (uiForm == null)
+                var nullGroupNameUiForm = uiComponent.GetUIForm(assetName);
+                if (nullGroupNameUiForm == null)
                 {
                     return null;
                 }
 
-                return (UGuiForm)uiForm.Logic;
+                return (UGuiForm)nullGroupNameUiForm.Logic;
             }
 
             var uiGroup = uiComponent.GetUIGroup(uiGroupName);
@@ -98,7 +98,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 return null;
             }
 
-            uiForm = (UnityGameFramework.Runtime.UIForm)uiGroup.GetUIForm(assetName);
+            var uiForm = (UnityGameFramework.Runtime.UIForm)uiGroup.GetUIForm(assetName);
             if (uiForm == null)
             {
                 return null;
@@ -128,17 +128,19 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             }
 
             var assetName = AssetUtility.GetUIFormAsset(drUIForm.AssetName);
-            if (!drUIForm.AllowMultiInstance)
+            if (drUIForm.AllowMultiInstance)
             {
-                if (uiComponent.IsLoadingUIForm(assetName))
-                {
-                    return null;
-                }
+                return uiComponent.OpenUIForm(assetName, drUIForm.UIGroupName, Constant.AssetPriority.UIFormAsset, drUIForm.PauseCoveredUIForm, userData);
+            }
 
-                if (uiComponent.HasUIForm(assetName))
-                {
-                    return null;
-                }
+            if (uiComponent.IsLoadingUIForm(assetName))
+            {
+                return null;
+            }
+
+            if (uiComponent.HasUIForm(assetName))
+            {
+                return null;
             }
 
             return uiComponent.OpenUIForm(assetName, drUIForm.UIGroupName, Constant.AssetPriority.UIFormAsset, drUIForm.PauseCoveredUIForm, userData);
@@ -159,10 +161,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         private static void OpenNativeDialog(DialogParams dialogParams)
         {
             // TODO：这里应该弹出原生对话框，先简化实现为直接按确认按钮
-            if (dialogParams.OnClickConfirm != null)
-            {
-                dialogParams.OnClickConfirm(dialogParams.UserData);
-            }
+            dialogParams.OnClickConfirm?.Invoke(dialogParams.UserData);
         }
     }
 }

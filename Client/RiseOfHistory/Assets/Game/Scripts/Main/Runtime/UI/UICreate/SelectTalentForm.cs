@@ -2,7 +2,6 @@
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
-using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
@@ -10,7 +9,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectTalentForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         protected override void OnOpen(object userData)
         {
@@ -45,11 +44,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 {
                     Mode = 1,
                     Title = GameEntry.Localization.GetString("Talent.OpenTalent.Title"),
-                    Message = GameEntry.Localization.GetString("Talent.OpenTalent.Content"),
-                    OnClickConfirm = delegate (object userData)
-                    {
-                       
-                    },
+                    Message = GameEntry.Localization.GetString("Talent.OpenTalent.Content")
                 });
           
                 return;

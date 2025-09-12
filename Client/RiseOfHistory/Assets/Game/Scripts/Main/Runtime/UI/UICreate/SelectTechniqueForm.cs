@@ -5,7 +5,6 @@ using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -15,10 +14,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectTechniqueForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         [SerializeField]
-        private TechniqueDisplay techniqueDisplay = null;
+        private TechniqueDisplay techniqueDisplay;
 
 
         protected override void OnOpen(object userData)

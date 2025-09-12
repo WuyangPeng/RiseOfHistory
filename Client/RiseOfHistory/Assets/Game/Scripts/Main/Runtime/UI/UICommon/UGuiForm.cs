@@ -12,10 +12,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         public const int DepthFactor = 100;
         private const float FadeTime = 0.3f;
 
-        private static Font s_MainFont = null;
-        private Canvas cachedCanvas = null;
-        private CanvasGroup canvasGroup = null;
-        private readonly List<Canvas> cachedCanvasContainer = new List<Canvas>();
+        private static Font s_MainFont;
+        private Canvas cachedCanvas;
+        private CanvasGroup canvasGroup;
+        private readonly List<Canvas> cachedCanvasContainer = new();
 
         public int OriginalDepth
         {
@@ -57,7 +57,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 return;
             }
 
-            s_MainFont = mainFont;
+            UGuiForm.s_MainFont = mainFont;
         }
 
         protected override void OnInit(object userData)
@@ -89,13 +89,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             }
         }
 
-
-        protected override void OnRecycle()
-        {
-            base.OnRecycle();
-        }
-
-
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
@@ -104,19 +97,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             StopAllCoroutines();
             StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
         }
-
-
-        protected override void OnClose(bool isShutdown, object userData)
-        {
-            base.OnClose(isShutdown, userData);
-        }
-
-
-        protected override void OnPause()
-        {
-            base.OnPause();
-        }
-
         protected override void OnResume()
         {
             base.OnResume();
@@ -125,31 +105,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             StopAllCoroutines();
             StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
         }
-
-
-        protected override void OnCover()
-        {
-            base.OnCover();
-        }
-
-
-        protected override void OnReveal()
-        {
-            base.OnReveal();
-        }
-
-
-        protected override void OnRefocus(object userData)
-        {
-            base.OnRefocus(userData);
-        }
-
-        protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-        {
-            base.OnUpdate(elapseSeconds, realElapseSeconds);
-        }
-
-
         protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
         {
             var oldDepth = Depth;

@@ -1,5 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.GameData.User;
-using Game.Scripts.Main.Runtime.GameEnum;
+﻿using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
@@ -13,7 +12,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectAvatarForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         [SerializeField]
         private GameSexDisplay gameSexDisplay;
@@ -23,8 +22,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
 
         [SerializeField]
-        private Toggle[] sexToggle = null;
-
+        private Toggle[] sexToggle;
 
         public void OnReturnButtonClick()
         {

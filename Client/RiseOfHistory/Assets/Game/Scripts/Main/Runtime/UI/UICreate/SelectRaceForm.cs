@@ -1,5 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.GameData.User;
+﻿using Game.Scripts.Main.Runtime.DataTable; 
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
@@ -14,7 +13,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectRaceForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         [SerializeField]
         private RaceDisplay raceDisplay;

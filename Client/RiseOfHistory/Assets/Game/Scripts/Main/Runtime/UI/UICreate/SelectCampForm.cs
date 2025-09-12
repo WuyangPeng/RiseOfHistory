@@ -1,6 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.GameData.User;
-using Game.Scripts.Main.Runtime.GameEnum;
+﻿using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.Base.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
@@ -15,16 +13,16 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectCampForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate = null;
+        private ProcedureCreate procedureCreate;
 
         [SerializeField]
         private CampDisplay campDisplay;
 
         [SerializeField]
-        private Toggle[] rulesToggle = null;
+        private Toggle[] rulesToggle;
 
         [SerializeField]
-        private Toggle[] moralityToggle = null;
+        private Toggle[] moralityToggle;
 
         [SerializeField] private TMP_InputField inputField;
 
