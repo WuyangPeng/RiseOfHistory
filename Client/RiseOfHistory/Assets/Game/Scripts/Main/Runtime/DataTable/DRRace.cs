@@ -123,13 +123,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] propertyId;
 
-        public int PropertyIdCount
-        {
-            get
-            {
-                return propertyId.Length;
-            }
-        }
+        public int PropertyIdCount => propertyId.Length;
 
         public int GetPropertyId(int id)
         {
@@ -156,13 +150,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] propertyChange;
 
-        public int PropertyChangeCount
-        {
-            get
-            {
-                return propertyChange.Length;
-            }
-        }
+        public int PropertyChangeCount => propertyChange.Length;
 
         public int GetPropertyChange(int id)
         {
@@ -191,14 +179,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
         {
             propertyId = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, PropertyId0),
-                new KeyValuePair<int, int>(1, PropertyId1),
+                new (0, PropertyId0),
+                new (1, PropertyId1),
             };
 
             propertyChange = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, PropertyChange0),
-                new KeyValuePair<int, int>(1, PropertyChange1),
+                new (0, PropertyChange0),
+                new (1, PropertyChange1),
             };
         }
     }

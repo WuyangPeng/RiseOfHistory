@@ -156,13 +156,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] weaponId;
 
-        public int WeaponIdCount
-        {
-            get
-            {
-                return weaponId.Length;
-            }
-        }
+        public int WeaponIdCount => weaponId.Length;
 
         public int GetWeaponId(int id)
         {
@@ -189,13 +183,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] armorId;
 
-        public int ArmorIdCount
-        {
-            get
-            {
-                return armorId.Length;
-            }
-        }
+        public int ArmorIdCount => armorId.Length;
 
         public int GetArmorId(int id)
         {
@@ -224,16 +212,16 @@ namespace Game.Scripts.Main.Runtime.DataTable
         {
             weaponId = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, WeaponId0),
-                new KeyValuePair<int, int>(1, WeaponId1),
-                new KeyValuePair<int, int>(2, WeaponId2),
+                new (0, WeaponId0),
+                new (1, WeaponId1),
+                new (2, WeaponId2),
             };
 
             armorId = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, ArmorId0),
-                new KeyValuePair<int, int>(1, ArmorId1),
-                new KeyValuePair<int, int>(2, ArmorId2),
+                new (0, ArmorId0),
+                new (1, ArmorId1),
+                new (2, ArmorId2),
             };
         }
     }

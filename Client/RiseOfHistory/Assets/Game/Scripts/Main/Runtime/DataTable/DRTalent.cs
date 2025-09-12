@@ -277,13 +277,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] propertyId;
 
-        public int PropertyIdCount
-        {
-            get
-            {
-                return propertyId.Length;
-            }
-        }
+        public int PropertyIdCount => propertyId.Length;
 
         public int GetPropertyId(int id)
         {
@@ -310,13 +304,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] propertyChange;
 
-        public int PropertyChangeCount
-        {
-            get
-            {
-                return propertyChange.Length;
-            }
-        }
+        public int PropertyChangeCount => propertyChange.Length;
 
         public int GetPropertyChange(int id)
         {
@@ -343,13 +331,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] spiritualId;
 
-        public int SpiritualIdCount
-        {
-            get
-            {
-                return spiritualId.Length;
-            }
-        }
+        public int SpiritualIdCount => spiritualId.Length;
 
         public int GetSpiritualId(int id)
         {
@@ -376,13 +358,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] spiritualChange;
 
-        public int SpiritualChangeCount
-        {
-            get
-            {
-                return spiritualChange.Length;
-            }
-        }
+        public int SpiritualChangeCount => spiritualChange.Length;
 
         public int GetSpiritualChange(int id)
         {
@@ -409,13 +385,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] martialArtsId;
 
-        public int MartialArtsIdCount
-        {
-            get
-            {
-                return martialArtsId.Length;
-            }
-        }
+        public int MartialArtsIdCount => martialArtsId.Length;
 
         public int GetMartialArtsId(int id)
         {
@@ -442,13 +412,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] martialArtsChange;
 
-        public int MartialArtsChangeCount
-        {
-            get
-            {
-                return martialArtsChange.Length;
-            }
-        }
+        public int MartialArtsChangeCount => martialArtsChange.Length;
 
         public int GetMartialArtsChange(int id)
         {
@@ -475,13 +439,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] techniqueId;
 
-        public int TechniqueIdCount
-        {
-            get
-            {
-                return techniqueId.Length;
-            }
-        }
+        public int TechniqueIdCount => techniqueId.Length;
 
         public int GetTechniqueId(int id)
         {
@@ -508,13 +466,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private KeyValuePair<int, int>[] techniqueChange;
 
-        public int TechniqueChangeCount
-        {
-            get
-            {
-                return techniqueChange.Length;
-            }
-        }
+        public int TechniqueChangeCount => techniqueChange.Length;
 
         public int GetTechniqueChange(int id)
         {
@@ -543,50 +495,50 @@ namespace Game.Scripts.Main.Runtime.DataTable
         {
             propertyId = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, PropertyId0),
-                new KeyValuePair<int, int>(1, PropertyId1),
+                new (0, PropertyId0),
+                new (1, PropertyId1),
             };
 
             propertyChange = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, PropertyChange0),
-                new KeyValuePair<int, int>(1, PropertyChange1),
+                new (0, PropertyChange0),
+                new (1, PropertyChange1),
             };
 
             spiritualId = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, SpiritualId0),
-                new KeyValuePair<int, int>(1, SpiritualId1),
+                new (0, SpiritualId0),
+                new (1, SpiritualId1),
             };
 
             spiritualChange = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, SpiritualChange0),
-                new KeyValuePair<int, int>(1, SpiritualChange1),
+                new (0, SpiritualChange0),
+                new (1, SpiritualChange1),
             };
 
             martialArtsId = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, MartialArtsId0),
-                new KeyValuePair<int, int>(1, MartialArtsId1),
+                new (0, MartialArtsId0),
+                new (1, MartialArtsId1),
             };
 
             martialArtsChange = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, MartialArtsChange0),
-                new KeyValuePair<int, int>(1, MartialArtsChange1),
+                new (0, MartialArtsChange0),
+                new (1, MartialArtsChange1),
             };
 
             techniqueId = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, TechniqueId0),
-                new KeyValuePair<int, int>(1, TechniqueId1),
+                new (0, TechniqueId0),
+                new (1, TechniqueId1),
             };
 
             techniqueChange = new KeyValuePair<int, int>[]
             {
-                new KeyValuePair<int, int>(0, TechniqueChange0),
-                new KeyValuePair<int, int>(1, TechniqueChange1),
+                new (0, TechniqueChange0),
+                new (1, TechniqueChange1),
             };
         }
     }
