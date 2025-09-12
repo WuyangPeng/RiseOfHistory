@@ -10,44 +10,44 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
     public class SettingForm : UGuiForm
     {
         [SerializeField]
-        private Toggle m_MusicMuteToggle = null;
+        private Toggle musicMuteToggle;
 
         [SerializeField]
-        private Slider m_MusicVolumeSlider = null;
+        private Slider musicVolumeSlider;
 
         [SerializeField]
-        private Toggle m_SoundMuteToggle = null;
+        private Toggle soundMuteToggle;
 
         [SerializeField]
-        private Slider m_SoundVolumeSlider = null;
+        private Slider soundVolumeSlider;
 
         [SerializeField]
-        private Toggle m_UISoundMuteToggle = null;
+        private Toggle uiSoundMuteToggle = null;
 
         [SerializeField]
-        private Slider m_UISoundVolumeSlider = null;
+        private Slider uiSoundVolumeSlider = null;
 
         [SerializeField]
-        private CanvasGroup m_LanguageTipsCanvasGroup = null;
+        private CanvasGroup languageTipsCanvasGroup = null;
 
         [SerializeField]
-        private Toggle m_EnglishToggle = null;
+        private Toggle englishToggle = null;
 
         [SerializeField]
-        private Toggle m_ChineseSimplifiedToggle = null;
+        private Toggle chineseSimplifiedToggle = null;
 
         [SerializeField]
-        private Toggle m_ChineseTraditionalToggle = null;
+        private Toggle chineseTraditionalToggle = null;
 
         [SerializeField]
-        private Toggle m_KoreanToggle = null;
+        private Toggle koreanToggle = null;
 
         private Language m_SelectedLanguage = Language.Unspecified;
 
         public void OnMusicMuteChanged(bool isOn)
         {
             Base.GameEntry.Sound.Mute("Music", !isOn);
-            m_MusicVolumeSlider.gameObject.SetActive(isOn);
+            musicVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnMusicVolumeChanged(float volume)
@@ -58,7 +58,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         public void OnSoundMuteChanged(bool isOn)
         {
             Base.GameEntry.Sound.Mute("Sound", !isOn);
-            m_SoundVolumeSlider.gameObject.SetActive(isOn);
+            soundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnSoundVolumeChanged(float volume)
@@ -69,7 +69,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         public void OnUISoundMuteChanged(bool isOn)
         {
             Base.GameEntry.Sound.Mute("UISound", !isOn);
-            m_UISoundVolumeSlider.gameObject.SetActive(isOn);
+            uiSoundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnUISoundVolumeChanged(float volume)
@@ -141,32 +141,32 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnOpen(userData);
 
-            m_MusicMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("Music");
-            m_MusicVolumeSlider.value = Base.GameEntry.Sound.GetVolume("Music");
+            musicMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("Music");
+            musicVolumeSlider.value = Base.GameEntry.Sound.GetVolume("Music");
 
-            m_SoundMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("Sound");
-            m_SoundVolumeSlider.value = Base.GameEntry.Sound.GetVolume("Sound");
+            soundMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("Sound");
+            soundVolumeSlider.value = Base.GameEntry.Sound.GetVolume("Sound");
 
-            m_UISoundMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("UISound");
-            m_UISoundVolumeSlider.value = Base.GameEntry.Sound.GetVolume("UISound");
+            uiSoundMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("UISound");
+            uiSoundVolumeSlider.value = Base.GameEntry.Sound.GetVolume("UISound");
 
             m_SelectedLanguage = Base.GameEntry.Localization.Language;
             switch (m_SelectedLanguage)
             {
                 case Language.English:
-                    m_EnglishToggle.isOn = true;
+                    englishToggle.isOn = true;
                     break;
 
                 case Language.ChineseSimplified:
-                    m_ChineseSimplifiedToggle.isOn = true;
+                    chineseSimplifiedToggle.isOn = true;
                     break;
 
                 case Language.ChineseTraditional:
-                    m_ChineseTraditionalToggle.isOn = true;
+                    chineseTraditionalToggle.isOn = true;
                     break;
 
                 case Language.Korean:
-                    m_KoreanToggle.isOn = true;
+                    koreanToggle.isOn = true;
                     break;
 
                 default:
@@ -179,15 +179,15 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            if (m_LanguageTipsCanvasGroup.gameObject.activeSelf)
+            if (languageTipsCanvasGroup.gameObject.activeSelf)
             {
-                m_LanguageTipsCanvasGroup.alpha = 0.5f + 0.5f * Mathf.Sin(Mathf.PI * Time.time);
+                languageTipsCanvasGroup.alpha = 0.5f + 0.5f * Mathf.Sin(Mathf.PI * Time.time);
             }
         }
 
         private void RefreshLanguageTips()
         {
-            m_LanguageTipsCanvasGroup.gameObject.SetActive(m_SelectedLanguage != Base.GameEntry.Localization.Language);
+            languageTipsCanvasGroup.gameObject.SetActive(m_SelectedLanguage != Base.GameEntry.Localization.Language);
         }
     }
 }

@@ -644,17 +644,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02bbd1c1f00c17842b1449ae2b66a932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MusicMuteToggle: {fileID: 11428602}
-  m_MusicVolumeSlider: {fileID: 11458132}
-  m_SoundMuteToggle: {fileID: 11419480}
-  m_SoundVolumeSlider: {fileID: 11484716}
-  m_UISoundMuteToggle: {fileID: 11404440}
-  m_UISoundVolumeSlider: {fileID: 11423794}
-  m_LanguageTipsCanvasGroup: {fileID: 22524202}
-  m_EnglishToggle: {fileID: 11484778}
-  m_ChineseSimplifiedToggle: {fileID: 11434424}
-  m_ChineseTraditionalToggle: {fileID: 11448172}
-  m_KoreanToggle: {fileID: 11497670}
+  musicMuteToggle: {fileID: 11428602}
+  musicVolumeSlider: {fileID: 11458132}
+  soundMuteToggle: {fileID: 11419480}
+  soundVolumeSlider: {fileID: 11484716}
+  uiSoundMuteToggle: {fileID: 11404440}
+  uiSoundVolumeSlider: {fileID: 11423794}
+  languageTipsCanvasGroup: {fileID: 22524202}
+  englishToggle: {fileID: 11484778}
+  chineseSimplifiedToggle: {fileID: 11434424}
+  chineseTraditionalToggle: {fileID: 11448172}
+  koreanToggle: {fileID: 11497670}
 --- !u!1 &110356
 GameObject:
   m_ObjectHideFlags: 0
