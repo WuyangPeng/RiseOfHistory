@@ -41,7 +41,7 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public HashSet<int> Talent { get; set; } = new();
 
-        public string Name { get; set; } = "";
+        public string Name { get; set; } = GameEntry.Localization.GetString("Name.Default");
 
         public int Surname { get; set; } = 1;
 

@@ -26,7 +26,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         [SerializeField]
         private Toggle[] moralityToggle;
 
-        [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private InputField inputField;
 
         [SerializeField] private Dropdown surnameDropdown;
 
@@ -130,7 +130,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
             InitCamp();
             InitDropdown();
+            InitInputField();
+        }
 
+        private void InitInputField()
+        {
+            inputField.text = GameEntry.ModuleComponent.GetModule<UserModule>().GetName();
         }
 
         private void InitDropdown()

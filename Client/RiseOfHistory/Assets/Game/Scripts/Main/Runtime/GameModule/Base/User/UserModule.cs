@@ -313,6 +313,12 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base.User
             return surname.GetDataRow(userData.Surname).Name + userData.Name;
         }
 
+        public string GetName()
+        {
+            return userData.Name;
+        }
+
+
         public void RemoveTalent(int id)
         {
             userData.RemoveTalent(id);

@@ -280,5 +280,6 @@
 		<String Key="Surname.Wang" Value="王" />
 		<String Key="Sect.Wudang" Value="武当" />
 		<String Key="Sect.Wudang.Description" Value="武当描述" />
+		<String Key="Name.Default" Value="辰" />
 	</Dictionary>
 </Dictionaries>
