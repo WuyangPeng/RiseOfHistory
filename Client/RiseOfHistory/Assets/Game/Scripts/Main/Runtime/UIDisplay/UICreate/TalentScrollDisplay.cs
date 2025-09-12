@@ -10,21 +10,22 @@ using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
-{ public class TalentScrollDisplay : MonoBehaviour
+{
+    public class TalentScrollDisplay : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]
         private ScrollRect scrollRect;
 
-        [SerializeField] 
+        [SerializeField]
         private Transform content;
 
-        [SerializeField] 
+        [SerializeField]
         private TalentItem itemPrefab;
 
-        [SerializeField] 
+        [SerializeField]
         private int poolCapacity = 20;
 
-        [SerializeField] 
+        [SerializeField]
         private Text talentDescription;
 
         private IObjectPool<TalentItemObject> pool;
@@ -38,7 +39,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         {
             const string poolName = "TalentItemPool";
             pool = GameEntry.ObjectPool.HasObjectPool<TalentItemObject>(poolName) ?
-                GameEntry.ObjectPool.GetObjectPool<TalentItemObject>(poolName):
+                GameEntry.ObjectPool.GetObjectPool<TalentItemObject>(poolName) :
                 GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(poolName, poolCapacity, 30f, 16);
 
             Refresh();
@@ -54,7 +55,6 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         private void SetAvatarData()
         {
             talentData.Clear();
-
             selectedIndex.Clear();
 
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
@@ -63,7 +63,10 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             var talents = GameEntry.DataTable.GetDataTable<DRTalent>();
             foreach (var talent in talents)
             {
-                if (!talent.DefaultEnabled && !accountModule.HasTalent(talent.Id)) continue;
+                if (!talent.DefaultEnabled && !accountModule.HasTalent(talent.Id))
+                {
+                    continue;
+                }
 
                 if (userModule.HasSelectedTalent(talent.Id))
                 {
@@ -91,6 +94,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
             return rowGameObject;
         }
+
         private void SpawnAvatar()
         {
             var rowCount = Mathf.CeilToInt((float)talentData.Count / PerRow);
@@ -149,14 +153,14 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void UnSpawnAvatar()
         {
-            foreach (var obj in activeTalentItemObject)
+            foreach (var element in activeTalentItemObject)
             {
-                var item = (TalentItem)obj.Target;
+                var item = (TalentItem)element.Target;
                 if (item != null && item.gameObject != null)
                 {
                     item.transform.SetParent(null, false);
                 }
-                pool.Unspawn(obj);
+                pool.Unspawn(element);
             }
 
             activeTalentItemObject.Clear();
@@ -214,7 +218,6 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
                 UpdateSelected();
             }
-           
         }
 
         private void UpdateSelected()
@@ -224,6 +227,6 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                 var avatarItem = (TalentItem)(activeTalentItemObject[i].Target);
                 avatarItem.SetSelected(selectedIndex.Contains(i));
             }
-        } 
+        }
     }
 }

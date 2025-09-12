@@ -8,8 +8,8 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class RaceDisplay : MonoBehaviour
     {
-        [SerializeField] private Radio2Item items;
-
+        [SerializeField] 
+        private Radio2Item items;
         public void Refresh()
         {
             var race = GameEntry.DataTable.GetDataTable<DRRace>();

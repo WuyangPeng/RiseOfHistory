@@ -8,8 +8,8 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class GameDifficultyDisplay : MonoBehaviour
     {
-        [SerializeField] private GameDifficultyItem[] items;
-
+        [SerializeField] 
+        private GameDifficultyItem[] items;
 
         public void Refresh()
         {
@@ -26,7 +26,6 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
                 ++gameDifficultyType;
             }
-
         }
     }
 }

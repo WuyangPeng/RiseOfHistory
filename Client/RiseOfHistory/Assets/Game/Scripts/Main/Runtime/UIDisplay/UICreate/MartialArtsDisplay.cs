@@ -10,9 +10,11 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class MartialArtsDisplay : MonoBehaviour
     {
-        [SerializeField] private Radio2Item[] items = null;
+        [SerializeField] 
+        private Radio2Item[] items;
 
-        [SerializeField] private Text remainingText;
+        [SerializeField] 
+        private Text remainingText;
 
         public void Refresh()
         {
@@ -29,7 +31,6 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             }
 
             remainingText.text = userModule.GetMartialArtsCount().ToString();
-
         }
 
         private static string GetMartialArtsName(int currentMartialArts, DRMartialArts martialArts)

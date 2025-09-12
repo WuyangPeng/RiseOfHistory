@@ -13,10 +13,17 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class AvatarScrollDisplay : MonoBehaviour
     {
-        [SerializeField] private ScrollRect scrollRect;
-        [SerializeField] private Transform content;
-        [SerializeField] private AvatarItem itemPrefab;
-        [SerializeField] private int poolCapacity = 20;
+        [SerializeField]
+        private ScrollRect scrollRect;
+
+        [SerializeField] 
+        private Transform content;
+
+        [SerializeField] 
+        private AvatarItem itemPrefab;
+
+        [SerializeField]
+        private int poolCapacity = 20;
 
         private IObjectPool<AvatarItemObject> pool;
         private readonly List<DRAvatar> avatarData = new();
@@ -38,7 +45,6 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         private void SetAvatarData()
         {
             avatarData.Clear();
-
             selectedIndex = -1;
 
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();

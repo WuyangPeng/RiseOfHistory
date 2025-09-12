@@ -10,9 +10,11 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class PropertyDisplay : MonoBehaviour
     {
-        [SerializeField] private Radio2Item[] items = null;
+        [SerializeField]
+        private Radio2Item[] items;
 
-        [SerializeField] private Text remainingText;
+        [SerializeField]
+        private Text remainingText;
 
         public void Refresh()
         {
@@ -24,14 +26,13 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             {
                 if (element.Group != (int)PropertyGroupType.Base) continue;
 
-              
+
                 items[index].SetNum(element.Name, userModule.GetBaseProperty((BasePropertyType)element.Id));
 
                 ++index;
             }
 
             remainingText.text = userModule.GetPropertyCount().ToString();
-
         }
     }
 }
