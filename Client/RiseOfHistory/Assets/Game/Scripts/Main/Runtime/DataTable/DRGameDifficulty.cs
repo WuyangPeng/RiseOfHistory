@@ -60,6 +60,15 @@ namespace Game.Scripts.Main.Runtime.DataTable
             private set;
         }
 
+        /// <summary>
+        /// 获取资源等级。
+        /// </summary>
+        public int ResourceLevel
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             var columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -76,6 +85,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
             WorldDescription = columnStrings[index++];
             EnemyDescription = columnStrings[index++];
             TeamDescription = columnStrings[index++];
+            ResourceLevel = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -92,6 +102,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     WorldDescription = binaryReader.ReadString();
                     EnemyDescription = binaryReader.ReadString();
                     TeamDescription = binaryReader.ReadString();
+                    ResourceLevel = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

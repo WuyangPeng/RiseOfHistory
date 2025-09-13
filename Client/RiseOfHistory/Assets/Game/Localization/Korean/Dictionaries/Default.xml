@@ -301,5 +301,13 @@
 		<String Key="Resource.HeavenlyCraft.Description" Value="天工描述" />
 		<String Key="Resource.Chaos" Value="混沌" />
 		<String Key="Resource.Chaos.Description" Value="混沌描述" />
+		<String Key="Resource.Rich" Value="丰富" />
+		<String Key="Resource.Rich.Description" Value="丰富描述" />
+		<String Key="Resource.Average" Value="一般" />
+		<String Key="Resource.Average.Description" Value="一般描述" />
+		<String Key="Resource.Rare" Value="稀少" />
+		<String Key="Resource.Rare.Description" Value="稀少描述" />
+		<String Key="Resource.Poverty" Value="贫乏" />
+		<String Key="Resource.Poverty.Description" Value="贫乏描述" />
 	</Dictionary>
 </Dictionaries>
