@@ -16,5 +16,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         {
             mapData.MapSize = mapSize;
         }
+
+        public MapData GetMapData()
+        {
+            return mapData;
+        }
     }
 }

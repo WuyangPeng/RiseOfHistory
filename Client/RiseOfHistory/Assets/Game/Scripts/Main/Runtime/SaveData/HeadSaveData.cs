@@ -2,7 +2,7 @@
 
 namespace Game.Scripts.Main.Runtime.SaveData
 {
-    public class HeadData
+    public class HeadSaveData
     {
         public string Name { get; set; } = "彭武阳";
         public int Year { get; set; } = 1;

@@ -21,7 +21,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
     {
         private int m_NextSceneId = 0;
         private readonly FormComponent formComponent = new FormComponent();
-        private readonly List<HeadData> headData = new List<HeadData>();
+        private readonly List<HeadSaveData> headData = new List<HeadSaveData>();
 
         public override bool UseNativeDialog => false;
 
@@ -76,7 +76,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             }
 
             var json = Encoding.UTF8.GetString(bytes);
-            var talentData = Utility.Json.ToObject<TalentData>(json);
+            var talentData = Utility.Json.ToObject<TalentSaveData>(json);
             accountModule.SetTalentData(talentData);
         }
 
@@ -112,7 +112,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
                 }
 
                 var json = Encoding.UTF8.GetString(bytes);
-                var data = Utility.Json.ToObject<HeadData>(json);
+                var data = Utility.Json.ToObject<HeadSaveData>(json);
                 headData.Add(data);
             }
         }
@@ -122,7 +122,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             return headData.Any(data => data.Index == index);
         }
 
-        public List<HeadData> GetHeadData()
+        public List<HeadSaveData> GetHeadData()
         {
             return headData;
         }

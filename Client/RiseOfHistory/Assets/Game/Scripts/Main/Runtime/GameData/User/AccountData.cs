@@ -16,9 +16,9 @@ namespace Game.Scripts.Main.Runtime.GameData.User
             unlockAchievements.Clear();
         }
 
-        public void SetTalentData(TalentData talentData)
+        public void SetTalentData(TalentSaveData talentSaveData)
         {
-            unlockTalent.AddRange(talentData.UnlockTalent);
+            unlockTalent.AddRange(talentSaveData.UnlockTalent);
         }
 
         public bool HasTalent(int talentId)

@@ -7,6 +7,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
     public abstract class InitGameBase
     {
         public abstract void InitGame();
+        public abstract void SaveGame();
 
         public static InitGameBase Create(InitGameType initGameType)
         {

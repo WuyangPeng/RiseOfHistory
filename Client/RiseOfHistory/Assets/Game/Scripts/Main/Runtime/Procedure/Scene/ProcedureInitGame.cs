@@ -70,6 +70,17 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
                 return;
             }
 
+            if (!userModule.IsInitWorld())
+            {
+                userModule.SetInitWorld();
+
+                for (var i = InitGameType.Begin; i < InitGameType.End; ++i)
+                {
+                    var initGame = InitGameBase.Create(i);
+                    initGame.SaveGame();
+                }
+            }
+
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Home"));
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }

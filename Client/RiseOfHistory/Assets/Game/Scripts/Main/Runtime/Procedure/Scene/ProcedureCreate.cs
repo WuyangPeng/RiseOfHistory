@@ -85,7 +85,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             var index = userModule.GetSaveIndex();
             var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + index, "HeadData.idx");
 
-            var headData = new HeadData
+            var headData = new HeadSaveData
             {
                 Index = index,
                 Avatar = userModule.GetAvatarId(),

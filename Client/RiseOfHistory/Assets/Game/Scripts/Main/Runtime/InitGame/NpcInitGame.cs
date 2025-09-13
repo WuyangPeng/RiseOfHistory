@@ -6,8 +6,13 @@ namespace Game.Scripts.Main.Runtime.InitGame
     {
         public override void InitGame()
         {
-            
-             
+
+
+        }
+
+        public override void SaveGame()
+        {
+
         }
     }
 }

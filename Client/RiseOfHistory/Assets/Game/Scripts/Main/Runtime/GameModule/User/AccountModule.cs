@@ -14,9 +14,9 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             accountData.Clear();
         }
 
-        public void SetTalentData(TalentData talentData)
+        public void SetTalentData(TalentSaveData talentSaveData)
         {
-            accountData.SetTalentData(talentData);
+            accountData.SetTalentData(talentSaveData);
         }
 
         public bool HasTalent(int talentId)

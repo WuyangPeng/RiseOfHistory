@@ -10,7 +10,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
         [SerializeField] 
         private HeadDataItem[] items;
 
-        public void Refresh(List<HeadData> headData)
+        public void Refresh(List<HeadSaveData> headData)
         {
             foreach (var data in headData)
             {

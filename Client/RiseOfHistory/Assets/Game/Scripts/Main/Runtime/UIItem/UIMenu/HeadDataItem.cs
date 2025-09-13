@@ -28,35 +28,35 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
         [SerializeField] 
         private Text createNewGame;
 
-        public void SetData(HeadData headData)
+        public void SetData(HeadSaveData headSaveData)
         {
-            SetTitle(headData);
-            SetDate(headData);
-            SetCultivationRealmText(headData);
-            SetGameDifficultyText(headData);
-            SetAvatar(headData);
+            SetTitle(headSaveData);
+            SetDate(headSaveData);
+            SetCultivationRealmText(headSaveData);
+            SetGameDifficultyText(headSaveData);
+            SetAvatar(headSaveData);
             HideCreateNewGame();
         }
 
-        private void SetTitle(HeadData headData)
+        private void SetTitle(HeadSaveData headSaveData)
         {
-            titleText.text = headData.Name;
+            titleText.text = headSaveData.Name;
         }
 
-        private void SetDate(HeadData headData)
+        private void SetDate(HeadSaveData headSaveData)
         {
             var content = GameEntry.Localization.GetString("Date.SaveData");
-            dateText.text = string.Format(content, headData.Year, headData.Month);
+            dateText.text = string.Format(content, headSaveData.Year, headSaveData.Month);
         }
 
-        private void SetCultivationRealmText(HeadData headData)
+        private void SetCultivationRealmText(HeadSaveData headSaveData)
         {
-            var cultivationRealmType = (int)headData.CultivationRealmType;
+            var cultivationRealmType = (int)headSaveData.CultivationRealmType;
             var cultivationRealm = GameEntry.DataTable.GetDataTable<DRCultivationRealm>();
             var cultivationRealmRow = cultivationRealm.GetDataRow(cultivationRealmType);
             if (cultivationRealmRow != null)
             {
-                cultivationRealmText.text = $"{GameEntry.Localization.GetString(cultivationRealmRow.Name)}{headData.CultivationRealmLevel}{GameEntry.Localization.GetString("CultivationRealm.Level")}";
+                cultivationRealmText.text = $"{GameEntry.Localization.GetString(cultivationRealmRow.Name)}{headSaveData.CultivationRealmLevel}{GameEntry.Localization.GetString("CultivationRealm.Level")}";
             }
             else
             {
@@ -64,9 +64,9 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
             }
         }
 
-        private void SetGameDifficultyText(HeadData headData)
+        private void SetGameDifficultyText(HeadSaveData headSaveData)
         {
-            var gameDifficultyType = (int)headData.GameDifficultyType;
+            var gameDifficultyType = (int)headSaveData.GameDifficultyType;
             var gameDifficulty = GameEntry.DataTable.GetDataTable<DRGameDifficulty>();
             var gameDifficultyRow = gameDifficulty.GetDataRow(gameDifficultyType);
             if (gameDifficultyRow != null)
@@ -79,10 +79,10 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
             }
         }
 
-        private void SetAvatar(HeadData headData)
+        private void SetAvatar(HeadSaveData headSaveData)
         {
             var avatar = GameEntry.DataTable.GetDataTable<DRAvatar>();
-            var avatarRow = avatar.GetDataRow(headData.Avatar);
+            var avatarRow = avatar.GetDataRow(headSaveData.Avatar);
             if (avatarRow != null)
             {
                 GameEntry.Resource.LoadAsset(avatarRow.Path, typeof(Sprite), 0,

@@ -339,5 +339,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
         {
             return userData.InitWorld;
         }
+
+        public void SetInitWorld()
+        {
+            userData.InitWorld = true;
+        }
     }
 }
