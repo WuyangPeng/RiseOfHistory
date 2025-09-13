@@ -3,8 +3,9 @@ using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameData.User;
 using Game.Scripts.Main.Runtime.GameEnum;
+using Game.Scripts.Main.Runtime.GameModule.Base;
 
-namespace Game.Scripts.Main.Runtime.GameModule.Base.User
+namespace Game.Scripts.Main.Runtime.GameModule.User
 {
     [Module]
     public class UserModule : BaseModule

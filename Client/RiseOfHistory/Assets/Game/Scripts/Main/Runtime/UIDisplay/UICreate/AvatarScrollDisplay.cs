@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.GameModule.Base.User;
+using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using Game.Scripts.Main.Runtime.UIObject.UICreate;
 using GameFramework.ObjectPool;

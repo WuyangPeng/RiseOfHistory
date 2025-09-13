@@ -1,7 +1,8 @@
 using Game.Scripts.Main.Runtime.GameData.User;
+using Game.Scripts.Main.Runtime.GameModule.Base;
 using Game.Scripts.Main.Runtime.SaveData;
 
-namespace Game.Scripts.Main.Runtime.GameModule.Base.User
+namespace Game.Scripts.Main.Runtime.GameModule.User
 {
     [Module]
     public class AccountModule : BaseModule
