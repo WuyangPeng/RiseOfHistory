@@ -12,6 +12,7 @@ namespace Game.Scripts.Main.Runtime.Definition.Constant
             public static readonly int InitMartialArtsCount = 30;
             public static readonly int InitTechniqueCount = 20;
             public static readonly int MaxTalentCount = 3;
+            public static readonly int PlayerId = 1;
         }
     }
 }

@@ -7,10 +7,10 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 {
     public class MapChunkData
     {
-        public int X { get; set; } = 0;
-        public int Y { get; set; } = 0;
+        public int X { get; set; }
+        public int Y { get; set; }
 
-        public int ResourceId { get; set; } = 1;
+        public int ResourceId { get; set; }
 
         public int CurrentResource { get; set; }
 

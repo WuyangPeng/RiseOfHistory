@@ -1,5 +1,4 @@
-﻿using System;
-using Game.Scripts.Main.Runtime.Base;
+﻿using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.RuntimeException;
