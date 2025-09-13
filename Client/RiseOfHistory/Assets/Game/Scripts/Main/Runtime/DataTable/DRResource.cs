@@ -13,14 +13,14 @@ using UnityGameFramework.Runtime;
 namespace Game.Scripts.Main.Runtime.DataTable
 {
     /// <summary>
-    /// 姓氏表。
+    /// 资源表。
     /// </summary>
-    public class DRSurname : DataRowBase
+    public class DRResource : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取姓氏编号。
+        /// 获取资源编号。
         /// </summary>
         public override int Id => m_Id;
 
@@ -28,6 +28,42 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// 获取名字。
         /// </summary>
         public string Name
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取描述。
+        /// </summary>
+        public string Description
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取初始值。
+        /// </summary>
+        public int InitValue
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取最大值。
+        /// </summary>
+        public int MaxValue
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取恢复速度。
+        /// </summary>
+        public int RecoverySpeed
         {
             get;
             private set;
@@ -46,6 +82,10 @@ namespace Game.Scripts.Main.Runtime.DataTable
             m_Id = int.Parse(columnStrings[index++]);
             index++;
             Name = columnStrings[index++];
+            Description = columnStrings[index++];
+            InitValue = int.Parse(columnStrings[index++]);
+            MaxValue = int.Parse(columnStrings[index++]);
+            RecoverySpeed = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -59,6 +99,10 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
+                    Description = binaryReader.ReadString();
+                    InitValue = binaryReader.Read7BitEncodedInt32();
+                    MaxValue = binaryReader.Read7BitEncodedInt32();
+                    RecoverySpeed = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

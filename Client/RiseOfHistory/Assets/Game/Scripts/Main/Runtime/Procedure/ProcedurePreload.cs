@@ -43,6 +43,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "Talent",
             "Surname",
             "Sect",
+            "Resource",
         };
 
         private readonly Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();

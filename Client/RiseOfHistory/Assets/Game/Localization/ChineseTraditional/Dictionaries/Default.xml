@@ -281,5 +281,25 @@
 		<String Key="Sect.Wudang" Value="武当" />
 		<String Key="Sect.Wudang.Description" Value="武当描述" />
 		<String Key="Name.Default" Value="辰" />
+		<String Key="Resource.Iron" Value="凡铁" />
+		<String Key="Resource.Iron.Description" Value="凡铁描述" />
+		<String Key="Resource.Brass" Value="黄铜" />
+		<String Key="Resource.Brass.Description" Value="黄铜描述" />
+		<String Key="Resource.Silver" Value="白银" />
+		<String Key="Resource.Silver.Description" Value="白银描述" />
+		<String Key="Resource.Gold" Value="黄金" />
+		<String Key="Resource.Gold.Description" Value="黄金描述" />
+		<String Key="Resource.Aura" Value="灵韵" />
+		<String Key="Resource.Aura.Description" Value="灵韵描述" />
+		<String Key="Resource.Treasure" Value="宝器" />
+		<String Key="Resource.Treasure.Description" Value="宝器描述" />
+		<String Key="Resource.CrystalEssence" Value="玄晶" />
+		<String Key="Resource.CrystalEssence.Description" Value="玄晶描述" />
+		<String Key="Resource.GeologicalVein" Value="地脉" />
+		<String Key="Resource.GeologicalVein.Description" Value="地脉描述" />
+		<String Key="Resource.HeavenlyCraft" Value="天工" />
+		<String Key="Resource.HeavenlyCraft.Description" Value="天工描述" />
+		<String Key="Resource.Chaos" Value="混沌" />
+		<String Key="Resource.Chaos.Description" Value="混沌描述" />
 	</Dictionary>
 </Dictionaries>
