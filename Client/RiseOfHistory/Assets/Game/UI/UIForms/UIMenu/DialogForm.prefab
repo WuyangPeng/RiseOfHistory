@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5079836f95c2a44b96fa331487ebb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnHover:
+  onHover:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -652,7 +652,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnClick:
+  onClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5079836f95c2a44b96fa331487ebb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnHover:
+  onHover:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -1000,7 +1000,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnClick:
+  onClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5079836f95c2a44b96fa331487ebb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnHover:
+  onHover:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -1101,7 +1101,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnClick:
+  onClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5079836f95c2a44b96fa331487ebb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnHover:
+  onHover:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -1544,7 +1544,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnClick:
+  onClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -1709,7 +1709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5079836f95c2a44b96fa331487ebb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnHover:
+  onHover:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -1724,7 +1724,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnClick:
+  onClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5079836f95c2a44b96fa331487ebb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OnHover:
+  onHover:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}
@@ -2022,7 +2022,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OnClick:
+  onClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11461274}

@@ -11,10 +11,10 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         private const float OnClickAlpha = 0.6f;
 
         [SerializeField]
-        private UnityEvent m_OnHover;
+        private UnityEvent onHover;
 
         [SerializeField]
-        private UnityEvent m_OnClick;
+        private UnityEvent onClick;
 
         private CanvasGroup canvasGroup;
 
@@ -37,7 +37,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
 
             StopAllCoroutines();
             StartCoroutine(canvasGroup.FadeToAlpha(OnHoverAlpha, FadeTime));
-            m_OnHover.Invoke();
+            onHover.Invoke();
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -59,7 +59,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             }
 
             canvasGroup.alpha = OnClickAlpha;
-            m_OnClick.Invoke();
+            onClick.Invoke();
         }
 
         public void OnPointerUp(PointerEventData eventData)
