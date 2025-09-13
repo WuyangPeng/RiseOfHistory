@@ -42,6 +42,24 @@ namespace Game.Scripts.Main.Runtime.DataTable
             private set;
         }
 
+        /// <summary>
+        /// 获取权重。
+        /// </summary>
+        public float Weight
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取总。
+        /// </summary>
+        public bool Total
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             var columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -56,6 +74,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
             index++;
             Name = columnStrings[index++];
             Description = columnStrings[index++];
+            Weight = float.Parse(columnStrings[index++]);
+            Total = bool.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -70,6 +90,8 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
                     Description = binaryReader.ReadString();
+                    Weight = binaryReader.ReadSingle();
+                    Total = binaryReader.ReadBoolean();
                 }
             }
 

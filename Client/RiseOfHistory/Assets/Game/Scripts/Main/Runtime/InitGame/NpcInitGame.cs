@@ -5,6 +5,7 @@ using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.GameUtility;
+using ProtoBuf.Meta;
 
 namespace Game.Scripts.Main.Runtime.InitGame
 {
@@ -24,10 +25,26 @@ namespace Game.Scripts.Main.Runtime.InitGame
                     ID = npcModule.GetNextNpcId(),
                     SexType = sexType,
                     AvatarId = GetAvatarId(sexType),
+                    CampType = GetCampType(), 
                 };
 
                 npcModule.AddNpc(npcBaseData);
             }
+        }
+
+        private static CampType GetCampType()
+        {
+            var weightRandom = new WeightRandom<DRCamp>();
+            var avatarTable = GameEntry.DataTable.GetDataTable<DRCamp>();
+            foreach (var element in avatarTable)
+            {
+                if (element.Total)
+                {
+                    weightRandom.Add(element, element.Weight);
+                }
+            }
+
+            return (CampType)weightRandom.Roll().Id;
         }
 
         private static int GetAvatarId(SexType sexType)
