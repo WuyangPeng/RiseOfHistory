@@ -45,7 +45,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别0。
         /// </summary>
-        public int Level0
+        public float Level0
         {
             get;
             private set;
@@ -54,7 +54,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别1。
         /// </summary>
-        public int Level1
+        public float Level1
         {
             get;
             private set;
@@ -63,7 +63,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别2。
         /// </summary>
-        public int Level2
+        public float Level2
         {
             get;
             private set;
@@ -72,7 +72,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别3。
         /// </summary>
-        public int Level3
+        public float Level3
         {
             get;
             private set;
@@ -81,7 +81,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别4。
         /// </summary>
-        public int Level4
+        public float Level4
         {
             get;
             private set;
@@ -90,7 +90,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别5。
         /// </summary>
-        public int Level5
+        public float Level5
         {
             get;
             private set;
@@ -99,7 +99,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别6。
         /// </summary>
-        public int Level6
+        public float Level6
         {
             get;
             private set;
@@ -108,7 +108,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别7。
         /// </summary>
-        public int Level7
+        public float Level7
         {
             get;
             private set;
@@ -117,7 +117,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别8。
         /// </summary>
-        public int Level8
+        public float Level8
         {
             get;
             private set;
@@ -126,7 +126,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// <summary>
         /// 获取级别9。
         /// </summary>
-        public int Level9
+        public float Level9
         {
             get;
             private set;
@@ -146,16 +146,16 @@ namespace Game.Scripts.Main.Runtime.DataTable
             index++;
             Name = columnStrings[index++];
             Description = columnStrings[index++];
-            Level0 = int.Parse(columnStrings[index++]);
-            Level1 = int.Parse(columnStrings[index++]);
-            Level2 = int.Parse(columnStrings[index++]);
-            Level3 = int.Parse(columnStrings[index++]);
-            Level4 = int.Parse(columnStrings[index++]);
-            Level5 = int.Parse(columnStrings[index++]);
-            Level6 = int.Parse(columnStrings[index++]);
-            Level7 = int.Parse(columnStrings[index++]);
-            Level8 = int.Parse(columnStrings[index++]);
-            Level9 = int.Parse(columnStrings[index++]);
+            Level0 = float.Parse(columnStrings[index++]);
+            Level1 = float.Parse(columnStrings[index++]);
+            Level2 = float.Parse(columnStrings[index++]);
+            Level3 = float.Parse(columnStrings[index++]);
+            Level4 = float.Parse(columnStrings[index++]);
+            Level5 = float.Parse(columnStrings[index++]);
+            Level6 = float.Parse(columnStrings[index++]);
+            Level7 = float.Parse(columnStrings[index++]);
+            Level8 = float.Parse(columnStrings[index++]);
+            Level9 = float.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -170,16 +170,16 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
                     Description = binaryReader.ReadString();
-                    Level0 = binaryReader.Read7BitEncodedInt32();
-                    Level1 = binaryReader.Read7BitEncodedInt32();
-                    Level2 = binaryReader.Read7BitEncodedInt32();
-                    Level3 = binaryReader.Read7BitEncodedInt32();
-                    Level4 = binaryReader.Read7BitEncodedInt32();
-                    Level5 = binaryReader.Read7BitEncodedInt32();
-                    Level6 = binaryReader.Read7BitEncodedInt32();
-                    Level7 = binaryReader.Read7BitEncodedInt32();
-                    Level8 = binaryReader.Read7BitEncodedInt32();
-                    Level9 = binaryReader.Read7BitEncodedInt32();
+                    Level0 = binaryReader.ReadSingle();
+                    Level1 = binaryReader.ReadSingle();
+                    Level2 = binaryReader.ReadSingle();
+                    Level3 = binaryReader.ReadSingle();
+                    Level4 = binaryReader.ReadSingle();
+                    Level5 = binaryReader.ReadSingle();
+                    Level6 = binaryReader.ReadSingle();
+                    Level7 = binaryReader.ReadSingle();
+                    Level8 = binaryReader.ReadSingle();
+                    Level9 = binaryReader.ReadSingle();
                 }
             }
 
@@ -187,11 +187,11 @@ namespace Game.Scripts.Main.Runtime.DataTable
             return true;
         }
 
-        private KeyValuePair<int, int>[] level;
+        private KeyValuePair<int, float>[] level;
 
         public int LevelCount => level.Length;
 
-        public int GetLevel(int id)
+        public float GetLevel(int id)
         {
             foreach (var i in level)
             {
@@ -204,7 +204,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
             throw new GameFrameworkException(Utility.Text.Format("GetLevel with invalid id '{0}'.", id));
         }
 
-        public int GetLevelAt(int index)
+        public float GetLevelAt(int index)
         {
             if (index < 0 || index >= level.Length)
             {
@@ -216,7 +216,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
 
         private void GeneratePropertyArray()
         {
-            level = new KeyValuePair<int, int>[]
+            level = new KeyValuePair<int, float>[]
             {
                 new (0, Level0),
                 new (1, Level1),

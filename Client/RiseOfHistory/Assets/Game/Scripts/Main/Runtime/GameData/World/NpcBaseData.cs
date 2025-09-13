@@ -7,7 +7,7 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 {
     public class NpcBaseData
     {
-        private long id;
+        public long ID { get; set; }
 
         public SexType SexType { get; set; } = SexType.Male;
 

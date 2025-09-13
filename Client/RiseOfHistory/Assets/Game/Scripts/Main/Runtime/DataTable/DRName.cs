@@ -13,14 +13,14 @@ using UnityGameFramework.Runtime;
 namespace Game.Scripts.Main.Runtime.DataTable
 {
     /// <summary>
-    /// 头像表。
+    /// 名字表。
     /// </summary>
-    public class DRAvatar : DataRowBase
+    public class DRName : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取头像编号。
+        /// 获取名字编号。
         /// </summary>
         public override int Id => m_Id;
 
@@ -28,33 +28,6 @@ namespace Game.Scripts.Main.Runtime.DataTable
         /// 获取名字。
         /// </summary>
         public string Name
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取路径。
-        /// </summary>
-        public string Path
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取姓别。
-        /// </summary>
-        public int Sex
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取权重。
-        /// </summary>
-        public float Weight
         {
             get;
             private set;
@@ -73,9 +46,6 @@ namespace Game.Scripts.Main.Runtime.DataTable
             m_Id = int.Parse(columnStrings[index++]);
             index++;
             Name = columnStrings[index++];
-            Path = columnStrings[index++];
-            Sex = int.Parse(columnStrings[index++]);
-            Weight = float.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -89,9 +59,6 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
-                    Path = binaryReader.ReadString();
-                    Sex = binaryReader.Read7BitEncodedInt32();
-                    Weight = binaryReader.ReadSingle();
                 }
             }
 

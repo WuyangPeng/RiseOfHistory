@@ -42,6 +42,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "Technique",
             "Talent",
             "Surname",
+            "Name",
             "Sect",
             "Resource",
             "ResourceLevel",

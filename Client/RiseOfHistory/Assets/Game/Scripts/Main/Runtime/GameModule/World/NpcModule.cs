@@ -6,6 +6,16 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
     [Module]
     public class NpcModule : BaseModule
     {
-        private NpcData npcData = new();
+        private readonly NpcData npcData = new();
+
+        public long GetNextNpcId()
+        {
+            return npcData.GetNextNpcId();
+        }
+
+        public void AddNpc(NpcBaseData npcBaseData)
+        {
+            npcData.AddNpc(npcBaseData);
+        }
     }
 }
