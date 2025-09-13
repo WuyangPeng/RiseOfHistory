@@ -319,6 +319,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             return userData.Name;
         }
 
+        public int GetSurname()
+        {
+            return userData.Surname;
+        }
 
         public void RemoveTalent(int id)
         {

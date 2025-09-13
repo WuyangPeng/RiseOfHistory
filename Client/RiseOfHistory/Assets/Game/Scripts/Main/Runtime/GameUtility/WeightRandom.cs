@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Game.Scripts.Main.Runtime.RuntimeException;
 
 namespace Game.Scripts.Main.Runtime.GameUtility
@@ -116,6 +117,12 @@ namespace Game.Scripts.Main.Runtime.GameUtility
                 {
                     result.Add(Roll());
                 }
+                return result;
+            }
+
+            if (nodes.Count <= count)
+            {
+                result.AddRange(nodes.Select(node => node.Value));
                 return result;
             }
 

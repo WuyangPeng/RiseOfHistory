@@ -28,9 +28,9 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 
         public HashSet<int> Talent { get; set; } = new();
 
-        public int Name { get; set; } = 1;
-
         public int Surname { get; set; } = 1;
+
+        public int Name { get; set; } = 1;
 
         private readonly PropertyData propertyData = new PropertyData();
     }
