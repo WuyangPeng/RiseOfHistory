@@ -14,9 +14,9 @@ namespace Game.Scripts.Main.Runtime.LoadGame
             return initGameType switch
             {
                 InitGameType.Map => new MapLoadGame(),
-                InitGameType.Npc => new NpcLoadGame(),
                 InitGameType.Sect => new SectLoadGame(),
                 InitGameType.Family => new FamilyLoadGame(),
+                InitGameType.Npc => new NpcLoadGame(),
                 InitGameType.MartialArts => new MartialArtsLoadGame(),
                 InitGameType.End => new NullLoadGame(),
                 _ => throw new GameException($"InitGameType = {initGameType} is not exist.")
