@@ -115,7 +115,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
             foreach (var element in campTable)
             {
-                if (element.Total)
+                if ((element.Group & (int)MoralityType.Empty) != 0 && (element.Group & (int)RulesType.Empty) != 0)
                 {
                     campWeightRandom.Add(element.Id, element.Weight);
                 }

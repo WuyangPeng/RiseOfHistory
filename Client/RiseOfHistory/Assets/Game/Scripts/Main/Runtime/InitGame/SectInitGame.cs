@@ -1,14 +1,13 @@
 ﻿using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.GameModule.World;
-using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.InitGame
 {
     public class SectInitGame : InitGameBase
     {
         private readonly UserModule userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-        private readonly NpcModule npcModule = GameEntry.ModuleComponent.GetModule<NpcModule>();
+        private readonly SectModule sectModule = GameEntry.ModuleComponent.GetModule<SectModule>();
 
         public override void InitGame()
         {

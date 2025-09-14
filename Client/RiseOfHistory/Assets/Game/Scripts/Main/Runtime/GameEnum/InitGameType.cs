@@ -7,8 +7,8 @@ namespace Game.Scripts.Main.Runtime.GameEnum
         [InspectorName("开始")] Begin = 0,
 
         [InspectorName("地图")] Map = 0,
-        [InspectorName("宗门")] Sect = 1,
-        [InspectorName("家族")] Family = 2,
+        [InspectorName("家族")] Family = 1,
+        [InspectorName("宗门")] Sect = 2,
         [InspectorName("Npc")] Npc = 3,
         [InspectorName("功法")] MartialArts = 4,
 

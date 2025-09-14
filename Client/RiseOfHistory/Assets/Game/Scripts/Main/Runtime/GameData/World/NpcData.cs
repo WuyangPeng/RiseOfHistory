@@ -8,7 +8,7 @@ namespace Game.Scripts.Main.Runtime.GameData.World
     public class NpcData
     {
         private long currentNpcId = Constant.Game.PlayerId;
-        private readonly Dictionary<long, NpcBaseData> npcBaseDatContainer = new();
+        private readonly Dictionary<long, NpcBaseData> npcBaseDataContainer = new();
 
         public long GetNextNpcId()
         {
@@ -17,7 +17,7 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 
         public NpcBaseData GetNpcBaseData(long id)
         {
-            if (npcBaseDatContainer.TryGetValue(id, out var value))
+            if (npcBaseDataContainer.TryGetValue(id, out var value))
             {
                 return value;
             }
@@ -27,7 +27,7 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 
         public void AddNpc(NpcBaseData npcBaseData)
         {
-            npcBaseDatContainer.Add(npcBaseData.ID, npcBaseData);
+            npcBaseDataContainer.Add(npcBaseData.ID, npcBaseData);
         }
     }
 }

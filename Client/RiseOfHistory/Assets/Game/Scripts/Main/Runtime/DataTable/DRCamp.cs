@@ -52,9 +52,9 @@ namespace Game.Scripts.Main.Runtime.DataTable
         }
 
         /// <summary>
-        /// 获取总。
+        /// 获取组。
         /// </summary>
-        public bool Total
+        public int Group
         {
             get;
             private set;
@@ -75,7 +75,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
             Name = columnStrings[index++];
             Description = columnStrings[index++];
             Weight = float.Parse(columnStrings[index++]);
-            Total = bool.Parse(columnStrings[index++]);
+            Group = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -91,7 +91,7 @@ namespace Game.Scripts.Main.Runtime.DataTable
                     Name = binaryReader.ReadString();
                     Description = binaryReader.ReadString();
                     Weight = binaryReader.ReadSingle();
-                    Total = binaryReader.ReadBoolean();
+                    Group = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

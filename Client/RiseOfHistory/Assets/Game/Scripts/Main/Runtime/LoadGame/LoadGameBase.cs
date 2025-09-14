@@ -14,8 +14,8 @@ namespace Game.Scripts.Main.Runtime.LoadGame
             return initGameType switch
             {
                 InitGameType.Map => new MapLoadGame(),
-                InitGameType.Sect => new SectLoadGame(),
                 InitGameType.Family => new FamilyLoadGame(),
+                InitGameType.Sect => new SectLoadGame(),
                 InitGameType.Npc => new NpcLoadGame(),
                 InitGameType.MartialArts => new MartialArtsLoadGame(),
                 InitGameType.End => new NullLoadGame(),
