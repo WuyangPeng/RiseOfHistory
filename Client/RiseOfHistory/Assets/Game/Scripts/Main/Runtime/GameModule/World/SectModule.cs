@@ -1,5 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameModule.Base;
+using System.Collections.Generic;
 
 namespace Game.Scripts.Main.Runtime.GameModule.World
 {
@@ -26,6 +27,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         public void Init(SectData data)
         {
             sectData = data;
+        }
+
+        public List<SectBaseData> GetSects()
+        {
+            return sectData.GetSects();
         }
     }
 }

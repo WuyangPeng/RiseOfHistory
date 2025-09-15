@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Game.Scripts.Main.Runtime.Definition.Constant;
 using Game.Scripts.Main.Runtime.RuntimeException;
 using UnityEngine;
@@ -17,12 +18,7 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 
         public NpcBaseData GetNpcBaseData(long id)
         {
-            if (npcBaseDataContainer.TryGetValue(id, out var value))
-            {
-                return value;
-            }
-
-            throw new GameException($"npc id = {id} is not exist");
+            return npcBaseDataContainer.TryGetValue(id, out var value) ? value : throw new GameException($"npc id = {id} is not exist");
         }
 
         public void AddNpc(NpcBaseData npcBaseData)
@@ -33,6 +29,11 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         public int GetNpcCount()
         {
             return npcBaseDataContainer.Count;
+        }
+
+        public List<NpcBaseData> GetNpc()
+        {
+            return npcBaseDataContainer.Select(element => element.Value).ToList();
         }
     }
 }

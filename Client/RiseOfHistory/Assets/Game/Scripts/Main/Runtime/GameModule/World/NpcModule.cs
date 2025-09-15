@@ -1,5 +1,7 @@
 ﻿using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameModule.Base;
+using Game.Scripts.Main.Runtime.RuntimeException;
+using System.Collections.Generic;
 
 namespace Game.Scripts.Main.Runtime.GameModule.World
 {
@@ -31,6 +33,17 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         public void Init(NpcData data)
         {
             npcData = data;
+        }
+
+
+        public List<NpcBaseData> GetNpc()
+        {
+            return npcData.GetNpc();
+        }
+
+        public NpcBaseData GetNpcBaseData(long id)
+        {
+            return npcData.GetNpcBaseData(id);
         }
     }
 }

@@ -8,10 +8,13 @@ using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.GameUtility;
 using Game.Scripts.Main.Runtime.RuntimeException;
 using Game.Scripts.Main.Runtime.SaveData;
-using System.Collections.Generic;
-using System.Text;
 using GameFramework;
-using Unity.VisualScripting; 
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Unity.VisualScripting;
+using static UnityEditor.Rendering.FilterWindow;
+using static UnityEngine.ParticleSystem;
 
 namespace Game.Scripts.Main.Runtime.InitGame
 {
@@ -20,6 +23,8 @@ namespace Game.Scripts.Main.Runtime.InitGame
         private readonly UserModule userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
         private readonly NpcModule npcModule = GameEntry.ModuleComponent.GetModule<NpcModule>();
         private readonly FamilyModule familyModule = GameEntry.ModuleComponent.GetModule<FamilyModule>();
+        private readonly SectModule sectModule = GameEntry.ModuleComponent.GetModule<SectModule>();
+        private readonly MapModule mapModule = GameEntry.ModuleComponent.GetModule<MapModule>();
         private readonly Dictionary<SexType, WeightRandom<int>> avatarWeightRandom = new();
         private readonly Dictionary<SexType, WeightRandom<int>> nameWeightRandom = new();
         private readonly WeightRandom<int> campWeightRandom = new();
@@ -60,10 +65,10 @@ namespace Game.Scripts.Main.Runtime.InitGame
             InitSurname();
             InitName();
             InitFamily();
-            InitNpc(); 
+            InitNpc();
             InitNpcSect();
             InitNpcMap();
-        } 
+        }
 
         private void InitName()
         {
@@ -192,7 +197,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
                     npcBaseData.Talent.AddRange(talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
 
                     npcModule.AddNpc(npcBaseData);
-
+                    mapModule.SetChunkByFamilyId(npcBaseData.ID, element.ID);
 
                     if (npcModule.GetNpcCount() > initNpcCount)
                     {
@@ -287,16 +292,52 @@ namespace Game.Scripts.Main.Runtime.InitGame
         private static SexType GetSexType()
         {
             return 0.5 <= UnityEngine.Random.Range(0.0f, 1.0f) ? SexType.Female : SexType.Male;
-        } 
+        }
 
         private void InitNpcSect()
         {
+            WeightRandom<long> npcWeightRandom = new();
+            npcWeightRandom.Add(Constant.Game.PlayerId, 1);
+            foreach (var element in npcModule.GetNpc())
+            {
+                npcWeightRandom.Add(element.ID, 1);
+            }
 
+            foreach (var element in sectModule.GetSects())
+            {
+                for (var i = 0; i < Constant.Game.SectNpcRandomCount; i++)
+                {
+                    if (npcWeightRandom.Count == 0)
+                    {
+                        return;
+                    }
+
+                    var id = npcWeightRandom.Roll();
+                    if (id == Constant.Game.PlayerId)
+                    {
+                        userModule.SetSect(element.ID);
+                    }
+                    else
+                    {
+                        var npcBaseData = npcModule.GetNpcBaseData(id);
+                        if (npcBaseData != null)
+                        {
+                            npcBaseData.SectId = element.ID;
+                            mapModule.SetChunkBySectId(npcBaseData.ID, npcBaseData.SectId);
+                        }
+                    }
+
+                    npcWeightRandom.Remove(id);
+                }
+            }
         }
 
         private void InitNpcMap()
         {
-
+            foreach (var element in npcModule.GetNpc().Where(element => !mapModule.HasEntity(element.ID)))
+            {
+                mapModule.AddEntityToRandomChunk(element.ID);
+            }
         }
 
         public override void SaveGame()

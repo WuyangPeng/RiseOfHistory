@@ -37,5 +37,28 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         {
             mapData = data;
         }
+
+        public void SetChunkByFamilyId(long entityId, long familyId)
+        {
+            mapData.SetChunkByFamilyId(entityId, familyId);
+        }
+
+        public void SetChunkBySectId(long entityId, long sectId)
+        {
+            mapData.SetChunkBySectId(entityId, sectId);
+
+        }
+
+
+        public bool HasEntity(long entityId)
+        {
+            return mapData.HasEntity(entityId);
+
+        }
+
+        public void AddEntityToRandomChunk(long entityId)
+        {
+            mapData.AddEntityToRandomChunk(entityId);
+        }
     }
 }

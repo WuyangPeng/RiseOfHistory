@@ -367,7 +367,22 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
 
         public void SetFamilyId(long id)
         {
-             userData.FamilyId = id;
+            userData.FamilyId = id;
+        }
+
+        public void SetSect(long id)
+        {
+            userData.SectId = id;
+        }
+
+        public long GetFamilyId()
+        {
+            return userData.FamilyId;
+        }
+
+        public long GetSectId()
+        {
+            return userData.SectId;
         }
     }
 }

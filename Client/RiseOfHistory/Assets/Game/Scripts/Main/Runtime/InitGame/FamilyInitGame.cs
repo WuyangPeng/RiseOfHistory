@@ -7,6 +7,7 @@ using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.GameUtility;
 using Game.Scripts.Main.Runtime.SaveData;
 using System.Text;
+using Game.Scripts.Main.Runtime.Definition.Constant;
 using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.InitGame
@@ -76,6 +77,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
             surnameWeightRandom.Remove(familyBaseData.Surname);
             userModule.SetFamilyId(familyBaseData.ID);
+            mapModule.SetChunkByFamilyId(Constant.Game.PlayerId, familyBaseData.ID);
         }
 
         private void InitOtherFamily()

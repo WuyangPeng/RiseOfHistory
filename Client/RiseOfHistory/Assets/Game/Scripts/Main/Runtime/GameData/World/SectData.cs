@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Game.Scripts.Main.Runtime.RuntimeException;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
@@ -21,6 +22,11 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         public void AddSect(SectBaseData sectBaseData)
         {
             sectBaseDataContainer.Add(sectBaseData.ID, sectBaseData);
+        }
+
+        public List<SectBaseData> GetSects()
+        {
+            return sectBaseDataContainer.Select(element => element.Value).ToList();
         }
     }
 }

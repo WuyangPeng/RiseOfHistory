@@ -39,5 +39,23 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         {
             sect.Add(id);
         }
+
+        public bool HasFamily(long familyId)
+        {
+            return family.Contains(familyId);
+        }
+        public bool HasEntity(long entityId)
+        {
+            return entity.Contains(entityId);
+        }
+        public void AddEntity(long playerId)
+        {
+            entity.Add(playerId);
+        }
+
+        public bool HasSect(long sectId)
+        {
+            return sect.Contains(sectId);
+        }
     }
 }
