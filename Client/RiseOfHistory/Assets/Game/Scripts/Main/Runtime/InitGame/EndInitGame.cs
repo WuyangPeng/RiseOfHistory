@@ -1,6 +1,4 @@
-﻿ 
-
-using Game.Scripts.Main.Runtime.Base;
+﻿using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.GameModule.User; 
 using GameFramework;
 using System.Text;

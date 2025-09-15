@@ -59,8 +59,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
             var worldPosition = Owner.CachedTransform.position + Vector3.forward;
             var screenPosition = Base.GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
 
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)mParentCanvas.transform, screenPosition,
-                    mParentCanvas.worldCamera, out var position))
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)mParentCanvas.transform, screenPosition, mParentCanvas.worldCamera, out var position))
             {
                 cachedTransform.localPosition = position;
             }
@@ -87,7 +86,10 @@ namespace Game.Scripts.Main.Runtime.HPBar
             }
 
             cachedCanvasGroup = GetComponent<CanvasGroup>();
-            if (cachedCanvasGroup != null) return;
+            if (cachedCanvasGroup != null)
+            {
+                return;
+            }
             Log.Error("CanvasGroup is invalid.");
         }
 

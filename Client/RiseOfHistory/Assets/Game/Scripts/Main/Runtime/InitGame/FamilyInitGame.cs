@@ -28,8 +28,6 @@ namespace Game.Scripts.Main.Runtime.InitGame
             InitPlayerFamily();
             InitOtherFamily();
         }
-
-
         private void InitMorality()
         {
             var campTable = GameEntry.DataTable.GetDataTable<DRCamp>();

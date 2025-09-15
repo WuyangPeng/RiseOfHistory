@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Game.Scripts.Main.Runtime.InitGame
+﻿namespace Game.Scripts.Main.Runtime.InitGame
 {
     public class NullInitGame : InitGameBase
     {

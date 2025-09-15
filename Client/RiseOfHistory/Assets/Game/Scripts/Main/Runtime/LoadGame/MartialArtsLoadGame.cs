@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Game.Scripts.Main.Runtime.LoadGame
+﻿namespace Game.Scripts.Main.Runtime.LoadGame
 {
     public class MartialArtsLoadGame : LoadGameBase
     {

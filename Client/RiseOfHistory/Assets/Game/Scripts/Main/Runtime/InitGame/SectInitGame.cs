@@ -25,7 +25,6 @@ namespace Game.Scripts.Main.Runtime.InitGame
             DoInitGame();
         }
 
-
         private void InitMorality()
         {
             var campTable = GameEntry.DataTable.GetDataTable<DRCamp>();
