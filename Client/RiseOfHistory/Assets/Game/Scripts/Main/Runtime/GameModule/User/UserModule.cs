@@ -364,5 +364,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             userData = initUserData;
             propertyData = initPropertyData;
         }
+
+        public void SetFamilyId(long id)
+        {
+             userData.FamilyId = id;
+        }
     }
 }

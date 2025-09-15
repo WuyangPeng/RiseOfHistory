@@ -11,8 +11,7 @@ using Game.Scripts.Main.Runtime.SaveData;
 using System.Collections.Generic;
 using System.Text;
 using GameFramework;
-using Unity.VisualScripting;
-using static UnityEngine.Rendering.DebugUI;
+using Unity.VisualScripting; 
 
 namespace Game.Scripts.Main.Runtime.InitGame
 {
@@ -61,8 +60,10 @@ namespace Game.Scripts.Main.Runtime.InitGame
             InitSurname();
             InitName();
             InitFamily();
-            InitNpc();
-        }
+            InitNpc(); 
+            InitNpcSect();
+            InitNpcMap();
+        } 
 
         private void InitName()
         {
@@ -85,7 +86,6 @@ namespace Game.Scripts.Main.Runtime.InitGame
             nameWeightRandom.Add(SexType.Male, maleWeightRandom);
             nameWeightRandom.Add(SexType.Female, femaleWeightRandom);
         }
-
 
         private void InitExistName()
         {
@@ -185,8 +185,10 @@ namespace Game.Scripts.Main.Runtime.InitGame
                         RaceType = element.RaceType,
                         Surname = element.Surname,
                         Name = GetName(element.Surname, sexType),
+                        FamilyId = element.ID
                     };
 
+                    AddExistName(npcBaseData.Surname, npcBaseData.Name);
                     npcBaseData.Talent.AddRange(talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
 
                     npcModule.AddNpc(npcBaseData);
@@ -270,6 +272,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
                     Name = GetName(surname, sexType),
                 };
 
+                AddExistName(npcBaseData.Surname, npcBaseData.Name);
                 npcBaseData.Talent.AddRange(talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
 
                 npcModule.AddNpc(npcBaseData);
@@ -284,6 +287,16 @@ namespace Game.Scripts.Main.Runtime.InitGame
         private static SexType GetSexType()
         {
             return 0.5 <= UnityEngine.Random.Range(0.0f, 1.0f) ? SexType.Female : SexType.Male;
+        } 
+
+        private void InitNpcSect()
+        {
+
+        }
+
+        private void InitNpcMap()
+        {
+
         }
 
         public override void SaveGame()

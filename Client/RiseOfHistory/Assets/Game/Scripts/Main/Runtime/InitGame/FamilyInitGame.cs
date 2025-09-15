@@ -77,6 +77,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
             mapModule.AddFamilyToRandomChunk(familyBaseData);
 
             surnameWeightRandom.Remove(familyBaseData.Surname);
+            userModule.SetFamilyId(familyBaseData.ID);
         }
 
         private void InitOtherFamily()

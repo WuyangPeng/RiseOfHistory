@@ -33,5 +33,10 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         public int Name { get; set; } = 1;
 
         private readonly PropertyData propertyData = new PropertyData();
+
+
+        public long FamilyId { get; set; }
+
+        public long SectId { get; set; }
     }
 }

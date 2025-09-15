@@ -46,6 +46,10 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public bool InitWorld { get; set; } = false;
 
+        public long FamilyId { get; set; }
+
+        public long SectId { get; set; }
+
         private int age;
 
         public UserData()
