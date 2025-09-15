@@ -5,6 +5,9 @@ using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.GameUtility;
+using Game.Scripts.Main.Runtime.SaveData;
+using System.Text;
+using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.InitGame
 {
@@ -72,7 +75,15 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
         public override void SaveGame()
         {
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + userModule.GetSaveIndex(), "SectData.idx");
+            var sectSaveData = new SectSaveData
+            {
+                Data = sectModule.GetSectData()
+            };
 
+            var json = Utility.Json.ToJson(sectSaveData);
+
+            fileSystems.WriteFile("GameSaves", Encoding.UTF8.GetBytes(json));
         }
     }
 }

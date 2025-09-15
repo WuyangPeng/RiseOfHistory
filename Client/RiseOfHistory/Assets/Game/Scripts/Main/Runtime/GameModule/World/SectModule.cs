@@ -17,5 +17,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         {
             sectData.AddSect(sectBaseData);
         }
+
+        public SectData GetSectData()
+        {
+            return sectData;
+        }
     }
 }
