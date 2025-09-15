@@ -16,7 +16,7 @@ namespace Game.Scripts.Main.Runtime.GameUtility
 
         public static string GetDictionaryAsset(string assetName, bool fromBytes)
         {
-            return Utility.Text.Format("Assets/Game/Localization/{0}/Dictionaries/{1}.{2}", global::Game.Scripts.Main.Runtime.Base.GameEntry.Localization.Language, assetName, fromBytes ? "bytes" : "xml");
+            return Utility.Text.Format("Assets/Game/Localization/{0}/Dictionaries/{1}.{2}", Base.GameEntry.Localization.Language, assetName, fromBytes ? "bytes" : "xml");
         }
 
         public static string GetFontAsset(string assetName)

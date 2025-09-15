@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
-using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.Definition.Enum;
 using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityLogic;
@@ -15,8 +15,8 @@ namespace Game.Scripts.Main.Runtime.GameUtility
     /// </summary>
     public static class AIUtility
     {
-        private static readonly Dictionary<CampPair, RelationType> CampPairToRelation = new Dictionary<CampPair, RelationType>();
-        private static readonly Dictionary<KeyValuePair<CampType, RelationType>, CampType[]> CampAndRelationToCamps = new Dictionary<KeyValuePair<CampType, RelationType>, CampType[]>();
+        private static readonly Dictionary<CampPair, RelationType> CampPairToRelation = new();
+        private static readonly Dictionary<(CampType, RelationType), CampType[]> CampAndRelationToCamps = new();
 
         static AIUtility()
         {
@@ -58,13 +58,10 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         {
             if (first > second)
             {
-                CampType temp = first;
-                first = second;
-                second = temp;
+                (first, second) = (second, first);
             }
 
-            RelationType relationType;
-            if (CampPairToRelation.TryGetValue(new CampPair(first, second), out relationType))
+            if (CampPairToRelation.TryGetValue(new CampPair(first, second), out var relationType))
             {
                 return relationType;
             }
@@ -81,27 +78,17 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         /// <returns>满足条件的阵营数组。</returns>
         public static CampType[] GetCamps(CampType camp, RelationType relation)
         {
-            KeyValuePair<CampType, RelationType> key = new KeyValuePair<CampType, RelationType>(camp, relation);
-            CampType[] result = null;
-            if (CampAndRelationToCamps.TryGetValue(key, out result))
+            var key = (camp, relation);
+            if (CampAndRelationToCamps.TryGetValue(key, out var result))
             {
                 return result;
             }
 
             // TODO: GC Alloc
-            List<CampType> camps = new List<CampType>();
-            Array campTypes = Enum.GetValues(typeof(CampType));
-            for (int i = 0; i < campTypes.Length; i++)
-            {
-                CampType campType = (CampType)campTypes.GetValue(i);
-                if (GetRelation(camp, campType) == relation)
-                {
-                    camps.Add(campType);
-                }
-            }
+            var campTypes = Enum.GetValues(typeof(CampType));
 
             // TODO: GC Alloc
-            result = camps.ToArray();
+            result = campTypes.Cast<object>().Select((t, i) => (CampType)campTypes.GetValue(i)).Where(campType => GetRelation(camp, campType) == relation).ToArray();
             CampAndRelationToCamps[key] = result;
 
             return result;
@@ -113,8 +100,8 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         /// <returns>实体间的距离。</returns>
         public static float GetDistance(Entity.EntityLogic.Entity fromEntity, Entity.EntityLogic.Entity toEntity)
         {
-            Transform fromTransform = fromEntity.CachedTransform;
-            Transform toTransform = toEntity.CachedTransform;
+            var fromTransform = fromEntity.CachedTransform;
+            var toTransform = toEntity.CachedTransform;
             return (toTransform.position - fromTransform.position).magnitude;
         }
 
@@ -125,50 +112,60 @@ namespace Game.Scripts.Main.Runtime.GameUtility
                 return;
             }
 
-            TargetableObject target = other as TargetableObject;
+            var target = other as TargetableObject;
             if (target != null)
             {
-                ImpactData entityImpactData = entity.GetImpactData();
-                ImpactData targetImpactData = target.GetImpactData();
-                if (GetRelation(entityImpactData.Camp, targetImpactData.Camp) == RelationType.Friendly)
-                {
-                    return;
-                }
-
-                int entityDamageHP = CalcDamageHP(targetImpactData.Attack, entityImpactData.Defense);
-                int targetDamageHP = CalcDamageHP(entityImpactData.Attack, targetImpactData.Defense);
-
-                int delta = Mathf.Min(entityImpactData.Hp - entityDamageHP, targetImpactData.Hp - targetDamageHP);
-                if (delta > 0)
-                {
-                    entityDamageHP += delta;
-                    targetDamageHP += delta;
-                }
-
-                entity.ApplyDamage(target, entityDamageHP);
-                target.ApplyDamage(entity, targetDamageHP);
+                PerformCollision(entity, target);
                 return;
             }
 
-            Bullet bullet = other as Bullet;
+            var bullet = other as Bullet;
             if (bullet != null)
             {
-                ImpactData entityImpactData = entity.GetImpactData();
-                ImpactData bulletImpactData = bullet.GetImpactData();
-                if (GetRelation(entityImpactData.Camp, bulletImpactData.Camp) == RelationType.Friendly)
-                {
-                    return;
-                }
-
-                int entityDamageHP = CalcDamageHP(bulletImpactData.Attack, entityImpactData.Defense);
-
-                entity.ApplyDamage(bullet, entityDamageHP);
-                global::Game.Scripts.Main.Runtime.Base.GameEntry.Entity.HideEntity(bullet);
-                return;
+                PerformCollision(entity, bullet);
             }
+
         }
 
-        private static int CalcDamageHP(int attack, int defense)
+        private static void PerformCollision(TargetableObject entity, Bullet bullet)
+        {
+            var entityImpactData = entity.GetImpactData();
+            var bulletImpactData = bullet.GetImpactData();
+            if (GetRelation(entityImpactData.Camp, bulletImpactData.Camp) == RelationType.Friendly)
+            {
+                return;
+            }
+
+            var entityDamageHp = CalcDamageHp(bulletImpactData.Attack, entityImpactData.Defense);
+
+            entity.ApplyDamage(bullet, entityDamageHp);
+            Base.GameEntry.Entity.HideEntity(bullet);
+        }
+
+        private static void PerformCollision(TargetableObject entity, TargetableObject target)
+        {
+            var entityImpactData = entity.GetImpactData();
+            var targetImpactData = target.GetImpactData();
+            if (GetRelation(entityImpactData.Camp, targetImpactData.Camp) == RelationType.Friendly)
+            {
+                return;
+            }
+
+            var entityDamageHp = CalcDamageHp(targetImpactData.Attack, entityImpactData.Defense);
+            var targetDamageHp = CalcDamageHp(entityImpactData.Attack, targetImpactData.Defense);
+
+            var delta = Mathf.Min(entityImpactData.Hp - entityDamageHp, targetImpactData.Hp - targetDamageHp);
+            if (delta > 0)
+            {
+                entityDamageHp += delta;
+                targetDamageHp += delta;
+            }
+
+            entity.ApplyDamage(target, entityDamageHp);
+            target.ApplyDamage(entity, targetDamageHp);
+        }
+
+        private static int CalcDamageHp(int attack, int defense)
         {
             if (attack <= 0)
             {
@@ -184,31 +181,31 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         }
 
         [StructLayout(LayoutKind.Auto)]
-        private struct CampPair
+        private readonly struct CampPair : IEquatable<CampPair>
         {
-            private readonly CampType m_First;
-            private readonly CampType m_Second;
-
             public CampPair(CampType first, CampType second)
             {
-                m_First = first;
-                m_Second = second;
+                First = first;
+                Second = second;
             }
 
-            public CampType First
+            private CampType First { get; }
+
+            private CampType Second { get; }
+
+            public bool Equals(CampPair other)
             {
-                get
-                {
-                    return m_First;
-                }
+                return First == other.First && Second == other.Second;
             }
 
-            public CampType Second
+            public override bool Equals(object obj)
             {
-                get
-                {
-                    return m_Second;
-                }
+                return obj is CampPair other && Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine((int)First, (int)Second);
             }
         }
     }
