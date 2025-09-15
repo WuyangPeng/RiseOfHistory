@@ -6,7 +6,7 @@ using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.HPBar
 {
-    public class HpBarComponent1 : GameFrameworkComponent
+    public class HpBarComponent : GameFrameworkComponent
     {
         [SerializeField]
         private HPBarItem hpBarItemTemplate = null;
