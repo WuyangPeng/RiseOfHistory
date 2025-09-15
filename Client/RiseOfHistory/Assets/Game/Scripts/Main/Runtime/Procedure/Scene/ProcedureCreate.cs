@@ -32,17 +32,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             formComponent.OpenUIForm(form);
         }
-
-        protected override void OnInit(ProcedureOwner procedureOwner)
-        {
-            base.OnInit(procedureOwner);
-        }
-
-        protected override void OnDestroy(ProcedureOwner procedureOwner)
-        {
-            base.OnDestroy(procedureOwner);
-        }
-
+        
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);

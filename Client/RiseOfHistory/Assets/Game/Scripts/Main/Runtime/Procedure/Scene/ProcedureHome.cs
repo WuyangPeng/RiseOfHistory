@@ -10,22 +10,17 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureHome : ProcedureBase
     {
-        private readonly FormComponent formComponent = new FormComponent();
+        private readonly FormComponent formComponent = new();
 
 
         private const float GameOverDelayedSeconds = 2f;
 
-        private readonly Dictionary<GameMode, GameBase> m_Games = new Dictionary<GameMode, GameBase>();
-        private GameBase m_CurrentGame = null;
-        private bool m_GotoMenu = false;
-        private float m_GotoMenuDelaySeconds = 0f;
+        private readonly Dictionary<GameMode, GameBase> m_Games = new();
+        private GameBase m_CurrentGame;
+        private bool m_GotoMenu;
+        private float m_GotoMenuDelaySeconds;
 
         public override bool UseNativeDialog => false;
-
-        public void GotoMenu()
-        {
-            m_GotoMenu = true;
-        }
 
         protected override void OnInit(ProcedureOwner procedureOwner)
         {

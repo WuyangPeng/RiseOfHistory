@@ -13,7 +13,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         private const float DelayedSeconds = 2f;
 
-        private float gotoHomeDelaySeconds = 0f;
+        private float gotoHomeDelaySeconds;
 
         private InitGameType initGameType = InitGameType.Begin;
 

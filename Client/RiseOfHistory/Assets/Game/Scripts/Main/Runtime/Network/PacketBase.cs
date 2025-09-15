@@ -4,7 +4,7 @@ namespace Game.Scripts.Main.Runtime.Network
 {
     public abstract class PacketBase : GameFramework.Network.Packet, IExtensible
     {
-        private IExtension m_ExtensionObject = null;
+        private IExtension extensionObject;
 
         public abstract PacketType PacketType
         {
@@ -13,7 +13,7 @@ namespace Game.Scripts.Main.Runtime.Network
 
         IExtension IExtensible.GetExtensionObject(bool createIfMissing)
         {
-            return Extensible.GetExtensionObject(ref m_ExtensionObject, createIfMissing);
+            return Extensible.GetExtensionObject(ref extensionObject, createIfMissing);
         }
     }
 }

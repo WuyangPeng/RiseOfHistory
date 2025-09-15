@@ -2,15 +2,11 @@
 using Game.Scripts.Main.Runtime.SaveData;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIForm;
-using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework;
-using GameFramework.FileSystem;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using Game.Scripts.Main.Runtime.GameModule.User;
-using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
@@ -20,8 +16,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
     public class ProcedureMenu : ProcedureBase
     {
         private int m_NextSceneId = 0;
-        private readonly FormComponent formComponent = new FormComponent();
-        private readonly List<HeadSaveData> headData = new List<HeadSaveData>();
+        private readonly FormComponent formComponent = new();
+        private readonly List<HeadSaveData> headData = new();
 
         public override bool UseNativeDialog => false;
 

@@ -14,8 +14,8 @@ namespace Game.Scripts.Main.Runtime.Procedure
     public class ProcedureChangeScene : ProcedureBase
     {
         private SceneType sceneType = SceneType.Home;
-        private bool m_IsChangeSceneComplete = false;
-        private int m_BackgroundMusicId = 0;
+        private bool m_IsChangeSceneComplete;
+        private int m_BackgroundMusicId;
 
         public override bool UseNativeDialog => false;
 

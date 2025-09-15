@@ -14,9 +14,9 @@ namespace Game.Scripts.Main.Runtime.Network
 {
     public class NetworkChannelHelper : INetworkChannelHelper
     {
-        private readonly Dictionary<int, Type> m_ServerToClientPacketTypes = new Dictionary<int, Type>();
-        private readonly MemoryStream m_CachedStream = new MemoryStream(1024 * 8);
-        private INetworkChannel m_NetworkChannel = null;
+        private readonly Dictionary<int, Type> m_ServerToClientPacketTypes = new();
+        private readonly MemoryStream m_CachedStream = new(1024 * 8);
+        private INetworkChannel m_NetworkChannel;
 
         /// <summary>
         /// 获取消息包头长度。
