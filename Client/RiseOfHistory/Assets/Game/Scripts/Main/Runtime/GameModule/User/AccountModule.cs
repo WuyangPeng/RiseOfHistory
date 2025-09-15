@@ -7,7 +7,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
     [Module]
     public class AccountModule : BaseModule
     {
-        private AccountData accountData = new AccountData();
+        private readonly AccountData accountData = new AccountData();
 
         public void Clear()
         {

@@ -13,13 +13,13 @@ namespace Game.Scripts.Main.Runtime.GameData.User
         public int SaveIndex { get; set; } = 0;
         public GameDifficultyType GameDifficultyType { get; set; } = GameDifficultyType.Mortal;
 
-        public int InitMapSize { get; set; } = 0;
+        public int InitMapSize { get; set; }
 
-        public int InitNpcCount { get; set; } = 0;
+        public int InitNpcCount { get; set; }
 
-        public int InitSectCount { get; set; } = 0;
+        public int InitSectCount { get; set; }
 
-        public int InitFamilyCount { get; set; } = 0;
+        public int InitFamilyCount { get; set; }
 
         public SexType SexType { get; set; } = SexType.Male;
 

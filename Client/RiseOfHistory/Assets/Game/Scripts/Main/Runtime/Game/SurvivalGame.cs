@@ -8,7 +8,7 @@ namespace Game.Scripts.Main.Runtime.Game
 {
     public class SurvivalGame : GameBase
     {
-        private float mElapseSeconds = 0f;
+        private float mElapseSeconds;
 
         public override GameMode GameMode => GameMode.Survival;
 
@@ -17,7 +17,10 @@ namespace Game.Scripts.Main.Runtime.Game
             base.Update(elapseSeconds, realElapseSeconds);
 
             mElapseSeconds += elapseSeconds;
-            if (mElapseSeconds < 1f) return;
+            if (mElapseSeconds < 1f)
+            {
+                return;
+            }
 
             mElapseSeconds = 0f;
             var dtAsteroid = Base.GameEntry.DataTable.GetDataTable<DRAsteroid>();

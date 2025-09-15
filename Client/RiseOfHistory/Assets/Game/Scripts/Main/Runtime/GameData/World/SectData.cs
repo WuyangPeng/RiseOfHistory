@@ -3,9 +3,9 @@ using Game.Scripts.Main.Runtime.RuntimeException;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
 {
-    public class SectData 
+    public class SectData
     {
-        private long currentSectId = 0;
+        private long currentSectId;
         private readonly Dictionary<long, SectBaseData> sectBaseDataContainer = new();
 
         public long GetNextSectId()
