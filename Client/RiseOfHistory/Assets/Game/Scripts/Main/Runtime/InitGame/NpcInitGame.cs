@@ -13,8 +13,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Unity.VisualScripting;
-using static UnityEditor.Rendering.FilterWindow;
-using static UnityEngine.ParticleSystem;
 
 namespace Game.Scripts.Main.Runtime.InitGame
 {
