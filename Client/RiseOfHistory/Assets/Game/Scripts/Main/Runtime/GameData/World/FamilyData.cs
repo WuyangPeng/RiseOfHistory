@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
 {
-    public class FamilyData  
+    public class FamilyData
     {
         private long currentFamilyId = 0;
         private readonly Dictionary<long, FamilyBaseData> familyBaseDataContainer = new();
@@ -27,6 +27,11 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         public List<FamilyBaseData> GetFamilies()
         {
             return familyBaseDataContainer.Select(element => element.Value).ToList();
+        }
+
+        public void SetCurrentFamilyId(long id)
+        {
+            currentFamilyId = id;
         }
     }
 }

@@ -29,9 +29,19 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
             return familyData.GetFamilies();
         }
 
-        public void Init(FamilyData data)
+
+        public long GetCurrentFamilyId()
         {
-            familyData = data;
+            return familyData.GetNextFamilyId();
+        }
+
+        public void Init(long currentFamilyId, List<FamilyBaseData> familyBaseDataContainer)
+        {
+            familyData.SetCurrentFamilyId(currentFamilyId);
+            foreach (var familyBaseData in familyBaseDataContainer)
+            {
+                familyData.AddFamily(familyBaseData);
+            }
         }
     }
 }

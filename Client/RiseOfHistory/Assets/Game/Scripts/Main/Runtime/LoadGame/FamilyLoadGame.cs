@@ -3,7 +3,7 @@ using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.SaveData;
 using System.Text;
 using Game.Scripts.Main.Runtime.Base;
-using GameFramework; 
+using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.LoadGame
 {
@@ -25,7 +25,7 @@ namespace Game.Scripts.Main.Runtime.LoadGame
             var json = Encoding.UTF8.GetString(bytes);
             var data = Utility.Json.ToObject<FamilySaveData>(json);
 
-            familyModule.Init(data.Data);
+            familyModule.Init(data.CurrentFamilyId, data.FamilyBaseDataContainer);
         }
     }
 }

@@ -18,6 +18,8 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
         public override void SaveGame()
         {
+            userModule.SetInitWorld();
+
             var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + userModule.GetSaveIndex(), "UserData.idx");
             var userSaveData = new UserSavaData
             {
@@ -28,8 +30,6 @@ namespace Game.Scripts.Main.Runtime.InitGame
             var json = Utility.Json.ToJson(userSaveData);
 
             fileSystems.WriteFile("GameSaves", Encoding.UTF8.GetBytes(json));
-
-            userModule.SetInitWorld();
         }
     }
 }

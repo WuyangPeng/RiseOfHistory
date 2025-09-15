@@ -109,7 +109,8 @@ namespace Game.Scripts.Main.Runtime.InitGame
             var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + userModule.GetSaveIndex(), "FamilyData.idx");
             var familySaveData = new FamilySaveData
             {
-                Data = familyModule.GetFamilyData()
+                CurrentFamilyId = familyModule.GetCurrentFamilyId(),
+                FamilyBaseDataContainer = familyModule.GetFamilies()
             };
 
             var json = Utility.Json.ToJson(familySaveData);
