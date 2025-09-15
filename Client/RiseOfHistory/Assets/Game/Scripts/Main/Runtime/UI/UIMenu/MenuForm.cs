@@ -58,7 +58,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            quitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer); 
+            quitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
         }
 
         protected override void OnClose(bool isShutdown, object userData)

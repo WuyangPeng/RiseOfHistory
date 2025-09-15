@@ -72,7 +72,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
             if (!userModule.IsInitWorld())
             {
-                for (var i = InitGameType.Begin; i < InitGameType.End; ++i)
+                for (var i = InitGameType.Begin; i <= InitGameType.End; ++i)
                 {
                     var initGame = InitGameBase.Create(i);
                     initGame.SaveGame();
