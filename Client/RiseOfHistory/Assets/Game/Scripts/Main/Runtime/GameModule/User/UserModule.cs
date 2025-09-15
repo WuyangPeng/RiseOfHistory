@@ -348,5 +348,15 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
         {
             userData.InitWorld = true;
         }
+
+        public PropertyData GetPropertyData()
+        {
+            return propertyData;
+        }
+
+        public UserData GetUserData()
+        {
+            return userData;
+        }
     }
 }

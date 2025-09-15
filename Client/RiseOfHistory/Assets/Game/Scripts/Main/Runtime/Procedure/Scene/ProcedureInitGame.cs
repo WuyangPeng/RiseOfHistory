@@ -72,8 +72,6 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
             if (!userModule.IsInitWorld())
             {
-                userModule.SetInitWorld();
-
                 for (var i = InitGameType.Begin; i < InitGameType.End; ++i)
                 {
                     var initGame = InitGameBase.Create(i);

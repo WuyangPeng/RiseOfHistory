@@ -17,5 +17,15 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         {
             npcData.AddNpc(npcBaseData);
         }
+
+        public int GetNpcCount()
+        {
+            return npcData.GetNpcCount();
+        }
+
+        public NpcData GetNpcData()
+        {
+            return npcData;
+        }
     }
 }

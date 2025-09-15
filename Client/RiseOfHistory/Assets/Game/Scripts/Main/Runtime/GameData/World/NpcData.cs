@@ -29,5 +29,10 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         {
             npcBaseDataContainer.Add(npcBaseData.ID, npcBaseData);
         }
+
+        public int GetNpcCount()
+        {
+            return npcBaseDataContainer.Count;
+        }
     }
 }

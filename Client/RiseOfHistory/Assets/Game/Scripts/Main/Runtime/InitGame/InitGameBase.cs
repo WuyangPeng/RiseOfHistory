@@ -18,7 +18,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
                 InitGameType.Sect => new SectInitGame(),
                 InitGameType.Npc => new NpcInitGame(),
                 InitGameType.MartialArts => new MartialArtsInitGame(),
-                InitGameType.End => new NullInitGame(),
+                InitGameType.End => new EndInitGame(),
                 _ => throw new GameException($"InitGameType = {initGameType} is not exist.")
             };
         }

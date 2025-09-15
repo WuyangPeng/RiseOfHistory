@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.GameData.World;
+﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameModule.Base;
 
 namespace Game.Scripts.Main.Runtime.GameModule.World
@@ -21,6 +22,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         public FamilyData GetFamilyData()
         {
             return familyData;
+        }
+
+        public List<FamilyBaseData> GetFamilies()
+        {
+            return familyData.GetFamilies();
         }
     }
 }

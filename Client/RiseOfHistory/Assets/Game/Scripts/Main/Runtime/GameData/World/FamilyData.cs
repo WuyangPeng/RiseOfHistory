@@ -1,5 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.RuntimeException;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
 {
@@ -21,6 +22,11 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         public void AddFamily(FamilyBaseData familyBaseData)
         {
             familyBaseDataContainer.Add(familyBaseData.ID, familyBaseData);
+        }
+
+        public List<FamilyBaseData> GetFamilies()
+        {
+            return familyBaseDataContainer.Select(element => element.Value).ToList();
         }
     }
 }
