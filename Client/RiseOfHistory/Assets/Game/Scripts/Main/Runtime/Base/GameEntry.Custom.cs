@@ -15,7 +15,7 @@ namespace Game.Scripts.Main.Runtime.Base
             private set;
         }
 
-        public static HPBarComponent HpBar
+        public static HpBarComponent1 HpBar
         {
             get;
             private set;
@@ -24,7 +24,7 @@ namespace Game.Scripts.Main.Runtime.Base
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
-            HpBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent>();
+            HpBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HpBarComponent1>();
         }
     }
 }
