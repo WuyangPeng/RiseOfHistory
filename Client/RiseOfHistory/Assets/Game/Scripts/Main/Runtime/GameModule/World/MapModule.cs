@@ -1,5 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameModule.Base;
+using Game.Scripts.Main.Runtime.SaveData;
 
 namespace Game.Scripts.Main.Runtime.GameModule.World
 {
@@ -25,6 +26,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         public void AddFamilyToRandomChunk(FamilyBaseData familyBaseData)
         {
             mapData.AddFamilyToRandomChunk(familyBaseData);
+        }
+
+        public void AddSectToRandomChunk(SectBaseData sectBaseData)
+        {
+            mapData.AddSectToRandomChunk(sectBaseData);
         }
     }
 }

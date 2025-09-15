@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Game.Scripts.Main.Runtime.SaveData;
+using System.Collections.Generic;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
 {
@@ -24,6 +25,12 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         {
             var index = UnityEngine.Random.Range(0, mapChunkContainer.Count);
             mapChunkContainer[index].AddFamily(familyBaseData.ID);
+        }
+
+        public void AddSectToRandomChunk(SectBaseData sectBaseData)
+        {
+            var index = UnityEngine.Random.Range(0, mapChunkContainer.Count);
+            mapChunkContainer[index].AddSect(sectBaseData.ID);
         }
     }
 }

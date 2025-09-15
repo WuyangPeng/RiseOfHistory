@@ -19,6 +19,7 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 
         private readonly HashSet<long> family = new();
 
+        private readonly HashSet<long> sect = new();
         public MapChunkData(int x, int y, int resourceId)
         {
             X = x;
@@ -32,6 +33,11 @@ namespace Game.Scripts.Main.Runtime.GameData.World
         public void AddFamily(long id)
         {
             family.Add(id);
+        }
+
+        public void AddSect(long id)
+        {
+            sect.Add(id);
         }
     }
 }
