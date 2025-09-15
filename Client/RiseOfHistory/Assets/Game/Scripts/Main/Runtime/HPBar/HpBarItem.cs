@@ -6,7 +6,7 @@ using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.HPBar
 {
-    public class HpBarItem1 : MonoBehaviour
+    public class HpBarItem : MonoBehaviour
     {
         private const float AnimationSeconds = 0.3f;
         private const float KeepSeconds = 0.4f;

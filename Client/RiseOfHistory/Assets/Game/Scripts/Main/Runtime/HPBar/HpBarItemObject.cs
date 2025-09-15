@@ -15,7 +15,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
         protected override void Release(bool isShutdown)
         {
-            var hpBarItem = (HpBarItem1)Target;
+            var hpBarItem = (HpBarItem)Target;
             if (hpBarItem == null)
             {
                 return;

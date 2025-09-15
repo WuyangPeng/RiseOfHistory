@@ -9,7 +9,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
     public class HpBarComponent : GameFrameworkComponent
     {
         [SerializeField]
-        private HpBarItem1 hpBarItem1Template;
+        private HpBarItem hpBarItemTemplate;
 
         [SerializeField]
         private Transform hpBarInstanceRoot;
@@ -18,7 +18,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
         private int instancePoolCapacity = 16;
 
         private IObjectPool<HpBarItemObject> hpBarItemObjectPool;
-        private List<HpBarItem1> activeHpBarItems;
+        private List<HpBarItem> activeHpBarItems;
         private Canvas cachedCanvas;
 
         private void Start()
@@ -31,7 +31,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
             cachedCanvas = hpBarInstanceRoot.GetComponent<Canvas>();
             hpBarItemObjectPool = Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HpBarItemObject>("HPBarItem", instancePoolCapacity);
-            activeHpBarItems = new List<HpBarItem1>();
+            activeHpBarItems = new List<HpBarItem>();
         }
 
         private void Update()
@@ -66,36 +66,36 @@ namespace Game.Scripts.Main.Runtime.HPBar
             hpBarItem.Init(entity, cachedCanvas, fromHpRatio, toHpRatio);
         }
 
-        private void HideHpBar(HpBarItem1 hpBarItem1)
+        private void HideHpBar(HpBarItem hpBarItem)
         {
-            hpBarItem1.Reset();
-            activeHpBarItems.Remove(hpBarItem1);
-            hpBarItemObjectPool.Unspawn(hpBarItem1);
+            hpBarItem.Reset();
+            activeHpBarItems.Remove(hpBarItem);
+            hpBarItemObjectPool.Unspawn(hpBarItem);
         }
 
-        private HpBarItem1 GetActiveHpBarItem(Entity.EntityLogic.Entity entity)
+        private HpBarItem GetActiveHpBarItem(Entity.EntityLogic.Entity entity)
         {
             return entity == null ? null : activeHpBarItems.FirstOrDefault(item => item.Owner == entity);
         }
 
-        private HpBarItem1 CreateHpBarItem(Entity.EntityLogic.Entity entity)
+        private HpBarItem CreateHpBarItem(Entity.EntityLogic.Entity entity)
         {
-            HpBarItem1 hpBarItem1;
+            HpBarItem hpBarItem;
             var hpBarItemObject = hpBarItemObjectPool.Spawn();
             if (hpBarItemObject != null)
             {
-                hpBarItem1 = (HpBarItem1)hpBarItemObject.Target;
+                hpBarItem = (HpBarItem)hpBarItemObject.Target;
             }
             else
             {
-                hpBarItem1 = Instantiate(hpBarItem1Template);
-                var itemTransform = hpBarItem1.GetComponent<Transform>();
+                hpBarItem = Instantiate(hpBarItemTemplate);
+                var itemTransform = hpBarItem.GetComponent<Transform>();
                 itemTransform.SetParent(hpBarInstanceRoot);
                 itemTransform.localScale = Vector3.one;
-                hpBarItemObjectPool.Register(HpBarItemObject.Create(hpBarItem1), true);
+                hpBarItemObjectPool.Register(HpBarItemObject.Create(hpBarItem), true);
             }
 
-            return hpBarItem1;
+            return hpBarItem;
         }
     }
 }
