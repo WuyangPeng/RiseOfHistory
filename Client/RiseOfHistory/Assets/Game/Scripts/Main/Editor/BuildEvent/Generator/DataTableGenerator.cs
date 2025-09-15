@@ -278,7 +278,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     .AppendLine()
                     .AppendFormat("        public {1} Get{0}(int id)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("        {")
-                    .AppendFormat("            foreach (var i in {0})", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("            foreach (var i in {0})", FirstCharToLower(propertyCollection.Name)).AppendLine()
                     .AppendLine("            {")
                     .AppendLine("                if (i.Key == id)")
                     .AppendLine("                {")
@@ -329,7 +329,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 for (var i = 0; i < itemCount; i++)
                 {
                     var item = propertyCollection.GetItem(i);
-                    stringBuilder.AppendFormat("                new ({1}, {2}),", propertyCollection.LanguageKeyword, item.Key.ToString(), item.Value).AppendLine();
+                    stringBuilder.AppendFormat("                new ({0}, {1}),", item.Key.ToString(), item.Value).AppendLine();
                 }
 
                 stringBuilder.Append("            };");
