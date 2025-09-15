@@ -13,14 +13,14 @@ namespace Game.Scripts.Main.Runtime.HPBar
         private const float FadeOutSeconds = 0.3f;
 
         [SerializeField]
-        private Slider m_HPBar = null;
+        private Slider hpBar;
 
-        private Canvas mParentCanvas = null;
-        private RectTransform cachedTransform = null;
-        private CanvasGroup cachedCanvasGroup = null;
-        private int ownerId = 0;
+        private Canvas mParentCanvas;
+        private RectTransform cachedTransform;
+        private CanvasGroup cachedCanvasGroup;
+        private int ownerId;
 
-        public Entity.EntityLogic.Entity Owner { get; private set; } = null;
+        public Entity.EntityLogic.Entity Owner { get; private set; }
 
         public void Init(Entity.EntityLogic.Entity owner, Canvas parentCanvas, float fromHpRatio, float toHpRatio)
         {
@@ -38,7 +38,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
             cachedCanvasGroup.alpha = 1f;
             if (Owner != owner || ownerId != owner.Id)
             {
-                m_HPBar.value = fromHpRatio;
+                hpBar.value = fromHpRatio;
                 Owner = owner;
                 ownerId = owner.Id;
             }
@@ -72,7 +72,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
         {
             StopAllCoroutines();
             cachedCanvasGroup.alpha = 1f;
-            m_HPBar.value = 1f;
+            hpBar.value = 1f;
             Owner = null;
             gameObject.SetActive(false);
         }
@@ -93,7 +93,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
         private IEnumerator HpBarCo(float value, float animationDuration, float keepDuration, float fadeOutDuration)
         {
-            yield return m_HPBar.SmoothValue(value, animationDuration);
+            yield return hpBar.SmoothValue(value, animationDuration);
             yield return new WaitForSeconds(keepDuration);
             yield return cachedCanvasGroup.FadeToAlpha(0f, fadeOutDuration);
         }
