@@ -1,6 +1,7 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+﻿using Game.Scripts.Main.Runtime.Base;
+using Game.Scripts.Main.Runtime.DataTable;
 using System.Collections.Generic;
-using Game.Scripts.Main.Runtime.Base;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
@@ -14,7 +15,9 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 
         public int CurrentResource { get; set; }
 
-        private HashSet<int> entity = new();
+        private HashSet<long> entity = new();
+
+        private readonly HashSet<long> family = new();
 
         public MapChunkData(int x, int y, int resourceId)
         {
@@ -24,6 +27,11 @@ namespace Game.Scripts.Main.Runtime.GameData.World
 
             var resourceTable = GameEntry.DataTable.GetDataTable<DRResource>();
             CurrentResource = resourceTable.GetDataRow(resourceId).InitValue;
+        }
+
+        public void AddFamily(long id)
+        {
+            family.Add(id);
         }
     }
 }

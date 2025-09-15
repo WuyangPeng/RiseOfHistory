@@ -21,5 +21,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         {
             return mapData;
         }
+
+        public void AddFamilyToRandomChunk(FamilyBaseData familyBaseData)
+        {
+            mapData.AddFamilyToRandomChunk(familyBaseData);
+        }
     }
 }

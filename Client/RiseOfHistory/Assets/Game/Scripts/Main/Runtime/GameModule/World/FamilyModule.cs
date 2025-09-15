@@ -6,8 +6,8 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
     [Module]
     public class FamilyModule : BaseModule
     {
-        private readonly FamilyData familyData = new(); 
-        
+        private readonly FamilyData familyData = new();
+
         public long GetNextFamilyId()
         {
             return familyData.GetNextFamilyId();
@@ -16,6 +16,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         public void AddFamily(FamilyBaseData familyBaseData)
         {
             familyData.AddFamily(familyBaseData);
+        }
+
+        public FamilyData GetFamilyData()
+        {
+            return familyData;
         }
     }
 }

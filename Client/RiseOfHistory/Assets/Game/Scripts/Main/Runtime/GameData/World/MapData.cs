@@ -19,6 +19,11 @@ namespace Game.Scripts.Main.Runtime.GameData.World
             return mapChunkContainer[index];
         }
 
-       
+
+        public void AddFamilyToRandomChunk(FamilyBaseData familyBaseData)
+        {
+            var index = UnityEngine.Random.Range(0, mapChunkContainer.Count);
+            mapChunkContainer[index].AddFamily(familyBaseData.ID);
+        }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using Game.Scripts.Main.Runtime.GameEnum;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
 {
