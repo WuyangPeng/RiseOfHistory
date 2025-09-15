@@ -138,7 +138,7 @@ namespace Game.Scripts.Main.Runtime.GameUtility
                 int entityDamageHP = CalcDamageHP(targetImpactData.Attack, entityImpactData.Defense);
                 int targetDamageHP = CalcDamageHP(entityImpactData.Attack, targetImpactData.Defense);
 
-                int delta = Mathf.Min(entityImpactData.HP - entityDamageHP, targetImpactData.HP - targetDamageHP);
+                int delta = Mathf.Min(entityImpactData.Hp - entityDamageHP, targetImpactData.Hp - targetDamageHP);
                 if (delta > 0)
                 {
                     entityDamageHP += delta;

@@ -42,8 +42,10 @@ namespace Game.Scripts.Main.Runtime.BuiltinData
                 return;
             }
 
-            if (Base.GameEntry.Localization.ParseData(defaultDictionaryTextAsset.text)) return;
-            Log.Warning("Parse default dictionary failure.");
+            if (!Base.GameEntry.Localization.ParseData(defaultDictionaryTextAsset.text))
+            {
+                Log.Warning("Parse default dictionary failure.");
+            }
         }
     }
 }

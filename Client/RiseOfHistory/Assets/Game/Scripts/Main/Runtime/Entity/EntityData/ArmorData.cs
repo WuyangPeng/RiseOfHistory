@@ -9,10 +9,10 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public class ArmorData : AccessoryObjectData
     {
         [SerializeField]
-        private int maxHp = 0;
+        private int maxHp;
 
         [SerializeField]
-        private int defense = 0;
+        private int defense;
 
         public ArmorData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)

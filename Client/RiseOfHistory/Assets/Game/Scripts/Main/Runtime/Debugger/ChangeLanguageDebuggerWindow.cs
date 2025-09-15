@@ -29,7 +29,11 @@ namespace Game.Scripts.Main.Runtime.Debugger
 
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-            if (!needRestart) return;
+            if (!needRestart)
+            {
+                return;
+            }
+
             needRestart = false;
             GameEntry.Shutdown(ShutdownType.Restart);
         }

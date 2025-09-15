@@ -7,10 +7,10 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public abstract class EntityData
     {
         [SerializeField]
-        private int id = 0;
+        private int id;
 
         [SerializeField]
-        private int typeId = 0;
+        private int typeId;
 
         [SerializeField]
         private Vector3 position = Vector3.zero;

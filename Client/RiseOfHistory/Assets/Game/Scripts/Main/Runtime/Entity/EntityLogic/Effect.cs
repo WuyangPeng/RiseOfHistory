@@ -10,9 +10,9 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     public class Effect : Entity
     {
         [SerializeField]
-        private EffectData effectData = null;
+        private EffectData effectData;
 
-        private float mElapseSeconds = 0f;
+        private float mElapseSeconds;
 
 
         protected override void OnShow(object userData)

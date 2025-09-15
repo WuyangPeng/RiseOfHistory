@@ -8,7 +8,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public abstract class AccessoryObjectData : EntityData
     {
         [SerializeField]
-        private int ownerId = 0;
+        private int ownerId;
 
         [SerializeField]
         private CampType ownerCamp;

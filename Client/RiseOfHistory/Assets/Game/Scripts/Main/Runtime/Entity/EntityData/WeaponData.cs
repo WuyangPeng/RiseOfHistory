@@ -9,19 +9,19 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public class WeaponData : AccessoryObjectData
     {
         [SerializeField]
-        private int attack = 0;
+        private int attack;
 
         [SerializeField]
-        private float attackInterval = 0f;
+        private float attackInterval;
 
         [SerializeField]
-        private int bulletId = 0;
+        private int bulletId;
 
         [SerializeField]
-        private float bulletSpeed = 0f;
+        private float bulletSpeed;
 
         [SerializeField]
-        private int bulletSoundId = 0;
+        private int bulletSoundId;
 
         public WeaponData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)

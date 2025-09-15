@@ -14,16 +14,9 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         private const string AttachPoint = "Weapon Point";
 
         [SerializeField]
-        private WeaponData weaponData = null;
+        private WeaponData weaponData;
 
-        private float nextAttackTime = 0f;
-
-
-        protected override void OnInit(object userData)
-        {
-            base.OnInit(userData);
-        }
-
+        private float nextAttackTime;
 
         protected override void OnShow(object userData)
         {

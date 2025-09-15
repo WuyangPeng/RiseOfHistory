@@ -13,14 +13,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         private const string AttachPoint = "Thruster Point";
 
         [SerializeField]
-        private ThrusterData thrusterData = null;
-
-
-        protected override void OnInit(object userData)
-        {
-            base.OnInit(userData);
-        }
-
+        private ThrusterData thrusterData;
 
         protected override void OnShow(object userData)
         {

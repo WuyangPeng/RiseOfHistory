@@ -12,7 +12,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     public abstract class TargetableObject : Entity
     {
         [SerializeField]
-        private TargetableObjectData targetableObjectData = null;
+        private TargetableObjectData targetableObjectData;
 
         public bool IsDead => targetableObjectData.Hp <= 0;
 

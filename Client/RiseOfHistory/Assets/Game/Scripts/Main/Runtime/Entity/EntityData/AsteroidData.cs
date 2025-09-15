@@ -9,22 +9,22 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public class AsteroidData : TargetableObjectData
     {
         [SerializeField]
-        private int maxHp = 0;
+        private int maxHp;
 
         [SerializeField]
-        private int attack = 0;
+        private int attack;
 
         [SerializeField]
-        private float speed = 0f;
+        private float speed;
 
         [SerializeField]
-        private float angularSpeed = 0f;
+        private float angularSpeed;
 
         [SerializeField]
-        private int deadEffectId = 0;
+        private int deadEffectId;
 
         [SerializeField]
-        private int deadSoundId = 0;
+        private int deadSoundId;
 
         public AsteroidData(int entityId, int typeId)
             : base(entityId, typeId, CampType.Neutral)

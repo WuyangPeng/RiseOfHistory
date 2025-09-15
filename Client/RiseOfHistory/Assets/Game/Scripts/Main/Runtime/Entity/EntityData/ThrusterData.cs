@@ -9,7 +9,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public class ThrusterData : AccessoryObjectData
     {
         [SerializeField]
-        private float speed = 0f;
+        private float speed;
 
         public ThrusterData(int entityId, int typeId, int ownerId, CampType ownerCamp)
             : base(entityId, typeId, ownerId, ownerCamp)

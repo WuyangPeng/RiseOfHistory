@@ -8,16 +8,16 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public class BulletData : EntityData
     {
         [SerializeField]
-        private int ownerId = 0;
+        private int ownerId;
 
         [SerializeField]
         private CampType ownerCamp;
 
         [SerializeField]
-        private int attack = 0;
+        private int attack;
 
         [SerializeField]
-        private float speed = 0f;
+        private float speed;
 
         public BulletData(int entityId, int typeId, int ownerId, CampType ownerCamp, int attack, float speed)
             : base(entityId, typeId)

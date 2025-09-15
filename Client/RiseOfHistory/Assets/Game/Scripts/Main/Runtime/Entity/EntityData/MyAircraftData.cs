@@ -8,7 +8,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public class MyAircraftData : AircraftData
     {
         [SerializeField]
-        private string name = null;
+        private string name;
 
         public MyAircraftData(int entityId, int typeId)
             : base(entityId, typeId, CampType.Player)

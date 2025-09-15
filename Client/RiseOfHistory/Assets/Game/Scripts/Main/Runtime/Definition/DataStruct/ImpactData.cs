@@ -9,14 +9,14 @@ namespace Game.Scripts.Main.Runtime.Definition.DataStruct
         public ImpactData(CampType camp, int hp, int attack, int defense)
         {
             Camp = camp;
-            HP = hp;
+            Hp = hp;
             Attack = attack;
             Defense = defense;
         }
 
         public CampType Camp { get; }
 
-        public int HP { get; }
+        public int Hp { get; }
 
         public int Attack { get; }
 

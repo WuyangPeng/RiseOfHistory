@@ -8,16 +8,11 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     public class MyAircraft : Aircraft
     {
         [SerializeField]
-        private MyAircraftData myAircraftData = null;
+        private MyAircraftData myAircraftData;
 
-        private Rect playerMoveBoundary = default(Rect);
+        private Rect playerMoveBoundary;
         private Vector3 targetPosition = Vector3.zero;
 
-
-        protected override void OnInit(object userData)
-        {
-            base.OnInit(userData);
-        }
 
 
         protected override void OnShow(object userData)
@@ -38,8 +33,10 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
                 return;
             }
 
-            playerMoveBoundary = new Rect(sceneBackground.PlayerMoveBoundary.bounds.min.x, sceneBackground.PlayerMoveBoundary.bounds.min.z,
-                sceneBackground.PlayerMoveBoundary.bounds.size.x, sceneBackground.PlayerMoveBoundary.bounds.size.z);
+            playerMoveBoundary = new Rect(sceneBackground.PlayerMoveBoundary.bounds.min.x,
+                sceneBackground.PlayerMoveBoundary.bounds.min.z,
+                sceneBackground.PlayerMoveBoundary.bounds.size.x,
+                sceneBackground.PlayerMoveBoundary.bounds.size.z);
         }
 
 

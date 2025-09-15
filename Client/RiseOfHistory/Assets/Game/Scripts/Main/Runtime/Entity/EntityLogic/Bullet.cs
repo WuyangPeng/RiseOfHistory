@@ -11,26 +11,22 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     public class Bullet : Entity
     {
         [SerializeField]
-        private BulletData bulletData = null;
+        private BulletData bulletData;
 
         public ImpactData GetImpactData()
         {
             return new ImpactData(bulletData.OwnerCamp, 0, bulletData.Attack, 0);
         }
 
-
-        protected override void OnInit(object userData)
-        {
-            base.OnInit(userData);
-        }
-
-
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
 
             bulletData = userData as BulletData;
-            if (bulletData != null) return;
+            if (bulletData != null)
+            {
+                return;
+            }
             Log.Error("Bullet data is invalid.");
         }
 

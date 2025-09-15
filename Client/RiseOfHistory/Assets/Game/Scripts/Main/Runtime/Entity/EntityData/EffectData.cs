@@ -7,7 +7,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
     public class EffectData : EntityData
     {
         [SerializeField]
-        private float keepTime = 0f;
+        private float keepTime;
 
         public EffectData(int entityId, int typeId)
             : base(entityId, typeId)

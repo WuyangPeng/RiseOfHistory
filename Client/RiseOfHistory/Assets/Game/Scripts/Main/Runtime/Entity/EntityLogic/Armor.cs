@@ -13,13 +13,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         private const string AttachPoint = "Armor Point";
 
         [SerializeField]
-        private ArmorData armorData = null;
-
-
-        protected override void OnInit(object userData)
-        {
-            base.OnInit(userData);
-        }
+        private ArmorData armorData;
 
 
         protected override void OnShow(object userData)

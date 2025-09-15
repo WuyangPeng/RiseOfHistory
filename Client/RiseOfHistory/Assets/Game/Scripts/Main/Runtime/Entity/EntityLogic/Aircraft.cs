@@ -14,16 +14,16 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     public abstract class Aircraft : TargetableObject
     {
         [SerializeField]
-        private AircraftData aircraftData = null;
+        private AircraftData aircraftData;
 
         [SerializeField]
-        protected Thruster thruster = null;
+        protected Thruster thruster;
 
         [SerializeField]
-        protected List<Weapon> weapons = new List<Weapon>();
+        protected List<Weapon> weapons = new();
 
         [SerializeField]
-        protected List<Armor> armors = new List<Armor>();
+        protected List<Armor> armors = new();
 
 
         protected override void OnShow(object userData)

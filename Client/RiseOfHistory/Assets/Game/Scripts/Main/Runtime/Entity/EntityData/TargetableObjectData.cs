@@ -11,7 +11,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityData
         private CampType camp;
 
         [SerializeField]
-        private int hp = 0;
+        private int hp;
 
         protected TargetableObjectData(int entityId, int typeId, CampType camp)
             : base(entityId, typeId)

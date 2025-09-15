@@ -12,14 +12,10 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
     public class Asteroid : TargetableObject
     {
         [SerializeField]
-        private AsteroidData asteroidData = null;
+        private AsteroidData asteroidData;
 
         private Vector3 rotateSphere = Vector3.zero;
 
-        protected override void OnInit(object userData)
-        {
-            base.OnInit(userData);
-        }
 
         protected override void OnShow(object userData)
         {
