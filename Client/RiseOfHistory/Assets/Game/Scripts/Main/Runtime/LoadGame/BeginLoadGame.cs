@@ -1,6 +1,5 @@
 ﻿using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.SaveData;
 using System.Text;
 using GameFramework;
@@ -8,14 +7,12 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.LoadGame
 {
-    public class MapLoadGame : LoadGameBase
+    public class BeginLoadGame : LoadGameBase
     {
         private readonly UserModule userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-        private readonly MapModule mapModule = GameEntry.ModuleComponent.GetModule<MapModule>();
-
         public override void LoadGame()
         {
-            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + userModule.GetSaveIndex(), "MapData.idx");
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + userModule.GetSaveIndex(), "UserData.idx");
             var bytes = fileSystems?.ReadFile("GameSaves");
 
             if (bytes == null)
@@ -24,9 +21,9 @@ namespace Game.Scripts.Main.Runtime.LoadGame
             }
 
             var json = Encoding.UTF8.GetString(bytes);
-            var data = Utility.Json.ToObject<MapSaveData>(json);
+            var data = Utility.Json.ToObject<UserSavaData>(json);
 
-            mapModule.Init(data.Data);
+            userModule.Init(data.UserData, data.PropertyData);
         }
     }
 }

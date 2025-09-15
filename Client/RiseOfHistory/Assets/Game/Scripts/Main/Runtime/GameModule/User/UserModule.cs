@@ -10,8 +10,8 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
     [Module]
     public class UserModule : BaseModule
     {
-        private readonly UserData userData = new UserData();
-        private readonly PropertyData propertyData = new PropertyData();
+        private UserData userData = new();
+        private PropertyData propertyData = new();
 
         public void SetGameDifficulty(GameDifficultyType gameDifficulty)
         {
@@ -357,6 +357,12 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
         public UserData GetUserData()
         {
             return userData;
+        }
+
+        public void Init(UserData initUserData, PropertyData initPropertyData)
+        {
+            userData = initUserData;
+            propertyData = initPropertyData;
         }
     }
 }

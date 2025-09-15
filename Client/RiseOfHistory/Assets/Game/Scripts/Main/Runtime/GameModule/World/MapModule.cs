@@ -7,7 +7,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
     [Module]
     public class MapModule : BaseModule
     {
-        private readonly MapData mapData = new();
+        private MapData mapData = new();
         public void AddMapChunkData(MapChunkData mapChunkData)
         {
             mapData.AddMapChunkData(mapChunkData);
@@ -31,6 +31,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         public void AddSectToRandomChunk(SectBaseData sectBaseData)
         {
             mapData.AddSectToRandomChunk(sectBaseData);
+        }
+
+        public void Init(MapData data)
+        {
+            mapData = data;
         }
     }
 }

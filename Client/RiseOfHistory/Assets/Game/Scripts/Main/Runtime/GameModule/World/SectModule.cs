@@ -6,7 +6,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
     [Module]
     public class SectModule : BaseModule
     {
-        private readonly SectData sectData = new();
+        private SectData sectData = new();
 
         public long GetNextSectId()
         {
@@ -21,6 +21,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
         public SectData GetSectData()
         {
             return sectData;
+        }
+
+        public void Init(SectData data)
+        {
+            sectData = data;
         }
     }
 }

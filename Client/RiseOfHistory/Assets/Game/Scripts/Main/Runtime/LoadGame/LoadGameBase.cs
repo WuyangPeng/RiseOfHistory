@@ -13,6 +13,7 @@ namespace Game.Scripts.Main.Runtime.LoadGame
         {
             return initGameType switch
             {
+                InitGameType.Begin => new BeginLoadGame(),
                 InitGameType.Map => new MapLoadGame(),
                 InitGameType.Family => new FamilyLoadGame(),
                 InitGameType.Sect => new SectLoadGame(),
