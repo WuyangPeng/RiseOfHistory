@@ -9,17 +9,17 @@ namespace Game.Scripts.Main.Runtime.HPBar
     public class HpBarComponent : GameFrameworkComponent
     {
         [SerializeField]
-        private HPBarItem hpBarItemTemplate = null;
+        private HPBarItem hpBarItemTemplate;
 
         [SerializeField]
-        private Transform hpBarInstanceRoot = null;
+        private Transform hpBarInstanceRoot;
 
         [SerializeField]
         private int instancePoolCapacity = 16;
 
-        private IObjectPool<HpBarItemObject> hpBarItemObjectPool = null;
-        private List<HPBarItem> activeHpBarItems = null;
-        private Canvas cachedCanvas = null;
+        private IObjectPool<HpBarItemObject1> hpBarItemObjectPool;
+        private List<HPBarItem> activeHpBarItems;
+        private Canvas cachedCanvas;
 
         private void Start()
         {
@@ -30,7 +30,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
             }
 
             cachedCanvas = hpBarInstanceRoot.GetComponent<Canvas>();
-            hpBarItemObjectPool = Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HpBarItemObject>("HPBarItem", instancePoolCapacity);
+            hpBarItemObjectPool = Base.GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HpBarItemObject1>("HPBarItem", instancePoolCapacity);
             activeHpBarItems = new List<HPBarItem>();
         }
 
@@ -80,7 +80,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
         private HPBarItem CreateHpBarItem(Entity.EntityLogic.Entity entity)
         {
-            HPBarItem hpBarItem = null;
+            HPBarItem hpBarItem;
             var hpBarItemObject = hpBarItemObjectPool.Spawn();
             if (hpBarItemObject != null)
             {
@@ -92,7 +92,7 @@ namespace Game.Scripts.Main.Runtime.HPBar
                 var itemTransform = hpBarItem.GetComponent<Transform>();
                 itemTransform.SetParent(hpBarInstanceRoot);
                 itemTransform.localScale = Vector3.one;
-                hpBarItemObjectPool.Register(HpBarItemObject.Create(hpBarItem), true);
+                hpBarItemObjectPool.Register(HpBarItemObject1.Create(hpBarItem), true);
             }
 
             return hpBarItem;
