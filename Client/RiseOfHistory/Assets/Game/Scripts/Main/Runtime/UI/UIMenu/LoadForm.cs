@@ -24,6 +24,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (procedureMenu.HasHeadData(index))
             {
+                var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+                userModule.SetInitWorld();
+
                 procedureMenu.LoadGame();
             }
             else
