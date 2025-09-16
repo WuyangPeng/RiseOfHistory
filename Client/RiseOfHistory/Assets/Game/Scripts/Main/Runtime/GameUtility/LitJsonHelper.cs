@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using GameFramework;
 using LitJson;
 
@@ -38,8 +39,21 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         /// <returns>反序列化后的对象。</returns>
         public object ToObject(Type objectType, string json)
         {
-            // TODO: 可反射为 ToObject<T>(string json)
-            throw new NotSupportedException("ToObject(Type objectType, string json)");
+            if (objectType == null) throw new ArgumentNullException(nameof(objectType));
+            if (json == null) throw new ArgumentNullException(nameof(json));
+
+            // 获取泛型方法 JsonMapper.ToObject<T>(string)
+            var openMethod = typeof(JsonMapper)
+                .GetMethod(nameof(JsonMapper.ToObject), new Type[] { typeof(string) });
+
+            if (openMethod == null)
+                throw new InvalidOperationException("未能找到 JsonMapper.ToObject<T>(string) 方法。");
+
+            // 构造针对目标类型的封闭泛型方法
+            var closedMethod = openMethod.MakeGenericMethod(objectType);
+
+            // 调用并返回结果
+            return closedMethod.Invoke(null, new object[] { json });
         }
     }
 }
