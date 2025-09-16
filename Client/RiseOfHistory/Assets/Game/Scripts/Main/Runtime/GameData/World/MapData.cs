@@ -1,6 +1,6 @@
-﻿using Game.Scripts.Main.Runtime.SaveData;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
 {
@@ -8,57 +8,60 @@ namespace Game.Scripts.Main.Runtime.GameData.World
     {
         public int MapSize { get; set; }
         private readonly List<MapChunkData> mapChunkContainer = new();
+        private readonly Dictionary<long, int> family = new();
+        private readonly Dictionary<long, int> sect = new();
+        private readonly Dictionary<long, int> entity = new();
 
         public void AddMapChunkData(MapChunkData mapChunkData)
         {
             mapChunkContainer.Add(mapChunkData);
         }
 
-        public MapChunkData GetMapChunkDataByFamilyId(long familyId)
-        {
-            return mapChunkContainer.FirstOrDefault(element => element.HasFamily(familyId));
-        }
-
-        public MapChunkData GetMapChunkData(int x, int y)
-        {
-            var index = x + y * MapSize;
-
-            return mapChunkContainer[index];
-        }
-
-
         public void AddFamilyToRandomChunk(FamilyBaseData familyBaseData)
         {
-            var index = UnityEngine.Random.Range(0, mapChunkContainer.Count);
+            var index = Random.Range(0, mapChunkContainer.Count);
+            family.Add(familyBaseData.ID, index);
             mapChunkContainer[index].AddFamily(familyBaseData.ID);
         }
 
         public void AddSectToRandomChunk(SectBaseData sectBaseData)
         {
-            var index = UnityEngine.Random.Range(0, mapChunkContainer.Count);
+            var index = Random.Range(0, mapChunkContainer.Count);
+            sect.Add(sectBaseData.ID, index);
             mapChunkContainer[index].AddSect(sectBaseData.ID);
         }
 
         public void SetChunkByFamilyId(long entityId, long familyId)
         {
-            var mapChunkData = mapChunkContainer.First(element => element.HasFamily(familyId));
+            if (!family.TryGetValue(familyId, out var index))
+            {
+                return;
+            }
+
+            var mapChunkData = mapChunkContainer[index];
             mapChunkData.AddEntity(entityId);
         }
 
         public void SetChunkBySectId(long entityId, long sectId)
         {
-            var mapChunkData = mapChunkContainer.First(element => element.HasSect(sectId));
+            if (!sect.TryGetValue(sectId, out var index))
+            {
+                return;
+            }
+
+            var mapChunkData = mapChunkContainer[index];
             mapChunkData.AddEntity(entityId);
         }
 
         public bool HasEntity(long entityId)
         {
-            return mapChunkContainer.Any(element => element.HasFamily(entityId));
+            return entity.ContainsKey(entityId);
         }
 
         public void AddEntityToRandomChunk(long entityId)
         {
-            var index = UnityEngine.Random.Range(0, mapChunkContainer.Count);
+            var index = Random.Range(0, mapChunkContainer.Count);
+            entity.Add(entityId, index);
             mapChunkContainer[index].AddEntity(entityId);
         }
     }
